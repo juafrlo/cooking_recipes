@@ -2,8 +2,7 @@ class UsersController < ApplicationController
   # Be sure to include AuthenticationSystem in Application Controller instead
   include AuthenticatedSystem
   before_filter :authorize, :only => [:mis_recetas]
-
-
+ 
   def show
     @user = User.find(params[:id])
     
@@ -24,6 +23,11 @@ class UsersController < ApplicationController
   def mis_amigos
     @friends = current_user.user_friends
     @no_friends = current_user.user_no_friends
+  end
+
+  def auto_complete_for_user_login
+    @users = User.find(:all)
+    render :inline => "<%= auto_complete_result(@users, 'login') %>" 
   end
 
   # render new.rhtml

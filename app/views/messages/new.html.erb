@@ -1,9 +1,11 @@
 <% form_for @message, :url => user_messages_path(@user) do |f| %>
-  <p>
-    To:<br />
-		<%= f.text_field :to %>
-		<%= error_message_on @message, :to %>
-  </p>
+
+<p>
+	To:<br/>
+	<%= text_field_with_auto_complete :user, :login %>
+	<%= error_message_on @message, :to %>
+</p>
+
   <p>
     Subject:<br />
     <%= f.text_field :subject %>

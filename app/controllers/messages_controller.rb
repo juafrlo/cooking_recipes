@@ -1,6 +1,7 @@
 class MessagesController < ApplicationController
-  
   before_filter :set_user
+  skip_before_filter :verify_authenticity_token, :only => 'auto_complete_for_user_login'
+  auto_complete_for :user, :login
   
   def index
     if params[:mailbox] == "sent"
@@ -24,6 +25,10 @@ class MessagesController < ApplicationController
         @message.subject = "Re: #{@reply_to.subject}"
         @message.body = "\n\n*Original message*\n\n #{@reply_to.body}"
       end
+    end
+    
+    def auto_complete_for_user_login
+      require 'ruby-debug'; debugger
     end
   end
   
@@ -52,6 +57,8 @@ class MessagesController < ApplicationController
       redirect_to user_message_path(@user, @messages)
     end
   end
+  
+
   
   private
     def set_user

@@ -1,0 +1,70 @@
+8
+
+dir
+28652
+https://radagast.gnuine.com/repos/railsprojects/projects/fesmalla/trunk/vendor/plugins/community_engine/engine_plugins/auto_complete
+https://radagast.gnuine.com/repos/railsprojects
+
+
+
+2009-05-04T09:05:35.853970Z
+28586
+egarcia
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+62450321-e929-0410-9c36-ec31725ac4b1
+
+test
+dir
+
+Rakefile
+file
+
+
+
+
+2009-05-07T09:35:04.000000Z
+705a89824a98485e70202ea52528c61c
+2009-05-04T09:05:35.853970Z
+28586
+egarcia
+
+init.rb
+file
+
+
+
+
+2009-05-07T09:35:04.000000Z
+bcf4ca5abe5686688244b12bce018e24
+2009-05-04T09:05:35.853970Z
+28586
+egarcia
+
+lib
+dir
+
+README
+file
+
+
+
+
+2009-05-07T09:35:04.000000Z
+fb23a17d26849791cce5930621981272
+2009-05-04T09:05:35.853970Z
+28586
+egarcia
+

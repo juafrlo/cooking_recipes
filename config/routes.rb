@@ -1,4 +1,8 @@
 ActionController::Routing::Routes.draw do |map|
+  map.auto_complete ':controller/:action', 
+                    :requirements => { :action => /auto_complete_for_\S+/ },
+                    :conditions => { :method => :get }
+
   map.resources :messages
 
   map.resources :friends
