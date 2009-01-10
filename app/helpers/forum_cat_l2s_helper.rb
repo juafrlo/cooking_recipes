@@ -1,0 +1,2 @@
+module ForumCatL2sHelper
+end

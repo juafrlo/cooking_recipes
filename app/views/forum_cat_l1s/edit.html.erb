@@ -1,0 +1,16 @@
+<h1>Editing forum_cat_l1</h1>
+
+<% form_for(@forum_cat_l1) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @forum_cat_l1 %> |
+<%= link_to 'Back', forum_cat_l1s_path %>

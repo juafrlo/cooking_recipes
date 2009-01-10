@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <title>Dticket: <%= controller.action_name %></title>
+  <%= stylesheet_link_tag 'dticket' %>
+  <%= javascript_include_tag :defaults %>
+</head>
+
+<body>
+	<div class="container_16">
+	<div class="grid_1">
+	&nbsp
+	</div>
+	<div class="grid_14">
+		
+	<div style = "border: groove">	
+		
+
+	<img src= "/images/logo_small.jpg"></td>
+	<ul class="glossymenu">
+
+	</ul>
+	
+<div id="content">
+	<p style="color: green"><%= flash[:notice] %></p>
+	<%= yield  %>
+</div>
+<div id="footer">
+
+</div>
+
+
+
+</div>
+
+</div>
+<div class="grid_1">
+&nbsp
+</div>
+</div>
+</body>
+
+
+</html>

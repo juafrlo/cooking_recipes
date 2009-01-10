@@ -1,0 +1,30 @@
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Puntuation</th>
+    <th>Description</th>
+    <th>Photo1</th>
+    <th>Photo2</th>
+    <th>Category</th>
+    <th>User</th>
+  </tr>
+
+<% for receta in @recetas %>
+  <tr>
+    <td><%=h receta.name %></td>
+    <td><%=h receta.puntuation %></td>
+    <td><%=h receta.description %></td>
+    <td><%=h receta.photo1 %></td>
+    <td><%=h receta.photo2 %></td>
+    <td><%=h receta.category_id %></td>
+    <td><%=h receta.user_id %></td>
+    <td><%= link_to 'Show', receta %></td>
+    <td><%= link_to 'Edit', edit_receta_path(receta) %></td>
+    <td><%= link_to 'Destroy', receta, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New receta', new_receta_path %>

@@ -1,0 +1,18 @@
+<p>
+  <b>Title:</b>
+  <%=h @forum_cat_l1.title %>
+</p>
+
+
+<br/>
+<p style="color: red;">
+FOROS DE ESTA CATEGORÍA
+</p>
+
+<% for forum_cat_l2 in @forum_cat_l2s %>
+	<h3><%= forum_cat_l2.title %> <%= link_to 'Show', forum_cat_l2 %> </h3>
+<% end %>
+
+
+<%= link_to 'Edit', edit_forum_cat_l1_path(@forum_cat_l1) %> |
+<%= link_to 'Back', forum_cat_l1s_path %>

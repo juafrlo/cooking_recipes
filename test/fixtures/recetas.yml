@@ -1,0 +1,19 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+  puntuation: 1.5
+  description: MyText
+  photo1: MyString
+  photo2: MyString
+  category_id: 1
+  user_id: 1
+
+two:
+  name: MyString
+  puntuation: 1.5
+  description: MyText
+  photo1: MyString
+  photo2: MyString
+  category_id: 1
+  user_id: 1

@@ -1,0 +1,51 @@
+<h1>Editing receta</h1>
+
+<% form_for(@receta) do |f| %>
+  <%= f.error_messages %>
+
+
+  <div id="steps">
+	<%= render :partial => 'step', :collection => @receta.steps %>
+  </div>
+
+  <p>
+	<%= add_step_link "Añadir paso" %>
+  </p>
+
+
+
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :puntuation %><br />
+    <%= f.text_field :puntuation %>
+  </p>
+  <p>
+    <%= f.label :description %><br />
+    <%= f.text_area :description %>
+  </p>
+  <p>
+    <%= f.label :photo1 %><br />
+    <%= f.text_field :photo1 %>
+  </p>
+  <p>
+    <%= f.label :photo2 %><br />
+    <%= f.text_field :photo2 %>
+  </p>
+  <p>
+    <%= f.label :category_id %><br />
+    <%= f.text_field :category_id %>
+  </p>
+  <p>
+    <%= f.label :user_id %><br />
+    <%= f.text_field :user_id %>
+  </p>
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @receta %> |
+<%= link_to 'Back', recetas_path %>

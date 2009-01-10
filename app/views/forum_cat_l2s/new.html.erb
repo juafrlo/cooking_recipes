@@ -1,0 +1,20 @@
+<h1>New forum_cat_l2</h1>
+
+<% form_for(@forum_cat_l2) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :forum_cat_l1_id %><br />
+    <%= f.collection_select :forum_cat_l1_id, @forum_cat_l1s, :id, :title %>
+ </p>
+
+  <p>
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.submit "Create" %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', forum_cat_l2s_path %>

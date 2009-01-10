@@ -1,0 +1,26 @@
+<h1>Listing forum_replies</h1>
+
+<table>
+  <tr>
+    <th>Forum post</th>
+    <th>User</th>
+    <th>Title</th>
+    <th>Reply</th>
+  </tr>
+
+<% for forum_reply in @forum_replies %>
+  <tr>
+    <td><%=h forum_reply.forum_post_id %></td>
+    <td><%=h forum_reply.user_id %></td>
+    <td><%=h forum_reply.title %></td>
+    <td><%=h forum_reply.reply %></td>
+    <td><%= link_to 'Show', forum_reply %></td>
+    <td><%= link_to 'Edit', edit_forum_reply_path(forum_reply) %></td>
+    <td><%= link_to 'Destroy', forum_reply, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New forum_reply', new_forum_reply_path %>

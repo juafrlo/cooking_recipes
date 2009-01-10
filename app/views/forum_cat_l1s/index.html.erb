@@ -1,0 +1,20 @@
+<h1>Listing forum_cat_l1s</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+  </tr>
+
+<% for forum_cat_l1 in @forum_cat_l1s %>
+  <tr>
+    <td><%=h forum_cat_l1.title %></td>
+    <td><%= link_to 'Show', forum_cat_l1 %></td>
+    <td><%= link_to 'Edit', edit_forum_cat_l1_path(forum_cat_l1) %></td>
+    <td><%= link_to 'Destroy', forum_cat_l1, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New forum_cat_l1', new_forum_cat_l1_path %>

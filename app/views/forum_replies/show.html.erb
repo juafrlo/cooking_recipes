@@ -1,0 +1,23 @@
+<p>
+  <b>Forum post:</b>
+  <%=h @forum_reply.forum_post_id %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%=h @forum_reply.user_id %>
+</p>
+
+<p>
+  <b>Title:</b>
+  <%=h @forum_reply.title %>
+</p>
+
+<p>
+  <b>Reply:</b>
+  <%=h @forum_reply.reply %>
+</p>
+
+
+<%= link_to 'Edit', edit_forum_reply_path(@forum_reply) %> |
+<%= link_to 'Back', forum_replies_path %>

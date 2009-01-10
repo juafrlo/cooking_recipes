@@ -1,0 +1,86 @@
+html{
+	font-family: Verdana;
+	font-size: 13px;
+	background: #099;
+	width: 989px;
+	margin: 0px;
+	padding: 0px;
+	
+}
+
+body{
+	width: 949px;
+	border: 1px solid black;
+	background: white;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+h1{
+	text-align: center;
+	background: cyan;
+	margin:0px;
+	padding: 10px 0px 10px 0px;
+}
+
+h3{
+	font-size: 12px;
+	padding: 0px;
+	margin:0px;
+}
+
+ul{
+	list-style:none;
+	padding-left: 8px;
+	margin:0px;
+}
+
+a{
+	text-decoration: none;
+}
+
+a:hover{
+	text-decoration: underline;
+}
+
+table{
+	text-align: left;
+}
+
+#top_menu li{
+	float:left;
+	padding:5px;
+	border: 1px solid black;
+	background: lightblue;
+}
+
+#page_wrapper{
+	padding-left: 15px;
+	padding-right: 15px;
+	padding-bottom: 10px;
+}
+
+#right_menu{
+	float:right;
+	background: #CCC;
+	width: 184px;
+	padding: 8px;
+}
+
+.receta_title{
+	font-weight: normal;
+	width: 80%;
+}
+.autor{
+	font-size: 10px;
+	color: #666;
+}
+
+.last_recetas{
+	padding-left: 8px;
+	font-size: 11px;
+}
+
+.clear{
+	clear:both;
+}

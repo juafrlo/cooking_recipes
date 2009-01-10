@@ -1,0 +1,28 @@
+<p>
+  <b>Forum cat l2:</b>
+  <%=h @forum_post.forum_cat_l2_id %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%=h @forum_post.user_id %>
+</p>
+
+<p>
+  <b>Title:</b>
+  <%=h @forum_post.title %>
+</p>
+
+
+<br/>
+<p style="color: red;">
+RESPUESTAS DE ESTE POST
+</p>
+
+<% for forum_reply in @forum_replies %>
+	<h3><%= forum_reply.reply %> <%= link_to 'Show', forum_reply %> </h3>
+<% end %>
+
+
+<%= link_to 'Edit', edit_forum_post_path(@forum_post) %> |
+<%= link_to 'Back', forum_posts_path %>

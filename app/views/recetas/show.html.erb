@@ -1,0 +1,46 @@
+<div>
+  <div class="title">
+  	<b>Name:</b>
+  	<%=h @receta.name %>
+  </div>
+
+
+  <div class="puntuation">
+	<b>Puntuation:</b>
+  	<%=h @receta.puntuation %>
+ </div>
+</div>
+
+
+<div>&nbsp;</div>
+
+<div>
+<p>
+  <b>Description:</b>
+  <%=h @receta.description %>
+</p>
+</div>
+
+<p>
+  <b>Photo1:</b>
+  <%= image_tag 'recetas/' + @receta.photo1 %>
+</p>
+
+<p>
+  <b>Photo2:</b>
+  <%=h @receta.photo2 %>
+</p>
+
+<p>
+  <b>Category:</b>
+  <%=h @receta.category_id %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%=h @receta.user_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_receta_path(@receta) %> |
+<%= link_to 'Back', recetas_path %>

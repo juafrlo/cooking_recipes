@@ -1,0 +1,20 @@
+<%= @order %>aaaaaaaaa
+
+
+<div id="news" style="height:100%; border: none;">
+  	<div id="news_image"> <%= image_tag 'noticias/' + @noticia.img_0 %> </div>
+	<div id="news_right" style="height:100%;">
+		<div><h3><%= @noticia.title %></h3></div>
+	    <div><h4><%= @noticia.subtitle %></h4></div>
+	    <div> <%= @noticia.date %> </div>
+		<div><%= @noticia.content %></div>
+	    <div style="text-align:right;border-bottom: 1px dotted grey;
+		">by <%= @noticia.autor %></div>
+
+	    <div style="text-align:right;">
+		<div class="clear">&nbsp;</div>
+			<%= link_to 'back', noticias_path %>
+		</div>
+
+	</div>
+</div>
