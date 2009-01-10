@@ -1,7 +1,8 @@
 html{
 	font-family: Verdana;
 	font-size: 13px;
-	background: #099;
+	background: #099; 
+	/* background-image: url('../images/b/background.gif'); */
 	width: 989px;
 	margin: 0px;
 	padding: 0px;
