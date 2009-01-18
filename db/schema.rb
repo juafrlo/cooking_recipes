@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090109080759) do
+ActiveRecord::Schema.define(:version => 20090112074301) do
 
   create_table "forum_cat_l1s", :force => true do |t|
     t.string   "title"
@@ -41,6 +41,13 @@ ActiveRecord::Schema.define(:version => 20090109080759) do
     t.datetime "updated_at"
   end
 
+  create_table "ingredients", :force => true do |t|
+    t.integer  "receta_id"
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "noticias", :force => true do |t|
     t.string   "title"
     t.string   "subtitle"
@@ -57,12 +64,14 @@ ActiveRecord::Schema.define(:version => 20090109080759) do
     t.string   "name"
     t.float    "puntuation"
     t.text     "description"
-    t.string   "photo1"
-    t.string   "photo2"
     t.integer  "category_id"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
   end
 
   create_table "roles", :force => true do |t|

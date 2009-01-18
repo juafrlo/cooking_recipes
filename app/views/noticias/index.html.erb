@@ -42,7 +42,11 @@ asdadsaas
 
 <% for noticia in @noticias %>
 <div id="news">
-  	<div id="news_image"> <%= image_tag 'noticias/' + noticia.img_0 %> </div>
+  	<div id="news_image">prueba
+	<%= imagemagick_tag 'noticias/' + noticia.img_0, 'resize(100x100)' %>
+	
+	
+	 <%= image_tag 'noticias/' + noticia.img_0 %> </div>
 	<div id="news_right">
 		<div><h3><%= noticia.title %></h3></div>
 	    <div><h4><%= noticia.subtitle %></h4></div>

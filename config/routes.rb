@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :ingredients
+
   map.connect 'forums', :controller => 'forums', :action => "index"
   
   map.resources :forum_replies

@@ -4,6 +4,16 @@
   <%= f.error_messages %>
 
 
+  <div id="ingredients">
+	<%= render :partial => 'ingredient', :collection => @receta.ingredients %>
+  </div>
+
+  <p>
+	<%= add_ingredient_link "Añadir ingrediente" %>
+  </p>
+
+  <br/>
+
   <div id="steps">
 	<%= render :partial => 'step', :collection => @receta.steps %>
   </div>
@@ -12,6 +22,10 @@
 	<%= add_step_link "Añadir paso" %>
   </p>
 
+	<p>
+		Photo<br/>
+		<%= f.file_field :photo %>
+	</p>
 
 
   <p>
@@ -26,14 +40,7 @@
     <%= f.label :description %><br />
     <%= f.text_area :description %>
   </p>
-  <p>
-    <%= f.label :photo1 %><br />
-    <%= f.text_field :photo1 %>
-  </p>
-  <p>
-    <%= f.label :photo2 %><br />
-    <%= f.text_field :photo2 %>
-  </p>
+
   <p>
     <%= f.label :category_id %><br />
     <%= f.text_field :category_id %>

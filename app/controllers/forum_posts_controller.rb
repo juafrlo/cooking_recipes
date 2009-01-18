@@ -37,12 +37,14 @@ class ForumPostsController < ApplicationController
   # GET /forum_posts/1/edit
   def edit
     @forum_post = ForumPost.find(params[:id])
+    @forum_post.user_id = current_user.id
   end
 
   # POST /forum_posts
   # POST /forum_posts.xml
   def create
     @forum_post = ForumPost.new(params[:forum_post])
+    @forum_post.user_id = current_user.id
 
     respond_to do |format|
       if @forum_post.save

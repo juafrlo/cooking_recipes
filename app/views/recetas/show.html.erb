@@ -1,3 +1,4 @@
+
 <div>
   <div class="title">
   	<b>Name:</b>
@@ -11,6 +12,28 @@
  </div>
 </div>
 
+Minifoto
+<%= image_tag @receta.photo.url(:small) %>
+
+<p>
+Ingredientes: 
+<ul>
+<% for ingredient in @ingredients %>
+	<li>- <%= ingredient.name %> </li>
+<% end %>
+</ul>
+</p>
+
+<p>
+Pasos:
+<ul style="padding-top: 0px;">
+<% for step in @steps %>
+	<li>- <%= step.explanation %> </li>
+<% end %>
+</ul>
+</p>
+
+
 
 <div>&nbsp;</div>
 
@@ -20,16 +43,6 @@
   <%=h @receta.description %>
 </p>
 </div>
-
-<p>
-  <b>Photo1:</b>
-  <%= image_tag 'recetas/' + @receta.photo1 %>
-</p>
-
-<p>
-  <b>Photo2:</b>
-  <%=h @receta.photo2 %>
-</p>
 
 <p>
   <b>Category:</b>

@@ -41,6 +41,7 @@ class ForumRepliesController < ApplicationController
   # POST /forum_replies.xml
   def create
     @forum_reply = ForumReply.new(params[:forum_reply])
+    @forum_reply.user_id = current_user.id
 
     respond_to do |format|
       if @forum_reply.save

@@ -1,0 +1,26 @@
+ImageMagick-Tag
+===============
+Gijs van Tulder <gijs at vantulder dot net>
+http://vantulder.net/rails/magick/
+
+This plugin provides an easy way to use ImageMagick commands to process
+images from a Rails template.
+
+The basic idea is this: you have a directory with images, and want to
+process them with ImageMagick (because you want to resize them, or crop
+them, or rotate them etc.). Suppose that you have an image gallery, with a
+controller Photo to display the images. The image files are stored in the
+directory '/var/lib/photos'. Now, if you want to generate and display
+thumbnails, you'd do this:
+
+# in the controller
+class Photo < ApplicationController
+  imagemagick_for '/var/lib/photos'
+end
+
+# in the view
+<%= imagemagick_tag 'first_photo.jpg', 'resize(100x100)' %>
+
+Request the view, and ta-da: the image first_photo.jpg is displayed, and it
+is resized to fit within 100x100 pixels. You can use many other ImageMagick
+commands in the same way.

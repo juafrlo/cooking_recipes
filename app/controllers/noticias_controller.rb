@@ -1,4 +1,8 @@
 class NoticiasController < ApplicationController
+  
+  
+  imagemagick_for 'images/noticias'
+  
   access_control [:new, :create, :update, :edit, :delete] => '(admin)'
   # GET /noticias
   # GET /noticias.xml

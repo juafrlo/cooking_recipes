@@ -1,4 +1,5 @@
 class RecetasController < ApplicationController
+
   # GET /recetas
   # GET /recetas.xml
   def index
@@ -14,7 +15,10 @@ class RecetasController < ApplicationController
   # GET /recetas/1.xml
   def show
     @receta = Receta.find(params[:id])
+    @ingredients = Ingredient.find(:all, :conditions => ["receta_id = ?", params[:id]])    
+    @steps = Step.find(:all, :conditions => ["receta_id = ?", params[:id]])    
 
+    
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @receta }
@@ -26,6 +30,7 @@ class RecetasController < ApplicationController
   def new
     @receta = Receta.new
 
+    3.times{ @receta.ingredients.build }
     3.times{ @receta.steps.build }
 
     respond_to do |format|

@@ -4,8 +4,6 @@ class CreateRecetas < ActiveRecord::Migration
       t.string :name
       t.float :puntuation
       t.text :description
-      t.string :photo1
-      t.string :photo2
       t.integer :category_id
       t.integer :user_id
       

@@ -6,6 +6,9 @@ class UsersController < ApplicationController
   # before_filter :admin_required, :only => [:suspend, :unsuspend, :destroy, :purge]
   before_filter :find_user, :only => [:suspend, :unsuspend, :destroy, :purge]
   
+  def index
+    @users = User.find(:all)
+  end
 
   # render new.rhtml
   def new
