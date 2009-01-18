@@ -4,18 +4,12 @@ require 'users_controller'
 # Re-raise errors caught by the controller.
 class UsersController; def rescue_action(e) raise e end; end
 
-class UsersControllerTest < Test::Unit::TestCase
+class UsersControllerTest < ActionController::TestCase
   # Be sure to include AuthenticatedTestHelper in test/test_helper.rb instead
   # Then, you can remove it from this and the units test.
   include AuthenticatedTestHelper
 
   fixtures :users
-
-  def setup
-    @controller = UsersController.new
-    @request    = ActionController::TestRequest.new
-    @response   = ActionController::TestResponse.new
-  end
 
   def test_should_allow_signup
     assert_difference 'User.count' do
@@ -56,12 +50,20 @@ class UsersControllerTest < Test::Unit::TestCase
     end
   end
   
+
+  
+  def test_should_sign_up_user_with_activation_code
+    create_user
+    assigns(:user).reload
+    assert_not_nil assigns(:user).activation_code
+  end
+
   def test_should_activate_user
     assert_nil User.authenticate('aaron', 'test')
     get :activate, :activation_code => users(:aaron).activation_code
-    assert_redirected_to '/'
+    assert_redirected_to '/session/new'
     assert_not_nil flash[:notice]
-    assert_equal users(:aaron), User.authenticate('aaron', 'test')
+    assert_equal users(:aaron), User.authenticate('aaron', 'monkey')
   end
   
   def test_should_not_activate_user_without_key
@@ -81,6 +83,6 @@ class UsersControllerTest < Test::Unit::TestCase
   protected
     def create_user(options = {})
       post :create, :user => { :login => 'quire', :email => 'quire@example.com',
-        :password => 'quire', :password_confirmation => 'quire' }.merge(options)
+        :password => 'quire69', :password_confirmation => 'quire69' }.merge(options)
     end
 end
