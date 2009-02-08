@@ -8,7 +8,7 @@ class NoticiasController < ApplicationController
   # GET /noticias.xml
   def index
     @noticias = Noticia.find(:all)
-  
+    
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @noticias }

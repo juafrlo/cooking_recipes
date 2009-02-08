@@ -27,6 +27,7 @@ class ForumPostsController < ApplicationController
   # GET /forum_posts/new.xml
   def new
     @forum_post = ForumPost.new
+    @forum_cat_l2s = ForumCatL2.find(:all);
 
     respond_to do |format|
       format.html # new.html.erb
@@ -44,8 +45,8 @@ class ForumPostsController < ApplicationController
   # POST /forum_posts.xml
   def create
     @forum_post = ForumPost.new(params[:forum_post])
-    @forum_post.user_id = current_user.id
-
+    @forum_post.user_id = current_user.id    
+    
     respond_to do |format|
       if @forum_post.save
         flash[:notice] = 'ForumPost was successfully created.'

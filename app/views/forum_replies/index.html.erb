@@ -3,6 +3,8 @@
 <table>
   <tr>
     <th>Forum post</th>
+    <th>Forum cat l1</th>
+    <th>Forum cat l2</th>
     <th>User</th>
     <th>Reply</th>
   </tr>
@@ -10,6 +12,9 @@
 <% for forum_reply in @forum_replies %>
   <tr>
     <td><%=h forum_reply.forum_post_id %></td>
+    <td><%=h forum_reply.forum_post.forum_cat_l2.forum_cat_l1.title %></td>
+    <td><%=h forum_reply.forum_post.forum_cat_l2.title %></td>
+
     <td><%=h forum_reply.user_id %></td>
     <td><%=h forum_reply.reply %></td>
     <td><%= link_to 'Show', forum_reply %></td>

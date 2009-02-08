@@ -5,7 +5,7 @@
 
   <p>
     <%= f.label :forum_post_id %><br />
-    <%= f.text_field :forum_post_id %>
+    <%= f.collection_select :forum_post_id, @forum_posts, :id, :title %>
   </p>
 
   <p>

@@ -3,6 +3,9 @@ class ForumCatL2sController < ApplicationController
   # GET /forum_cat_l2s.xml
   def index
     @forum_cat_l2s = ForumCatL2.find(:all)
+    @categories = ForumCatL1.find(:all)
+    
+    logger.debug(@categories[0].title)
 
     respond_to do |format|
       format.html # index.html.erb

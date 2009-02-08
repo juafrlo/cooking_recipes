@@ -25,6 +25,8 @@ class ForumRepliesController < ApplicationController
   # GET /forum_replies/new.xml
   def new
     @forum_reply = ForumReply.new
+    @forum_posts = ForumPost.find(:all);
+
 
     respond_to do |format|
       format.html # new.html.erb

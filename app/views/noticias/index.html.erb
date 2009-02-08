@@ -36,9 +36,6 @@
 
 <%= link_to 'New noticia', new_noticia_path %>
 -->
-<div style="">
-asdadsaas
-</div>
 
 <% for noticia in @noticias %>
 <div id="news">
@@ -53,18 +50,23 @@ asdadsaas
 	    <div> <%= noticia.date %> </div>
 		<div id="news_intro"><%= noticia.intro %></div>
 	    <div style="text-align:right;">by <%= noticia.autor %></div>
-	    <div style="text-align:right;"><%= link_to 'Show', noticia %>
-		<% restrict_to "(admin) & !registered_user" do %>	
-		    <%= link_to 'Edit', edit_noticia_path(noticia) %>
-		    <%= link_to 'Destroy', noticia, :confirm => 'Are you sure?', :method => :delete %></div>
-		<% end %>
+	    <div style="text-align:right;">
+			<%= link_to 'Show', noticia %>
+			<% if logged_in? %>
+			  <% restrict_to "(admin) & !registered_user" do %>	
+			    <%= link_to 'Edit', edit_noticia_path(noticia) %>
+			    <%= link_to 'Destroy', noticia, :confirm => 'Are you sure?', :method => :delete %></div>
+			  <% end %>
+		    <% end %>
+		</div>
 	</div>
-</div>
 <div class="clear">&nbsp;</div>
 
 
 <% end %>
 
-<% restrict_to "(admin) & !registered_user" do %>
-	<%= link_to 'New noticia', new_noticia_path %>
+<% if logged_in? %>
+	<% restrict_to "(admin) & !registered_user" do %>
+		<%= link_to 'New noticia', new_noticia_path %>
+	<% end %>
 <% end %>

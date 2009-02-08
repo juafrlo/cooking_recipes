@@ -4,10 +4,6 @@ class ForumCatL1sController < ApplicationController
   def index
     @forum_cat_l1s = ForumCatL1.find(:all)
 
-
-    @aux = current_user.id
-
-
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @forum_cat_l1s }
