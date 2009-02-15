@@ -1,21 +1,31 @@
-<p>
-  <b>Forum_cat_l1_id:</b>
-  <%=h @forum_cat_l2.forum_cat_l1_id %>
-</p>
-
-<p>
-  <b>Title:</b>
-  <%=h @forum_cat_l2.title %>
-</p>
+  <h3><%= link_to 'Foros', forum_cat_l2s_path %> > <%=h @forum_cat_l2.title %></h3>
 
 	
 	<br/>
 	<p style="color: red;">
 	POSTS DE ESTE FORO
 	</p>
-	<% for forum_post in @forum_posts %>
-		<h3><%= forum_post.title %> <%= link_to 'Show', forum_post %> </h3>
-	<% end %>
+		<table border="1" cellspacing="0" cellpadding="4">
+		  <tr >
+		    <th style="width:320px; background: #ABC">Forum post</th>
+		    <th style="width: 320px; background: #ABC">User</th>
+		    <th style="width: 200px; background: #ABC">Última modificación</th>
+		  </tr>
 
+		<% for forum_post in @forum_posts %>
+		  <tr>
+		    <td style="width:300px;"><%= link_to forum_post.title , forum_post %></td>
+		    <td style="width: 200px;"><%= forum_post.user.name %></td>
+		    <td style="width: 200px;"><%= forum_post.user.updated_at %></td>
+
+		  </tr>
+		  <% end %>
+		</table>	
+
+	
+	
+<!--
 <%= link_to 'Edit', edit_forum_cat_l2_path(@forum_cat_l2) %> |
 <%= link_to 'Back', forum_cat_l2s_path %>
+-->
+<%= link_to 'New post',  new_forum_cat_l2_forum_post_path(@forum_cat_l2) %>

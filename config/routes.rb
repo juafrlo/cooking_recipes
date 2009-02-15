@@ -7,6 +7,8 @@ ActionController::Routing::Routes.draw do |map|
   map.activate '/activate/:activation_code', :controller => 'users', :action => 'activate', :activation_code => nil
   
   
+  #forum_catl1/1/forum_posts/1//forum_reply/1
+  
   map.resources :users
 
   map.resource :session
@@ -14,14 +16,18 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :ingredients
 
   map.connect 'forums', :controller => 'forums', :action => "index"
-  
-  map.resources :forum_replies
 
-  map.resources :forum_posts
+  map.resources :forum_cat_l2s, :has_many => :forum_posts
+  
+
+  map.resources :forum_posts, :has_many => :forum_replies, :shallow => true
+
+  map.resources :forum_replies, :only => [:index]
+
+  #map.resources :forum_replies
 
   map.resources :forum_cat_l1s
 
-  map.resources :forum_cat_l2s
 
   map.resources :roles
 

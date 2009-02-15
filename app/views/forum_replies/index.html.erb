@@ -15,7 +15,6 @@
     <td><%=h forum_reply.forum_post.forum_cat_l2.forum_cat_l1.title %></td>
     <td><%=h forum_reply.forum_post.forum_cat_l2.title %></td>
 
-    <td><%=h forum_reply.user_id %></td>
     <td><%=h forum_reply.reply %></td>
     <td><%= link_to 'Show', forum_reply %></td>
     <td><%= link_to 'Edit', edit_forum_reply_path(forum_reply) %></td>
@@ -26,4 +25,3 @@
 
 <br />
 
-<%= link_to 'New forum_reply', new_forum_reply_path %>

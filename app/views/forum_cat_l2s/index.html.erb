@@ -5,14 +5,17 @@
 <% for category in @categories %>
   <h3><%=h category.title %></h3>
   
-  <table>
- 	 <% for forum_cat_l2 in @forum_cat_l2s %>
+  <table border="1" cellspacing="0" cellpadding="4">
+ 	  <tr >
+	    <th style="width:320px; background: #ABC">Título</th>
+	    <th style="width: 320px; background: #ABC">Último post</th>
+	  </tr>
+
+	 <% for forum_cat_l2 in @forum_cat_l2s %>
  		<% if forum_cat_l2.forum_cat_l1_id == category.id %>
 		  <tr>
-		    <td style="width: 400px;"><%=h forum_cat_l2.title %></td>
-		    <td><%= link_to 'Show', forum_cat_l2 %></td>
-		    <td><%= link_to 'Edit', edit_forum_cat_l2_path(forum_cat_l2) %></td>
-		    <td><%= link_to 'Destroy', forum_cat_l2, :confirm => 'Are you sure?', :method => :delete%></td>
+		    <td style="width: 400px;"><%=link_to forum_cat_l2.title, forum_cat_l2 %></td>
+			<td style="width: 400px;"><%= link_to forum_cat_l2['last_update'].title, forum_cat_l2['last_update'] %></td>
 		  </tr>
 		<% end %>
 	 <% end %>
@@ -22,4 +25,6 @@
 
 
 <br />
-<%= link_to 'New forum_cat_l2', new_forum_cat_l2_path %>
+
+
+<%= only_admin('New Forum Cat l2',new_forum_cat_l2_path) %>

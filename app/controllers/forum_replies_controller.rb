@@ -1,13 +1,11 @@
 class ForumRepliesController < ApplicationController
+  before_filter :authorize, :only => [:new, :edit, :delete]
+  
   # GET /forum_replies
   # GET /forum_replies.xml
   def index
     @forum_replies = ForumReply.find(:all)
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @forum_replies }
-    end
+    
   end
 
   # GET /forum_replies/1
@@ -24,9 +22,9 @@ class ForumRepliesController < ApplicationController
   # GET /forum_replies/new
   # GET /forum_replies/new.xml
   def new
-    @forum_reply = ForumReply.new
-    @forum_posts = ForumPost.find(:all);
-
+    @forum_post = ForumPost.find(params[:forum_post_id])
+    @forum_reply = @forum_post.forum_replies.build
+    
 
     respond_to do |format|
       format.html # new.html.erb
@@ -42,19 +40,17 @@ class ForumRepliesController < ApplicationController
   # POST /forum_replies
   # POST /forum_replies.xml
   def create
-    @forum_reply = ForumReply.new(params[:forum_reply])
-    @forum_reply.user_id = current_user.id
+    @forum_post = ForumPost.find(params[:forum_post_id])
+    @forum_reply = @forum_post.forum_replies.new(params[:forum_reply])
+    @forum_reply.user_id = current_user.id   
 
-    respond_to do |format|
-      if @forum_reply.save
-        flash[:notice] = 'ForumReply was successfully created.'
-        format.html { redirect_to(@forum_reply) }
-        format.xml  { render :xml => @forum_reply, :status => :created, :location => @forum_reply }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @forum_reply.errors, :status => :unprocessable_entity }
-      end
+    if @forum_reply.save
+        flash[:notice] = "Successfully created comment."
+        redirect_to forum_post_url(@forum_reply.forum_post_id)
+    else
+        render :action => 'new'
     end
+  
   end
 
   # PUT /forum_replies/1

@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090118195827) do
+ActiveRecord::Schema.define(:version => 20090213075431) do
 
   create_table "forum_cat_l1s", :force => true do |t|
     t.string   "title"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(:version => 20090118195827) do
     t.string   "title"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "last_post_id"
   end
 
   create_table "forum_posts", :force => true do |t|

@@ -22,4 +22,8 @@
 
 <br />
 
-<%= link_to 'New forum_post', new_forum_post_path %>
+<% if logged_in? %>
+	<%= link_to 'New forum_post', new_forum_post_path %>
+<% else %>
+	<%= link_to 'New forum_post', '/login'  %>
+<% end %>

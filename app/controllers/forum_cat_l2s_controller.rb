@@ -4,9 +4,12 @@ class ForumCatL2sController < ApplicationController
   def index
     @forum_cat_l2s = ForumCatL2.find(:all)
     @categories = ForumCatL1.find(:all)
+      
+    for forum_cat_l2 in @forum_cat_l2s
+      forum_cat_l2['last_update'] = ForumPost.find(forum_cat_l2.last_post_id)
+    end
     
-    logger.debug(@categories[0].title)
-
+    
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @forum_cat_l2s }

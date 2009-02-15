@@ -1,0 +1,17 @@
+<% form_for [@forum_cat_l2,@forum_post] do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </p>
+
+	<p>
+		<%= f.label :comment %><br />
+	    <%= f.text_area :comment %>	
+	</p>
+
+  <p>
+    <%= f.submit "Create" %>
+  </p>
+<% end %>

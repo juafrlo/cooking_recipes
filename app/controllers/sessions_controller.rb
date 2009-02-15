@@ -18,7 +18,13 @@ class SessionsController < ApplicationController
       self.current_user = user
       new_cookie_flag = (params[:remember_me] == "1")
       handle_remember_cookie! new_cookie_flag
-      redirect_back_or_default('/')
+      
+      if (redirect_url = session[:protected_page])
+        session[:protected_page] = nil
+        redirect_to redirect_url
+      else
+        redirect_back_or_default('/')
+      end
       flash[:notice] = "Logged in successfully"
     else
       note_failed_signin

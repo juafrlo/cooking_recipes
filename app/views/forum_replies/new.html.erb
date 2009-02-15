@@ -1,20 +1,5 @@
 <h1>New forum_reply</h1>
 
-<% form_for(@forum_reply) do |f| %>
-  <%= f.error_messages %>
+<%= render :partial => "form"%>
 
-  <p>
-    <%= f.label :forum_post_id %><br />
-    <%= f.collection_select :forum_post_id, @forum_posts, :id, :title %>
-  </p>
-
-  <p>
-    <%= f.label :reply %><br />
-    <%= f.text_area :reply %>
-  </p>
-  <p>
-    <%= f.submit "Create" %>
-  </p>
-<% end %>
-
-<%= link_to 'Back', forum_replies_path %>
+<%= link_to 'Back', forum_post_forum_replies_path(@forum_post) %>

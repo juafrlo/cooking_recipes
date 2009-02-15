@@ -1,0 +1,10 @@
+<% form_for [@forum_post,@forum_reply] do |f| %>
+
+  <p>
+    <%= f.label :reply %><br />
+    <%= f.text_area :reply %>
+  </p>
+  <p>
+    <%= f.submit "Create" %>
+  </p>
+<% end %>

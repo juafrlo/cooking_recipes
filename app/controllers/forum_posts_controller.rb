@@ -1,9 +1,11 @@
 class ForumPostsController < ApplicationController
+  before_filter :authorize, :only => [:new, :edit, :delete]
+
   # GET /forum_posts
   # GET /forum_posts.xml
   def index
     @forum_posts = ForumPost.find(:all)
-
+    
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @forum_posts }
@@ -14,9 +16,12 @@ class ForumPostsController < ApplicationController
   # GET /forum_posts/1.xml
   def show
     @forum_post = ForumPost.find(params[:id])
-    @forum_replies = ForumReply.find(:all, :conditions => ["forum_post_id = ?", params[:id]])    
-
-
+    @forum_post.comment = RedCloth.new(@forum_post.comment).to_html
+  
+    @forum_post.forum_replies.each do |forum_reply|
+      forum_reply.reply = RedCloth.new(forum_reply.reply).to_html
+    end 
+    
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @forum_post }
@@ -26,10 +31,10 @@ class ForumPostsController < ApplicationController
   # GET /forum_posts/new
   # GET /forum_posts/new.xml
   def new
-    @forum_post = ForumPost.new
-    @forum_cat_l2s = ForumCatL2.find(:all);
+    @forum_cat_l2 = ForumCatL2.find(params[:forum_cat_l2_id])
+    @forum_post = @forum_cat_l2.forum_posts.build
 
-    respond_to do |format|
+   respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @forum_post }
     end
@@ -38,15 +43,15 @@ class ForumPostsController < ApplicationController
   # GET /forum_posts/1/edit
   def edit
     @forum_post = ForumPost.find(params[:id])
-    @forum_post.user_id = current_user.id
   end
 
   # POST /forum_posts
   # POST /forum_posts.xml
   def create
-    @forum_post = ForumPost.new(params[:forum_post])
+    @forum_cat_l2 = ForumCatL2.find(params[:forum_cat_l2_id])
+    @forum_post = @forum_cat_l2.forum_posts.new(params[:forum_post])
     @forum_post.user_id = current_user.id    
-    
+      
     respond_to do |format|
       if @forum_post.save
         flash[:notice] = 'ForumPost was successfully created.'

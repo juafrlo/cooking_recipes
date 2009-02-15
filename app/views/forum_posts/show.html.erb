@@ -1,28 +1,52 @@
-<p>
-  <b>Forum cat l2:</b>
-  <%=h @forum_post.forum_cat_l2.title %>
-</p>
+<h3> <%= link_to 'Foros', forum_cat_l2s_path %>> <%=link_to  @forum_post.forum_cat_l2.title, @forum_post.forum_cat_l2 %> >   <%=h @forum_post.title %> </h3>
 
-<p>
-  <b>User:</b>
-  <%=h @forum_post.user.name %>
-</p>
 
-<p>
-  <b>Title:</b>
-  <%=h @forum_post.title %>
-</p>
+<table border="1" cellspacing="0" cellpadding="4">
+  <tr >
+    <th style="width:320px; background: #ABC">Forum post</th>
+    <th style="width: 320px; background: #ABC">User</th>
+    <th style="width: 200px; background: #ABC">Texto</th>
+  </tr>
+
+  <tr>
+    <td style="width:300px;"><%=h @forum_post.title %>
+		<% if logged_in? %>
+			<% if @forum_post.user_id = current_user.id %>
+		  		<br/><%= link_to 'Editar', edit_forum_post_path(@forum_post) %>
+			<% end %>
+		<%end%>
+	</td>   
+	<td style="width:300px;"><%=h @forum_post.user.name %></td>  
+	<td style="width:300px;"><%= @forum_post.comment %></td>  
+  </tr>
+
+
+  <% @forum_post.forum_replies.each do |forum_reply| %>
+  <th style="width:320px; background: #ABC">Forum reply</th>
+  <th style="width: 320px; background: #ABC">User</th>
+  <th style="width: 200px; background: #ABC">Updated_at</th>
+
+
+  <tr>
+    <td style="width:300px;"><%= forum_reply.reply %>
+		<% if logged_in? %>
+			<% if forum_reply.user_id = current_user.id %>
+		  		<br/><%= link_to 'Editar', edit_forum_reply_path(forum_reply) %>
+			<% end %>
+		<%end%>
+	</td>   
+	<td style="width:300px;"><%= forum_reply.user.name %></td>  
+	<td style="width:300px;"><%= forum_reply.user.updated_at %></td>  
+  </tr>
+  <% end %>
+</table>	
+
+
+<!--
+<%= link_to 'Edit', edit_forum_post_path(@forum_post) %> |
+<%= link_to 'Back', forum_posts_path %>
+-->
 
 
 <br/>
-<p style="color: red;">
-RESPUESTAS DE ESTE POST
-</p>
-
-<% for forum_reply in @forum_replies %>
-	<h3><%= forum_reply.reply %> <%= link_to 'Show', forum_reply %> </h3>
-<% end %>
-
-
-<%= link_to 'Edit', edit_forum_post_path(@forum_post) %> |
-<%= link_to 'Back', forum_posts_path %>
+<%= link_to 'New forum_reply', new_forum_post_forum_reply_path(@forum_post)  %>

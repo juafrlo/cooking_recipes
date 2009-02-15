@@ -1,21 +1,6 @@
 <h1>Editing forum_post</h1>
 
-<% form_for(@forum_post) do |f| %>
-  <%= f.error_messages %>
-
-  <p>
-    <%= f.label :forum_cat_l2_id %><br />
-    <%= f.text_field :forum_cat_l2_id %>
-  </p>
-
-  <p>
-    <%= f.label :title %><br />
-    <%= f.text_field :title %>
-  </p>
-  <p>
-    <%= f.submit "Update" %>
-  </p>
-<% end %>
+	<%= render :partial => "form"%>
 
 <%= link_to 'Show', @forum_post %> |
 <%= link_to 'Back', forum_posts_path %>
