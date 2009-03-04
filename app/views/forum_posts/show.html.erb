@@ -1,42 +1,46 @@
-<h3> <%= link_to 'Foros', forum_cat_l2s_path %>> <%=link_to  @forum_post.forum_cat_l2.title, @forum_post.forum_cat_l2 %> >   <%=h @forum_post.title %> </h3>
+<h3> <%= link_to 'Foros', forum_cat_l2s_path %> > <%=link_to  @forum_post.forum_cat_l2.title, @forum_post.forum_cat_l2 %>    </h3>
 
 
-<table border="1" cellspacing="0" cellpadding="4">
-  <tr >
-    <th style="width:320px; background: #ABC">Forum post</th>
-    <th style="width: 320px; background: #ABC">User</th>
-    <th style="width: 200px; background: #ABC">Texto</th>
-  </tr>
+<div class="post_title">
+	<%=h @forum_post.title %> 
+</div>
+<div class="post_reply">
+	<%= link_to 'New forum_reply',new_forum_post_forum_reply_path(@forum_post)  %>
+</div>
 
+<table border="1" cellspacing="0" cellpadding="4" style="clear:left;" >
   <tr>
-    <td style="width:300px;"><%=h @forum_post.title %>
-		<% if logged_in? %>
-			<% if @forum_post.user_id = current_user.id %>
-		  		<br/><%= link_to 'Editar', edit_forum_post_path(@forum_post) %>
-			<% end %>
-		<%end%>
-	</td>   
-	<td style="width:300px;"><%=h @forum_post.user.name %></td>  
-	<td style="width:300px;"><%= @forum_post.comment %></td>  
+    <td style="width:150px; text-align:center;">
+		<div class="forum_user"><%=h @forum_post.user.name %></div>
+		<div style="height: 50px;"><%= image_tag('avatars/avatar.jpg', :size=>'50x50') %></div>
+		<div class="number_posts">Mensajes: <%=h @forum_post.user.number_of_posts %></div>
+		<div>De: Valencia</div>
+	</td>  	
+	<td style="width:850px;" valign="top">
+		<div class="post">
+			<div class="updated_at">Enviado: <%= @forum_post.updated_at.to_s(:date) %></div>
+			<%= @forum_post.comment %>
+			<%= login_edit('Editar',edit_forum_post_path(@forum_post) )%>
+		</div>
+	</td>  
   </tr>
 
 
   <% @forum_post.forum_replies.each do |forum_reply| %>
-  <th style="width:320px; background: #ABC">Forum reply</th>
-  <th style="width: 320px; background: #ABC">User</th>
-  <th style="width: 200px; background: #ABC">Updated_at</th>
-
-
   <tr>
-    <td style="width:300px;"><%= forum_reply.reply %>
-		<% if logged_in? %>
-			<% if forum_reply.user_id = current_user.id %>
-		  		<br/><%= link_to 'Editar', edit_forum_reply_path(forum_reply) %>
-			<% end %>
-		<%end%>
+	<td style="width:150px; text-align:center;" > 
+		<div class="forum_user"><%=h forum_reply.user.name %></div>
+		<div><%= image_tag('avatars/avatar.jpg', :size=>'50x50') %></div>
+		<div class="number_posts">Mensajes: <%=h forum_reply.user.number_of_posts %></div>
+		<div>De: Valencia</div>    
+	</td> 
+	<td style="width:850px;" valign="top">
+		<div class="post">
+			<div class="updated_at">Enviado: <%= forum_reply.user.updated_at.to_s(:date) %></div>
+			<%= forum_reply.reply %>
+			<%= login_edit('Editar',edit_forum_reply_path(forum_reply) )%>
+		</div>
 	</td>   
-	<td style="width:300px;"><%= forum_reply.user.name %></td>  
-	<td style="width:300px;"><%= forum_reply.user.updated_at %></td>  
   </tr>
   <% end %>
 </table>	

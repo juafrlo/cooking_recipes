@@ -17,10 +17,11 @@ ActionController::Routing::Routes.draw do |map|
 
   map.connect 'forums', :controller => 'forums', :action => "index"
 
-  map.resources :forum_cat_l2s, :has_many => :forum_posts
+  map.resources :forum_cat_l2s, :has_many => :forum_posts, :collection => {:index_with_login => :get}
   
 
   map.resources :forum_posts, :has_many => :forum_replies, :shallow => true
+
 
   map.resources :forum_replies, :only => [:index]
 

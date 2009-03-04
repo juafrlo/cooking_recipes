@@ -3,6 +3,21 @@ class UsersController < ApplicationController
   include AuthenticatedSystem
   
 
+  def show
+    @user = User.find(params[:id])
+    
+    respond_to do |format|
+      format.html # show.html.erb
+      format.xml  { render :xml => @user }
+    end
+  end
+  
+  def edit
+    @user = User.find(params[:id])
+  end
+  
+
+
   # render new.rhtml
   def new
     @user = User.new
@@ -12,14 +27,35 @@ class UsersController < ApplicationController
     logout_keeping_session!
     @user = User.new(params[:user])
     success = @user && @user.save
+    @user.assignrole
+    @user.delavatar
+
     if success && @user.errors.empty?
+        	  
       redirect_back_or_default('/')
-      flash[:notice] = "Thanks for signing up!  We're sending you an email with your activation code."
+      flash[:notice] = "Gracias por registrarte. Te estamos enviando un email con tu código de activación."
     else
-      flash[:error]  = "We couldn't set up that account, sorry.  Please try again, or contact an admin (link is above)."
+      flash[:error]  = "Lo sentimo, pero no ha sido posible crear tu cuenta.  Por favor, vuelve a intentarlo o ponte en contacto con nosotros."
       render :action => 'new'
     end
   end
+
+  def update
+    @user = User.find(params[:id])
+    respond_to do |format|
+      if @user.update_attributes(params[:user])
+        flash[:notice] = 'Ficha de usuario actualizada.'
+        format.html { redirect_to(@user) }
+        format.xml  { head :ok }
+      else
+        format.html { render :action => "edit" }
+        format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }
+      end
+    end
+  end
+
+
+
 
   def activate
     logout_keeping_session!

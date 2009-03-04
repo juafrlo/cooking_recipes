@@ -1,0 +1,62 @@
+html{
+	font-family: verdana;
+	font-size: 12px;
+}
+
+p{
+	margin-top: 4px;
+}
+
+a{
+	text-decoration: none;
+	color: #03E;
+	font-weight:normal;
+}
+
+
+a:visited{
+	color: #03E;	
+}
+
+table tr.odd {
+	background: #efefef;
+}
+
+table tr.par {
+
+}
+
+.login a{
+	color: #a90050;
+	padding-right: 2px;
+}
+
+.post_title{
+	background:#CCC;
+	width: 400px;
+	padding:5px;
+	font-weight:bold;
+	float:left;
+}
+
+.post_reply{
+	float:right;
+	padding: 5px;
+}
+
+.updated_at{
+	border-bottom: 1px solid #CCC;
+	padding-top: 0px;
+}
+
+.forum_user{
+	padding-bottom: 4px;
+}
+
+.number_posts{
+	padding-top: 4px;
+}
+
+.post{
+	padding-left: 4px;
+}

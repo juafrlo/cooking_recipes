@@ -1,26 +1,28 @@
-<h1>Listing forum_cat_l2s</h1>
-<h2>Subforos de cada categoría</h2>
-
-
 <% for category in @categories %>
   <h3><%=h category.title %></h3>
   
   <table border="1" cellspacing="0" cellpadding="4">
  	  <tr >
-	    <th style="width:320px; background: #ABC">Título</th>
-	    <th style="width: 320px; background: #ABC">Último post</th>
+	    <th style="width:450px; background: #ABC">Foro</th>
+	    <th style="width: 550px; background: #ABC">Último mensaje</th>
 	  </tr>
 
 	 <% for forum_cat_l2 in @forum_cat_l2s %>
  		<% if forum_cat_l2.forum_cat_l1_id == category.id %>
-		  <tr>
-		    <td style="width: 400px;"><%=link_to forum_cat_l2.title, forum_cat_l2 %></td>
-			<td style="width: 400px;"><%= link_to forum_cat_l2['last_update'].title, forum_cat_l2['last_update'] %></td>
+		  <tr class="<%= cycle('odd','par')%>">  
+		    <td><%=link_to forum_cat_l2.title, forum_cat_l2 %> 
+				<%= only_admin('Edit', edit_forum_cat_l2_path(forum_cat_l2))%><br/>
+				<%= forum_cat_l2.description %>
+			</td>
+			<td style="text-align:center;">
+				<%= forum_cat_l2['last_update'].updated_at.to_s(:date) %> -
+				<b> <%= forum_cat_l2['last_update'].user.login %></b><br/>
+				<%= link_to forum_cat_l2['last_update'].title, forum_cat_l2['last_update'] %>
+				</td>
 		  </tr>
 		<% end %>
 	 <% end %>
   </table>
-
 <% end %>
 
 

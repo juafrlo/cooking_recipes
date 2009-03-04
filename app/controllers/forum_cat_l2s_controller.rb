@@ -1,4 +1,6 @@
 class ForumCatL2sController < ApplicationController
+  before_filter :authorize, :only => [:index_with_login]
+  
   # GET /forum_cat_l2s
   # GET /forum_cat_l2s.xml
   def index
@@ -90,5 +92,10 @@ class ForumCatL2sController < ApplicationController
       format.html { redirect_to(forum_cat_l2s_url) }
       format.xml  { head :ok }
     end
+  end
+  
+
+  def index_with_login
+    redirect_to(forum_cat_l2s_url)
   end
 end

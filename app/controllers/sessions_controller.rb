@@ -1,10 +1,13 @@
 # This controller handles the login/logout function of the site.  
 class SessionsController < ApplicationController
+  before_filter :login_and_return, :only => [:new]
+  
   # Be sure to include AuthenticationSystem in Application Controller instead
   include AuthenticatedSystem
 
   # render new.rhtml
   def new
+    puts params[controller_name]
   end
 
   def create
@@ -18,9 +21,13 @@ class SessionsController < ApplicationController
       self.current_user = user
       new_cookie_flag = (params[:remember_me] == "1")
       handle_remember_cookie! new_cookie_flag
+
       
       if (redirect_url = session[:protected_page])
         session[:protected_page] = nil
+        redirect_to redirect_url
+      elsif (redirect_url = session[:return_url])
+        session[:return_url] = nil
         redirect_to redirect_url
       else
         redirect_back_or_default('/')
@@ -37,7 +44,7 @@ class SessionsController < ApplicationController
   def destroy
     logout_killing_session!
     flash[:notice] = "You have been logged out."
-    redirect_back_or_default('/')
+    request.env["HTTP_REFERER"].nil? ? redirect_to('/') : redirect_to(:back)  
   end
 
 protected

@@ -43,6 +43,8 @@ class ForumRepliesController < ApplicationController
     @forum_post = ForumPost.find(params[:forum_post_id])
     @forum_reply = @forum_post.forum_replies.new(params[:forum_reply])
     @forum_reply.user_id = current_user.id   
+    current_user.number_of_posts += 1  
+    current_user.save!
 
     if @forum_reply.save
         flash[:notice] = "Successfully created comment."

@@ -24,6 +24,14 @@ h1{
 	padding: 10px 0px 10px 0px;
 }
 
+h2{
+	font-size: 14px;
+	height: 14px;
+	font-weight: normal;
+	padding:0px;
+	margin:0px;
+}
+
 h3{
 	font-size: 12px;
 	padding: 0px;
@@ -84,4 +92,36 @@ table{
 
 .clear{
 	clear:both;
+}
+
+/* FORMS */
+.form_col1{
+	float:left;
+	width: 200px;
+}
+
+.form_col2{
+	float:left;
+	width: 200px;
+	margin-left: 60px;
+}
+
+.form_div{
+	clear: left;
+	height: 50px;
+}
+
+.form_span{
+	font-weight:bolder;
+}
+
+.form_but{
+	clear:left;
+	padding-top: 5px;
+}
+
+.errorExplanation{
+}
+
+.fieldWithErrors{
 }

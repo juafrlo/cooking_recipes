@@ -2,7 +2,6 @@
 # Likewise, all the methods added will be available for all controllers.
 
 class ApplicationController < ActionController::Base
-
   include AuthenticatedSystem
 
   helper :all # include all helpers, all the time
@@ -24,6 +23,10 @@ class ApplicationController < ActionController::Base
          redirect_to(:controller => 'sessions', :action => 'new')
         return false
       end      
+    end
+    
+    def login_and_return
+      session[:return_url] = request.env["HTTP_REFERER"]
     end
 
 end

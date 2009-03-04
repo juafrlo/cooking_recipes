@@ -15,11 +15,11 @@
 	<h1>Mis recetas</h1>
 	
 	<ul id="top_menu">
-		<li><%= link_to 'Noticias', :controller => "noticias", :action => "index" %></li>
-		<li><%= link_to 'Recetas', :controller => "recetas", :action => "index" %></li>
-		<li><%= link_to 'Foros', :controller => "forums", :action => "index" %></li>
-		<li><%= link_to 'Restaurantes', :controller => "recetas", :action => "index" %></li>
-		<li><%= link_to 'Contacto', :controller => "recetas", :action => "index" %></li>
+		<li><h2><%= link_to 'Noticias', :controller => "noticias", :action => "index" %></h2></li>
+		<li><h2><%= link_to 'Recetas', :controller => "recetas", :action => "index" %></h2></li>
+		<li><h2><%= link_to 'Foros', :controller => "forums", :action => "index" %></h2></li>
+		<li><h2><%= link_to 'Restaurantes', :controller => "recetas", :action => "index" %></h2></li>
+		<li><h2><%= link_to 'Contacto', :controller => "recetas", :action => "index" %></h2></li>
 	</ul>
 	
 	<div class="clear"></div>
@@ -28,11 +28,14 @@
 		<div id="right_menu"> 
 			<h3>Menú privado</h3>
 			<ul>
-				<li><%= link_to 'Login', '/login' %> / <%= link_to 'Sign up', '/signup' %></li>	
+				<li><%= log_in_out %> <% if !logged_in? %>
+					/ <%= link_to 'Regístrate', '/signup' %> <% end %></li>	
+				<% if logged_in? %>
 				<li><a href="#">Mensajes privados</a></li>
-				<li><a href="#">Mi ficha</a></li>
+				<li><%= link_to 'Mi ficha', current_user %></li>
 				<li><a href="#">Mis recetas</a></li>
 				<li><a href="#">Últimas participaciones</a></li>
+				<% end %>
 			</ul>
 			
 			<br/>

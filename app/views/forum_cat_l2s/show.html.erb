@@ -1,26 +1,27 @@
-  <h3><%= link_to 'Foros', forum_cat_l2s_path %> > <%=h @forum_cat_l2.title %></h3>
+<h3><%= link_to 'Foros', forum_cat_l2s_path %> > <%=h @forum_cat_l2.title %></h3><br/>
 
-	
-	<br/>
-	<p style="color: red;">
-	POSTS DE ESTE FORO
-	</p>
-		<table border="1" cellspacing="0" cellpadding="4">
-		  <tr >
-		    <th style="width:320px; background: #ABC">Forum post</th>
-		    <th style="width: 320px; background: #ABC">User</th>
-		    <th style="width: 200px; background: #ABC">Última modificación</th>
-		  </tr>
+<table border="1" cellspacing="0" cellpadding="4">
+  <tr >
+    <th style="width:700px; background: #ABC">Mensaje</th>
+    <th style="background: #ABC">Réplicas</th>
+    <th style="width: 200px; background: #ABC">Última</th>
+  </tr>
 
-		<% for forum_post in @forum_posts %>
-		  <tr>
-		    <td style="width:300px;"><%= link_to forum_post.title , forum_post %></td>
-		    <td style="width: 200px;"><%= forum_post.user.name %></td>
-		    <td style="width: 200px;"><%= forum_post.user.updated_at %></td>
+<% for forum_post in @forum_posts %>
+  <tr>
+    <td>
+		<%= link_to forum_post.title , forum_post %><br/>
+		por	<%= forum_post.user.name %> 
+	</td>
+    <td style="text-align: center;"><%= forum_post.forum_replies.count %></td>
+    <td style="text-align: center;">
+		<%= forum_post.user.updated_at.to_s(:date)%><br/> 
+		por	<%= last_user(forum_post) %>	
+	</td>
 
-		  </tr>
-		  <% end %>
-		</table>	
+  </tr>
+  <% end %>
+</table>	
 
 	
 	

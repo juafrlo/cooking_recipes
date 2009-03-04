@@ -1,5 +1,7 @@
 class ForumPostsController < ApplicationController
   before_filter :authorize, :only => [:new, :edit, :delete]
+  
+  layout "forum_cat_l2s"
 
   # GET /forum_posts
   # GET /forum_posts.xml
@@ -51,6 +53,8 @@ class ForumPostsController < ApplicationController
     @forum_cat_l2 = ForumCatL2.find(params[:forum_cat_l2_id])
     @forum_post = @forum_cat_l2.forum_posts.new(params[:forum_post])
     @forum_post.user_id = current_user.id    
+    current_user.number_of_posts += 1  
+    current_user.save!
       
     respond_to do |format|
       if @forum_post.save
