@@ -27,9 +27,10 @@ class UsersController < ApplicationController
     logout_keeping_session!
     @user = User.new(params[:user])
     success = @user && @user.save
+  
     @user.assignrole
     @user.delavatar
-
+  
     if success && @user.errors.empty?
         	  
       redirect_back_or_default('/')
@@ -63,14 +64,14 @@ class UsersController < ApplicationController
     case
     when (!params[:activation_code].blank?) && user && !user.active?
       user.activate!
-      flash[:notice] = "Signup complete! Please sign in to continue."
+      flash[:notice] = "¡Registro completado! Por favor, introduce tu nombre de usuario y contraseña para continuar."
       redirect_to '/login'
     when params[:activation_code].blank?
-      flash[:error] = "The activation code was missing.  Please follow the URL from your email."
+      flash[:error] = "El código de activación no es correcto.  Por favor, utiliza la URL de tu email"
       redirect_back_or_default('/')
     else 
-      flash[:error]  = "We couldn't find a user with that activation code -- check your email? Or maybe you've already activated -- try signing in."
-      redirect_back_or_default('/')
+      flash[:error]  = "No pudimos encontrar un usuario con ese código de activación; comprueba tu email. Tal vez tu cuenta ya está activada. Prueba a introducir tu nombre de usuario y contraseña"
+      redirect_back_or_default('/login')
     end
   end
 end

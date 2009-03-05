@@ -31,6 +31,7 @@ class RecetasController < ApplicationController
   # GET /recetas/new.xml
   def new
     @receta = Receta.new
+    @categories = Category.find(:all, :order => 'name')
 
     3.times{ @receta.ingredients.build }
     3.times{ @receta.steps.build }
@@ -44,20 +45,19 @@ class RecetasController < ApplicationController
   # GET /recetas/1/edit
   def edit
     @receta = Receta.find(params[:id])
+    @categories = Category.find(:all, :order => 'name')
   end
 
   # POST /recetas
   # POST /recetas.xml
   def create
     @receta = Receta.new(params[:receta])
+    @receta.user_id = current_user.id
+    @receta.save!
     
     respond_to do |format|
       if @receta.save
-        if FileTest.exists?("#{RAILS_ROOT}/public/system/photos/" + @receta.id.to_s + "/original/" + @receta.photo_file_name) 
-          FileUtils.rm_rf("#{RAILS_ROOT}/public/system/photos/" + @receta.id.to_s + "/original/") 
-        else
-          Directory("#{RAILS_ROOT}/public/system/photos/" + @receta.id.to_s + "/original")
-        end
+        @receta.delphoto
         flash[:notice] = 'Receta was successfully created.'
         format.html { redirect_to(@receta) }
         format.xml  { render :xml => @receta, :status => :created, :location => @receta }

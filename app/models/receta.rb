@@ -47,4 +47,14 @@ class Receta < ActiveRecord::Base
     end
   end
 
+  def delphoto
+    unless photo_file_name.nil?
+      if FileTest.exists?("#{RAILS_ROOT}/public/system/photos/" + id.to_s + "/original/" + photo_file_name) 
+        FileUtils.rm_rf("#{RAILS_ROOT}/public/system/photos/" + id.to_s + "/original/") 
+      else
+        Directory("#{RAILS_ROOT}/public/system/photos/" + id.to_s + "/original")
+      end
+    end
+  end
+
 end

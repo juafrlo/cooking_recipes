@@ -20,7 +20,12 @@
 <div class="form_div">
 	<div class="form_col1">
 		<%= label_tag 'login' %><br/>
-		<%= f.text_field :login %>
+		
+		<% if action_name != 'new'%>
+			<%= f.text_field :login, :disabled => 'disabled' %>
+		<% else %>
+			<%= f.text_field :login %>
+		<% end %>
 	</div>
 
 	<div class="form_col2">
@@ -36,7 +41,7 @@
 	</div>
 
 	<div class="form_col2">
-		<%= label_tag 'password_confirmation', 'Confirm Password' %><br/>
+		<%= label_tag 'password_confirmation', 'Confirmar password' %><br/>
 		<%= f.password_field :password_confirmation %>
 	</div>
 </div>

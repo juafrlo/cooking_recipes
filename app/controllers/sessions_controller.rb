@@ -32,7 +32,7 @@ class SessionsController < ApplicationController
       else
         redirect_back_or_default('/')
       end
-      flash[:notice] = "Logged in successfully"
+      flash[:notice] = "¡Ya estás dentro!"
     else
       note_failed_signin
       @login       = params[:login]
@@ -43,14 +43,14 @@ class SessionsController < ApplicationController
 
   def destroy
     logout_killing_session!
-    flash[:notice] = "You have been logged out."
+    flash[:notice] = "¡Has salido del sistema!"
     request.env["HTTP_REFERER"].nil? ? redirect_to('/') : redirect_to(:back)  
   end
 
 protected
   # Track failed login attempts
   def note_failed_signin
-    flash[:error] = "Couldn't log you in as '#{params[:login]}'"
+    flash[:error] = "No has podido entrar en el sistem como '#{params[:login]}'"
     logger.warn "Failed login for '#{params[:login]}' from #{request.remote_ip} at #{Time.now.utc}"
   end
 end
