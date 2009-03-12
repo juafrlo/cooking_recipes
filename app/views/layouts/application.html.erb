@@ -17,8 +17,10 @@
 	<ul id="top_menu">
 		<li><h2><%= link_to 'Noticias', :controller => "noticias", :action => "index" %></h2></li>
 		<li><h2><%= link_to 'Recetas', :controller => "recetas", :action => "index" %></h2></li>
-		<li><h2><%= link_to 'Foros', :controller => "forums", :action => "index" %></h2></li>
+		<li><h2><%= link_to 'Consejos', :controller => "recetas", :action => "index" %></h2></li>
+
 		<li><h2><%= link_to 'Restaurantes', :controller => "recetas", :action => "index" %></h2></li>
+		<li><h2><%= link_to 'Foros', :controller => "forums", :action => "index" %></h2></li>
 		<li><h2><%= link_to 'Contacto', :controller => "recetas", :action => "index" %></h2></li>
 	</ul>
 	
@@ -26,7 +28,7 @@
 	
 	<div id="page_wrapper">
 		<div id="right_menu"> 
-			<h3>Menú privado</h3>
+			<h3 style="border:0px;">Menú privado</h3>
 			<ul>
 				<li><%= log_in_out %> <% if !logged_in? %>
 					/ <%= link_to 'Regístrate', '/signup' %> <% end %></li>	
@@ -40,7 +42,7 @@
 			
 			<br/>
 			
-			<h3>Últimas recetas</h3>
+			<h3 style="border:0px;">Últimas recetas puntuadas</h3>
 			<table class="last_recetas">
 				<tr>
 					<td class="receta_title">
@@ -80,7 +82,7 @@
 				</tr>
 			</table>
 			<br/>
-			<h3> Chefs mejor puntuados </h3>
+			<h3 style="border:0px;"> Chefs mejor puntuados </h3>
 			<table class="last_recetas">
 				<tr>
 					<td><a href="#">Antonio Pérez</a><br/>
@@ -120,7 +122,9 @@
 		</div>
 
 		<p style="color: green"><%= flash[:notice] %></p>
+		<div id="page_content">
 		<%= yield  %>
+		</div>
 
 	</div>
 	<div class="clear"></div>

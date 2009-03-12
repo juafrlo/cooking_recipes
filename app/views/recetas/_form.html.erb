@@ -1,0 +1,77 @@
+
+<% form_for(@receta, :html => { :multipart => true }) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label "nombre del plato" %><br />
+    <%= f.text_field :name %>
+  </p>
+ 
+  <p>
+    <%= f.label "categoría" %><br />
+  	<%= collection_select :receta, :category_id, @categories, :id, :name %>  
+  </p>
+
+  <p>
+	Foto<br/>
+	<%= f.file_field :photo %>
+  </p>
+
+
+  <p>
+    <%= f.label "País de origen del plato" %><br />
+    <%= f.text_field :country %>
+  </p>
+
+  <p>
+    <%= f.label "Localidad de origen del plato" %><br />
+    <%= f.text_field :town %>
+  </p>
+
+
+
+  <p>
+    <%= f.label "descripción" %><br />
+    <%= f.text_area :description %>
+  </p>
+
+
+
+  <div id="ingredients">
+	<%= render :partial => 'ingredient', :collection => @receta.ingredients %>
+  </div>
+
+  <p>
+	<%= add_ingredient_link "Añadir ingrediente" %>
+  </p>
+
+  <br/>
+
+  <div id="steps">
+	<%= render :partial => 'step', :collection => @receta.steps %>
+  </div>
+
+  <p>
+	<%= add_step_link "Añadir paso" %>
+  </p>
+
+<!--
+  <p>
+    <%= f.label :puntuation %><br />
+    <%= f.text_field :puntuation %>
+  </p>
+-->
+
+
+ 
+  <p>
+    <% if action_name == 'new' %>
+		<%= f.submit "Crear receta" %> 
+	<% else %>
+		<%= f.submit "Editar receta" %> 
+	<% end %>| 
+	<%= link_to 'Volver', recetas_path %>
+  </p>
+
+
+<% end %>

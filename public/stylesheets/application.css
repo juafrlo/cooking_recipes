@@ -133,3 +133,7 @@ table{
 
 .fieldWithErrors{
 }
+
+#page_content{
+	width: 700px;
+}

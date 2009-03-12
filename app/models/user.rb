@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
   has_many :forum_posts
   has_many :replies
   has_attached_file :avatar, :styles => { :small => "50x50>" }
+  has_many :recetas
 
   validates_presence_of     :login
   validates_length_of       :login,    :within => 3..40

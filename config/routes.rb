@@ -1,4 +1,5 @@
 ActionController::Routing::Routes.draw do |map|
+
   map.resources :categories
 
   map.logout '/logout', :controller => 'sessions', :action => 'destroy'
@@ -38,7 +39,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :steps
 
-  map.resources :recetas
+  map.resources :recetas, :collection => {:categoria => :get}
 
 
 

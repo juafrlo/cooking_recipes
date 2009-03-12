@@ -1,59 +1,71 @@
-
 <div>
-  <div class="title">
-  	<b>Name:</b>
-  	<%=h @receta.name %>
+  <div class="title" style="width: 700px;">
+	Receta de <%= @receta.user.login %>
   </div>
-
-
-  <div class="puntuation">
-	<b>Puntuation:</b>
-  	<%=h @receta.puntuation %>
- </div>
 </div>
 
-Minifoto
-<%= image_tag @receta.photo.url(:small) %>
-
-<p>
-Ingredientes: 
-<ul>
-<% for ingredient in @ingredients %>
-	<li>- <%= ingredient.name %> </li>
-<% end %>
-</ul>
-</p>
-
-<p>
-Pasos:
-<ul style="padding-top: 0px;">
-<% for step in @steps %>
-	<li>- <%= step.explanation %> </li>
-<% end %>
-</ul>
-</p>
 
 
+<div style="margin-top: 10px;">
+	<div style="float:left; width: 300px;  text-align:center;">
+		<%if !@receta.photo_file_name.nil? %> 
+			<%= image_tag @receta.photo.url(:small) %>
+		<% else %>
+			<%= image_tag ('others/no_photo.jpg')%>
+		<% end %>
+	</div>
 
-<div>&nbsp;</div>
+	<div style="float:left; width: 400px; ">
+  		<div style="text-align:center; padding-bottom: 17px;">
+  			<b><%=h @receta.name %></b>
+		</div>
+		
+		<div>
+		  Categoría:
+		  <%=h @receta.category.name %>
+		</div>
+		
+		
+		<div style="padding-top:7px; padding-bottom: 7px;">
+		  Plato típico de <%= h @receta.town %> (<%=h @receta.country %>)
+		</div>
+				
+				
+  		<div class="puntuation">
+			<b>Puntuation:</b>
+  			<%=h @receta.puntuation %> 0 (0 votos)
+ 		</div>
+		
+ 	</div>
+</div>
+
+
+<div style="padding-top: 18px; clear:left;">
+  	<span class="title_span">Breve descripción del plato:</span>
+	<div style="padding-left: 10px;"><%=h @receta.description %></div>
+</div>
+
+<div style="clear:left; padding-top: 10px; padding-bottom: 10px;">
+	<span class="title_span">Ingredientes: </span>
+	<ul>
+		<% for ingredient in @ingredients %>
+			<%if !ingredient.name.empty? %><li>- <%= ingredient.name %> </li> <%end%>
+		<% end %>
+	</ul>
+</div>
+
 
 <div>
-<p>
-  <b>Description:</b>
-  <%=h @receta.description %>
-</p>
+	<span class="title_span">Pasos:</span>
+	<ul style="padding-top: 0px;">
+	<% for step in @steps %>
+		<%if !step.explanation.empty? %><li>- <%= step.explanation %> </li> <%end%>
+	<% end %>
+	</ul>
 </div>
 
-<p>
-  <b>Category:</b>
-  <%=h @receta.category_id %>
-</p>
 
-<p>
-  <b>User:</b>
-  <%=h @receta.user_id %>
-</p>
-
-
-<%= link_to 'Edit', edit_receta_path(@receta) %> |
-<%= link_to 'Back', recetas_path %>
+<div style="padding-top: 15px;">
+<%= link_to 'Editar', edit_receta_path(@receta) %> |
+<%= link_to 'Volver', recetas_path %>
+</div>

@@ -22,6 +22,8 @@ def hello_user(user)
   if logged_in?
     '<span>Hola, '+user.login + '</span> | '
   end
+  
+
 end
 
 

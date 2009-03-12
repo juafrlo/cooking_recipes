@@ -1,28 +1,25 @@
 
-<table>		
-  <tr>
-    <th>Name</th>
-    <th>Puntuation</th>
-    <th>Description</th>
-    <th>Category</th>
-    <th>User</th>
-    <th style="text-align:center;">Options</th>
+<span id="nueva_receta"><%= link_to 'Nueva receta', new_receta_path %></span>
+<span id="nueva_receta"><%= link_to '¿Qué puedo cocinar?', '/' %></span>
 
-  </tr>
+<br/>
 
-<% for receta in @recetas %>
-  <tr>
-    <td><%=h receta.name %></td>
-    <td><%=h receta.puntuation %></td>
-    <td><%=h receta.description %></td>
-    <td><%=h receta.category_id %></td>
-    <td><%=h receta.user_id %></td>
-    <td><%= link_to 'Show', receta %> | <%= link_to 'Edit', edit_receta_path(receta) %> |
-    <%= link_to 'Destroy', receta, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
+
+<h3 style="border-bottom: 1px solid black; width: 700px; margin-bottom: 10px;margin-top: 20px;"> Últimas recetas publicadas </h3>
+
+<%= render :partial => 'list_recetas' %>
+
+<br /><br />
+
+
+<h3 style="border-bottom: 1px solid black; width: 700px; margin-bottom: 10px;margin-top: 20px;"> Las mejores recetas por categorías:  </h3>
+
+<% for category in @categories %>	
+	<div style="float:left;margin-right: 15px; width: 210px; height: 150px; margin-bottom: 15px;border: 1px solid #CCC">
+		<div style="color: red; text-align:center;"><%= category.name %> </div>
+		<div style="margin-left: 4px;">
+			<%= link_to image_tag('others/no_disp.jpg'), :action => "categoria", :id => category.id %>		
+		</div>
+	</div>
 <% end %>
-</table>
-
-<br />
-
-<%= link_to 'Nueva receta', new_receta_path %>
+<br/>

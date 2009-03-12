@@ -1,0 +1,15 @@
+
+<span id="nueva_receta"><%= link_to 'Nueva receta', new_receta_path %></span>
+<span id="nueva_receta"><%= link_to '¿Qué puedo cocinar?', '/' %></span>
+
+<br/>
+
+<h3 style="margin-top: 20px;">Las mejores recetas de: <%= h @recetas[0].category.name %></h3> 
+<br/>
+
+<%= render :partial => 'list_recetas' %>
+
+
+<div style="margin-top:50px;">
+	<%= link_to 'Volver', recetas_path %>
+</div>

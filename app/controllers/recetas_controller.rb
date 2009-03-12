@@ -1,11 +1,13 @@
 class RecetasController < ApplicationController
+  before_filter :authorize, :only => [:new, :edit, :delete]
 
   require 'fileutils'
   
   # GET /recetas
   # GET /recetas.xml
   def index
-    @recetas = Receta.find(:all)
+    @recetas = Receta.find(:all, :limit => 5)
+    @categories = Category.find(:all, :order => 'name')
 
     respond_to do |format|
       format.html # index.html.erb
@@ -53,12 +55,15 @@ class RecetasController < ApplicationController
   def create
     @receta = Receta.new(params[:receta])
     @receta.user_id = current_user.id
+  
+    puts(params[:receta][:hours])
+  
     @receta.save!
     
     respond_to do |format|
       if @receta.save
         @receta.delphoto
-        flash[:notice] = 'Receta was successfully created.'
+        flash[:notice] = '¡Receta creada!'
         format.html { redirect_to(@receta) }
         format.xml  { render :xml => @receta, :status => :created, :location => @receta }
       else
@@ -96,4 +101,14 @@ class RecetasController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
+  def categoria
+    @recetas = Receta.find(:all, :conditions => ["category_id = ?", params[:id]])    
+    if @recetas.empty?
+      flash[:notice] = 'Todavía no hay recetas en esta categoría'
+      redirect_to(:back)
+    end
+  end
+  
+
 end

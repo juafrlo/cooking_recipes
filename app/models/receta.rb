@@ -3,6 +3,8 @@ class Receta < ActiveRecord::Base
   has_many :steps
   has_attached_file :photo, :styles => { :small => "150x150>"}
   after_update :save_steps
+  belongs_to :user
+  belongs_to :category
 
   def ingredient_attributes=(ingredient_attributes)
     ingredient_attributes.each do |attributes|
@@ -56,5 +58,5 @@ class Receta < ActiveRecord::Base
       end
     end
   end
-
+  
 end

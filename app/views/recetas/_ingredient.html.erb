@@ -1,7 +1,7 @@
 <div class="ingredient">
 		<% fields_for "receta[ingredient_attributes][]", ingredient do |ingredient_form| %>
 			<p>
-				Ingredient: <%= ingredient_form.text_field :name, :index => nil %>
+				Ingrediente: <%= ingredient_form.text_field :name, :index => nil %>
 				<% if ingredient.new_record? %>
 					<%= link_to_function "Borrar ingrediente", "this.up('.ingredient').remove()" %>
 				<% else %>

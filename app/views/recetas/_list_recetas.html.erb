@@ -1,0 +1,23 @@
+<table class="recetas_table">		
+  <tr>
+    <th>Nombre</th>
+    <th>Puntuación</th>
+    <!--<th style="width: 200px;">Descripción</th>-->
+    <th>Categoría</th>
+    <th>Autor</th>
+    <!--<th style="text-align:center;">Options</th>-->
+  </tr>
+
+<% for receta in @recetas %>
+  <tr class="<%= cycle('odd','par')%>">
+    <td><%= link_to receta.name,receta %></td>
+    <td><%=h receta.puntuation %>0 (0 votos)</td>
+    <!--<td><%=h receta.description %></td>-->
+    <td><%=h receta.category.name %></td>
+    <td><%=h receta.user.login %></td>
+    <!--<td><%= link_to 'Show', receta %> | <%= link_to 'Edit', edit_receta_path(receta) %> |
+    <%= link_to 'Destroy', receta, :confirm => 'Are you sure?', :method => :delete %></td>
+	-->
+  </tr>
+<% end %>
+</table>

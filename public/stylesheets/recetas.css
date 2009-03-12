@@ -1,9 +1,45 @@
 .title{
-	float:left;
+}
+
+.title_span{
+	color: green;
+}
+
+h3{
+	border-bottom: 1px solid black;
+	width: 700px;
+	margin-bottom: 10px;
+	margin-top: 20px
+}
+
+#nueva_receta{
+	font-size: 14px;
+	float:right;
+	border: 1px solid black;
+	background: #CCC;
+	margin-right: 20px;
+	padding: 5px;
 }
 
 .puntuation{
 	color: red;
-	margin-left: 40px;
-	float:left;
+	text-align:left;
+}
+
+
+table.recetas_table{
+	width: 700px;
+	text-align:left;
+}
+table.recetas_table td{
+	width: 200px;
+	text-align:left;
+	height: 20px;
+}
+
+table tr.odd {
+	background: #efefef;
+}
+
+table tr.par {
 }
