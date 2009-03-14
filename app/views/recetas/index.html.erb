@@ -16,7 +16,7 @@
 
 <% for category in @categories %>	
 	<div style="float:left;margin-right: 15px; width: 210px; height: 150px; margin-bottom: 15px;border: 1px solid #CCC">
-		<div style="color: red; text-align:center;"><%= category.name %> </div>
+		<div style="color: red; text-align:center;"><%= category.name %></div>
 		<div style="margin-left: 4px;">
 			<%= link_to image_tag('others/no_disp.jpg'), :action => "categoria", :id => category.id %>		
 		</div>

@@ -1,4 +1,4 @@
-<% form_for(@category) do |f| %>
+<% form_for(@category, :html => {:multipart => true}) do |f| %>
   <%= f.error_messages %>
   <p>
     <%= f.label :name %><br />
@@ -6,8 +6,16 @@
   </p>
 
   <p>
-    <%= f.submit "Create" %>
+    <%= f.file_field :categoryphoto %><br />
   </p>
+
+  <p>
+    <% if action_name == 'new'%>
+		<%= f.submit "Create" %>
+  	<% else %>
+		<%= f.submit "Update" %>
+	<% end %>
+</p>
 <% end %>
 
 <%= link_to 'Back', categories_path %>

@@ -137,3 +137,10 @@ table{
 #page_content{
 	width: 700px;
 }
+
+table tr.odd {
+	background: #efefef;
+}
+
+table tr.par {
+}

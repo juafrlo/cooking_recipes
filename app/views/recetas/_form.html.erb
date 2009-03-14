@@ -63,8 +63,16 @@
 -->
 
 
+  <div style="padding-bottom: 40px;">
+  <%= f.label "tiempo necesario para preparar el plato" %><br />
+  	<div style="float:left;"><%= f.text_field :duration , :size => "5"%></div>
+	<div style="float:left; padding-left: 8px; padding-top: 5px;">minutos</div>
+  </div>
+
+  
+
  
-  <p>
+  <p class="clear">
     <% if action_name == 'new' %>
 		<%= f.submit "Crear receta" %> 
 	<% else %>

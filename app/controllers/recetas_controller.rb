@@ -6,7 +6,7 @@ class RecetasController < ApplicationController
   # GET /recetas
   # GET /recetas.xml
   def index
-    @recetas = Receta.find(:all, :limit => 5)
+    @recetas = Receta.find(:all, :limit => 5, :order => "id desc" )
     @categories = Category.find(:all, :order => 'name')
 
     respond_to do |format|
@@ -55,10 +55,7 @@ class RecetasController < ApplicationController
   def create
     @receta = Receta.new(params[:receta])
     @receta.user_id = current_user.id
-  
-    puts(params[:receta][:hours])
-  
-    @receta.save!
+     @categories = Category.find(:all, :order => 'name')
     
     respond_to do |format|
       if @receta.save
@@ -103,7 +100,7 @@ class RecetasController < ApplicationController
   end
   
   def categoria
-    @recetas = Receta.find(:all, :conditions => ["category_id = ?", params[:id]])    
+    @recetas = Receta.find(:all, :order => "id desc" , :conditions => ["category_id = ?", params[:id]])    
     if @recetas.empty?
       flash[:notice] = 'Todavía no hay recetas en esta categoría'
       redirect_to(:back)
