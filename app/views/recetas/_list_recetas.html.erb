@@ -1,6 +1,6 @@
-<table class="recetas_table">		
+<table class="recetas_table" style="width:570px;">		
   <tr>
-    <th>Nombre</th>
+    <th>Plato</th>
     <th>Puntuación</th>
     <!--<th style="width: 200px;">Descripción</th>-->
     <th>Categoría</th>
@@ -9,7 +9,7 @@
   </tr>
 
 <% for receta in @recetas %>
-  <tr class="<%= cycle('odd','par')%>">
+  <tr class="<%= cycle('odd','par')%>" >
     <td><%= link_to receta.name,receta %></td>
     <td><%=h receta.puntuation %>0 (0 votos)</td>
     <!--<td><%=h receta.description %></td>-->

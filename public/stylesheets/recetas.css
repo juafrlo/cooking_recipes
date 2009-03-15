@@ -7,7 +7,7 @@
 
 h3{
 	border-bottom: 1px solid black;
-	width: 700px;
+	width: 680px;
 	margin-bottom: 10px;
 	margin-top: 20px
 }
@@ -28,11 +28,10 @@ h3{
 
 
 table.recetas_table{
-	width: 700px;
+	width: 680px;
 	text-align:left;
 }
 table.recetas_table td{
-	width: 200px;
 	text-align:left;
 	height: 20px;
 }

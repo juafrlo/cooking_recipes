@@ -1,13 +1,7 @@
-<div>
-  <div class="title" style="width: 700px;">
-	Receta de <%= @receta.user.login %>
-  </div>
-</div>
-
-
+<h1 class="title">Receta de <%= @receta.user.login %></h1>
 
 <div style="margin-top: 10px;">
-	<div style="float:left; width: 300px;  text-align:center;">
+	<div style="float:left; width: 250px;  text-align:center;">
 		<%if !@receta.photo_file_name.nil? %> 
 			<%= image_tag @receta.photo.url(:small) %>
 		<% else %>
@@ -15,7 +9,7 @@
 		<% end %>
 	</div>
 
-	<div style="float:left; width: 400px; ">
+	<div style="float:left; width: 300px;">
   		<div style="text-align:center; padding-bottom: 17px;">
   			<b><%=h @receta.name %></b>
 		</div>
@@ -43,7 +37,7 @@
  	</div>
 </div>
 
-
+<div style="margin-left: 10px;">
 <div style="padding-top: 18px; clear:left;">
   	<span class="title_span">Breve descripción del plato:</span>
 	<div style="padding-left: 10px;"><%=h @receta.description %></div>
@@ -72,4 +66,5 @@
 <div style="padding-top: 15px;">
 <%= link_to 'Editar', edit_receta_path(@receta) %> |
 <%= link_to 'Volver', recetas_path %>
+</div>
 </div>

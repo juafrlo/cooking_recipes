@@ -2,23 +2,23 @@
 <span id="nueva_receta"><%= link_to 'Nueva receta', new_receta_path %></span>
 <span id="nueva_receta"><%= link_to '¿Qué puedo cocinar?', '/' %></span>
 
-<br/>
+<br/><br/><br/>
 
 
-<h3 style="border-bottom: 1px solid black; width: 700px; margin-bottom: 10px;margin-top: 20px;"> Últimas recetas publicadas </h3>
+<h1 class="title">Últimas recetas publicadas </h1>
 
 <%= render :partial => 'list_recetas' %>
 
 <br /><br />
 
 
-<h3 style="border-bottom: 1px solid black; width: 700px; margin-bottom: 10px;margin-top: 20px;"> Las mejores recetas por categorías:  </h3>
+<h1 class="title">mejores recetas por categorías:</h1>
 
 <% for category in @categories %>	
-	<div style="float:left;margin-right: 15px; width: 210px; height: 150px; margin-bottom: 15px;border: 1px solid #CCC">
+	<div style="float:left;margin-right: 15px; width: 172px; height: 150px; margin-bottom: 15px; margin-top:4px;">
 		<div style="color: red; text-align:center;"><%= category.name %></div>
 		<div style="margin-left: 4px;">
-			<%= link_to image_tag('others/no_disp.jpg'), :action => "categoria", :id => category.id %>		
+			<%= link_to image_tag(''), :action => "categoria", :id => category.id %>		
 		</div>
 	</div>
 <% end %>

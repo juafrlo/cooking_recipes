@@ -1,146 +1,284 @@
-html{
-	font-family: Verdana;
-	font-size: 13px;
-	background: #099; 
-	/* background-image: url('../images/b/background.gif'); */
-	width: 989px;
-	margin: 0px;
-	padding: 0px;
-	
+body {
+  width: 909px;
+  margin-left: auto;
+  margin-right: auto;
+  background: #cec155;
+  text-align: justify;
+  font: 13px Trebuchet MS, Helvetica, sans-serif;
+  color: #444444;
 }
 
-body{
-	width: 949px;
-	border: 1px solid black;
-	background: white;
-	margin-left: auto;
-	margin-right: auto;
+h1, h2, h3 {
+	margin-top: 0px;
+	font-weight: normal;
+	color: #FFFFFF;
 }
 
-h1{
-	text-align: center;
-	background: cyan;
-	margin:0px;
-	padding: 10px 0px 10px 0px;
+#hlink{
+	color: red;
+}
+
+#hlink a{
+	color: red;
 }
 
 h2{
-	font-size: 14px;
-	height: 14px;
-	font-weight: normal;
-	padding:0px;
-	margin:0px;
+	color: #034c08;
 }
 
-h3{
-	font-size: 12px;
-	padding: 0px;
-	margin:0px;
+h1 {
+	font-size: 2.4em;
 }
 
 
-.title{
-	border-bottom: 1px solid black;
-	width: 550px;
-	display: block;
+
+h2 {
+	font-size: 1.8em;
 }
 
-
-ul{
-	list-style:none;
-	padding-left: 8px;
-	margin:0px;
+h3 {
+	font-size: 1.4em;
 }
 
-a{
+p, ol, ul {
+	margin-bottom: 1.8em;
+	line-height: 160%;
+}
+
+a {
+	color: #6630e0;
+}
+
+a:hover {
 	text-decoration: none;
+	color: #fb5605;
 }
 
-a:hover{
+a img {
+	border: none;
+}
+
+#wrapper {
+	width: 900px;
+	margin: 0 auto;
+	border: 10px solid #FFFFFF;
+}
+
+/* Header */
+
+#header {
+	width: 900px;
+	height: 100px;
+	margin: 0px auto;
+	background: url(../images/layo/img06.jpg) repeat-x left top;
+}
+
+#header a {
+	text-decoration: none;
+	color: #FFFFFF;
+}
+
+/* Logo */
+
+#logo {
+	float: left;
+	padding-left: 20px;
+}
+
+#logo h1, #logo p {
+	margin: 0px;
+	line-height: normal;
+	font-weight: normal;
+	color: #FFFFFF;
+}
+
+#logo h1 {
+	padding: 40px 0px 0px 0px;
+}
+
+#logo h1 a{
+	color:#1b6461;
+    letter-spacing: 1px;
+	font-weight: bold;
+}
+
+#logo p {
+	text-indent: -99999px;
+}
+
+/* Menu */
+
+#menu {
+	float: right;
+}
+
+#menu ul {
+	margin: 0px;
+	padding: 49px 0px 0px 0px;
+	list-style: none;
+	line-height: normal;
+}
+
+#menu li {
+	float: left;
+	margin: 0px;
+}
+
+#menu a {
+	display: block;
+	width: auto;
+	padding: 6px 20px 6px 10px;
+	background: url(../images/layo/img10.gif) no-repeat left 50%;
+}
+
+#menu a:hover {
 	text-decoration: underline;
 }
 
-table{
-	text-align: left;
+#menu .active {
 }
 
-#top_menu li{
-	float:left;
-	padding:5px;
-	border: 1px solid black;
-	background: lightblue;
+#menu .active a {
 }
 
-#page_wrapper{
+/* Page */
+
+#page {
+	width: 900px;
+	margin: 0px auto;
+	padding: 10px 0px 0px 0px;
+	background: #FFFFFF;
+}
+
+#header-pic {
+	background: url(../images/layo/img05.jpg) no-repeat left top;
+	width: 900px;
+	height: 210px;
+}
+
+/* Content */
+
+#content {
+	float: left;
+	width: 570px;
+}
+
+.post {
+	background: #FFFFFF;
+	margin: 0px 0px 30px 0px;
+}
+
+.post .title {
+	margin: 0px;
+	background: #444444 url(../images/layo/img07.jpg) no-repeat left top;
+	padding: 7px 25px;
+	font-size: 1.4em;
+}
+
+.post .title h1 {
+}
+
+.post .entry {
+	padding: 0 20px;
+}
+
+.post .meta {
+	font-weight: bold;
+	padding-left: 20px;
+}
+
+.post .byline {
+	margin: 0px;
+	padding-left: 20px;
+}
+
+/* Sidebar */
+
+#sidebar {
+	float: right;
+	width: 300px;
+}
+
+#sidebar-bgtop {
+}
+
+#sidebar-bgbtm {
+}
+
+#sidebar-content {
+}
+
+#sidebar ul {
+	padding: 0px 0 5px 0;
+	margin: 0px;
+	list-style: none;
+}
+
+#sidebar li li {
+	margin-right: 10px;
+	line-height: 30px;
 	padding-left: 15px;
-	padding-right: 15px;
-	padding-bottom: 10px;
+	border-bottom: 1px dashed #BDBDBD;
 }
 
-#right_menu{
-	float:right;
-	background: #CCC;
-	width: 184px;
-	padding: 8px;
+#sidebar li ul {
+	margin-bottom: 1.8em;
+	list-style: none;
 }
 
-.receta_title{
-	font-weight: normal;
-	width: 80%;
-}
-.autor{
-	font-size: 10px;
-	color: #666;
+#sidebar h2 {
+	background: url(../images/layo/img09.jpg) no-repeat left top;
+	padding: 7px 25px;
+	font-size: 1.4em;
 }
 
-.last_recetas{
-	padding-left: 8px;
-	font-size: 11px;
+#sidebar a {
+	text-decoration: none;
 }
 
-.clear{
-	clear:both;
+#sidebar a:hover {
+	text-decoration: underline;
 }
 
-/* FORMS */
-.form_col1{
-	float:left;
-	width: 200px;
+/* Search */
+
+#search {
 }
 
-.form_col2{
-	float:left;
-	width: 200px;
-	margin-left: 60px;
+#search form {
+	margin-bottom: 1.8em;
+	padding: 0px;
 }
 
-.form_div{
-	clear: left;
-	height: 50px;
+#search fieldset {
+	margin-left: 20px;
+	padding: 0px;
+	border: none;
 }
 
-.form_span{
-	font-weight:bolder;
+#search #s {
+	width: 160px;
 }
 
-.form_but{
-	clear:left;
-	padding-top: 5px;
+/* Footer */
+
+#footer {
+	clear: both;
+	width: 920px;
+	height: 40px;
+	margin: 0px auto 30px auto;
+	background: url(../images/layo/img08.jpg) no-repeat left top;
+	color: #333;
 }
 
-.errorExplanation{
+#footer p {
+	margin: 0px;
+	padding: 13px 0px 0px 0px;
+	text-align: center;
+	line-height: normal;
+	font-size: smaller;
 }
 
-.fieldWithErrors{
-}
-
-#page_content{
-	width: 700px;
-}
-
-table tr.odd {
-	background: #efefef;
-}
-
-table tr.par {
+#footer a {
+	color: #FFFFFF;
 }
