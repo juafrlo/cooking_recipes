@@ -2,16 +2,22 @@
   <%= f.error_messages %>
 
   <p>
-    <%= f.label :title %><br />
+    <%= f.label :Título %><br />
     <%= f.text_field :title %>
   </p>
 
 	<p>
-		<%= f.label :comment %><br />
+		<%= f.label :Post %><br />
 	    <%= f.text_area :comment %>	
 	</p>
 
   <p>
-    <%= f.submit "Create" %>
+    <% if action_name == "new" %>
+		<%= f.submit "Postear" %>
+	<% else %>
+		<%= f.submit "Editar" %>	
+	<% end %>
+	| <%= link_to 'Volver', forum_posts_path %>
+	
   </p>
 <% end %>

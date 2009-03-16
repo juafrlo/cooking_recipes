@@ -1,10 +1,15 @@
 <% form_for [@forum_post,@forum_reply] do |f| %>
 
   <p>
-    <%= f.label :reply %><br />
+    <%= f.label :Respuesta %><br />
     <%= f.text_area :reply %>
   </p>
   <p>
-    <%= f.submit "Create" %>
-  </p>
+    <% if action_name == 'new' %>
+		<%= f.submit "Responder" %>
+ 	<% else %>
+		<%= f.submit "Editar" %>
+	<% end %>
+ 	| 	<%= link_to 'Volver', forum_post_forum_replies_path(@forum_post) %>
+</p>
 <% end %>

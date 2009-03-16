@@ -3,8 +3,9 @@
 <span id="nueva_receta"><%= link_to '¿Qué puedo cocinar?', '/' %></span>
 
 <br/>
+<br/>
+<h1 class="title" style="margin-top: 20px;">Las mejores recetas de: <%= h @recetas[0].category.name %> </h1>
 
-<h3 style="margin-top: 20px;">Las mejores recetas de: <%= h @recetas[0].category.name %></h3> 
 <br/>
 
 <%= render :partial => 'list_recetas' %>

@@ -4,6 +4,7 @@
 <div class="post_title">
 	<%=h @forum_post.title %> 
 </div>
+
 <div class="post_reply">
 	<%= link_to 'New forum_reply',new_forum_post_forum_reply_path(@forum_post)  %>
 </div>
@@ -53,4 +54,4 @@
 
 
 <br/>
-<%= link_to 'New forum_reply', new_forum_post_forum_reply_path(@forum_post)  %>
+<%= link_to 'Responder', new_forum_post_forum_reply_path(@forum_post)  %>

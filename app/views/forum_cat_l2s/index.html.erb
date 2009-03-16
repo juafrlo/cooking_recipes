@@ -1,11 +1,14 @@
 <% for category in @categories %>
   <h3><%=h category.title %></h3>
-  
+
+ 
   <table border="1" cellspacing="0" cellpadding="4">
  	  <tr >
-	    <th style="width:450px; background: #ABC">Foro</th>
-	    <th style="width: 550px; background: #ABC">Último mensaje</th>
+	    <th style="width:450px;" class="th_title">Foro</th>
+	    <th style="width: 550px;" class="th_title">Último mensaje</th>
 	  </tr>
+
+
 
 	 <% for forum_cat_l2 in @forum_cat_l2s %>
  		<% if forum_cat_l2.forum_cat_l1_id == category.id %>

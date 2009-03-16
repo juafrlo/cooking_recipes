@@ -1,22 +1,37 @@
 html{
 	font-family: verdana;
-	font-size: 12px;
+	font-size: 12px;	
 }
+
+
+h1 a{
+	color:#1b6461;
+    letter-spacing: 1px;
+	font-weight: bold;
+}
+
+h1 a:hover{
+	color:#1b6461;
+}
+
 
 p{
 	margin-top: 4px;
 }
 
-a{
+
+
+a {
 	text-decoration: none;
-	color: #03E;
-	font-weight:normal;
+	color: #6630e0;
+}
+
+a:hover {
+	text-decoration: none;
+	color: #fb5605;
 }
 
 
-a:visited{
-	color: #03E;	
-}
 
 table tr.odd {
 	background: #efefef;
@@ -32,7 +47,7 @@ table tr.par {
 }
 
 .post_title{
-	background:#CCC;
+	background: url(../images/layo/img09.jpg) repeat-x left top;
 	width: 400px;
 	padding:5px;
 	font-weight:bold;
@@ -59,4 +74,11 @@ table tr.par {
 
 .post{
 	padding-left: 4px;
+}
+
+.th_title{
+	background: url(../images/layo/img09.jpg) repeat-x left top;
+	padding: 0px 25px;
+	font-size: 16px;
+	
 }

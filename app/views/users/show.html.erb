@@ -1,7 +1,8 @@
-<h3 style="border-bottom: 1px solid black; width: 700px;">Ficha de usuario</h3>
+<h1 class="title"> Ficha de usuario2 </h1>
+
 
 <div style="margin-top: 10px;">
-<div style=" float:left; width: 200px; text-align:center; padding-top: 20px;">
+<div style=" float:left; width: 150px; text-align:center; padding-top: 20px;">
 	<%= image_tag @user.avatar.url(:smalL) %><br/>
 		
 	<div style="padding-top: 4px;">
@@ -14,7 +15,7 @@
 
 
 
-<div style="float:left; width:480px; border: 1px solid black; padding-left: 20px;">
+<div style="float:left; width:380px; padding-left: 40px;">
 
 <div class="form_div" style="padding-top:15px;">
 	<div class="form_col1">
@@ -56,6 +57,6 @@
 </div>
 </div>
 
-<div style="clear:left; padding-top: 20px;">
+<div style="clear:left; padding-top: 60px; margin-left: 10px;">
 <%= link_to 'Editar', edit_user_path(@user) %>
 </div>

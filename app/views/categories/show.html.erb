@@ -5,7 +5,7 @@
 
 <p>
  <b>Foto:</b><br/>
- <%= image_tag @category.categoryphoto.url %>
+	<%= image_tag @category.categoryphoto.url(:small) %> 
 </p>
 
 <%= link_to 'Edit', edit_category_path(@category) %> |

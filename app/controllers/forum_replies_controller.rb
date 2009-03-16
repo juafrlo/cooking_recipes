@@ -1,6 +1,8 @@
 class ForumRepliesController < ApplicationController
   before_filter :authorize, :only => [:new, :edit, :delete]
   
+  layout "forum_cat_l2s"  
+  
   # GET /forum_replies
   # GET /forum_replies.xml
   def index

@@ -1,6 +1,10 @@
 class CategoriesController < ApplicationController
   # GET /categories
   # GET /categories.xml
+  
+  require 'fileutils'
+  
+  
   def index
     @categories = Category.find(:all)
 
@@ -43,7 +47,7 @@ class CategoriesController < ApplicationController
     @category = Category.new(params[:category])
 
     respond_to do |format|
-      if @category.save
+      if @category.save          
         flash[:notice] = 'Category was successfully created.'
         format.html { redirect_to(@category) }
         format.xml  { render :xml => @category, :status => :created, :location => @category }
@@ -61,6 +65,7 @@ class CategoriesController < ApplicationController
 
     respond_to do |format|
       if @category.update_attributes(params[:category])
+        @category.delcategoryphoto 
         flash[:notice] = 'Category was successfully updated.'
         format.html { redirect_to(@category) }
         format.xml  { head :ok }

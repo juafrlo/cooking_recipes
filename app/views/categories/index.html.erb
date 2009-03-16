@@ -10,7 +10,7 @@
 
 <% for category in @categories %>
   <tr>
-    <td><%= image_tag category.categoryphoto.url %> </td>
+    <td><%= image_tag category.categoryphoto.url(:small) %> </td>
 	<td><%=h category.name %></td>
     <td><%= link_to 'Show', category %> |
         <%= link_to 'Edit', edit_category_path(category) %> |

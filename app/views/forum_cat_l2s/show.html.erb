@@ -2,9 +2,9 @@
 
 <table border="1" cellspacing="0" cellpadding="4">
   <tr >
-    <th style="width:700px; background: #ABC">Mensaje</th>
-    <th style="background: #ABC">Réplicas</th>
-    <th style="width: 200px; background: #ABC">Última</th>
+    <th style="width:700px;" class="th_title">Mensaje</th>
+    <th class="th_title">Réplicas</th>
+    <th style="width: 200px;" class="th_title">Última</th>
   </tr>
 
 <% for forum_post in @forum_posts %>
@@ -29,4 +29,5 @@
 <%= link_to 'Edit', edit_forum_cat_l2_path(@forum_cat_l2) %> |
 <%= link_to 'Back', forum_cat_l2s_path %>
 -->
-<%= link_to 'New post',  new_forum_cat_l2_forum_post_path(@forum_cat_l2) %>
+<br/>
+<%= link_to 'Nuevo post',  new_forum_cat_l2_forum_post_path(@forum_cat_l2) %>

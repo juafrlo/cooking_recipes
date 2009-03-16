@@ -37,27 +37,28 @@
  	</div>
 </div>
 
+
 <div style="margin-left: 10px;">
 <div style="padding-top: 18px; clear:left;">
   	<span class="title_span">Breve descripción del plato:</span>
 	<div style="padding-left: 10px;"><%=h @receta.description %></div>
 </div>
 
-<div style="clear:left; padding-top: 10px; padding-bottom: 10px;">
+<div style="clear:left; padding-top: 20px;">
 	<span class="title_span">Ingredientes: </span>
-	<ul>
+	<ul style="margin-top: 5px;">
 		<% for ingredient in @ingredients %>
-			<%if !ingredient.name.empty? %><li>- <%= ingredient.name %> </li> <%end%>
+			<%if !ingredient.name.empty? %><li><%= ingredient.name %> </li> <%end%>
 		<% end %>
 	</ul>
 </div>
 
 
-<div>
+<div style="padding-top: 0px;">
 	<span class="title_span">Pasos:</span>
-	<ul style="padding-top: 0px;">
+	<ul style="margin-top:5px;">
 	<% for step in @steps %>
-		<%if !step.explanation.empty? %><li>- <%= step.explanation %> </li> <%end%>
+		<%if !step.explanation.empty? %><li><%= step.explanation %> </li> <%end%>
 	<% end %>
 	</ul>
 </div>
