@@ -170,7 +170,11 @@ a img {
 
 .post .title {
 	margin: 0px;
+<<<<<<< HEAD:public/stylesheets/application.css
 	background: #444444 url(../images/layo/img07.jpg) no-repeat left top;
+=======
+	background:  url(../images/layo/img07.jpg) no-repeat left top;
+>>>>>>> 479c4510c93de9c9b9a30c0a1742f0e334e12517:public/stylesheets/application.css
 	padding: 7px 25px;
 	font-size: 1.4em;
 }
