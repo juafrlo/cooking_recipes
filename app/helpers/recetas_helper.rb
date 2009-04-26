@@ -10,4 +10,5 @@ module RecetasHelper
   			page.insert_html :bottom, :steps, :partial => 'step', :object => Step.new
   	end
   end
+  
 end

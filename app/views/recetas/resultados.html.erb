@@ -1,0 +1,49 @@
+<h2>Recetas exactas:</h2>
+<table class="recetas_table" style="width:570px;">		
+  <tr>
+    <th>Plato</th>
+    <th>Puntuación</th>
+    <th>Categoría</th>
+    <th>Autor</th>
+  </tr>
+
+<% for receta in @recetas %>
+  <% if receta['exact'] == 1 %>
+  <tr class="<%= cycle('odd','par')%>" >
+    <td><%= link_to receta.name,receta %></td>
+    <td><%=h receta.puntuation %>0 (0 votos)</td>
+    <td><%=h receta.category.name %></td>
+    <td><%=h receta.user.login %></td>
+  </tr>
+ <% end %>
+<% end %>
+</table>
+
+
+<h2 style="margin-top: 50px;">Recetas no exactas:</h2>
+<table class="recetas_table" style="width:570px;">		
+  <tr>
+    <th>Plato</th>
+    <th>Puntuación</th>
+    <th>Categoría</th>
+    <th>Autor</th>
+  </tr>
+
+<% for receta in @recetas %>
+  <% if receta['exact'] == 0%>
+  <tr class="<%= cycle('odd','par')%>" >
+    <td><%= link_to receta.name,receta %></td>
+    <td><%=h receta.puntuation %>0 (0 votos)</td>
+    <td><%=h receta.category.name %></td>
+    <td><%=h receta.user.login %></td>
+  </tr>
+ <% end %>
+<% end %>
+</table>
+
+
+
+<br/>
+<p>
+	<%= link_to 'Volver', :action => 'que_cocinar_hoy'%>
+</p>

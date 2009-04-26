@@ -79,6 +79,9 @@ table tr.par {
 .th_title{
 	background: url(../images/layo/img09.jpg) repeat-x left top;
 	padding: 0px 25px;
-	font-size: 16px;
+	font-size: 14px;
+	font-weight: normal;
+	padding-top: 5px;
+	padding-bottom: 5px;
 	
 }

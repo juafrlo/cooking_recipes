@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
     def authorize
       unless logged_in?
         session[:protected_page] = request.request_uri
-        flash[:notice] = "Please log in first"
+        flash[:notice] = "Por favor, haga login primero"
          redirect_to(:controller => 'sessions', :action => 'new')
         return false
       end      

@@ -1,0 +1,61 @@
+<h1 class="title">Buscador de recetas </h1>
+<br/>
+<% form_for :receta, :url => { :action => "resultados_busqueda" }   do |f| %>
+
+<h2>¿Buscas un plato en concreto?</h2>  
+<div style="height:60px;">
+   <div style="float:left; width: 280px;">
+    <%= f.label "Nombre de la receta" %><br />
+    <%= f.text_field :name %>
+  </div>
+
+  <div style="float:left;">
+    <%= f.label "categoría" %><br />
+  	<%= collection_select :receta, :category_id, @categories, :id, :name, {:include_blank => 'Todas'} %>  
+  </div>
+</div>
+
+
+<div style="clear:both;"></div>
+
+<div style="height: 60px;">
+  <div style="float:left; width:280px;">
+    <%= f.label "País de origen del plato"%><br />
+    <%= f.text_field :country %>
+  </div>
+
+  <div style="float:left; width:280px;">
+    <%= f.label "Localidad de origen del plato" %><br />
+    <%= f.text_field :town %>
+  </div>
+</div>
+ <%= submit_tag 'Buscar' %>
+<% end %>
+
+<div style="clear:both;"></div>
+<br/>
+<br/>
+
+
+<% form_for :receta, :url => { :action => "resultados" }   do |f| %>
+<h2>¿Tienes pocos ingredientes y poco tiempo?</h2> 
+<div>
+  <div style="padding-bottom: 40px;">
+  <%= f.label "tiempo necesario para preparar el plato" %><br />
+  	<div style="float:left;"><%= f.text_field :duration , :size => "5"%></div>
+	<div style="float:left; padding-left: 8px; padding-top: 5px;">minutos</div>
+  </div>
+
+
+
+  <div id="ingredients">
+	<%= render :partial => 'ingredient', :collection => @receta.ingredients %>
+  </div>
+
+  <p>
+	<%= add_ingredient_link "Añadir ingrediente" %>
+  </p>
+</div>
+
+  <%= submit_tag 'Buscar' %>
+<% end %>

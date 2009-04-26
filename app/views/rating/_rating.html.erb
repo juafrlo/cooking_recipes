@@ -1,0 +1,54 @@
+<div style="float:left">
+<ul class='star-rating'>
+	<li class='current-rating' style='width:<%= (object.rating * 30).to_i -%>px;'>
+    	Currently <%= number_with_precision(object.rating, :precision => 1) %>/5 Estrellas.
+	</li>
+</ul>
+</div>
+
+<% if current_user %>
+	<% if Rating.is_rated?(type,object,current_user) %>
+		<div style="float:left; padding-left: 20px; padding-top:10px;">
+			Ya has votado
+		</div>
+	<% else %>
+		<ul class='star-rating'>
+			<li>
+		        <%= link_to_remote( "1", {:url => { :controller => "rating", 
+		            :action => "rate", :id => object.id, :rating => 1, :type => type}},
+		            :class => 'one-star', :name => '1 star out of 5') %>
+		    </li>
+		    <li>
+		        <%= link_to_remote( "2", {:url => { :controller => "rating", 
+		            :action => "rate", :id => object.id, :rating => 2, :type => type}},
+		            :class => 'two-stars', :name => '2 stars out of 5') %>    
+		    </li>
+		    <li>
+		        <%= link_to_remote( "3", {:url => { :controller => "rating", 
+		            :action => "rate", :id => object.id, :rating => 3, :type => type}},
+		            :class => 'three-stars', :name => '3 stars out of 5') %>
+		    </li>
+		    <li>
+		        <%= link_to_remote( "4", {:url => { :controller => "rating", 
+		            :action => "rate", :id => object.id, :rating => 4, :type => type}},
+		            :class => 'four-stars', :name => '4 stars out of 5') %>    
+		    </li>
+		    <li>
+		        <%= link_to_remote( "5", {:url => { :controller => "rating", 
+		            :action => "rate", :id => object.id, :rating => 5, :type => type}},
+		            :class => 'five-stars', :name => '5 stars out of 5') %>
+		    </li>
+		</ul>
+	
+	<% end %>
+	
+	
+<% else %>
+	<div style="float:left; padding-left: 20px; padding-top:10px;">
+		<%= link_to '¡Vota!', '/login' %>
+	</div>
+<% end %>
+
+
+
+

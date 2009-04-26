@@ -39,7 +39,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :steps
 
-  map.resources :recetas, :collection => {:categoria => :get}
+  map.resources :recetas, :collection => {:categoria => :get, :que_cocinar_hoy => :get, :resultatos => :get}
 
 
 

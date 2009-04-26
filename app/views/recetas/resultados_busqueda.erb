@@ -1,0 +1,11 @@
+<h2>Recetas encontradas:</h2>
+<% if @recetas.size > 0 %>
+<%= render :partial => 'list_recetas'%>
+<% else %>
+	No se encontraron resultados
+<% end %>
+
+<div style="margin-top: 50px;">
+<%= link_to 'Búsqueda avanzada', :action => 'que_cocinar_hoy' %> |
+<%= link_to 'Volver', request.env["HTTP_REFERER"] %>
+</div>

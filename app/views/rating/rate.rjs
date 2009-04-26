@@ -1,0 +1,14 @@
+#page.replace_html "star-ratings-block", :partial => 'rating', :locals => { :receta => @receta }
+page[:rating_stars].visual_effect :fade
+page[:rating_status].replace_html '¡Voto añadido!
+            Nueva puntuación media: ' + @object.rating.to_s
+
+
+          
+  
+
+
+
+
+
+

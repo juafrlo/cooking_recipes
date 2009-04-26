@@ -1,5 +1,6 @@
 <h1 class="title">Receta de <%= @receta.user.login %></h1>
 
+
 <div style="margin-top: 10px;">
 	<div style="float:left; width: 250px;  text-align:center;">
 		<%if !@receta.photo_file_name.nil? %> 
@@ -28,11 +29,22 @@
 			Tiempo necesario para preparar el plato:
   			<%=h @receta.duration %> minutos
  		</div>				
-				
-  		<div class="puntuation">
-			<b>Puntuation:</b>
-  			<%=h @receta.puntuation %> 0 (0 votos)
- 		</div>
+		
+		<div id="rating_stars" style="height:50px;">		
+	  		<div class="puntuation">
+				<b>Puntuation:</b>
+	 			<%= number_with_precision( Rating.rating(@receta, 'Receta'), :precision => 1) %>/5 
+				(<%= num_votes(Rating.number_of_votes('Receta', @receta))%>)
+			</div>
+
+			<div id="star-ratings-block">
+				<div style="float:left">
+			    <%= render :partial => "rating/rating",
+			 		:locals => { :object => @receta, :type => 'Receta' } %> 
+				</div>
+			</div>
+		</div>
+		<div id="rating_status" style="color:green;"></div>
 		
  	</div>
 </div>

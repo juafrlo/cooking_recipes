@@ -1,5 +1,6 @@
 class RecetasController < ApplicationController
   before_filter :authorize, :only => [:new, :edit, :delete]
+  before_filter :find_categories, :only => [:index,:new, :create, :edit, :update, :que_cocinar_hoy]
 
   require 'fileutils'
   
@@ -7,8 +8,7 @@ class RecetasController < ApplicationController
   # GET /recetas.xml
   def index
     @recetas = Receta.find(:all, :limit => 5, :order => "id desc" )
-    @categories = Category.find(:all, :order => 'name')
-
+    
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @recetas }
@@ -33,8 +33,7 @@ class RecetasController < ApplicationController
   # GET /recetas/new.xml
   def new
     @receta = Receta.new
-    @categories = Category.find(:all, :order => 'name')
-
+    
     3.times{ @receta.ingredients.build }
     3.times{ @receta.steps.build }
 
@@ -47,7 +46,6 @@ class RecetasController < ApplicationController
   # GET /recetas/1/edit
   def edit
     @receta = Receta.find(params[:id])
-    @categories = Category.find(:all, :order => 'name')
   end
 
   # POST /recetas
@@ -55,7 +53,6 @@ class RecetasController < ApplicationController
   def create
     @receta = Receta.new(params[:receta])
     @receta.user_id = current_user.id
-     @categories = Category.find(:all, :order => 'name')
     
     respond_to do |format|
       if @receta.save
@@ -105,6 +102,29 @@ class RecetasController < ApplicationController
       flash[:notice] = 'Todavía no hay recetas en esta categoría'
       redirect_to(:back)
     end
+  end
+
+  def que_cocinar_hoy
+    @receta = Receta.new    
+    3.times{ @receta.ingredients.build }
+  end
+  
+  def resultados
+     if params[:receta][:name]
+       @recetas = Receta.search(params[:receta][:name],params[:receta][:category_id],params[:receta][:country],params[:receta][:town])
+     else 
+       @recetas = Receta.search_with_ingr(params[:receta][:duration],params[:receta][:ingredient_attributes])
+    end
+  end
+
+  def resultados_busqueda
+      @recetas = Receta.search(params[:receta][:name],params[:receta][:category_id],params[:receta][:country],params[:receta][:town])
+  end  
+  
+
+  private
+  def find_categories
+    @categories = Category.find(:all, :order => 'name')    
   end
   
 

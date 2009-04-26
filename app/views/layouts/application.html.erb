@@ -7,6 +7,7 @@
   <title>Recetas: <%= controller.action_name %></title>
   <%= stylesheet_link_tag 'recetas' %>
   <%= stylesheet_link_tag 'application' %>
+  <%= stylesheet_link_tag 'rating' %>
   <%= stylesheet_link_tag 'noticias' %>
   <%= javascript_include_tag :defaults%>
 
@@ -47,16 +48,9 @@
 
 	<div id="page">
 		<div id="content">
-			<div class="post">
-				<!--
-				<h1 class="title">Bienvenido a Misrecetas.com </h1>
-				<div class="entry">
-					<p><strong>Misrecetas.com </strong> es una comunidad de cocineros aficionados</p>
-				</div>
-				-->
-				
-				<%= yield%>
-
+			<div class="post">	
+					<p style="color: green; padding:0px; margin:0px;"><%= flash[:notice] %></p>
+					<%= yield  %>
 			</div>
 
 		</div>
@@ -68,14 +62,13 @@
 				<ul>
 					<li id="search">
 						<h2>Buscar</h2>
-						<form method="get" action="">
+						<% form_for :receta, :url => { :action => "resultados_busqueda" }   do |f| %>
 							<fieldset>
-							<input type="text" id="s" name="s" value="" />
+							<%= f.text_field :name, :size => 24 %>
 							<input type="submit" id="x" value="Buscar" />
 							</fieldset>
-						</form>
+						<% end %>
 					</li>
-
 					<li>
 						<h2>Menú privado</h2>
 						<ul>
