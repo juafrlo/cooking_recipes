@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 175
+/repos/railsprojects/!svn/ver/28586/projects/fesmalla/trunk/vendor/plugins/community_engine/engine_plugins/simple_private_messages/lib/professionalnerd/simple_private_messages
+END
+private_message_extensions.rb
+K 25
+svn:wc:ra_dav:version-url
+V 205
+/repos/railsprojects/!svn/ver/28586/projects/fesmalla/trunk/vendor/plugins/community_engine/engine_plugins/simple_private_messages/lib/professionalnerd/simple_private_messages/private_message_extensions.rb
+END
+has_private_messages_extensions.rb
+K 25
+svn:wc:ra_dav:version-url
+V 210
+/repos/railsprojects/!svn/ver/28586/projects/fesmalla/trunk/vendor/plugins/community_engine/engine_plugins/simple_private_messages/lib/professionalnerd/simple_private_messages/has_private_messages_extensions.rb
+END

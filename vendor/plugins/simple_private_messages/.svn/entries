@@ -1,0 +1,88 @@
+8
+
+dir
+28652
+https://radagast.gnuine.com/repos/railsprojects/projects/fesmalla/trunk/vendor/plugins/community_engine/engine_plugins/simple_private_messages
+https://radagast.gnuine.com/repos/railsprojects
+
+
+
+2009-05-04T09:05:35.853970Z
+28586
+egarcia
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+62450321-e929-0410-9c36-ec31725ac4b1
+
+test
+dir
+
+Rakefile
+file
+
+
+
+
+2009-05-07T09:35:21.000000Z
+9bf31a400fe5999a99e81a64923b92fe
+2009-05-04T09:05:35.853970Z
+28586
+egarcia
+
+tasks
+dir
+
+init.rb
+file
+
+
+
+
+2009-05-07T09:35:21.000000Z
+2efe6bcd9140941eb89cb2db7cce4fd1
+2009-05-04T09:05:35.853970Z
+28586
+egarcia
+
+lib
+dir
+
+generators
+dir
+
+MIT-LICENSE
+file
+
+
+
+
+2009-05-07T09:35:21.000000Z
+ef8a8411d1f142aee549cd9a00a720d5
+2009-05-04T09:05:35.853970Z
+28586
+egarcia
+
+README
+file
+
+
+
+
+2009-05-07T09:35:21.000000Z
+30cf65b6876e77043acf439172b683fd
+2009-05-04T09:05:35.853970Z
+28586
+egarcia
+

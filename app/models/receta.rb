@@ -133,7 +133,14 @@ puts @sql_statement
       end 
     end
 
-    return @recetas_exact
+    @recetas_exact
 end
+
+  def self.find_ordered(user,options = {})
+    with_scope :find => options do
+      Receta.find(:all, :conditions => ["user_id = ?", user.id])
+    end
+  end
+  
   
 end

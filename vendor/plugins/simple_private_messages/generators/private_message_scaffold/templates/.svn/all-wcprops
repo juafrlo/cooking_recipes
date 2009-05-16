@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 176
+/repos/railsprojects/!svn/ver/28586/projects/fesmalla/trunk/vendor/plugins/community_engine/engine_plugins/simple_private_messages/generators/private_message_scaffold/templates
+END
+view_index_sent.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 201
+/repos/railsprojects/!svn/ver/28586/projects/fesmalla/trunk/vendor/plugins/community_engine/engine_plugins/simple_private_messages/generators/private_message_scaffold/templates/view_index_sent.html.erb
+END
+view_show.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 195
+/repos/railsprojects/!svn/ver/28586/projects/fesmalla/trunk/vendor/plugins/community_engine/engine_plugins/simple_private_messages/generators/private_message_scaffold/templates/view_show.html.erb
+END
+controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 190
+/repos/railsprojects/!svn/ver/28586/projects/fesmalla/trunk/vendor/plugins/community_engine/engine_plugins/simple_private_messages/generators/private_message_scaffold/templates/controller.rb
+END
+view_index_inbox.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 202
+/repos/railsprojects/!svn/ver/28586/projects/fesmalla/trunk/vendor/plugins/community_engine/engine_plugins/simple_private_messages/generators/private_message_scaffold/templates/view_index_inbox.html.erb
+END
+view_index.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 196
+/repos/railsprojects/!svn/ver/28586/projects/fesmalla/trunk/vendor/plugins/community_engine/engine_plugins/simple_private_messages/generators/private_message_scaffold/templates/view_index.html.erb
+END
+view_new.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 194
+/repos/railsprojects/!svn/ver/28586/projects/fesmalla/trunk/vendor/plugins/community_engine/engine_plugins/simple_private_messages/generators/private_message_scaffold/templates/view_new.html.erb
+END

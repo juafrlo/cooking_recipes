@@ -1,0 +1,52 @@
+8
+
+dir
+28652
+https://radagast.gnuine.com/repos/railsprojects/projects/fesmalla/trunk/vendor/plugins/community_engine/engine_plugins/simple_private_messages/lib/professionalnerd/simple_private_messages
+https://radagast.gnuine.com/repos/railsprojects
+
+
+
+2009-05-04T09:05:35.853970Z
+28586
+egarcia
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+62450321-e929-0410-9c36-ec31725ac4b1
+
+private_message_extensions.rb
+file
+
+
+
+
+2009-05-07T09:35:21.000000Z
+3f7e15f68fa9ecffec96dfeb332c31c3
+2009-05-04T09:05:35.853970Z
+28586
+egarcia
+
+has_private_messages_extensions.rb
+file
+
+
+
+
+2009-05-07T09:35:21.000000Z
+f9a8ce72f30753db827ed08cd6eb602f
+2009-05-04T09:05:35.853970Z
+28586
+egarcia
+

@@ -9,6 +9,8 @@ class User < ActiveRecord::Base
   has_many :replies
   has_attached_file :avatar, :styles => { :small => "50x50>" }
   has_many :recetas
+  has_many :friends
+  has_private_messages
 
   validates_presence_of     :login
   validates_length_of       :login,    :within => 3..40
@@ -83,10 +85,26 @@ class User < ActiveRecord::Base
     roles << Role.find(2)
     save!  
   end
+  
+  def user_friends
+    User.find(:all, :conditions => ['id IN (?)',
+       self.friends.collect(&:friend_id)] )
+  end
+  
+  def user_no_friends
+    User.find(:all, :conditions => ['id NOT IN (?)',
+       self.friends.collect(&:user_id) + [self.id]]) 
+  end
+  
+  def puntuation
+    self.recetas.collect(&:puntuation).sum
+  end
 
-
-  protected
-    
+  def admin?
+    User.first.roles.include?(Role.first) 
+  end
+  
+  protected    
     def make_activation_code
         self.activation_code = self.class.make_token
     end

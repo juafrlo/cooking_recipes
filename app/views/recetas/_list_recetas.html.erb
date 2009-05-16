@@ -11,7 +11,10 @@
 <% for receta in @recetas %>
   <tr class="<%= cycle('odd','par')%>" >
     <td><%= link_to receta.name,receta %></td>
-    <td><%=h receta.puntuation %>0 (0 votos)</td>
+    <td>
+		<%= number_with_precision( Rating.rating(receta, 'Receta'), :precision => 1) %>/5 
+		(<%= num_votes(Rating.number_of_votes('Receta', receta))%>)
+	</td>
     <!--<td><%=h receta.description %></td>-->
     <td><%=h receta.category.name %></td>
     <td><%=h receta.user.login %></td>

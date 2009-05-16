@@ -1,0 +1,31 @@
+<h1 class="title">Lista de amigos</h1>
+<table>
+	<% for user in @friends %>
+	<tr>
+	  <td><%= image_tag(user.avatar.url(:small)) %></td>
+	  <td><%= link_to user.login, user_path(user) %></td>
+	  <td>0 (0 votos)</td>
+	  <td><%= user.recetas.count %> Recetas</td>
+    </tr>
+	<% end %>
+</table>
+
+
+<br/>
+<h1 class="title">Lista de usuarios</h1>
+<table>
+	<% for user in @no_friends %>
+		<tr>
+		  <td><%= image_tag(user.avatar.url(:small)) %></td>
+	  	  <td><%= link_to user.login, user_path(user) %></td>
+		  <td><%= user.puntuation %></td>
+		  <td><%= user.recetas.count %> Recetas</td>	
+		  <td><span id="my_friend_<%=user.id%>"></span><td>
+		  <td><%= link_to_remote 'Invitar amigo',
+		    :url => {:controller => 'friends', :action => 'create', 
+			  :users => {:user_id => current_user.id, :friend_id => user.id}},
+			:html => {:id => "my_link_#{user.id}"}%></td>
+		</tr>
+	<% end %>
+</table>
+

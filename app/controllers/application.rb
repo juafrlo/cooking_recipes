@@ -27,6 +27,5 @@ class ApplicationController < ActionController::Base
     
     def login_and_return
       session[:return_url] = request.env["HTTP_REFERER"]
-    end
-
+    end    
 end

@@ -24,4 +24,14 @@ def hello_user(user)
   end
 end
 
+def user_unread_messages
+  if current_user.unread_message_count > 0
+    if current_user.unread_message_count == 1
+      "(#{current_user.unread_message_count} mensaje)"
+    else
+      "(#{current_user.unread_message_count} mensajes)"
+    end
+  end
+end
+
 end

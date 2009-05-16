@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090407175425) do
+ActiveRecord::Schema.define(:version => 20090515074629) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -53,9 +53,28 @@ ActiveRecord::Schema.define(:version => 20090407175425) do
     t.datetime "updated_at"
   end
 
+  create_table "friends", :id => false, :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "friend_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "ingredients", :force => true do |t|
     t.integer  "receta_id"
     t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "messages", :force => true do |t|
+    t.integer  "sender_id"
+    t.integer  "recipient_id"
+    t.boolean  "sender_deleted",    :default => false
+    t.boolean  "recipient_deleted", :default => false
+    t.string   "subject"
+    t.text     "body"
+    t.datetime "read_at"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

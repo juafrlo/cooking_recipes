@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
   # Be sure to include AuthenticationSystem in Application Controller instead
   include AuthenticatedSystem
-  
+  before_filter :authorize, :only => [:mis_recetas]
+
 
   def show
     @user = User.find(params[:id])
@@ -16,7 +17,14 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
   
+  def mis_recetas
+    @recetas = Receta.find_ordered(current_user, :order => params[:order])
+  end
 
+  def mis_amigos
+    @friends = current_user.user_friends
+    @no_friends = current_user.user_no_friends
+  end
 
   # render new.rhtml
   def new
@@ -54,9 +62,6 @@ class UsersController < ApplicationController
       end
     end
   end
-
-
-
 
   def activate
     logout_keeping_session!

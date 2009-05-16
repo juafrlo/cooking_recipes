@@ -1,4 +1,8 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :messages
+
+  map.resources :friends
+
 
   map.resources :categories
 
@@ -12,7 +16,10 @@ ActionController::Routing::Routes.draw do |map|
   
   #forum_catl1/1/forum_posts/1//forum_reply/1
   
-  map.resources :users
+  map.resources :users, :member => {:mis_recetas => :get, :mis_amigos => :get} do |users|
+    users.resources :messages, :collection => { :delete_selected => :post }
+  end
+
 
   map.resource :session
 

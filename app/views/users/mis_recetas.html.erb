@@ -1,0 +1,22 @@
+<h1  class="title">Mis recetas publicadas</h1>
+
+<table class="recetas_table" style="width:570px;">		
+  <tr>
+    <th><%= link_to 'Plato', :params=> {:order => 'name'} %></th>
+    <th><%= link_to 'Puntuación', :params=> {:order => 'puntuation'} %></th>
+    <th><%= link_to 'Categoría', :params=> {:order => 'category.id'} %></th>
+    <th><%= link_to 'Fecha', :params=> {:order => 'created_at'} %></th>
+  </tr>
+
+<% for receta in @recetas %>
+  <tr class="<%= cycle('odd','par')%>" >
+    <td><%= link_to receta.name,receta %></td>
+    <td>
+		<%= number_with_precision( Rating.rating(receta, 'Receta'), :precision => 1) %>/5 
+		(<%= num_votes(Rating.number_of_votes('Receta', receta))%>)
+	</td>
+    <td><%=h receta.category.name %></td>
+    <td><%=h receta.created_at.to_s(:date) %></td>
+  </tr>
+<% end %>
+</table>

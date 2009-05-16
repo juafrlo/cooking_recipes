@@ -75,10 +75,13 @@
 							<li><%= log_in_out %> <% if !logged_in? %>
 								/ <%= link_to 'Regístrate', '/signup' %> <% end %></li>	
 							<% if logged_in? %>
-							<li><a href="#">Mensajes privados</a></li>
+							<li><%= link_to 'Mensajes privados', 	
+								user_messages_path(current_user)%>
+								<%= user_unread_messages %>
+							 </li>
 							<li><%= link_to 'Mi ficha', current_user %></li>
-							<li><a href="#">Mis recetas</a></li>
-							<li><a href="#">Últimas participaciones</a></li>
+							<li><%= link_to 'Mis recetas', mis_recetas_user_path(current_user)%></li>
+							<li><%= link_to 'Mis amigos', mis_amigos_user_path(current_user)%></li>
 							<% end %>
 						</ul>
 					</li>
