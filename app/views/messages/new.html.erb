@@ -1,10 +1,16 @@
 <% form_for @message, :url => user_messages_path(@user) do |f| %>
 
-<p>
-	To:<br/>
-	<%= text_field_with_auto_complete :user, :login %>
+
+
+  <p>
+    <%= f.label :to %>
 	<%= error_message_on @message, :to %>
-</p>
+	<%= f.text_field :to ,{:autocomplete => "off"} %>
+	<div class="auto_complete" id="message_to_auto_complete"></div>
+	<%= auto_complete_field 'message_to', {:url => { :controller => "users",
+	 :action =>	'auto_complete_for_user_login'}, :tokens => [' ']} %>
+  </p>
+
 
   <p>
     Subject:<br />

@@ -104,6 +104,13 @@ class User < ActiveRecord::Base
     User.first.roles.include?(Role.first) 
   end
   
+  def self.login_regexp(str)
+    re = Regexp.new("^#{str}", "i")
+    find_options = { :order => "login ASC" }
+    @users = User.find(:all,
+     find_options).collect(&:login).select { |login| login.match re }    
+  end
+  
   protected    
     def make_activation_code
         self.activation_code = self.class.make_token

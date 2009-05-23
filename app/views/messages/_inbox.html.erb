@@ -1,10 +1,10 @@
 <h2>Inbox</h2>
 <table>
 	<tr>
-		<th>Del?</th>
-		<th>Sent</th>
-		<th>Sender</th>
-		<th>Sent</th>
+		<th>¿Borrar?</th>
+		<th>Asunto</th>
+		<th>De</th>
+		<th>Fecha recepción</th>
 	</tr>
 	<% if @messages.size == 0 %>
 		<tr>
@@ -24,7 +24,7 @@
 					<% end %>
 				</td>
 				<td><%= link_to h(message.sender.login), user_path(@user) %></td>
-		    <td><%=h message.created_at.to_s(:long) %></td>
+		    <td><%=h message.created_at.strftime("%d/%m/%Y") %></td>
 			</tr>
 		<% end %>
 		<tr>
@@ -34,5 +34,5 @@
 		</tr>
 	<% end %>
 </table>
-<%= link_to "Sent", user_messages_path(@user, :mailbox => :sent)%> |
-<%= link_to "Compose", new_user_message_path(@user)%>
+<%= link_to "Enviados", user_messages_path(@user, :mailbox => :sent)%> |
+<%= link_to "Redactar", new_user_message_path(@user)%>

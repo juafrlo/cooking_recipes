@@ -1,7 +1,9 @@
 class UsersController < ApplicationController
   # Be sure to include AuthenticationSystem in Application Controller instead
   include AuthenticatedSystem
+  skip_before_filter :verify_authenticity_token, :only => 'auto_complete_for_user_login'
   before_filter :authorize, :only => [:mis_recetas]
+ 
  
   def show
     @user = User.find(params[:id])
@@ -26,8 +28,9 @@ class UsersController < ApplicationController
   end
 
   def auto_complete_for_user_login
-    @users = User.find(:all)
-    render :inline => "<%= auto_complete_result(@users, 'login') %>" 
+    @users = User.login_regexp(params[:message][:to])
+    render :inline =>
+     "<%= content_tag(:ul, @users.map { |user| content_tag(:li, h(user)) }) %>"
   end
 
   # render new.rhtml

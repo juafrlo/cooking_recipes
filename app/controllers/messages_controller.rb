@@ -1,7 +1,10 @@
 class MessagesController < ApplicationController
   before_filter :set_user
-  skip_before_filter :verify_authenticity_token, :only => 'auto_complete_for_user_login'
-  auto_complete_for :user, :login
+  
+  auto_complete_for :message, :to
+  skip_before_filter :verify_authenticity_token, :only => [:auto_complete_for_message_to]
+  
+  
   
   def index
     if params[:mailbox] == "sent"
@@ -27,8 +30,7 @@ class MessagesController < ApplicationController
       end
     end
     
-    def auto_complete_for_user_login
-      require 'ruby-debug'; debugger
+    def auto_complete_for_message_to
     end
   end
   
@@ -54,7 +56,7 @@ class MessagesController < ApplicationController
         }
         flash[:notice] = "Messages deleted"
       end
-      redirect_to user_message_path(@user, @messages)
+      redirect_to user_messages_path(@user)
     end
   end
   
