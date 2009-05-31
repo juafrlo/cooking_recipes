@@ -23,8 +23,10 @@ class UsersController < ApplicationController
   end
 
   def mis_amigos
-    @friends = current_user.user_friends
-    @no_friends = current_user.user_no_friends
+    #@friends = current_user.friends
+    #@users_to_invite = current_user.can_invite
+    #@no_friends = current_user.no_friends
+    @users,@title = current_user.friends_list(params[:option])   
   end
 
   def auto_complete_for_user_login

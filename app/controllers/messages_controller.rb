@@ -1,5 +1,5 @@
 class MessagesController < ApplicationController
-  before_filter :set_user
+  #before_filter :set_user
   
   auto_complete_for :message, :to
   skip_before_filter :verify_authenticity_token, :only => [:auto_complete_for_message_to]
@@ -10,7 +10,11 @@ class MessagesController < ApplicationController
     if params[:mailbox] == "sent"
       @messages = @user.sent_messages
     else
-      @messages = @user.received_messages
+      if @user_received_messages
+        @messages = @user.received_messages
+      else
+        @messages = ''
+      end
     end
   end
   

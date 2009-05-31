@@ -1,0 +1,4 @@
+page["my_friend_#{@friend.friend_id}".to_sym].replace_html '<span style="color:green;">¡Invitación enviada!</span>'
+page["my_friend_#{@friend.friend_id}".to_sym].visual_effect :highlight
+page["my_link_#{@friend.friend_id}".to_sym].replace_html ''
+

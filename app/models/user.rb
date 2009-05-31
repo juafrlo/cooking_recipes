@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
   has_many :replies
   has_attached_file :avatar, :styles => { :small => "50x50>" }
   has_many :recetas
-  has_many :friends
+  has_many :friendships, :dependent => :destroy
   has_private_messages
 
   validates_presence_of     :login
@@ -86,14 +86,53 @@ class User < ActiveRecord::Base
     save!  
   end
   
-  def user_friends
-    User.find(:all, :conditions => ['id IN (?)',
-       self.friends.collect(&:friend_id)] )
+  def friends
+    self.friendships.select{|user| user.status == Friendship::STATUS[1] }
   end
   
-  def user_no_friends
+  def invited_friends
+    self.friendships.select{|user| user.status == Friendship::STATUS[0] }
+  end
+  
+  def can_invite
+    no_pending =  self.friendships.select { |user| 
+      user.status != Friendship::STATUS[0] && user.status != Friendship::STATUS[1]  
+      }.collect(&:user_id) 
+    User.find(:all, :conditions => ['id NOT IN (?)', no_pending + [self.id]])
+  end
+  
+  def no_friends  
     User.find(:all, :conditions => ['id NOT IN (?)',
        self.friends.collect(&:user_id) + [self.id]]) 
+  end
+  
+  def users_to_invite
+    User.find(:all, :conditions => ['id NOT IN (?)',
+       self.friends.select{|user| user.status != Friendship::STATUS[0] && user.status  != Friendship::STATUS[1]  }])
+
+
+    self.friendships.select{|user| user.status != Friendship::STATUS[0] && user.status !=  Friendship::STATUS[1]  }
+  end
+  
+  def friends_list(option)
+    case option
+      when 'mis_amigos'
+        users = self.friends
+        title = 'Mis amigos'
+      when 'invitar'
+        users = self.can_invite
+        title = "Mandar invitaciones"
+      when 'invitados'
+        users = self.can_invite
+        title = "Usuarios invitados"
+      when 'invitaciones_recibidas'
+        users = self.can_invite
+        title = "Invitaciones recibidas"
+      else
+        users = self.friends
+        title = "Mis amigos"
+    end 
+    [users,title]
   end
   
   def puntuation
