@@ -50,7 +50,12 @@
 	<div id="page">
 		<div id="content">
 			<div class="post">	
-					<p style="color: green; padding:0px; margin:0px;"><%= flash[:notice] %></p>
+					<% unless flash[:notice].blank? %>
+					  <p class="message-ok"><%= flash[:notice] %></p>
+					<% end %>
+					<% unless flash[:error].blank? %>
+					  <p class="message-error"><%= flash[:error] %></p>
+					<% end%>
 					<%= yield  %>
 			</div>
 

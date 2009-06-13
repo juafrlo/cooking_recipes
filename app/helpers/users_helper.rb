@@ -91,9 +91,13 @@ module UsersHelper
   end
   
   def order_recetas_links(text,order)
-    html = "#{text} "
-    html +=  "#{link_to 'ASC', :params=> {:order => order + ' ASC'}} | "
-    html +=  "#{link_to 'DESC', :params=> {:order => order + ' DESC'}}"
+    html = "<div class='small_arrows_word'>"
+    html += "#{text} "
+    html += "</div"
+    html += "<div class='small_arrows'>"
+    html +=  "#{link_to image_tag('web/small_arrow_up.png'), :params=> {:order => order + ' ASC'}}"
+    html +=  "#{link_to image_tag('web/small_arrow_down.png'), :params=> {:order => order + ' DESC'}}"
+    html += "</div>"
     return html
   end
 

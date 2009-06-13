@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :roles
   has_many :forum_posts
   has_many :replies
-  has_attached_file :avatar, :styles => { :small => "50x50>" }
+  has_attached_file :avatar, :styles => { :small => "50x50>" }, :default_url => "/images/avatars/small/missing.png"
   has_many :recetas
   has_many :friendships, :dependent => :destroy
   has_private_messages

@@ -302,3 +302,43 @@ a img {
 .form_span{
 	font-weight: bolder;
 }
+
+.message-error {
+	padding: 2px 4px 2px 4px;
+	font-size: 12px;
+	background:#FFDCD6;
+	border:1px solid #990000;
+	margin: 5px 0px 8px 0px;
+	color:#BB0000;
+}
+
+.message-ok {
+	padding: 2px 4px 2px 4px;
+	font-size: 12px;
+	background: #CCFFCC;
+	border:1px solid  #00BB00;
+	margin: 5px 0px 8px 0px;
+	color:#008800;
+}
+
+
+.small_arrows_word{
+	float: left;
+	padding-right: 7px;
+}
+
+.small_arrows{
+	float:right;
+	width: 5px;
+	padding-right: 7px;
+}
+
+.recetas_table{
+	margin-top: 5px;
+}
+.recetas_table tr th{
+	color: black;
+	font-size: 14px;
+	padding: 5px;
+	background: #CCC;
+}
