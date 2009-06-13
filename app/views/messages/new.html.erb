@@ -1,9 +1,8 @@
 <% form_for @message, :url => user_messages_path(@user) do |f| %>
 
 
-
   <p>
-    <%= f.label :to %>
+    <%= f.label :to, "Para" %>
 	<%= error_message_on @message, :to %>
 	<%= f.text_field :to ,{:autocomplete => "off"} %>
 	<div class="auto_complete" id="message_to_auto_complete"></div>
@@ -13,16 +12,16 @@
 
 
   <p>
-    Subject:<br />
+    Asunto:<br />
     <%= f.text_field :subject %>
     <%= error_message_on @message, :subject %>
     </p>
     <p>
-      Message<br />
+      Mensaje<br />
       <%= f.text_area :body %>
 			<%= error_message_on @message, :body %>
     </p>
     <p>
-      <%= submit_tag "Send" %>
+      <%= submit_tag "Enviar" %>
     </p>
 <% end %>

@@ -2,10 +2,10 @@
 
 <table class="recetas_table" style="width:570px;">		
   <tr>
-    <th><%= link_to 'Plato', :params=> {:order => 'name'} %></th>
-    <th><%= link_to 'Puntuación', :params=> {:order => 'puntuation'} %></th>
-    <th><%= link_to 'Categoría', :params=> {:order => 'category.id'} %></th>
-    <th><%= link_to 'Fecha', :params=> {:order => 'created_at'} %></th>
+    <th><%= order_recetas_links('Plato', 'name') %></th>
+    <th><%= order_recetas_links('Puntuación', 'puntuation') %></th>
+    <th><%= order_recetas_links('Plato', 'categories.name') %></th>
+    <th><%= order_recetas_links('Plato', 'created_at') %></th>
   </tr>
 
 <% for receta in @recetas %>

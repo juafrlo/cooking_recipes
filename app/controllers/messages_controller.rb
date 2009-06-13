@@ -1,20 +1,15 @@
 class MessagesController < ApplicationController
-  #before_filter :set_user
   
+  before_filter :set_user
   auto_complete_for :message, :to
   skip_before_filter :verify_authenticity_token, :only => [:auto_complete_for_message_to]
-  
   
   
   def index
     if params[:mailbox] == "sent"
       @messages = @user.sent_messages
     else
-      if @user_received_messages
-        @messages = @user.received_messages
-      else
-        @messages = ''
-      end
+      @messages = @user.received_messages
     end
   end
   
@@ -30,11 +25,8 @@ class MessagesController < ApplicationController
       unless @reply_to.nil?
         @message.to = @reply_to.sender.login
         @message.subject = "Re: #{@reply_to.subject}"
-        @message.body = "\n\n*Original message*\n\n #{@reply_to.body}"
+        @message.body = "\n\n*Mensaje original*\n\n #{@reply_to.body}"
       end
-    end
-    
-    def auto_complete_for_message_to
     end
   end
   
@@ -63,8 +55,6 @@ class MessagesController < ApplicationController
       redirect_to user_messages_path(@user)
     end
   end
-  
-
   
   private
     def set_user

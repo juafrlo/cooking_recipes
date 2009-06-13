@@ -34,4 +34,8 @@ def user_unread_messages
   end
 end
 
+def mydatetime_format(datetime)
+   datetime.strftime('%d/%m/%Y %H:%M:%S')
+end
+
 end

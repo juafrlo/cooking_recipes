@@ -90,13 +90,13 @@ module UsersHelper
     end
   end
   
-  def friends_link(text,option,number)
-    link_to "#{text} #{show_count(option,number)}", 
-      mis_amigos_user_path(current_user,:option => option) 
+  def order_recetas_links(text,order)
+    html = "#{text} "
+    html +=  "#{link_to 'ASC', :params=> {:order => order + ' ASC'}} | "
+    html +=  "#{link_to 'DESC', :params=> {:order => order + ' DESC'}}"
+    return html
   end
 
-  def show_count(option,number)
-    "(<span id= '#{option}' style='color:red;'>#{number}</span>)" if number > 0
-  end
+
 
 end

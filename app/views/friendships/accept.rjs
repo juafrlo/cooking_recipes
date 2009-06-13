@@ -1,0 +1,12 @@
+page[:accept_or_deny].innerHTML = "Amistad aceptada"
+page[:accept_or_deny].visual_effect  :highlight
+
+if current_user.received_invitations.size == 0
+  page[:invitaciones_recibidas].update("")
+else
+  page[:invitaciones_recibidas].update("(#{current_user.received_invitations.size})")
+end
+page[:mis_amigos].update("(#{current_user.friends.size})")
+page[:invitaciones_recibidas].visual_effect :highlight
+page[:mis_amigos].visual_effect :highlight
+

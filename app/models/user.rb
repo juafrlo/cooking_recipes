@@ -86,19 +86,33 @@ class User < ActiveRecord::Base
     save!  
   end
   
+  def friends_ids
+    self.friendships.select{|user|
+      user.status == Friendship::STATUS[1] }.collect(&:friend_id)
+  end
+  
   def friends
-    self.friendships.select{|user| user.status == Friendship::STATUS[1] }
+    User.find(:all, :conditions => ['id IN (?)', friends_ids],
+     :order => 'login ASC')
   end
   
   def invited_friends
-    self.friendships.select{|user| user.status == Friendship::STATUS[0] }
+    invited_friends = self.friendships.select{
+      |user| user.status == Friendship::STATUS[0] && user.initiator == true
+    }.collect(&:friend_id)
+    User.find(:all, :conditions => ['id IN (?)', invited_friends])
   end
   
   def can_invite
-    no_pending =  self.friendships.select { |user| 
-      user.status != Friendship::STATUS[0] && user.status != Friendship::STATUS[1]  
-      }.collect(&:user_id) 
-    User.find(:all, :conditions => ['id NOT IN (?)', no_pending + [self.id]])
+    pending_or_accepted =  self.friendships.collect(&:friend_id) 
+    User.find(:all, :conditions => ['id NOT IN (?)', pending_or_accepted + [self.id]])
+  end
+  
+  def received_invitations
+    users_invited_user = Friendship.all.select { |user| 
+      user.friend_id == self.id && user.status == Friendship::STATUS[0] && user.initiator == true
+    }.collect(&:user_id)
+    User.find(:all, :conditions => ['id IN (?)', users_invited_user])
   end
   
   def no_friends  
@@ -106,13 +120,6 @@ class User < ActiveRecord::Base
        self.friends.collect(&:user_id) + [self.id]]) 
   end
   
-  def users_to_invite
-    User.find(:all, :conditions => ['id NOT IN (?)',
-       self.friends.select{|user| user.status != Friendship::STATUS[0] && user.status  != Friendship::STATUS[1]  }])
-
-
-    self.friendships.select{|user| user.status != Friendship::STATUS[0] && user.status !=  Friendship::STATUS[1]  }
-  end
   
   def friends_list(option)
     case option
@@ -123,10 +130,10 @@ class User < ActiveRecord::Base
         users = self.can_invite
         title = "Mandar invitaciones"
       when 'invitados'
-        users = self.can_invite
+        users = self.invited_friends
         title = "Usuarios invitados"
       when 'invitaciones_recibidas'
-        users = self.can_invite
+        users = self.received_invitations
         title = "Invitaciones recibidas"
       else
         users = self.friends

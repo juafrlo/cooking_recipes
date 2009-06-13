@@ -4,9 +4,8 @@ ActionController::Routing::Routes.draw do |map|
     :conditions => { :method => :get }
   
 
-  map.resources :messages
-
   map.resources :friends
+  map.resources :friendships, :collection => {:accept => :get, :deny => :get}
 
 
   map.resources :categories

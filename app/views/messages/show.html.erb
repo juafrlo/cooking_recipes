@@ -1,8 +1,12 @@
-<p><strong>From:</strong> <%= @message.sender == @user ? link_to("You", user_path(@user)) : link_to(h(@message.sender.login), user_path(@user)) %></p>
-<p><strong>Received:</strong> <%= @message.created_at.to_s(:long) %></p>
-<p><strong>To:</strong> <%= @message.recipient == @user ? link_to("You", user_path(@user)) : link_to(h(@message.recipient.login), user_path(@user)) %></p>
+<p><strong>De:</strong> <%= @message.sender == @user ? link_to("You", user_path(@user)) : link_to(h(@message.sender.login), user_path(@user)) %></p>
 <p>
-  <strong>Message</strong><br />
+  <strong>Recibido:</strong>
+  <%= mydatetime_format(@message.created_at) %>
+</p>
+
+<p><strong>Para:</strong> <%= @message.recipient == @user ? link_to("You", user_path(@user)) : link_to(h(@message.recipient.login), user_path(@user)) %></p>
+<p>
+  <strong>Mensaje:</strong><br />
   <%=h @message.body %>
 </p>
 <p>

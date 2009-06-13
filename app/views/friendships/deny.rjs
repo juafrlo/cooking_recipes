@@ -1,0 +1,18 @@
+page[:accept_or_deny].innerHTML = "<span style='color:red;'>Amistad rechazada</span>"
+page[:accept_or_deny].visual_effect  :highlight
+
+
+if current_user.received_invitations.size == 0
+  page[:invitaciones_recibidas].update("")
+else
+  page[:invitaciones_recibidas].update("(#{current_user.received_invitations.size})")
+end
+if current_user.friends.size == 0
+  page[:mis_amigos].update("")
+else
+  page[:mis_amigos].update("(#{current_user.received_invitations.size})")
+end
+
+page[:invitaciones_recibidas].visual_effect :highlight
+page[:mis_amigos].visual_effect :highlight
+

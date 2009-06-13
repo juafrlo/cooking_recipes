@@ -75,4 +75,15 @@ class FriendshipsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
+  def accept
+    Friendship.accept_friendship(params[:users][:user_id],
+     params[:users][:friend_id])
+  end
+  
+  def deny
+    Friendship.deny_friendship(params[:users][:user_id],
+     params[:users][:friend_id])
+  end
+  
 end

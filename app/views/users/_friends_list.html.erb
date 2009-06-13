@@ -14,14 +14,20 @@
 	  <td><%= user.puntuation %>/5</td>
 	  <td><%= user.recetas.count %></td>	
 	  <td><span id="my_friend_<%=user.id%>"></span><td>
-	  <td><%= link_to_remote 'Invitar amigo',
-	    :loading => "$('spiner_#{user.id}').show();",
-	    :complete => "$('spiner_#{user.id}').hide();", 
-	    :url => {:controller => 'friendships', :action => 'create', 
-		:users => {:user_id => current_user.id, :friend_id => user.id}},
-		:html => {:id => "my_link_#{user.id}"}%></td>
-	  <td><%= image_tag('web/spinner.gif', :id => "spiner_#{user.id}",
-        :style=> 'display:none;')%></td>
+      <td id="accept_or_deny">
+	    <% if params[:option] == "mis_amigos" %>
+          <%= deny_friendship_link(user) %>
+	    <% elsif params[:option] == "invitaciones_recibidas" %>
+          <%= accept_friendship_link(user) %>
+          <%= deny_friendship_link(user) %>
+	    <% elsif params[:option] == "invitar" %>
+          <%= invite_user_link(user) %>
+        <% end %>
+      </td>
+	  <td>
+	    <%= image_tag('web/spinner.gif', :id => "spiner_#{user.id}",
+          :style=> 'display:none;')%>
+      </td>
 	</tr>
   <% end %>
 </table>

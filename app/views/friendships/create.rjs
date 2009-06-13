@@ -2,3 +2,5 @@ page["my_friend_#{@friend.friend_id}".to_sym].replace_html '<span style="color:g
 page["my_friend_#{@friend.friend_id}".to_sym].visual_effect :highlight
 page["my_link_#{@friend.friend_id}".to_sym].replace_html ''
 
+page["invitados".to_sym].update("(#{current_user.invited_friends.size})")
+page["invitados".to_sym].visual_effect :highlight

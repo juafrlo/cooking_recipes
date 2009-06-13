@@ -1,10 +1,10 @@
 <h2>Sent</h2>
 <table>
 	<tr>
-		<th>Del?</th>
-		<th>Subject</th>
-		<th>To</th>
-		<th>Sent</th>
+		<th>¿Borrar?</th>
+		<th>Asunto</th>
+		<th>De</th>
+		<th>Fecha de envío</th>
 	</tr>
 	<% if @messages.size == 0 %>
 		<tr>
@@ -18,7 +18,7 @@
 				<td><%= check_box_tag "delete[]", message.id %></td>
 				<td><%= link_to h(message.subject), user_message_path(@user, message) %></td>
   			<td><%= link_to h(message.recipient.login), user_path(@user) %></td>
-			  <td><%=h message.created_at.to_s(:long) %></td>
+			  <td><%=h mydatetime_format(message.created_at) %></td>
 			</tr>
 		<% end %>
 		<tr>

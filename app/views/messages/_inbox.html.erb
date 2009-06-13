@@ -20,11 +20,11 @@
 					<% if message.read? %>
 					  <%= link_to h(message.subject), user_message_path(@user, message) %>
 					<% else %>
-					  <%= link_to "#{h(message.subject)} (unread)", user_message_path(@user, message) %>
+					  <%= link_to "#{h(message.subject)} (no leído)", user_message_path(@user, message), :style => 'color: red;' %>
 					<% end %>
 				</td>
 				<td><%= link_to h(message.sender.login), user_path(@user) %></td>
-		    <td><%=h message.created_at.strftime("%d/%m/%Y") %></td>
+		    <td><%=h mydatetime_format(message.created_at) %></td>
 			</tr>
 		<% end %>
 		<tr>
