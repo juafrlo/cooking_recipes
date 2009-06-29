@@ -6,6 +6,7 @@ class Receta < ActiveRecord::Base
   after_update :save_steps
   belongs_to :user
   belongs_to :category
+	acts_as_commentable
   
   validates_presence_of :name, :description, :country, :town
   validates_numericality_of :duration

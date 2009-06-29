@@ -42,6 +42,8 @@ class FriendshipsController < ApplicationController
   def create
     @friend = Friendship.new(params[:users])
     @friend.initiator = true
+    @link_id = params[:link_id]
+    @link_class = params[:link_class]
     if @friend.save
       Friendship.create(:user_id => @friend.friend_id, :friend_id => @friend.user_id)
     end

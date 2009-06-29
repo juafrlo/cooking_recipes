@@ -1,6 +1,12 @@
-page["my_friend_#{@friend.friend_id}".to_sym].replace_html '<span style="color:green;">¡Invitación enviada!</span>'
-page["my_friend_#{@friend.friend_id}".to_sym].visual_effect :highlight
-page["my_link_#{@friend.friend_id}".to_sym].replace_html ''
+page.select("a.#{@link_class}").each do |value|
+  value.update(' ')
+end
 
-page["invitados".to_sym].update("(#{current_user.invited_friends.size})")
-page["invitados".to_sym].visual_effect :highlight
+page[@link_id.to_sym].replace "<span id='#{@link_id}' style='color:green;'>¡Invitación enviada!</span>"
+page[@link_id.to_sym].visual_effect :highlight
+
+
+page.select("span#invitados").each do |value|
+  value.update("(#{current_user.invited_friends.size})")
+  value.visual_effect :highlight
+end 

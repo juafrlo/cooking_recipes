@@ -1,6 +1,6 @@
 <h1 class="title"><%= title %></h1>
 <table>
-  <% for user in users %>
+  <% users.each_with_index do |user,i| %>
     <tr>
 	  <th></th>
 	  <th>Nick</th>
@@ -13,19 +13,18 @@
   	  <td><%= link_to user.login, user_path(user) %></td>
 	  <td><%= user.puntuation %>/5</td>
 	  <td><%= user.recetas.count %></td>	
-	  <td><span id="my_friend_<%=user.id%>"></span><td>
-      <td id="accept_or_deny">
+    <td id="accept_or_deny">
 	    <% if params[:option] == "mis_amigos" %>
           <%= deny_friendship_link(user) %>
 	    <% elsif params[:option] == "invitaciones_recibidas" %>
           <%= accept_friendship_link(user) %>
           <%= deny_friendship_link(user) %>
 	    <% elsif params[:option] == "invitar" %>
-          <%= invite_user_link(user) %>
+          <%= invite_user_link(user, "my_friend_link_#{i}", "user_link_#{user.id}") %>
         <% end %>
       </td>
 	  <td>
-	    <%= image_tag('web/spinner.gif', :id => "spiner_#{user.id}",
+	    <%= image_tag('web/spinner.gif', :id => "spiner_my_friend_link_#{i}",
           :style=> 'display:none;')%>
       </td>
 	</tr>

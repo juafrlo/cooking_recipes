@@ -50,15 +50,25 @@
 	<div id="page">
 		<div id="content">
 			<div class="post">	
-					<% unless flash[:notice].blank? %>
-					  <p class="message-ok"><%= flash[:notice] %></p>
-					<% end %>
-					<% unless flash[:error].blank? %>
-					  <p class="message-error"><%= flash[:error] %></p>
-					<% end%>
-					<%= yield  %>
+				<div class="flash_message">
+					<%= my_flash_message(flash) %>
+		    </div>	   
+				<div style="clear:both;"></div>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+				<%= yield  %>
 			</div>
-
 		</div>
 		<!-- end #content -->
 		<div id="sidebar">

@@ -1,0 +1,75 @@
+<div class="comments" style="padding-top: 50px;">
+    <h2>Comentarios</h2>
+	<% if commentable.comments.first %>
+	  <%= render :partial => 'comments/comment', :locals => {:comment => commentable.comments.first} %>
+	<% end %>
+  
+	<% if commentable.comments.size > 2 %>
+	<div class="more-comments" onclick="new Effect.toggle('<%="comments_list_#{commentable.id}"%>',
+	 'appear', { duration: 1.0 }); ">
+      <p>+ Ver más </p>
+    </div>
+	<% end %>
+
+  <div id=<%="comments_list_#{commentable.id}"%> style="display:none;">
+   	<% for comment in commentable.comments %>
+	    <% if comment != commentable.comments.first && comment != commentable.comments.last %>
+		     <%= render :partial => 'comments/comment', :locals => {:comment => comment} %>
+		  <% end %>
+		<% end %>
+	</div>
+
+	<% if commentable.comments.last && commentable.comments.last != commentable.comments.first %>
+	  <%= render :partial => 'comments/comment', :locals => {:comment => commentable.comments.last} %>
+	<% end %>
+</div>
+
+
+
+<% # ID WHERE THE NEWEST_COMMENT WILL BE INSERTED %>
+<div id =<%="newest_comment_#{commentable.id}"%> style="margin-bottom: 10px;"></div>
+
+<% if logged_in? %>
+<% form_remote_for(@comment,
+ :url => comments_path(commentable.class.to_s.underscore, commentable.id, 
+   :locator => "newest_comment_#{commentable.id}"),
+ :loading => "$('spinner_#{commentable.id}').show();",
+ :complete => "$('spinner_#{commentable.id}').hide();",
+ :html => {:id => 'new_comment_form'}) do |f| %>
+  <p>
+    <%= f.text_area :comment, :size => "70x20", :id => "comment_area_#{commentable.id}" %>
+  </p>
+
+  <p>
+  <%= f.submit 'Comentar'%>
+  <%= image_tag 'web/spinner.gif', :style => 'display:none;',
+    :id => "spinner_#{commentable.id}" %>
+  </p>
+<% end %>
+
+
+	<script type="text/javascript" language="javascript">
+		resizeIt = function() {
+         var textarea_id = '<%= "comment_area_#{commentable.id}" %>';
+	    var str = $(textarea_id).value;
+	    var cols = $(textarea_id).cols;
+
+	    var linecount = 0;
+	    $A(str.split("\n")).each( function(l) {
+	      linecount += Math.ceil( l.length / cols ); // take into account long lines
+	    } 
+		)
+	  
+	  $(textarea_id).rows = linecount + 1;
+		if(str.length >= 1999){ 
+		$(textarea_id).value = str.substr(0,1999); }
+	  };
+  // you could attach to keyUp or whatever if keydown doesn't work
+	  Event.observe('<%= "comment_area_#{commentable.id}" %>', 'keydown', resizeIt );
+	  resizeIt(); //initial on load
+</script>
+<% else %>
+  <%= link_to 'Añadir comentario', '/login' %>
+<% end %>
+
+

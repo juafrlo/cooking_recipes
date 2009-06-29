@@ -52,6 +52,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :recetas, :collection => {:categoria => :get, :que_cocinar_hoy => :get, :resultatos => :get}
 
+  map.resources :comments, :path_prefix => '/:commentable_type/:commentable_id'
 
 
 

@@ -81,3 +81,5 @@
 <%= link_to 'Volver', recetas_path %>
 </div>
 </div>
+
+<%= render :partial => 'comments/commenting_system', :locals => {:commentable => @receta}%>

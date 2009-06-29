@@ -22,6 +22,10 @@ class RecetasController < ApplicationController
     @ingredients = Ingredient.find(:all, :conditions => ["receta_id = ?", params[:id]])    
     @steps = Step.find(:all, :conditions => ["receta_id = ?", params[:id]])    
 
+    if logged_in?
+      @comment = Comment.new 
+    end
+    
     
     respond_to do |format|
       format.html # show.html.erb

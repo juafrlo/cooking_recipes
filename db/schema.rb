@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090523064408) do
+ActiveRecord::Schema.define(:version => 20090615185442) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -20,6 +20,18 @@ ActiveRecord::Schema.define(:version => 20090523064408) do
     t.integer  "categoryphoto_file_size"
     t.datetime "categoryphoto_updated_at"
   end
+
+  create_table "comments", :force => true do |t|
+    t.string   "title",            :limit => 50,   :default => ""
+    t.string   "comment",          :limit => 2000, :default => ""
+    t.datetime "created_at",                                       :null => false
+    t.integer  "commentable_id",                   :default => 0,  :null => false
+    t.string   "commentable_type", :limit => 15,   :default => "", :null => false
+    t.integer  "user_id",                          :default => 0,  :null => false
+    t.integer  "recipient_id",                     :default => 0,  :null => false
+  end
+
+  add_index "comments", ["user_id"], :name => "fk_comments_user"
 
   create_table "forum_cat_l1s", :force => true do |t|
     t.string   "title"

@@ -310,6 +310,8 @@ a img {
 	border:1px solid #990000;
 	margin: 5px 0px 8px 0px;
 	color:#BB0000;
+	float:left;
+	width: 98%;
 }
 
 .message-ok {
@@ -319,6 +321,16 @@ a img {
 	border:1px solid  #00BB00;
 	margin: 5px 0px 8px 0px;
 	color:#008800;
+	float:left;
+	width: 98%;
+}
+
+.flash_text{
+	float:left;
+}
+
+.close_flash{
+	float:right;
 }
 
 
@@ -341,4 +353,34 @@ a img {
 	font-size: 14px;
 	padding: 5px;
 	background: #CCC;
+}
+
+#new_comment_form{
+  padding-top: 10px;
+  clear:both;	
+}
+
+.more-comments{
+  padding-top: 10px;
+}
+
+.more-comments p{
+	clear:both;
+	background: #CCC;
+	margin-top: 0px;
+	cursor: pointer;
+	padding-left: 5px;
+    margin: 0px;
+}
+
+.comment{
+	float:left;
+	padding-top: 7px;
+	padding-bottom: 7px;
+	width: 100%;
+}
+
+.no_spacing{
+	padding:0px;
+	margin: 0px;
 }

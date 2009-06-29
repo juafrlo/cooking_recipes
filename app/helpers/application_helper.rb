@@ -38,4 +38,19 @@ def mydatetime_format(datetime)
    datetime.strftime('%d/%m/%Y %H:%M:%S')
 end
 
+def my_flash_message(flash)
+  unless flash.blank?
+    flash_class = flash[:error].blank? ? 'message-ok' : 'message-error'
+    html = "<div class='#{flash_class}'>"
+    html += "<div class='flash_text'>"
+    html += flash[:notice] || flash[:error]
+    html += "</div>"
+    html += "<div class='close_flash'>"
+    html += "<a href='#' onclick=\"$$('div.flash_message')[0].hide();return false\">x</a>"
+    html += "</div>"
+    html += "</div>"
+    html
+  end
+end
+
 end

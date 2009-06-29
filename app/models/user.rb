@@ -150,6 +150,18 @@ class User < ActiveRecord::Base
     User.first.roles.include?(Role.first) 
   end
   
+  def is_admin?
+    self.roles.include?(Role.find_by_title("admin")) ? true : false
+  end
+  
+  def puntuation
+    puntuations = []
+    self.recetas.each do |r|
+      puntuations << r.puntuation.to_i
+    end
+    puntuations.sum
+  end
+  
   def self.login_regexp(str)
     re = Regexp.new("^#{str}", "i")
     find_options = { :order => "login ASC" }
