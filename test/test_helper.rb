@@ -3,6 +3,8 @@ require File.expand_path(File.dirname(__FILE__) + "/../config/environment")
 require 'test_help'
 
 class Test::Unit::TestCase
+  include AuthenticatedTestHelper
+
   # Transactional fixtures accelerate your tests by wrapping each test method
   # in a transaction that's rolled back on completion.  This ensures that the
   # test database remains unchanged so your fixtures don't have to be reloaded
@@ -33,6 +35,27 @@ class Test::Unit::TestCase
   # Note: You'll currently still have to declare fixtures explicitly in integration tests
   # -- they do not yet inherit this setting
   fixtures :all
-
+  
+  def setup
+    @request    = ActionController::TestRequest.new
+  end
+  
+  def no_admin_actions
+    login_as :aaron
+    get :index
+    assert_redirected_to '/'
+    get :edit
+    assert_redirected_to '/'
+    get :new
+    assert_redirected_to '/'
+    get :new
+    assert_redirected_to '/'
+    post :create
+    assert_redirected_to '/'
+    put :update
+    assert_redirected_to '/'
+    delete :destroy
+    assert_redirected_to '/'  
+  end
   # Add more helper methods to be used by all tests here...
 end

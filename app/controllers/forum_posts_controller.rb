@@ -1,7 +1,7 @@
 class ForumPostsController < ApplicationController
-  before_filter :authorize, :only => [:new, :edit, :delete]
-  
-  layout "forum_cat_l2s"
+  before_filter :authorize, :only => [:new, :create, :edit, :update]
+  before_filter :owner_required, :only => [:edit, :update]
+  before_filter :admin_required, :only => [:destroy]
 
   # GET /forum_posts
   # GET /forum_posts.xml
@@ -18,7 +18,7 @@ class ForumPostsController < ApplicationController
   # GET /forum_posts/1.xml
   def show
     @forum_post = ForumPost.find(params[:id])
-    @forum_post.comment = RedCloth.new(@forum_post.comment).to_html
+    @forum_post.comment = RedCloth.new(@forum_post.comment).to_html 
   
     @forum_post.forum_replies.each do |forum_reply|
       forum_reply.reply = RedCloth.new(forum_reply.reply).to_html
@@ -44,7 +44,6 @@ class ForumPostsController < ApplicationController
 
   # GET /forum_posts/1/edit
   def edit
-    @forum_post = ForumPost.find(params[:id])
   end
 
   # POST /forum_posts
@@ -58,11 +57,13 @@ class ForumPostsController < ApplicationController
       
     respond_to do |format|
       if @forum_post.save
-        flash[:notice] = 'ForumPost was successfully created.'
+        flash[:notice] = t(:Forum_post_created)
         format.html { redirect_to(@forum_post) }
         format.xml  { render :xml => @forum_post, :status => :created, :location => @forum_post }
       else
-        format.html { render :action => "new" }
+        format.html {
+          render :action => "new"
+        }
         format.xml  { render :xml => @forum_post.errors, :status => :unprocessable_entity }
       end
     end
@@ -71,11 +72,9 @@ class ForumPostsController < ApplicationController
   # PUT /forum_posts/1
   # PUT /forum_posts/1.xml
   def update
-    @forum_post = ForumPost.find(params[:id])
-
     respond_to do |format|
       if @forum_post.update_attributes(params[:forum_post])
-        flash[:notice] = 'ForumPost was successfully updated.'
+        flash[:notice] = t(:Forum_post_updated)
         format.html { redirect_to(@forum_post) }
         format.xml  { head :ok }
       else
@@ -89,10 +88,11 @@ class ForumPostsController < ApplicationController
   # DELETE /forum_posts/1.xml
   def destroy
     @forum_post = ForumPost.find(params[:id])
+    forum_cat_l2 = @forum_post.forum_cat_l2
     @forum_post.destroy
 
     respond_to do |format|
-      format.html { redirect_to(forum_posts_url) }
+      format.html { redirect_to forum_cat_l2_path(forum_cat_l2) }
       format.xml  { head :ok }
     end
   end

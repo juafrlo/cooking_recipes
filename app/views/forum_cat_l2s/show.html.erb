@@ -1,33 +1,30 @@
-<h3><%= link_to 'Foros', forum_cat_l2s_path %> > <%=h @forum_cat_l2.title %></h3><br/>
+<h2 class="forum nav" >
+  <%= link_to t(:Forums), forum_cat_l2s_path %> > <%=h @forum_cat_l2.title %>
+</h2>
 
-<table border="1" cellspacing="0" cellpadding="4">
+<br/>
+
+<table class="forum_cat_table" border="1" cellspacing="0" cellpadding="4">
   <tr >
-    <th style="width:700px;" class="th_title">Mensaje</th>
-    <th class="th_title">Réplicas</th>
-    <th style="width: 200px;" class="th_title">Última</th>
+    <th style="width:700px;" class="th_title"><%= t(:Message)%></th>
+    <th class="th_title"><%= t(:Replies)%></th>
+    <th style="width: 200px;" class="th_title"><%= t(:Last_f)%></th>
   </tr>
 
-<% for forum_post in @forum_posts %>
-  <tr>
-    <td>
-		<%= link_to forum_post.title , forum_post %><br/>
-		por	<%= forum_post.user.name %> 
-	</td>
-    <td style="text-align: center;"><%= forum_post.forum_replies.count %></td>
-    <td style="text-align: center;">
-		<%= forum_post.user.updated_at.to_s(:date)%><br/> 
-		por	<%= last_user(forum_post) %>	
-	</td>
-
-  </tr>
-  <% end %>
+	<% for forum_post in @forum_posts %>
+	  <tr>
+	    <td>
+	  		<%= link_to forum_post.title , forum_post %><br/>
+		  	<%= t(:by)%>	<%= link_to forum_post.user.login, user_path(forum_post.user) %> 
+	  	</td>
+	      <td style="text-align: center;"><%= forum_post.forum_replies.count %></td>
+	      <td style="text-align: center;">
+			  <%= forum_post.updated_at.to_s(:date)%><br/> 
+			  <%= t(:by)%> <%= link_to last_user(forum_post).login, user_path(last_user(forum_post)) %>	
+		  </td>
+	  </tr>
+	<% end %>
 </table>	
 
-	
-	
-<!--
-<%= link_to 'Edit', edit_forum_cat_l2_path(@forum_cat_l2) %> |
-<%= link_to 'Back', forum_cat_l2s_path %>
--->
 <br/>
-<%= link_to 'Nuevo post',  new_forum_cat_l2_forum_post_path(@forum_cat_l2) %>
+<%= link_to t(:New_post),  new_forum_cat_l2_forum_post_path(@forum_cat_l2) %>

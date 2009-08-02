@@ -1,6 +1,7 @@
 class ForumReply < ActiveRecord::Base
   belongs_to :forum_post
   belongs_to :user
+  validates_presence_of :reply
   
   after_create { |forum_reply| update_last_reply(forum_reply) }
   after_update { |forum_reply| update_last_reply(forum_reply) }

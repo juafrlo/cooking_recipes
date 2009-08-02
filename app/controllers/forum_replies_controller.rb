@@ -1,7 +1,7 @@
 class ForumRepliesController < ApplicationController
-  before_filter :authorize, :only => [:new, :edit, :delete]
-  
-  layout "forum_cat_l2s"  
+  before_filter :authorize, :only => [:new, :create, :edit, :update]
+  before_filter :owner_required, :only => [:edit, :update]
+  before_filter :admin_required, :only => [:destroy]
   
   # GET /forum_replies
   # GET /forum_replies.xml
@@ -27,7 +27,6 @@ class ForumRepliesController < ApplicationController
     @forum_post = ForumPost.find(params[:forum_post_id])
     @forum_reply = @forum_post.forum_replies.build
     
-
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @forum_reply }
@@ -49,7 +48,9 @@ class ForumRepliesController < ApplicationController
     current_user.save!
 
     if @forum_reply.save
-        flash[:notice] = "Successfully created comment."
+        @forum_post.updated_at = @forum_reply.updated_at
+        @forum_post.save
+        flash[:notice] = t(:Reply_created)
         redirect_to forum_post_url(@forum_reply.forum_post_id)
     else
         render :action => 'new'
@@ -64,7 +65,10 @@ class ForumRepliesController < ApplicationController
 
     respond_to do |format|
       if @forum_reply.update_attributes(params[:forum_reply])
-        flash[:notice] = 'ForumReply was successfully updated.'
+        @forum_post = @forum_reply.forum_post
+        @forum_post.updated_at = @forum_reply.updated_at
+        @forum_post.save
+        flash[:notice] = t(:Reply_updated)
         format.html { redirect_to(@forum_reply) }
         format.xml  { head :ok }
       else
@@ -79,9 +83,10 @@ class ForumRepliesController < ApplicationController
   def destroy
     @forum_reply = ForumReply.find(params[:id])
     @forum_reply.destroy
+    forum_post = @forum_reply.forum_post
 
     respond_to do |format|
-      format.html { redirect_to(forum_replies_url) }
+      format.html { redirect_to(forum_post_path(forum_post)) }
       format.xml  { head :ok }
     end
   end

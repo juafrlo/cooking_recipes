@@ -18,7 +18,7 @@
 	<div style="float:left;margin-right: 0px; width: 190px; height: 150px; margin-bottom: 15px; margin-top:4px; text-align: center;">
 		<div style="font-weight: bolder; text-align:center;"><%= category.name %></div>
 		<div>
-			<%= link_to image_tag (category.categoryphoto.url(:small)), :action => "categoria", :id => category.id %>		
+			<%= link_to image_tag (category.categoryphoto.url(:small), :size => "172x150"), :action => "categoria", :id => category.id %>		
 		</div>
 	</div>
 <% end %>

@@ -1,57 +1,25 @@
-<h3> <%= link_to 'Foros', forum_cat_l2s_path %> > <%=link_to  @forum_post.forum_cat_l2.title, @forum_post.forum_cat_l2 %>    </h3>
-
-
-<div class="post_title">
-	<%=h @forum_post.title %> 
-</div>
+<h2 class="forum nav" >
+  <%= link_to t(:Forums), forum_cat_l2s_path %> > 
+  <%=link_to  @forum_post.forum_cat_l2.title, @forum_post.forum_cat_l2 %> >
+	<%= @forum_post.title %> 
+</h2>
 
 <div class="post_reply">
-	<%= link_to 'New forum_reply',new_forum_post_forum_reply_path(@forum_post)  %>
+	<%= link_to t(:New_forum_reply),new_forum_post_forum_reply_path(@forum_post)  %>
 </div>
 
-<table border="1" cellspacing="0" cellpadding="4" style="clear:left;" >
+<div class="clear"></div>
+
+<table class="forum_post_table" border="1" cellspacing="0" cellpadding="4" >
   <tr>
-    <td style="width:150px; text-align:center;">
-		<div class="forum_user"><%=h @forum_post.user.name %></div>
-		<div style="height: 50px;"><%= image_tag('avatars/avatar.jpg', :size=>'50x50') %></div>
-		<div class="number_posts">Mensajes: <%=h @forum_post.user.number_of_posts %></div>
-		<div>De: Valencia</div>
-	</td>  	
-	<td style="width:850px;" valign="top">
-		<div class="post">
-			<div class="updated_at">Enviado: <%= @forum_post.updated_at.to_s(:date) %></div>
-			<%= @forum_post.comment %>
-			<%= login_edit('Editar',edit_forum_post_path(@forum_post) )%>
-		</div>
-	</td>  
+    <%= render :partial => 'forum_post_item', :locals => {:item => @forum_post}%>
   </tr>
-
-
   <% @forum_post.forum_replies.each do |forum_reply| %>
-  <tr>
-	<td style="width:150px; text-align:center;" > 
-		<div class="forum_user"><%=h forum_reply.user.name %></div>
-		<div><%= image_tag('avatars/avatar.jpg', :size=>'50x50') %></div>
-		<div class="number_posts">Mensajes: <%=h forum_reply.user.number_of_posts %></div>
-		<div>De: Valencia</div>    
-	</td> 
-	<td style="width:850px;" valign="top">
-		<div class="post">
-			<div class="updated_at">Enviado: <%= forum_reply.user.updated_at.to_s(:date) %></div>
-			<%= forum_reply.reply %>
-			<%= login_edit('Editar',edit_forum_reply_path(forum_reply) )%>
-		</div>
-	</td>   
-  </tr>
+    <tr id='<%="forum_reply_#{forum_reply.id}"%>'>
+      <%= render :partial => 'forum_post_item', :locals => {:item => forum_reply}%>
+    </tr>
   <% end %>
 </table>	
-
-
-<!--
-<%= link_to 'Edit', edit_forum_post_path(@forum_post) %> |
-<%= link_to 'Back', forum_posts_path %>
--->
-
-
 <br/>
-<%= link_to 'Responder', new_forum_post_forum_reply_path(@forum_post)  %>
+
+<%= link_to t(:Reply), new_forum_post_forum_reply_path(@forum_post)  %>

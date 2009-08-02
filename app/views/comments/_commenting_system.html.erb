@@ -1,13 +1,23 @@
-<div class="comments" style="padding-top: 50px;">
-    <h2>Comentarios</h2>
+<div class="comments">
+  <h2><%= t(:Comments)%></h2>
 	<% if commentable.comments.first %>
-	  <%= render :partial => 'comments/comment', :locals => {:comment => commentable.comments.first} %>
+	  <%= render :partial => 'comments/comment',
+	    :locals => {:comment => commentable.comments.first} %>
 	<% end %>
   
 	<% if commentable.comments.size > 2 %>
-	<div class="more-comments" onclick="new Effect.toggle('<%="comments_list_#{commentable.id}"%>',
-	 'appear', { duration: 1.0 }); ">
-      <p>+ Ver más </p>
+	<div class="more-comments"
+	  onclick="new Effect.toggle('<%="comments_list_#{commentable.id}"%>','appear', { duration: 1.0 });
+	           new Effect.toggle('<%="view_more_link_#{commentable.id}"%>','appear', { duration: 0 });
+	           new Effect.toggle('<%="view_less_link_#{commentable.id}"%>','appear', { duration: 0 });">
+      <p>
+	      <span id=<%="view_more_link_#{commentable.id}"%>>
+		      + <%= t(:View_more)%>
+		    </span>
+        <span id=<%="view_less_link_#{commentable.id}"%> style="display:none;">
+	        + <%= t(:View_less)%>
+	      </span>
+	    </p>
     </div>
 	<% end %>
 
@@ -27,7 +37,7 @@
 
 
 <% # ID WHERE THE NEWEST_COMMENT WILL BE INSERTED %>
-<div id =<%="newest_comment_#{commentable.id}"%> style="margin-bottom: 10px;"></div>
+<div id =<%="newest_comment_#{commentable.id}"%> class="newest_comment"></div>
 
 <% if logged_in? %>
 <% form_remote_for(@comment,
@@ -36,8 +46,9 @@
  :loading => "$('spinner_#{commentable.id}').show();",
  :complete => "$('spinner_#{commentable.id}').hide();",
  :html => {:id => 'new_comment_form'}) do |f| %>
-  <p>
-    <%= f.text_area :comment, :size => "70x20", :id => "comment_area_#{commentable.id}" %>
+  <p class="comment-box">
+    <%= f.text_area :comment, :class => 'comment-text-area',
+     :id => "comment_area_#{commentable.id}" %>
   </p>
 
   <p>
@@ -50,7 +61,7 @@
 
 	<script type="text/javascript" language="javascript">
 		resizeIt = function() {
-         var textarea_id = '<%= "comment_area_#{commentable.id}" %>';
+      var textarea_id = '<%= "comment_area_#{commentable.id}" %>';
 	    var str = $(textarea_id).value;
 	    var cols = $(textarea_id).cols;
 
@@ -64,12 +75,13 @@
 		if(str.length >= 1999){ 
 		$(textarea_id).value = str.substr(0,1999); }
 	  };
-  // you could attach to keyUp or whatever if keydown doesn't work
+    // you could attach to keyUp or whatever if keydown doesn't work
 	  Event.observe('<%= "comment_area_#{commentable.id}" %>', 'keydown', resizeIt );
 	  resizeIt(); //initial on load
-</script>
+  </script>
+
 <% else %>
-  <%= link_to 'Añadir comentario', '/login' %>
+  <%= link_to t(:add_comment), '/login' %>
 <% end %>
 
 

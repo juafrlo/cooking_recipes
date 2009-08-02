@@ -1,10 +1,12 @@
 # Methods added to this helper will be available to all templates in the application.
 module ApplicationHelper
 
-def only_admin(text,link_path)
+def only_admin(text,link_path, separator = nil)
+  html = ""
   if logged_in?  
- 	 restrict_to "admin) & !registered_user" do
- 		 link_to text, link_path
+ 	 restrict_to "admin & !registered_user" do
+     html = "#{separator} " if separator 
+ 		 html += link_to text, link_path
  	 end 
   end
 end
@@ -34,10 +36,6 @@ def user_unread_messages
   end
 end
 
-def mydatetime_format(datetime)
-   datetime.strftime('%d/%m/%Y %H:%M:%S')
-end
-
 def my_flash_message(flash)
   unless flash.blank?
     flash_class = flash[:error].blank? ? 'message-ok' : 'message-error'
@@ -46,11 +44,35 @@ def my_flash_message(flash)
     html += flash[:notice] || flash[:error]
     html += "</div>"
     html += "<div class='close_flash'>"
-    html += "<a href='#' onclick=\"$$('div.flash_message')[0].hide();return false\">x</a>"
+    html += "<a href='#' onclick=\"$$('div.flash_message')[0].fade();return false\">x</a>"
     html += "</div>"
     html += "</div>"
     html
   end
+end
+
+def form_template_button(f)
+  if action_name == 'new'
+	  f.submit t(:Create)
+	else
+	  f.submit t(:Update)
+  end 
+end
+
+def draw_image(image, desc = nil)
+  if image.split('/').last == "missing.png"
+    image_tag 'others/no_photo.jpg', :alt => t(:no_photo)
+  else
+    image_tag image, :alt => desc
+  end
+end
+
+def no_forums
+  !["forum_cat_l2s","forum_posts", "forum_replies"].include?(controller_name)
+end
+
+def can_edit(item)
+  current_user && (item.user == current_user || current_user.admin?) 
 end
 
 end

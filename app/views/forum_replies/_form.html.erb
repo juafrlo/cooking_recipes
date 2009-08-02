@@ -1,15 +1,21 @@
-<% form_for [@forum_post,@forum_reply] do |f| %>
+<% form_for [@forum_post,@forum_reply], :html => {:class => 'main_form'} do |f| %>
+  <fieldset>
+    <%= f.error_messages %>
+  </fieldset>
+	
+
+  <fieldset>  
+   <%= f.label :Respuesta %> <br/>
+   <%= f.text_area :reply %>
+  </fieldset>
+
 
   <p>
-    <%= f.label :Respuesta %><br />
-    <%= f.text_area :reply %>
+    <%= form_template_button(f) %> | 
+    <% if action_name == "new"%>
+      <%= link_to t(:Back), forum_post_path(@forum_post) %>
+    <% else %>
+      <%= link_to t(:Back), forum_post_path(@forum_reply.forum_post) %>
+    <% end %>
   </p>
-  <p>
-    <% if action_name == 'new' %>
-		<%= f.submit "Responder" %>
- 	<% else %>
-		<%= f.submit "Editar" %>
-	<% end %>
- 	| 	<%= link_to 'Volver', forum_post_forum_replies_path(@forum_post) %>
-</p>
 <% end %>

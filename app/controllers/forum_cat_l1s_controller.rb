@@ -1,6 +1,9 @@
 class ForumCatL1sController < ApplicationController
   # GET /forum_cat_l1s
   # GET /forum_cat_l1s.xml
+  
+  before_filter :admin_required
+  
   def index
     @forum_cat_l1s = ForumCatL1.find(:all)
 
@@ -46,7 +49,7 @@ class ForumCatL1sController < ApplicationController
 
     respond_to do |format|
       if @forum_cat_l1.save
-        flash[:notice] = 'ForumCatL1 was successfully created.'
+        flash[:notice] = t(:category1_created)
         format.html { redirect_to(@forum_cat_l1) }
         format.xml  { render :xml => @forum_cat_l1, :status => :created, :location => @forum_cat_l1 }
       else
@@ -63,7 +66,7 @@ class ForumCatL1sController < ApplicationController
 
     respond_to do |format|
       if @forum_cat_l1.update_attributes(params[:forum_cat_l1])
-        flash[:notice] = 'ForumCatL1 was successfully updated.'
+        flash[:notice] = t(:category_updated)
         format.html { redirect_to(@forum_cat_l1) }
         format.xml  { head :ok }
       else

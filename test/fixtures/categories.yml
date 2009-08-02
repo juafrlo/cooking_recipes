@@ -1,7 +1,12 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
-  string: 
+  id: 1
+  name: "Fist_category"
+  categoryphoto_file_name: 'library.jpg'
+  categoryphoto_content_type: 'image/jpeg'
+  categoryphoto_file_size:  2429698
 
 two:
-  string: 
+  id: 2
+  name: "Second_category"

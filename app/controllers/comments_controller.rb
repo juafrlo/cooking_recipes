@@ -1,10 +1,9 @@
 class CommentsController < ApplicationController
   
-  def show
-  end
+  before_filter :login_required
+  before_filter :admin_required, :only => [:destroy]
   
   def create
-    
     commentable_type = params[:commentable_type]
     commentable_id = params[:commentable_id]
     @commentable = commentable_type.capitalize.constantize.find(commentable_id)    
@@ -21,7 +20,7 @@ class CommentsController < ApplicationController
   def destroy
     @comment = Comment.find(params[:id])
     @comment.destroy
-  
+      
     respond_to do |format|
       format.js
     end        

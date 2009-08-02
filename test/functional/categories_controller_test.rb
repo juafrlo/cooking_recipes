@@ -1,6 +1,10 @@
 require 'test_helper'
 
 class CategoriesControllerTest < ActionController::TestCase
+  def setup
+    login_as :quentin
+  end
+
   test "should get index" do
     get :index
     assert_response :success
@@ -14,10 +18,11 @@ class CategoriesControllerTest < ActionController::TestCase
 
   test "should create category" do
     assert_difference('Category.count') do
-      post :create, :category => { }
+      post :create,
+       :category => {:categoryphoto =>fixture_file_upload('files/library.jpg', 'image/jpg') }
     end
-
     assert_redirected_to category_path(assigns(:category))
+    FileUtils.rm_rf(Category::PREFIX_ROUTE + Category.last.id.to_s) 
   end
 
   test "should show category" do
@@ -39,7 +44,11 @@ class CategoriesControllerTest < ActionController::TestCase
     assert_difference('Category.count', -1) do
       delete :destroy, :id => categories(:one).id
     end
-
     assert_redirected_to categories_path
   end
+
+  test "no admin should be redirected" do
+    no_admin_actions
+  end
+
 end

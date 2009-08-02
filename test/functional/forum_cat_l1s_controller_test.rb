@@ -1,6 +1,10 @@
 require 'test_helper'
 
 class ForumCatL1sControllerTest < ActionController::TestCase
+  def setup
+    login_as :quentin
+  end
+
   test "should get index" do
     get :index
     assert_response :success
@@ -36,9 +40,14 @@ class ForumCatL1sControllerTest < ActionController::TestCase
   end
 
   test "should destroy forum_cat_l1" do
+    count1 = ForumCatL2.find(:all,
+     :conditions => ['forum_cat_l1_id = ?', forum_cat_l1s(:one).id]).size
     assert_difference('ForumCatL1.count', -1) do
       delete :destroy, :id => forum_cat_l1s(:one).id
     end
+    assert_not_equal count1, 
+     ForumCatL2.find(:all,
+      :conditions => ['forum_cat_l1_id = ?', forum_cat_l1s(:one).id]).size
 
     assert_redirected_to forum_cat_l1s_path
   end

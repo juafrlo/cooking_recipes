@@ -1,26 +1,25 @@
+<h2 class="title forum"><%= t(:Forums) %></h2>
 <% for category in @categories %>
-  <h3><%=h category.title %></h3>
-
- 
-  <table border="1" cellspacing="0" cellpadding="4">
- 	  <tr >
-	    <th style="width:450px;" class="th_title">Foro</th>
-	    <th style="width: 550px;" class="th_title">Último mensaje</th>
+  <h3 class="forum_cat_l1_title"><%=h category.title %></h3>
+  <table class="forum_cat_table" border="1" cellspacing="0" cellpadding="4">
+ 	  <tr>
+	    <th style="width:450px;" class="th_title"><%= t(:Forum)%></th>
+	    <th style="width: 550px;" class="th_title"><%= t(:Last_message)%></th>
 	  </tr>
-
-
 
 	 <% for forum_cat_l2 in @forum_cat_l2s %>
  		<% if forum_cat_l2.forum_cat_l1_id == category.id %>
 		  <tr class="<%= cycle('odd','par')%>">  
 		    <td><%=link_to forum_cat_l2.title, forum_cat_l2 %> 
-				<%= only_admin('Edit', edit_forum_cat_l2_path(forum_cat_l2))%><br/>
+				<%= only_admin(t(:Edit), edit_forum_cat_l2_path(forum_cat_l2), "|")%><br/>
 				<%= forum_cat_l2.description %>
 			</td>
 			<td style="text-align:center;">
-				<%= forum_cat_l2['last_update'].updated_at.to_s(:date) %> -
-				<b> <%= forum_cat_l2['last_update'].user.login %></b><br/>
-				<%= link_to forum_cat_l2['last_update'].title, forum_cat_l2['last_update'] %>
+        <% if forum_cat_l2.last_post_id %>
+  				<%= forum_cat_l2.last_post.updated_at.to_s(:date) %> -
+	  			<b> <%= forum_cat_l2.last_post.user.login %></b><br/>
+		  		<%= link_to forum_cat_l2.last_post.title, forum_post_path(forum_cat_l2.last_post) %>
+        <% end %>
 				</td>
 		  </tr>
 		<% end %>
@@ -28,8 +27,5 @@
   </table>
 <% end %>
 
-
 <br />
-
-
-<%= only_admin('New Forum Cat l2',new_forum_cat_l2_path) %>
+<%= only_admin(t(:new_forum_cat_l2),new_forum_cat_l2_path) %>

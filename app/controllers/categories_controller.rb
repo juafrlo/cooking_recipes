@@ -3,11 +3,10 @@ class CategoriesController < ApplicationController
   # GET /categories.xml
   
   require 'fileutils'
-  
+  before_filter :admin_required
   
   def index
     @categories = Category.find(:all)
-
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @categories }
@@ -47,8 +46,9 @@ class CategoriesController < ApplicationController
     @category = Category.new(params[:category])
 
     respond_to do |format|
-      if @category.save          
-        flash[:notice] = 'Category was successfully created.'
+      if @category.save     
+        @category.delcategoryphoto(Category::PREFIX_ROUTE)      
+        flash[:notice] = t(:category_created)
         format.html { redirect_to(@category) }
         format.xml  { render :xml => @category, :status => :created, :location => @category }
       else
@@ -65,8 +65,8 @@ class CategoriesController < ApplicationController
 
     respond_to do |format|
       if @category.update_attributes(params[:category])
-        @category.delcategoryphoto 
-        flash[:notice] = 'Category was successfully updated.'
+        @category.delcategoryphoto(Category::PREFIX_ROUTE)
+        flash[:notice] = t(:category_updated)
         format.html { redirect_to(@category) }
         format.xml  { head :ok }
       else
@@ -80,6 +80,7 @@ class CategoriesController < ApplicationController
   # DELETE /categories/1.xml
   def destroy
     @category = Category.find(params[:id])
+    FileUtils.rm_rf(Category::PREFIX_ROUTE + @category.id.to_s) 
     @category.destroy
 
     respond_to do |format|

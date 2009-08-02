@@ -1,23 +1,27 @@
-<% form_for [@forum_cat_l2,@forum_post] do |f| %>
-  <%= f.error_messages %>
-
-  <p>
-    <%= f.label :Título %><br />
-    <%= f.text_field :title %>
-  </p>
-
-	<p>
-		<%= f.label :Post %><br />
-	    <%= f.text_area :comment %>	
-	</p>
-
-  <p>
-    <% if action_name == "new" %>
-		<%= f.submit "Postear" %>
-	<% else %>
-		<%= f.submit "Editar" %>	
-	<% end %>
-	| <%= link_to 'Volver', forum_posts_path %>
+<% form_for [@forum_cat_l2,@forum_post], :html => {:class => 'main_form'} do |f| %>
+  <fieldset>
+    <%= f.error_messages %>
+  </fieldset>
 	
+
+  <fieldset>
+	  <%= f.label :Título %><br />
+	  <%= f.text_field :title %>
+  </fieldset>
+
+
+  <fieldset>
+	  <%= f.label :Post %><br/>
+    <%= f.text_area :comment %>	
+  </fieldset>
+
+
+  <p>
+    <%= form_template_button(f) %> | 
+    <% if action_name == "new" || action_name == "create" %>
+      <%= link_to t(:Back), forum_cat_l2s_path %>
+  	<% else %>
+      <%= link_to t(:Back), forum_post_path(@forum_post) %>
+	  <% end %>
   </p>
 <% end %>

@@ -1,12 +1,10 @@
 <p>
-  <b>Title:</b>
+  <b><%=t(:Title)%>:</b>
   <%=h @forum_cat_l1.title %>
 </p>
 
-
-<br/>
 <p style="color: red;">
-FOROS DE ESTA CATEGORÍA
+  <%= t(:forum_cat_l2_list) %>
 </p>
 
 <% for forum_cat_l2 in @forum_cat_l2s %>
@@ -15,5 +13,5 @@ FOROS DE ESTA CATEGORÍA
 
 
 
-<%= link_to 'Edit', edit_forum_cat_l1_path(@forum_cat_l1) %> |
-<%= link_to 'Back', forum_cat_l1s_path %>
+<%= link_to t(:Edit), edit_forum_cat_l1_path(@forum_cat_l1) %> |
+<%= link_to t(:Back), forum_cat_l1s_path %>

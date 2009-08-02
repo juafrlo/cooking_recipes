@@ -1,0 +1,11 @@
+<% form_for(@forum_cat_l1) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :title, t(:Title) %><br />
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= form_template_button(f) %>
+  </p>
+<% end %>

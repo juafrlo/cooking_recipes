@@ -1,16 +1,7 @@
-<h1>Editing forum_cat_l1</h1>
+<h2 class="title"><%= t(:edit_category1)%></h2>
 
-<% form_for(@forum_cat_l1) do |f| %>
-  <%= f.error_messages %>
+<%= render :partial => 'form'%>
 
-  <p>
-    <%= f.label :title %><br />
-    <%= f.text_field :title %>
-  </p>
-  <p>
-    <%= f.submit "Update" %>
-  </p>
-<% end %>
 
-<%= link_to 'Show', @forum_cat_l1 %> |
-<%= link_to 'Back', forum_cat_l1s_path %>
+<%= link_to t(:Show), @forum_cat_l1 %> |
+<%= link_to t(:Back), forum_cat_l1s_path %>

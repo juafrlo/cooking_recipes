@@ -1,7 +1,13 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
-  title: MyString
+  id: 1
+  forum_cat_l1_id: 1
+  title: MyString1
+  last_post_id: 1
 
 two:
-  title: MyString
+  id: 2
+  forum_cat_l1_id: 2
+  title: MyString2
+  last_post_id: 2

@@ -4,138 +4,118 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
-  <title>Recetas: <%= controller.action_name %></title>
+  <title><%=SITE_NAME%>: <%= controller.action_name %></title>
   <%= stylesheet_link_tag 'recetas' %>
   <%= stylesheet_link_tag 'application' %>
   <%= stylesheet_link_tag 'rating' %>
   <%= stylesheet_link_tag 'noticias' %>
   <%= stylesheet_link_tag 'auto_complete' %>
   <%= javascript_include_tag :defaults%>
-
 </head>
 
 <body>
 	<div id="wrapper">
-  	  <div id="header">
-		<div id="logo">
-	  	   <h1><%= link_to 'Mis recetas', '/' %></h1>
-		</div>
-
-		<div id="menu">
-		   <ul>
-			<li class="active">
-				<%= link_to 'Noticias', :controller => "noticias", :action => "index" %>
-			</li>
-			<li>
-				<%= link_to 'Recetas', :controller => "recetas", :action => "index" %>
-			</li>
-			<li>
-				<%= link_to 'Consejos', :controller => "recetas", :action => "index" %>
-			</li>
-			<li>
-				<%= link_to 'Restaurantes', :controller => "recetas", :action => "index" %>
-			</li>
-
-			<li>
-				<%= link_to 'Foros', :controller => "forums", :action => "index" %>
-			</li>
-			<li>
-				<%= link_to 'Contacto', :controller => "recetas", :action => "index" %>
-			</li>
-		  </ul>
+    <div id="header">
+	  	<div id="logo">
+	      <h1><%= link_to SITE_NAME, '/' %></h1>
+		  </div>
+		  <div id="menu">
+		    <ul>
+			    <% if current_user && current_user.is_admin? %> 
+    			  <li>
+		    		  <%= link_to t(:Administration), admins_path %>
+			      </li>
+			    <% end %>
+			    <li>
+				    <%= link_to t(:News), noticias_path %>
+			    </li>
+    			<li>
+		  		  <%= link_to t(:Recipes), recetas_path %>
+			    </li>
+  			  <li>
+				    <%= link_to t(:Advises), '/' %>
+			    </li>
+  			  <li>
+				    <%= link_to t(:Restaurants), '/'%>
+  			  </li>
+  			  <li>
+			  	  <%= link_to t(:Forums), :controller => 'forums', :action => 'index' %>
+			    </li>
+    			<li>
+		    		<%= link_to t(:Contact), '/' %>
+		 	    </li>
+		    </ul>
 	    </div>
-	</div>	<!-- end #header -->
+	  </div>	<!-- end #header -->
 
+    <div id="page">
+		  <div id="content" <%unless no_forums%>style="width:auto;"<%end%>>
+			  <div class="post">	
+				  <div class="flash_message">
+					  <%= my_flash_message(flash) %>
+		      </div>	   
+				  <div class="clear"></div>
+				  <%= yield  %>
+			  </div>
+		  </div> <!-- end #content -->
+      <% if no_forums %>
+		    <div id="sidebar">
+				  <div id="sidebar-bgtop"></div>
+				  <div id="sidebar-content">
+					  <div id="sidebar-bgbtm">
+					    <ul>
+					      <li id="search">
+						      <h3><%= t(:Search)%></h3>
+							    <% form_for :receta, :url => { :action => "resultados_busqueda" }   do |f| %>
+								    <fieldset>
+								      <%= f.text_field :name, :size => 24 %>
+								      <%= f.submit t(:Search) %>
+								    </fieldset>
+           				<% end %>
+					      </li>
+        				<li>
+				      	  <h3><%= t(:Privated_menu) %></h3>
+        					<ul>
+				      		  <li>
+				              <%= log_in_out %> 
+				              <% if !logged_in? %>
+							    		  / <%= link_to t(:Register), '/signup' %>
+							        <% end %> 
+							      </li>	
+								    <% if logged_in? %>
+								      <li><%= link_to t(:Privated_messages), 	
+          						  user_messages_path(current_user)%>
+								        <%= user_unread_messages %>
+          						</li>
+					          	<li><%= link_to t(:My_data), current_user %></li>
+           						<li><%= link_to t(:My_recipes), mis_recetas_user_path(current_user)%></li>
+          						<li>
+                        <%= link_to t(:My_friends), mis_amigos_user_path(current_user)%> 
+                        <span class="alert">
+                          (<%= current_user.received_invitations.size %>)
+                        </span>
+	                    </li>
+     	 							<% end %>
+						     	</ul>
+						    </li>
+         				<li>
+                  <%= render :partial => 'shared/last_recipes_voted'%>
+        				</li>			
+        				<li>
+                  <%= render :partial => 'shared/best_voted_chefs'%>
+        				</li>
+          		</ul>
+        		</div>
+				  </div>
+ 	  		</div> 	<!-- end #sidebar -->
+      <% end %>
+		<div class="clear"></div>
+	  </div>	<!-- end #page -->	
+  </div>
 
-	<div id="page">
-		<div id="content">
-			<div class="post">	
-				<div class="flash_message">
-					<%= my_flash_message(flash) %>
-		    </div>	   
-				<div style="clear:both;"></div>
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-				<%= yield  %>
-			</div>
-		</div>
-		<!-- end #content -->
-		<div id="sidebar">
-			<div id="sidebar-bgtop"></div>
-			<div id="sidebar-content">
-				<div id="sidebar-bgbtm">
-				<ul>
-					<li id="search">
-						<h2>Buscar</h2>
-						<% form_for :receta, :url => { :action => "resultados_busqueda" }   do |f| %>
-							<fieldset>
-							<%= f.text_field :name, :size => 24 %>
-							<input type="submit" id="x" value="Buscar" />
-							</fieldset>
-						<% end %>
-					</li>
-					<li>
-						<h2>Menú privado</h2>
-						<ul>
-							<li><%= log_in_out %> <% if !logged_in? %>
-								/ <%= link_to 'Regístrate', '/signup' %> <% end %></li>	
-							<% if logged_in? %>
-							<li><%= link_to 'Mensajes privados', 	
-								user_messages_path(current_user)%>
-								<%= user_unread_messages %>
-							 </li>
-							<li><%= link_to 'Mi ficha', current_user %></li>
-							<li><%= link_to 'Mis recetas', mis_recetas_user_path(current_user)%></li>
-							<li><%= link_to 'Mis amigos', mis_amigos_user_path(current_user)%></li>
-							<% end %>
-						</ul>
-					</li>
-				
-					
-					<li>
-						<h2>Últimas recetas puntuadas</h2>
-						<ul>
-							<li><a href="#">Arroz a la cubana</a> por Antonio Pérez (4.0)</li>
-							<li><a href="#">Marisco satinado</a></li>
-							<li><a href="#">Huevo de nido</a></li>
-							<li><a href="#">Tarta de la abuela</a></li>
-						</ul>
-					</li>			
-
-
-					<li>
-						<h2>Chefs mejor puntuados</h2>
-						<ul>
-							<li><a href="#">Antonio Pérez</a> 24 recetas (5.0)</li>
-							<li><a href="#">Antonio Pérez</a> 24 recetas (5.0)</li>
-							<li><a href="#">Antonio Pérez</a> 24 recetas (5.0)</li>
-							<li><a href="#">Antonio Pérez</a> 24 recetas (5.0)</li>
-						</ul>
-					</li>
-				</ul>
-			</div>
-			</div>
-		</div>
-		<!-- end #sidebar -->
-		<div style="clear:both; margin:0;"></div>
-	</div>
-	<!-- end #page -->
-	
-	</div>
-
-	<div id="footer">
-		<p>Mis recetas.com es un proyecto personal de <%= link_to 'Juan de Frías', '/'%></p>
-</div>
+  <div id="footer">
+    <p><%= t(:Footer_content)%> <%= link_to 'Juan de Frías', '/'%></p>
+  </div>
+  
 </body>
 </html>

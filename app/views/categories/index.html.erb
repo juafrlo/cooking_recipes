@@ -1,24 +1,28 @@
-<h1>Listing categories</h1>
+<h2 class="title"><%= t(:Listing_categories)%></h2>
 
 <table>
   <tr>
-    <th>Foto</th>
-    <th style="width: 200px;">Nombre</th>
-    <th>Opciones</th>
-
+    <th style="width: 200px;"><%= t(:Photo) %></th>
+    <th><%= t(:Name) %></th>
+    <th><%= t(:Options)%></th>
   </tr>
 
 <% for category in @categories %>
   <tr>
-    <td><%= image_tag category.categoryphoto.url(:small) %> </td>
-	<td><%=h category.name %></td>
-    <td><%= link_to 'Show', category %> |
-        <%= link_to 'Edit', edit_category_path(category) %> |
-        <%= link_to 'Destroy', category, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td>
+	    <%= draw_image(category.categoryphoto.url(:small),
+	      category.name)%>
+    </td>
+    <td><%=h category.name %></td>
+    <td>
+      <%= link_to t(:Show), category %> |
+      <%= link_to t(:Edit), edit_category_path(category) %> |
+      <%= link_to t(:Destroy), category, :confirm => t(:are_you_sure_category),
+        :method => :delete %>
+    </td>
   </tr>
 <% end %>
 </table>
 
-<br />
-
-<%= link_to 'New category', new_category_path %>
+<br/>
+<%= link_to t(:new_category), new_category_path %>

@@ -1,0 +1,45 @@
+<td class="forum_post_left_td">
+  <div class="forum_user"><%=h item.user.name %></div>
+  <div class="avatar_div">
+    <%= link_to image_tag(item.user.avatar.url(:smalL)),
+      user_path(item.user) %>
+  </div>
+  <div>
+    <%= link_to item.user.login, user_path(item.user) %>
+  </div>
+  <div class="number_posts">
+    <%= t(:Messages)%>: <%=h item.user.number_of_posts %>
+  </div>
+  <div><%= t(:From)%>: <%=h item.user.town%></div>
+  <div>
+    <%= invite_user_link(item.user, "item_link_#{item.id}",
+      "user_link_#{item.user.id}") %>
+    <%= image_tag('web/spinner.gif', :id => "spiner_item_link_#{item.id}",
+	    :style=> 'display:none;')%>
+  </div>
+</td>  	
+<td class="forum_post_right_td" valign="top">
+  <div class="post">
+	  <div class="post_updated_at">Enviado: <%= item.updated_at.to_s(:date) %></div>
+	  <% if item.class == ForumPost %>      
+  	  <%= item.comment %>
+  	  <%= login_edit(t(:Edit),edit_forum_post_path(item)) if can_edit(item)%>
+      <% if current_user && current_user.admin? %>
+        | <%= link_to t(:Destroy), forum_post_path(item),
+          :method => :delete, :confirm => t(:delete_post_and_replies)%>
+      <% end %>
+    <% else %>
+      <%= item.reply %>
+      <%= login_edit(t(:Edit),edit_forum_reply_path(item)) if can_edit(item)%>
+      <% if current_user && current_user.admin? %>
+        | <%= link_to_remote t(:Destroy), :update => "forum_reply_#{item.id}",
+           :url => forum_reply_path(item), :method => :delete,
+           :confirm => t(:delete_reply),
+           :loading => "$('spinner_#{item.id}').show();",
+           :complete => "$('forum_reply_#{item.id}').fade();" %>
+          <%= image_tag('web/spinner.gif', :id => "spinner_#{item.id}",
+           :style => "display:none;")%>
+      <% end %>
+    <% end %>
+  </div>
+</td>

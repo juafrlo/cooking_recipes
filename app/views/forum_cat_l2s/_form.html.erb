@@ -1,25 +1,21 @@
 <% form_for(@forum_cat_l2) do |f| %>
   <%= f.error_messages %>
-
- <p>
-    <%= f.label :forum_cat_l1_id %><br />
-    <%= f.collection_select :forum_cat_l1_id, @forum_cat_l1s, :id, :title %>
- </p>
-
-
   <p>
-    <%= f.label :title %><br />
-    <%= f.text_field :title %>
+     <%= f.label :forum_cat_l1_id, t(:forum_cat_l1) %><br />
+     <%= f.collection_select :forum_cat_l1_id, @forum_cat_l1s, :id, :title %>
   </p>
-
-  <p>
-    <%= f.label :description %><br />
-    <%= f.text_area :description %>
-  </p>
-
-
-
-  <p>
-    <%= f.submit "Create" %>
-  </p>
+ 
+   <p>
+     <%= f.label :title, t(:Title) %><br />
+     <%= f.text_field :title %>
+   </p>
+ 
+   <p>
+     <%= f.label :description, t(:Description) %><br />
+     <%= f.text_area :description %>
+   </p>
+  
+   <p>
+     <%= form_template_button(f) %>
+   </p>
 <% end %>

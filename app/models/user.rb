@@ -147,7 +147,8 @@ class User < ActiveRecord::Base
   end
 
   def admin?
-    User.first.roles.include?(Role.first) 
+    #User.first.roles.include?(Role.first) 
+    self.roles.include?(Role.find_by_title("admin")) ? true : false
   end
   
   def is_admin?

@@ -1,6 +1,7 @@
 module ForumCatL2sHelper
 
-def last_user(p)
-  !p.forum_replies.empty? ?  p.forum_replies.last.user.login :  p.user.login 	
-end
+  def last_user(post)
+    post.forum_replies.empty? ?  post.user : post.forum_replies.last.user
+  end
+
 end

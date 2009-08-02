@@ -1,21 +1,22 @@
 <% form_for(@category, :html => {:multipart => true}) do |f| %>
   <%= f.error_messages %>
   <p>
-    <%= f.label :name %><br />
+    <%= f.label :name, t(:Name) %>:<br />
     <%= f.text_field :name %>
   </p>
 
   <p>
+	  <%= f.label :categoryphoto, t(:Photo) %>:<br />
+	  <% unless @category.categoryphoto_file_size.blank? %>
+  	  <%= image_tag @category.categoryphoto.url(:small) %>
+      <br/>
+    <% end %>
     <%= f.file_field :categoryphoto %><br />
   </p>
 
   <p>
-    <% if action_name == 'new'%>
-		<%= f.submit "Create" %>
-  	<% else %>
-		<%= f.submit "Update" %>
-	<% end %>
-</p>
+    <%= form_template_button(f) %>
+  </p>
 <% end %>
 
-<%= link_to 'Back', categories_path %>
+<%= link_to t(:Back), categories_path %>

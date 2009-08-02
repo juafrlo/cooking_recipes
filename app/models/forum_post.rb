@@ -1,7 +1,9 @@
 class ForumPost < ActiveRecord::Base
   belongs_to :forum_cat_l2
-  has_many :forum_replies
+  has_many :forum_replies, :dependent => :destroy
   belongs_to :user
+  validates_presence_of :title
+  validates_presence_of :comment
 
   after_create { |forum_post| update_last_post(forum_post) }
   after_update { |forum_post| update_last_post(forum_post) }
@@ -12,5 +14,8 @@ class ForumPost < ActiveRecord::Base
     @forum_cat_l2.save!    
   end
 
+  def to_param
+    id.to_s << "-" << (title ? title.parameterize : '' )
+  end
 
 end

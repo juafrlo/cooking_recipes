@@ -1,32 +1,39 @@
 <div id="<%="comment_#{comment.id}"%>" class="comment" 
-  
-  <% if current_user.is_admin? %>
-	onmouseover="$('<%="delete_#{comment.id}"%>').show();"
-	onmouseout="$('<%="delete_#{comment.id}"%>').hide();"
+  <% if current_user && current_user.is_admin? %>
+  	onmouseover="$('<%="delete_#{comment.id}"%>').show();"
+	  onmouseout="$('<%="delete_#{comment.id}"%>').hide();"
   <% end %>
-  >
-	  <div style="width:100px; float:left">
-	    <p class="no_spacing"><%= image_tag comment.user.avatar.url(:smalL) %></p>
-	    <p class="no_spacing"><%= link_to comment.user.login, user_path(comment.user_id) %>
+>
+
+  <div class="foto-user">
+    <p class="no_spacing">
+      <%= image_tag comment.user.avatar.url(:smalL) %>
+    </p>
+    <p class="no_spacing">
+      <%= link_to comment.user.login, user_path(comment.user_id) %>
 	    <%= invite_user_link(comment.user, "comment_link_#{comment.id}",
 	      "user_link_#{comment.user.id}") %>
-	      <%= image_tag('web/spinner.gif', :id => "spiner_comment_link_#{comment.id}",
-		          :style=> 'display:none;')%>
-	    </p>
-
-	  </div>  
-	  <div style="float:left; width: 468px;">
-	     <p class="no_spacing" style="color: #999; font-size: 11px; float:left;"><%= mydatetime_format(comment.created_at) %></p>
-			<% if current_user.is_admin? %>
-			  <%= link_to_remote 'x', :update => '',
-			    :url => comment_path(comment.commentable_type.to_s.underscore, comment.commentable_id, comment.id),
-			    :confirm => '¿Estás seguro que quieres borrar este comentario?', :method => :delete,
-			    :html => {:style => 'float: right; display:none;', :id => "delete_#{comment.id}"} %>
-		  <% end %>
-      <div style="clear:both;">		
-	     <%= comment.comment%>
-	    </div >
-	  </div>
+	    <%= image_tag('web/spinner.gif', :id => "spiner_comment_link_#{comment.id}",
+		    :style=> 'display:none;')%>
+	  </p>
+	</div>  
+	
+	<div class="comment-content">
+	  <p class="no_spacing content-info">
+	    <%= l comment.created_at.to_time, :format => :custom%>
+	  </p>
+		<% if current_user && current_user.is_admin? %>
+ 	    <%= link_to_remote 'x', :update => '',
+		    :url => comment_path(comment.commentable_type.to_s.underscore,
+		      comment.commentable_id, comment.id),
+		    :confirm => t(:sure_to_delete_comment), :method => :delete,
+		    :html => {:class => 'delete_comment', :style => 'display:none;', 
+			    :id => "delete_#{comment.id}"} %>
+	  <% end %>
+    <div class="comment-text">		
+      <%= comment.comment%>
+    </div >
+  </div>
 
 	  
 </div>

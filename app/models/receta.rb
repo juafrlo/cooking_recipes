@@ -2,7 +2,8 @@ class Receta < ActiveRecord::Base
   acts_as_rateable
   has_many :ingredients
   has_many :steps
-  has_attached_file :photo, :styles => { :small => "150x150>"}
+  has_attached_file :photo,
+   :styles => { :small => "150x150>"}
   after_update :save_steps
   belongs_to :user
   belongs_to :category

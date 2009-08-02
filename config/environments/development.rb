@@ -21,3 +21,5 @@ config.action_mailer.raise_delivery_errors = true
 SITE_NAME = "Mis Receteas"
 SITE_URL = "localhost:3000"
 SITE_EMAIL = "prueba@prueba.com"
+
+require 'ruby-debug'

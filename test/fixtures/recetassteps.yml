@@ -1,9 +1,0 @@
-# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
-
-one:
-  receta_id: 1
-  step_id: 1
-
-two:
-  receta_id: 1
-  step_id: 1
