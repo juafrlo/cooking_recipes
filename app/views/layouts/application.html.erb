@@ -8,7 +8,6 @@
   <%= stylesheet_link_tag 'recetas' %>
   <%= stylesheet_link_tag 'application' %>
   <%= stylesheet_link_tag 'rating' %>
-  <%= stylesheet_link_tag 'noticias' %>
   <%= stylesheet_link_tag 'auto_complete' %>
   <%= javascript_include_tag :defaults%>
 </head>
@@ -92,7 +91,7 @@
           						<li>
                         <%= link_to t(:My_friends), mis_amigos_user_path(current_user)%> 
                         <span class="alert">
-                          (<%= current_user.received_invitations.size %>)
+                           <%= invitations_number %>
                         </span>
 	                    </li>
      	 							<% end %>

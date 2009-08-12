@@ -35,7 +35,6 @@ class ForumRepliesController < ApplicationController
 
   # GET /forum_replies/1/edit
   def edit
-    @forum_reply = ForumReply.find(params[:id])
   end
 
   # POST /forum_replies
@@ -61,8 +60,6 @@ class ForumRepliesController < ApplicationController
   # PUT /forum_replies/1
   # PUT /forum_replies/1.xml
   def update
-    @forum_reply = ForumReply.find(params[:id])
-
     respond_to do |format|
       if @forum_reply.update_attributes(params[:forum_reply])
         @forum_post = @forum_reply.forum_post

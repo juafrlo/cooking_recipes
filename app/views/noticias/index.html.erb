@@ -2,75 +2,33 @@
 <br/>
 <br/>
 <h2 class="title"><%=t(:News)%></h2>
-<!--
- Se pretende que:
-	- Si no se hace login, se pueda navegar
-	- Si se ha hecho login, se haga restricciones en función del rol de usuario
--->
 
 
-<!-- Seguir probando curren_user == false -->
 
 
-<!-- <table>
-  <tr>
-    <th>Title</th>
-    <th>Subtitle</th>
-    <th>Autor</th>
-    <th>Content</th>
-    <th>Date</th>
-  </tr>
-
-<% for noticia in @noticias %>
-  <tr>
-    <td><%=h noticia.title %></td>
-    <td><%=h noticia.subtitle %></td>
-    <td><%=h noticia.autor %></td>
-    <td><%=h noticia.content %></td>
-    <td><%=h noticia.date %></td>
-    <td><%= link_to 'Show', noticia %></td>
-	
-	    <td><%= link_to 'Edit', edit_noticia_path(noticia) %></td>
-	    <td><%= link_to 'Destroy', noticia, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New noticia', new_noticia_path %>
--->
-
-<% for noticia in @noticias %>
-<div id="news">
-  	<div id="news_image">prueba
-	<%= imagemagick_tag 'noticias/' + noticia.img_0, 'resize(100x100)' %>
-	
-	
-	 <%= image_tag 'noticias/' + noticia.img_0 %> </div>
-	<div id="news_right">
-		<div><h3><%= noticia.title %></h3></div>
-	    <div><h4><%= noticia.subtitle %></h4></div>
-	    <div> <%= noticia.date %> </div>
-		<div id="news_intro"><%= noticia.intro %></div>
-	    <div style="text-align:right;">by <%= noticia.autor %></div>
-	    <div style="text-align:right;">
-			<%= link_to 'Show', noticia %>
-			<% if logged_in? %>
-			  <% restrict_to "(admin) & !registered_user" do %>	
-			    <%= link_to 'Edit', edit_noticia_path(noticia) %>
-			    <%= link_to 'Destroy', noticia, :confirm => 'Are you sure?', :method => :delete %></div>
-			  <% end %>
-		    <% end %>
-		</div>
-	</div>
-<div class="clear">&nbsp;</div>
-
-
-<% end %>
-
-<% if logged_in? %>
-	<% restrict_to "(admin) & !registered_user" do %>
-		<%= link_to 'New noticia', new_noticia_path %>
+<div id="noticias">
+	<ul>
+	<% for noticia in @noticias %>
+		<li>
+      <%= date_block(noticia.date) %>
+			<div class="right-column">
+				<h3 class="forum_cat_l1_title" style="padding-top: 3px;">
+				  <%= link_to noticia.title, noticia %>
+				</h3>
+			  <h4><%= noticia.subtitle %></h4>
+				<p id="news_intro"><%= noticia.intro %></p>
+        <p>
+  			  <%= number_of_comments(noticia) %>
+        </p>
+			  <p>
+					<% if current_user && current_user.admin? %>
+					    <%= link_to t(:Edit), edit_noticia_path(noticia) %> |
+					    <%= link_to t(:Destroy), noticia, :confirm => t(:are_you_sure), :method => :delete %>
+			    <% end %>
+				</p>
+      </div>
+		</li>
+	<div class="clear">&nbsp;</div>
 	<% end %>
-<% end %>
+	</ul>
+</div>

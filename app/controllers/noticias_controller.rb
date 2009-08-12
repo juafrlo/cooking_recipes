@@ -1,14 +1,10 @@
 class NoticiasController < ApplicationController
-  
-  
-  imagemagick_for 'images/noticias'
-  
-  access_control [:new, :create, :update, :edit, :delete] => '(admin)'
+  before_filter :admin_required, :except =>[:index,:show]
+
   # GET /noticias
   # GET /noticias.xml
   def index
-    @noticias = Noticia.find(:all)
-    
+    @noticias = Noticia.find(:all, :order => 'created_at DESC')
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @noticias }
@@ -19,10 +15,7 @@ class NoticiasController < ApplicationController
   # GET /noticias/1.xml
   def show
     @noticia = Noticia.find(params[:id])
-
-    @order = Noticia.find(params[:id], order[:order])
-    
-    
+    @comment = Comment.new if logged_in?  
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @noticia }
@@ -49,10 +42,11 @@ class NoticiasController < ApplicationController
   # POST /noticias.xml
   def create
     @noticia = Noticia.new(params[:noticia])
+    @noticia.user_id = current_user.id
 
     respond_to do |format|
       if @noticia.save
-        flash[:notice] = 'Noticia was successfully created.'
+        flash[:notice] = t(:noticia_created)
         format.html { redirect_to(@noticia) }
         format.xml  { render :xml => @noticia, :status => :created, :location => @noticia }
       else
@@ -66,10 +60,11 @@ class NoticiasController < ApplicationController
   # PUT /noticias/1.xml
   def update
     @noticia = Noticia.find(params[:id])
+    @noticia.user_id = current_user.id
 
     respond_to do |format|
       if @noticia.update_attributes(params[:noticia])
-        flash[:notice] = 'Noticia was successfully updated.'
+        flash[:notice] = t(:noticia_updated)
         format.html { redirect_to(@noticia) }
         format.xml  { head :ok }
       else

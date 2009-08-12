@@ -1,0 +1,14 @@
+
+one:
+    id: 1
+    rating: 5
+    rateable_type: "Receta"
+    rateable_id: 2
+    user_id: 1
+
+one:
+    id: 2
+    rating: 4
+    rateable_type: "Receta"
+    rateable_id: 2
+    user_id: 2

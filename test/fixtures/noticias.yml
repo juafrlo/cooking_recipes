@@ -3,13 +3,11 @@
 one:
   title: MyString
   subtitle: MyString
-  autor: MyString
   content: MyText
   date: 2008-12-18
 
 two:
   title: MyString
   subtitle: MyString
-  autor: MyString
   content: MyText
   date: 2008-12-18

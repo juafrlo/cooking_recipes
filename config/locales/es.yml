@@ -156,6 +156,9 @@ es:
       default: "%e/%m/%Y"
       short: "%e de %b" 
       long: "%e de %B de %Y" 
+      month: "%b"
+      day: "%e"
+      year: "%Y"
   
     day_names: [Domingo, Lunes, Martes, Miércoles, Jueves, Viernes, Sábado]
     abbr_day_names: [Dom, Lun, Mar, Mie, Jue, Vie, Sab]
@@ -225,6 +228,7 @@ es:
   View_more: Ver más
   View_less: Ver menos
   add_comment: Añadir comentario
+  comments: commentarios
   
   #Forums
   category1: Categorías nivel 1
@@ -260,6 +264,16 @@ es:
   Reply_created: Respuesta creada
   delete_post_and_replies: ¿Quieres borrar este post y todas sus respuestas?
   delete_reply: ¿Borrar respuesta?
+  
+  #News
+  new_noticia: Nueva noticia
+  edit_noticia: Editar noticia
+  Subtitle: Subtítulo
+  Intro: Introducción
+  Content: Contenido
+  Date: Fecha
+  noticia_created: Noticia creada
+  noticia_updated: Noticia actualizada
   
   #Others
   Show: Ver

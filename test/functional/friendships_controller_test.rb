@@ -1,45 +1,34 @@
 require 'test_helper'
 
 class FriendshipsControllerTest < ActionController::TestCase
-  test "should get index" do
-    get :index
-    assert_response :success
-    assert_not_nil assigns(:friends)
+  
+  def setup
+    login_as :aaron
   end
-
-  test "should get new" do
-    get :new
-    assert_response :success
-  end
-
-  test "should create friend" do
-    assert_difference('Friend.count') do
-      post :create, :friend => { }
+  
+  test "should create friendship" do
+    assert_difference('Friendship.count', 2) do
+      post :create,
+       :users => {:user_id => 1, :friend_id => 2 },
+       :link_id => 'some_id'
     end
-
-    assert_redirected_to friend_path(assigns(:friend))
-  end
-
-  test "should show friend" do
-    get :show, :id => friends(:one).id
     assert_response :success
   end
-
-  test "should get edit" do
-    get :edit, :id => friends(:one).id
+  
+  test "should accept friendship" do
+    get :accept,
+     :users => {:user_id => friendships(:one).user_id,
+       :friend_id => friendships(:one).friend_id}
     assert_response :success
   end
-
-  test "should update friend" do
-    put :update, :id => friends(:one).id, :friend => { }
-    assert_redirected_to friend_path(assigns(:friend))
-  end
-
-  test "should destroy friend" do
-    assert_difference('Friend.count', -1) do
-      delete :destroy, :id => friends(:one).id
+  
+  test "should deny friendship" do 
+    assert_difference('Friendship.count', -1) do
+      get :deny,
+       :users => {:user_id => friendships(:one).user_id,
+         :friend_id => friendships(:one).friend_id }
+      assert_response :success
     end
-
-    assert_redirected_to friends_path
   end
+
 end

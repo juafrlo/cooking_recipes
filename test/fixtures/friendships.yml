@@ -1,9 +1,13 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
+  id: 1
   user_id: 1
-  friend_id: 1
+  friend_id: 2
+  status: "pending"
 
 two:
+  id: 2
   user_id: 1
-  friend_id: 1
+  friend_id: 3
+  status: "accepted"

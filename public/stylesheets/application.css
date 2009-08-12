@@ -242,6 +242,7 @@ textarea{
 #sidebar li ul {
 	margin-bottom: 1.8em;
 	list-style: none;
+	padding-left: 8px;
 }
 
 #sidebar h3 {
@@ -279,6 +280,7 @@ textarea{
 	margin-left: 20px;
 	padding: 0px;
 	border: none;
+	padding-top: 15px;
 }
 
 #search #s {
@@ -543,4 +545,85 @@ fieldset{
 	padding-top:8px;
 	margin: 0px;
 	clear:both;
+}
+
+
+
+#noticias {
+}
+
+
+#noticias p,h3,h4{
+	margin:0px;
+	padding: 0px;
+}
+
+#noticias ul{
+	list-style:none;
+	padding:0px;
+	margin-left: 10px;
+	margin-top: 0px;
+	width: 550px;
+}
+
+#noticias ul li{
+	border-top: 1px dotted grey;
+    padding-top: 10px;
+}
+
+
+.nav_links{
+	padding-left:10px;
+}
+
+
+.right-column{
+	float:left;
+	width:485px;
+}
+
+div.dateblock{
+	line-height: 1.02em;
+	width: 40px;
+	float: left;
+	margin-top: 6px;
+	background: #F3F3F3;
+	border-top: 1px solid #eee;
+	border-left: 1px solid #eee;
+	border-right: 1px solid #bbb;
+	border-bottom: 1px solid #bbb;
+	color: #aaa;
+	text-align: center;
+	margin-right: 10px;
+	letter-spacing: 0.17em;
+	font-family: Arial, Verdana, sans;
+	padding: 1px;
+}
+span.dateblock_mon{
+	font-size: 9px;
+	display: block;
+	text-align: center;
+	color: #999;
+	font-family: Georgia, Arial, Verdana, sans;
+}
+span.dateblock_day{
+	font-weight: bold;
+	font-size: 15px;
+	display: block;
+	font-family: Georgia, Arial, Verdana, sans;
+	text-align: center;
+	position: relative;
+	top: -1px;
+	color: #336;
+}
+span.dateblock_year{
+	font-size: 9px;
+	display: block;
+	text-align: center;
+	color: #999;
+	font-family: Georgia, Verdana, Arial, sans;
+}
+
+.number_comments{
+	color: #CCC;
 }

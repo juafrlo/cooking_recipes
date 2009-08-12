@@ -75,4 +75,21 @@ def can_edit(item)
   current_user && (item.user == current_user || current_user.admin?) 
 end
 
+def invitations_number
+  current_user.received_invitations.size if current_user.received_invitations.size > 0
+end
+
+def date_block(date)
+  html = "<div class='dateblock'>"
+	html +=  "<span class='dateblock_mon'>#{l(date, :format => 'month')}</span>"
+	html +=  "<span class='dateblock_day'>#{l(date, :format => 'day')}</span>"
+	html +=  "<span class='dateblock_year'>#{l(date, :format => 'year')}</span>"
+  html += "</div>"
+  html
+end
+
+def number_of_comments(obj)
+  "<span class='number_comments'>(#{obj.comments.size} #{t(:comments)})</span>"
+end
+
 end
