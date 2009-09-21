@@ -1,56 +1,55 @@
-<h1 class="title"> Ficha de <%= @user.login %> </h1>
+<h1 class="title"> <%= t(:info_about)%> <%= @user.login %> </h1>
 
-<div style="margin-top: 10px;">
-	<div style=" float:left; width: 150px; text-align:center; padding-top: 20px;">
+<div class="user_box">
+	<div class="user_info">
 		<%= image_tag @user.avatar.url(:smalL) %><br/>
-		<div style="padding-top: 4px;">
-			Número de recetas: <%= @user.recetas.count %>
-			Número de posts: <%= @user.number_of_posts %>
+		<div class="user_participation">
+			<%= t(:number_of_recetas)%>: <%= @user.recetas.count %>
+			<%= t(:number_of_posts)%>: <%= @user.number_of_posts %>
 		</div>
 	</div>
 
-	<div style="float:left; width:380px; padding-left: 40px;">
+	<div class="user_data">
 		<div class="form_div" style="padding-top:15px;">
-			<div class="form_col1">
-				<span class="form_span"><%= label_tag 'nombre' %></span><br/>
+			<div class="form_col1_show">
+				<span class="form_span"><%= label_tag t(:name) %></span><br/>
 				<%=h @user.name %>
 			</div>
 
-			<div class="form_col2">
-				<span class="form_span"><%= label_tag 'apellidos' %></span><br/>
+			<div class="form_col2_show">
+				<span class="form_span"><%= label_tag t(:last_name) %></span><br/>
 				<%=h @user.surname %>
 			</div>
 		</div>
 
-
 		<div class="form_div">
-			<div class="form_col1">
+			<div class="form_col1_show">
 				<span class="form_span"><%= label_tag 'login' %></span><br/>
 				<%=h @user.login %>
 			</div>
 
-			<div class="form_col2">
+			<div class="form_col2_show">
 				<span class="form_span"><%= label_tag 'email' %></span><br/>
 				<%=h @user.email %>
 			</div>
 		</div>
 
-
 		<div class="form_div">
-			<div class="form_col1">
-				<span class="form_span"><%= label_tag 'País' %></span><br/>
+			<div class="form_col1_show">
+				<span class="form_span"><%= label_tag t(:country) %></span><br/>
 				<%=h @user.country %>
 			</div>
 
-			<div class="form_col2">
-				<span class="form_span"><%= label_tag 'Localidad' %></span><br/>
+			<div class="form_col2_show">
+				<span class="form_span"><%= label_tag t(:town) %></span><br/>
 				<%=h @user.town %>
 			</div>
 		</div>
 	</div>
 </div>
 
-<div style="clear:left; padding-top: 60px; margin-left: 10px;">
-	<%= link_to 'Editar', edit_user_path(@user) %>
-</div>
-
+<% if can_edit_user(@user) %>
+  <div id="edit_user_link">
+	  <%= link_to t(:Edit), edit_user_path(@user) %>
+  </div>
+<% end%>

@@ -1,7 +1,11 @@
-<%= friends_link('Mis amigos', 'mis_amigos', current_user.friends.size)%>
-<%= friends_link('Invitaciones recibidas', 'invitaciones_recibidas',  current_user.received_invitations.size)%>
+<%= friends_link('Mis amigos', 'mis_amigos',
+  current_user.friends.size)%>
+<%= friends_link('Invitaciones recibidas', 'invitaciones_recibidas',
+  current_user.received_invitations.size)%>
 <%= friends_link('Mandar invitaciones', 'invitar')%>
-<%= friends_link('Invitaciones enviadas', 'invitados', current_user.invited_friends.size)%>
+<%= friends_link('Invitaciones enviadas', 'invitados',
+  current_user.invited_friends.size)%>
 
-<%= render :partial => 'friends_list', :locals => {:users => @users, :title => @title}%>
+<%= render :partial => 'friends_list',
+  :locals => {:users => @users, :title => @title}%>
 

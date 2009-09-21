@@ -1,16 +1,19 @@
-
-<span id="nueva_receta"><%= link_to 'Nueva receta', new_receta_path %></span>
-<span id="nueva_receta"><%= link_to '¿Qué puedo cocinar?', '/' %></span>
+<span id="new_receta_button">
+  <%= link_to t(:New_receta), new_receta_path %>
+</span>
+<span id="what_can_i_cook_boutton"  style="margin-right: 20px;">
+  <%= link_to t(:What_can_i_cook), que_cocinar_hoy_recetas_path %>
+</span>
 
 <br/>
 <br/>
-<h1 class="title" style="margin-top: 20px;">Las mejores recetas de: <%= h @recetas[0].category.name %> </h1>
+<h1 class="title" style="margin-top: 20px;">
+  <%= t(:best_recetas_of)%>: <%= h @recetas[0].category.name %>
+</h1>
 
 <br/>
-
 <%= render :partial => 'list_recetas' %>
 
-
 <div style="margin-top:50px;">
-	<%= link_to 'Volver', recetas_path %>
+	<%= link_to t(:Back), recetas_path %>
 </div>

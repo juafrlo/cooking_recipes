@@ -1,7 +1,21 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
-one:
-  name: MyString
+arroz:
+  name: arroz
+  receta_id: 1
 
-two:
-  name: MyString
+agua:
+  name: agua
+  receta_id: 1
+
+pollo:
+  name: Pollo
+  receta_id: 1
+
+arroz2:
+  name: arroz
+  receta_id: 2
+
+huevo_frito:
+  name: huevo frito
+  receta_id: 2

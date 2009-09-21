@@ -8,8 +8,7 @@ class Receta < ActiveRecord::Base
   belongs_to :user
   belongs_to :category
 	acts_as_commentable
-  
-  validates_presence_of :name, :description, :country, :town
+  validates_presence_of :name, :description, :duration
   validates_numericality_of :duration
 
 
@@ -55,7 +54,6 @@ class Receta < ActiveRecord::Base
       end
     end
   end
-
   
   def delphoto
     unless photo_file_name.nil?
@@ -67,82 +65,70 @@ class Receta < ActiveRecord::Base
     end
   end
   
-  
-  
   def self.search(name,category_id,country,town)
-    @cond = Array.new
-    if !name.empty?
-      @cond << "name like '%" + name + "%'"
+    cond = Array.new
+    unless name.blank?
+      cond << "name like '%" + name + "%'"
     end
-    if country && !country.empty?
-      @cond << "country like '%" + country + "%'"
+    unless country.blank?
+      cond << "country like '%" + country + "%'"
     end
-    if town && !town.empty?
-      @cond << "town like '%" + town + "%'"   
+    unless town.blank?
+      cond << "town like '%" + town + "%'"   
     end
-    if category_id && !category_id.empty?
-      @cond << "category_id = " + category_id  
+    unless category_id.blank?
+      cond << "category_id = " + category_id  
     end
-    
-    @sql_statement = "SELECT * FROM recetas"
-    @sql_statement += " WHERE " + @cond.join(' AND ') if @cond.size > 0  
-    @sql_statement += " WHERE id = 0" if @cond.size == 0  
-    @recetas = find_by_sql(@sql_statement)
+    sql_statement = "SELECT * FROM recetas"
+    sql_statement += " WHERE " + cond.join(' AND ') if cond.size > 0  
+    sql_statement += " WHERE id = 0" if cond.size == 0  
+    recetas = find_by_sql(sql_statement)
   end
   
-  
-  
-  
-  
-  
-  
+  def to_param
+    id.to_s << "-" << (name ? name.parameterize : '' )
+  end
+    
   def self.search_with_ingr(duration,ingredients)
-    @ingr = Array.new
-    ingredients.each do |ingr|
-      @ingr << "'%"+ingr[:name]+"%'" 
+    ingr = Array.new
+    ingredients.each do |ingredient|
+      ingr << "'%"+ingredient[:name]+"%'" unless ingredient[:name].blank?
     end
       
     # If some ingredient have been indicated
-    @sql_statement = "SELECT *, COUNT(receta_id)  AS total FROM ingredients INNER JOIN recetas ON receta_id = recetas.id "      
-    @sql_statement += "WHERE ingredients.name like " + @ingr.join(' OR ingredients.name like ')     if @ingr.size >=1
-    if !duration.empty?
-        @sql_statement += " AND " if @ingr.size >= 1        
-        @sql_statement += " duration < " + duration
+    sql_statement = "SELECT *, COUNT(receta_id) AS total
+     FROM ingredients INNER JOIN recetas ON receta_id = recetas.id "      
+    if ingr.size >=1
+      sql_statement += "WHERE (ingredients.name like " + ingr.join(' OR ingredients.name like ') + ")"  
     end
-    @sql_statement += " GROUP BY receta_id"
+    unless duration.blank?
+        sql_statement += ingr.size >= 1  ? " AND " : " WHERE "        
+        sql_statement += " duration <= #{duration.to_i}"
+    end
+    sql_statement += " GROUP BY receta_id"
 
-
-puts @sql_statement
-    # If a name has benn indicated
-    #if !name.empty? 
-    #  @sql_statement = Receta.find_by_name("%"+ name + "%")
-	  #end
-	  
 	  # Perform the query
-	  @recetas = find_by_sql(@sql_statement)  
+	  recetas = find_by_sql(sql_statement)  
     
-    # Count number of ingredients and get the exact recetas and no exact recetas in one array. 
-    # The 'exact' field is for indicate how exact is the search
+    # Count number of ingredients and get the exact recetas and no exact recetas in two arrays. 
     # Compares number of times appear in last sql and number of ingredients searched
-    @recetas_exact = Array.new            
-    @recetas.each do |r|
-      if r.total.to_i == @ingr.size.to_i
-          r['exact'] = 1
-          @recetas_exact << r               
-      elsif (r.total.to_i >= (@ingr.size.to_i + 3)) || (r.total.to_i <= (@ingr.size.to_i + 3 ))
-          r['exact'] = 0
-          @recetas_exact << r     
+    recetas_exact = Array.new      
+    recetas_no_exact = Array.new      
+
+    recetas.each do |r|
+      if r.total.to_i == ingr.size.to_i || (ingr.size == 0 && !duration.blank?)  
+          recetas_exact << r               
+      elsif ingr.size != 0 && 
+      ((r.total.to_i >= (ingr.size.to_i + 3)) || (r.total.to_i <= (ingr.size.to_i + 3 )))
+          recetas_no_exact << r  
       end 
     end
-
-    @recetas_exact
-end
+    [recetas_exact, recetas_no_exact]
+  end
 
   def self.find_ordered(user,options = {})
     with_scope :find => options do
       Receta.find(:all, :conditions => ["user_id = ?", user.id], :include => :category)
     end
-  end
-  
-  
+  end  
 end

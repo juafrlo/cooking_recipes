@@ -1,6 +1,9 @@
 class RecetasController < ApplicationController
-  before_filter :authorize, :only => [:new, :edit, :delete]
+  before_filter :authorize, :only => [:new, :edit, :delete, :create, :update]
   before_filter :find_categories, :only => [:index,:new, :create, :edit, :update, :que_cocinar_hoy]
+  before_filter :owner_required, :only => [:edit, :update]
+  before_filter :admin_required, :only => [:destroy]
+  before_filter :check_duration_is_integer, :only => [:resultados]
 
   require 'fileutils'
   
@@ -57,11 +60,11 @@ class RecetasController < ApplicationController
   def create
     @receta = Receta.new(params[:receta])
     @receta.user_id = current_user.id
-    
+        
     respond_to do |format|
       if @receta.save
         @receta.delphoto
-        flash[:notice] = '¡Receta creada!'
+        flash[:notice] = t(:receta_created)
         format.html { redirect_to(@receta) }
         format.xml  { render :xml => @receta, :status => :created, :location => @receta }
       else
@@ -78,7 +81,7 @@ class RecetasController < ApplicationController
 
     respond_to do |format|
       if @receta.update_attributes(params[:receta])
-        flash[:notice] = 'Receta was successfully updated.'
+        flash[:notice] = t(:receta_updated)
         format.html { redirect_to(@receta) }
         format.xml  { head :ok }
       else
@@ -103,7 +106,7 @@ class RecetasController < ApplicationController
   def categoria
     @recetas = Receta.find(:all, :order => "id desc" , :conditions => ["category_id = ?", params[:id]])    
     if @recetas.empty?
-      flash[:notice] = 'Todavía no hay recetas en esta categoría'
+      flash[:notice] = t(:no_recetas_in_this_category)
       redirect_to(:back)
     end
   end
@@ -115,9 +118,17 @@ class RecetasController < ApplicationController
   
   def resultados
      if params[:receta][:name]
-       @recetas = Receta.search(params[:receta][:name],params[:receta][:category_id],params[:receta][:country],params[:receta][:town])
+       @recetas = Receta.search(
+         params[:receta][:name],
+         params[:receta][:category_id],
+         params[:receta][:country],
+         params[:receta][:town]
+       )
      else 
-       @recetas = Receta.search_with_ingr(params[:receta][:duration],params[:receta][:ingredient_attributes])
+       @recetas_exact, @recetas_no_exact = Receta.search_with_ingr(
+         params[:receta][:duration],
+         params[:receta][:ingredient_attributes]
+       )
     end
   end
 
@@ -130,6 +141,16 @@ class RecetasController < ApplicationController
   def find_categories
     @categories = Category.find(:all, :order => 'name')    
   end
+  
+  def check_duration_is_integer
+    if !params[:receta][:duration].blank? && params[:receta][:duration] != "0"
+      if params[:receta][:duration].to_i == 0
+        flash[:error] = t(:duration_must_be_integer)
+        redirect_to que_cocinar_hoy_recetas_path 
+      end
+    end
+  end
+  
   
 
 end

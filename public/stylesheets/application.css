@@ -196,6 +196,17 @@ textarea{
 .post .title h1 {
 }
 
+.post .title a {
+	color: white;
+	text-decoration: none;
+}
+
+.post .title a:visited {
+	color: white;
+	text_decoration :none;
+}
+
+
 .post .entry {
 	padding: 0 20px;
 }
@@ -313,17 +324,50 @@ textarea{
 
 .form_col1{
 	float:left;
-	width: 180px;
+	width: 240px;
 }
 
 .form_col2{
-	float:right;	
-	width: 180px;
+	float:left;	
+    margin-left: 100px;
 }
+
+.form_col1_show{
+	float:left;
+	width: 206px;
+}
+
+.form_col2_show{
+    margin-left: 100px;
+}
+
+
 
 .form_div{
 	clear:both;
 	padding-top: 20px;
+}
+
+.form_div select{
+	width: 176px;
+}
+
+.form_div input{
+	height: 15px;
+	padding-top: 6px;
+    margin-top:3px;
+}
+
+.little_search_time{
+	padding-bottom: 40px;
+}
+
+input{
+	height: 15px;
+	padding-top: 7px;
+    margin-top:0px;
+    padding-left: 2px;
+	padding-right: 2px;
 }
 
 .form_span{
@@ -626,4 +670,167 @@ span.dateblock_year{
 
 .number_comments{
 	color: #CCC;
+}
+
+.user_box{
+    margin-top: 10px;
+}
+
+.user_info{
+	float:left;
+	width: 150px;
+	text-align:center;
+	padding-top: 20px;
+}
+
+.user_participation{
+	padding-top: 4px;
+}
+
+.user_data{
+	float:left;
+	width:380px;
+	padding-left: 40px;
+}
+
+#edit_user_link{
+	clear:left;
+	padding-top: 60px;
+	margin-left: 10px;
+}
+
+table.th_paddings th{
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
+
+table.th_paddings td{
+	text-align: center;
+}
+
+#new_receta_button{
+	font-size: 14px;
+	float:right;
+	border: 1px solid black;
+	background: #CCC;
+	padding: 5px;
+}
+
+#what_can_i_cook_boutton{
+	font-size: 14px;
+	float:right;
+	border: 1px solid black;
+	background: #CCC;
+	padding: 5px;
+    margin-right: 20px;
+}
+
+.receta_category_div{
+	float:left;
+	margin-right: 0px;
+    width: 190px;
+    height: 150px;
+    margin-bottom: 15px;
+    margin-top:4px;
+    text-align: center;
+}
+
+.receta_category_name{
+    font-weight: bolder;
+	text-align:center;
+}
+
+
+.puntuation{
+	color: red;
+	text-align:left;
+}
+
+
+table.recetas_table{
+	width: 680px;
+	text-align:left;
+}
+table.recetas_table td{
+	text-align:left;
+	height: 20px;
+}
+
+table tr.odd {
+	background: #efefef;
+}
+
+table tr.par {
+}
+
+.receta_show_intro{
+	margin-top: 10px;
+}
+
+.receta_show_photo{
+	float:left;
+	width: 250px;
+	text-align:center;
+}
+
+.receta_show_info{
+	float:left;
+	width: 300px;
+}
+
+.receta_show_people{
+	margin-top:0px;
+	padding-top: 0px;
+    padding-bottom: 10px;
+}
+
+.receta_show_body{
+	margin-left: 10px;
+}
+
+.receta_show_name{
+	text-align:center;
+	padding-bottom: 17px;
+}
+
+.receta_show description_div{
+	padding-top: 18px;
+	clear:left;
+}
+
+.description_text{
+	padding-left: 10px;
+}
+
+.ingredients_div{
+	clear:left;
+    padding-top: 20px;
+}
+
+.steps_div{
+	padding-top: 0px;
+}
+
+.receta_show_origin{
+	padding-top:7px;
+	padding-bottom: 7px;
+}
+
+.receta_show_links{
+	padding-top: 15px
+}
+
+.receta_show_duration{
+	padding-top:7px;
+	padding-bottom: 7px;
+}
+
+.results_no_margin{
+	margin: 0px;
+}
+
+.results_margin{
+	margin-top:50px;
+	margin-bottom: 0px;
 }

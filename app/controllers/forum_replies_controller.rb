@@ -50,7 +50,7 @@ class ForumRepliesController < ApplicationController
         @forum_post.updated_at = @forum_reply.updated_at
         @forum_post.save
         flash[:notice] = t(:Reply_created)
-        redirect_to forum_post_url(@forum_reply.forum_post_id)
+        redirect_to forum_post_url(@forum_reply.forum_post)
     else
         render :action => 'new'
     end

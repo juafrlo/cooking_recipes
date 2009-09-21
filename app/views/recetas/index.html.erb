@@ -1,24 +1,28 @@
-
-<span id="nueva_receta"><%= link_to 'Nueva receta', new_receta_path %></span>
-<span id="nueva_receta"><%= link_to '¿Qué puedo cocinar?', :action => 'que_cocinar_hoy' %></span>
+<span id="new_receta_button">
+  <%= link_to t(:New_receta), new_receta_path %>
+</span>
+<span id="what_can_i_cook_boutton"  style="margin-right: 20px;">
+  <%= link_to t(:What_can_i_cook), que_cocinar_hoy_recetas_path %>
+</span>
 
 <br/><br/><br/>
 
+<h1 class="title"><%= t(:Last_published_recetas) %></h1>
 
-<h1 class="title">Últimas recetas publicadas </h1>
-
-<%= render :partial => 'list_recetas' %>
+<%= render :partial => 'list_recetas',
+   :locals => {:recetas => @recetas} %>
 
 <br /><br />
 
 
-<h1 class="title">Mejores recetas por categorías:</h1>
+<h1 class="title"><%= t(:Best_recetas_by_category) %></h1>
 
 <% for category in @categories %>	
-	<div style="float:left;margin-right: 0px; width: 190px; height: 150px; margin-bottom: 15px; margin-top:4px; text-align: center;">
-		<div style="font-weight: bolder; text-align:center;"><%= category.name %></div>
+	<div class="receta_category_div">
+		<div class ="receta_category_name"><%= category.name %></div>
 		<div>
-			<%= link_to image_tag (category.categoryphoto.url(:small), :size => "172x150"), :action => "categoria", :id => category.id %>		
+			<%= link_to image_tag(category.categoryphoto.url(:small), :size => "172x150"),
+			 :action => "categoria", :id => category.id %>		
 		</div>
 	</div>
 <% end %>

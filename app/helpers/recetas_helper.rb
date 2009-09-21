@@ -11,4 +11,12 @@ module RecetasHelper
   	end
   end
   
+  def receta_show_photo(receta)
+		if !receta.photo_file_name.nil? 
+			image_tag receta.photo.url(:small) 
+		else 
+			image_tag('others/no_photo.jpg')
+		end
+  end
+  
 end

@@ -22,7 +22,6 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :forum_posts, :has_many => :forum_replies, :shallow => true
   map.resources :forum_replies, :only => [:index]
   map.resources :forum_cat_l1s
-  map.resources :roles
   map.resources :noticias
   map.resources :recetas, :collection => {:categoria => :get, :que_cocinar_hoy => :get, :resultatos => :get}
   map.resources :comments, :path_prefix => '/:commentable_type/:commentable_id'

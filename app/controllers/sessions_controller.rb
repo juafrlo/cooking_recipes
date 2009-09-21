@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
 
   # render new.rhtml
   def new
-    puts params[controller_name]
+    params[controller_name]
   end
 
   def create

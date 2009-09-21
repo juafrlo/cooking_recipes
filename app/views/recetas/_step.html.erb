@@ -1,14 +1,16 @@
 <div class="step">
-		<% fields_for "receta[step_attributes][]", step do |step_form| %>
-			<p>
-				Paso: <%= step_form.text_field :explanation, :index => nil %>
-				<% if step.new_record? %>
-					<%= link_to_function "Borrar paso", "this.up('.step').remove()" %>
-				<% else %>
-					<%= link_to_function "Borrar paso", "mark_for_destroy(this)"%>
-					<%= step_form.hidden_field :id, :index => nil %>
-					<%= step_form.hidden_field :should_destroy, :index => nil, :class => 'should_destroy' %>
-				<% end %>
-			</p>
-		<% end %>
+  <% fields_for "receta[step_attributes][]", step do |step_form| %>
+	  <p>
+		  <%= t(:Step) %>: <%= step_form.text_field :explanation, :index => nil %>
+			<% if step.new_record? %>
+				<%= link_to_function image_tag('web/delete.png', :alt => t(:Delete_step)),
+				 "this.up('.step').remove()" %>
+			<% else %>
+				<%= link_to_function t(:Delete_step), "mark_for_destroy(this)"%>
+				<%= step_form.hidden_field :id, :index => nil %>
+				<%= step_form.hidden_field :should_destroy, :index => nil,
+				 :class => 'should_destroy' %>
+			<% end %>
+		</p>
+	<% end %>
 </div>

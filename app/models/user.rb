@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
 
   validates_presence_of     :login
   validates_length_of       :login,    :within => 3..40
-  validates_uniqueness_of   :login,    :onlu => 'create'
+  validates_uniqueness_of   :login,    :only => 'create'
   validates_format_of       :login,    :with => Authentication.login_regex, :message => Authentication.bad_login_message
 
   validates_format_of       :name,     :with => Authentication.name_regex,  :message => Authentication.bad_name_message, :allow_nil => true
@@ -90,7 +90,7 @@ class User < ActiveRecord::Base
     self.friendships.select{|user|
       user.status == Friendship::STATUS[1] }.collect(&:friend_id)
   end
-  
+    
   def friends
     User.find(:all, :conditions => ['id IN (?)', friends_ids],
      :order => 'login ASC')
@@ -117,7 +117,7 @@ class User < ActiveRecord::Base
   
   def no_friends  
     User.find(:all, :conditions => ['id NOT IN (?)',
-       self.friends.collect(&:user_id) + [self.id]]) 
+       self.friends.collect(&:id) + [self.id]]) 
   end
   
   
@@ -147,22 +147,9 @@ class User < ActiveRecord::Base
   end
 
   def admin?
-    #User.first.roles.include?(Role.first) 
     self.roles.include?(Role.find_by_title("admin")) ? true : false
   end
-  
-  def is_admin?
-    self.roles.include?(Role.find_by_title("admin")) ? true : false
-  end
-  
-  def puntuation
-    puntuations = []
-    self.recetas.each do |r|
-      puntuations << r.puntuation.to_i
-    end
-    puntuations.sum
-  end
-  
+    
   def self.login_regexp(str)
     re = Regexp.new("^#{str}", "i")
     find_options = { :order => "login ASC" }
@@ -170,11 +157,12 @@ class User < ActiveRecord::Base
      find_options).collect(&:login).select { |login| login.match re }    
   end
   
+  def to_param
+    id.to_s << "-" << (login ? login.parameterize : '' )
+  end
+  
   protected    
   def make_activation_code
     self.activation_code = self.class.make_token
   end
-
-
-
 end

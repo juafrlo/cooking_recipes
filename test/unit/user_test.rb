@@ -99,6 +99,47 @@ class UserTest < ActiveSupport::TestCase
     assert_not_nil users(:quentin).remember_token_expires_at
     assert users(:quentin).remember_token_expires_at.between?(before, after)
   end
+   
+  def test_assignrole 
+    assert_equal users(:quentin).roles.count, 1
+    users(:quentin).assignrole
+    assert_equal users(:quentin).roles.count, 2
+  end
+  
+  def test_friends_ids
+    assert_equal users(:quentin).friends_ids, [3]
+  end
+  
+  def test_invited_friends
+    assert_equal users(:quentin).invited_friends, [users(:aaron)]
+  end
+  
+  def test_can_invite
+    assert_equal users(:aaron).can_invite,
+     [users(:quentin), users(:old_password_holder)]
+  end
+  
+  def test_received_invitations
+    assert_equal users(:aaron).received_invitations, [users(:quentin)]
+  end
+  
+  def test_no_friends
+    assert_equal users(:quentin).no_friends, [users(:aaron)]
+  end
+  
+  def test_puntuation
+    assert_equal users(:quentin).puntuation, 6
+  end
+  
+  def test_admin?
+    assert_equal users(:quentin).admin?, true
+    assert_equal users(:aaron).admin?, false    
+  end
+  
+  def test_login_regexp
+    assert_equal User.login_regexp('aar'), ['aaron']
+  end
+    
 
 protected
   def create_user(options = {})

@@ -1,49 +1,14 @@
-<h2>Recetas exactas:</h2>
-<table class="recetas_table" style="width:570px;">		
-  <tr>
-    <th>Plato</th>
-    <th>Puntuación</th>
-    <th>Categoría</th>
-    <th>Autor</th>
-  </tr>
+<h2 class="results_no_margin"><%= t(:Exact_recetas)%>:</h2>
+<%= t(:Exact_recetas_intro) %>
+<%= render :partial => 'list_recetas',
+   :locals => {:recetas => @recetas_exact} %>
 
-<% for receta in @recetas %>
-  <% if receta['exact'] == 1 %>
-  <tr class="<%= cycle('odd','par')%>" >
-    <td><%= link_to receta.name,receta %></td>
-    <td><%=h receta.puntuation %>0 (0 votos)</td>
-    <td><%=h receta.category.name %></td>
-    <td><%=h receta.user.login %></td>
-  </tr>
- <% end %>
-<% end %>
-</table>
-
-
-<h2 style="margin-top: 50px;">Recetas no exactas:</h2>
-<table class="recetas_table" style="width:570px;">		
-  <tr>
-    <th>Plato</th>
-    <th>Puntuación</th>
-    <th>Categoría</th>
-    <th>Autor</th>
-  </tr>
-
-<% for receta in @recetas %>
-  <% if receta['exact'] == 0%>
-  <tr class="<%= cycle('odd','par')%>" >
-    <td><%= link_to receta.name,receta %></td>
-    <td><%=h receta.puntuation %>0 (0 votos)</td>
-    <td><%=h receta.category.name %></td>
-    <td><%=h receta.user.login %></td>
-  </tr>
- <% end %>
-<% end %>
-</table>
-
-
+<h2 class="results_margin"><%= t(:No_exact_recetas)%>:</h2>
+<%= t(:No_exact_recetas_intro) %>
+<%= render :partial => 'list_recetas',
+   :locals => {:recetas => @recetas_no_exact} %>
 
 <br/>
 <p>
-	<%= link_to 'Volver', :action => 'que_cocinar_hoy'%>
+	<%= link_to t(:Back), que_cocinar_hoy_recetas_path %>
 </p>

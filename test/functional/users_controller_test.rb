@@ -8,60 +8,52 @@ class UsersControllerTest < ActionController::TestCase
   # Be sure to include AuthenticatedTestHelper in test/test_helper.rb instead
   # Then, you can remove it from this and the units test.
   include AuthenticatedTestHelper
-
-  fixtures :users
+  fixtures :all
 
   def test_should_allow_signup
     assert_difference 'User.count' do
-      create_user
-      assert_response :redirect
+      assert_difference 'ActionMailer::Base.deliveries.size' do
+        create_user
+      end
     end
   end
 
   def test_should_require_login_on_signup
     assert_no_difference 'User.count' do
       create_user(:login => nil)
-      assert assigns(:user).errors.on(:login)
-      assert_response :success
     end
   end
 
   def test_should_require_password_on_signup
     assert_no_difference 'User.count' do
-      create_user(:password => nil)
-      assert assigns(:user).errors.on(:password)
-      assert_response :success
+      user_test = create_user(:password => nil)
+      assert user_test.errors.on(:password)
     end
   end
 
   def test_should_require_password_confirmation_on_signup
     assert_no_difference 'User.count' do
-      create_user(:password_confirmation => nil)
-      assert assigns(:user).errors.on(:password_confirmation)
-      assert_response :success
+      user_test = create_user(:password_confirmation => nil)
+      assert user_test.errors.on(:password_confirmation)
     end
   end
 
   def test_should_require_email_on_signup
     assert_no_difference 'User.count' do
-      create_user(:email => nil)
-      assert assigns(:user).errors.on(:email)
-      assert_response :success
+      user_test = create_user(:email => nil)
+      assert user_test.errors.on(:email)
     end
   end
   
-
-  
   def test_should_sign_up_user_with_activation_code
-    create_user
-    assigns(:user).reload
-    assert_not_nil assigns(:user).activation_code
+    user_test = create_user
+    assert_not_nil user_test.activation_code
   end
 
   def test_should_activate_user
     assert_nil User.authenticate('aaron', 'test')
     get :activate, :activation_code => users(:aaron).activation_code
-    assert_redirected_to '/session/new'
+    assert_redirected_to '/login'
     assert_not_nil flash[:notice]
     assert_equal users(:aaron), User.authenticate('aaron', 'monkey')
   end
@@ -79,10 +71,48 @@ class UsersControllerTest < ActionController::TestCase
   rescue ActionController::RoutingError
     # well played, sir
   end
+  
+  def test_should_edit_user_info
+    login_as :quentin
+    get :edit, :id => users(:quentin).id
+    assert_response :success
+  end
+
+  def test_should_not_edit_user_info
+    login_as :aaron
+    get :edit, :id => users(:quentin).id
+    assert_response :redirect
+  end
+  
+  def test_should_get_mis_recetas
+    get :mis_recetas, :id => users(:quentin).id
+    assert_response :success
+  end
+  
+  def test_should_get_mis_amigos
+    login_as :quentin
+    get :mis_recetas, :id => users(:quentin).id
+    assert_response :success
+  end
+  
+  def test_should_not_get_mis_amigos
+    get :mis_amigos, :id => users(:quentin).id
+    assert_response :redirect
+  end
+  
+  def test_should_update
+    login_as :quentin
+    put :update, :id => users(:quentin).id,
+      :user => {:town =>"New town"}
+    assert_equal assigns(:user).town, "New town"
+    assert_redirected_to user_path(users(:quentin))
+  end
+
 
   protected
     def create_user(options = {})
-      post :create, :user => { :login => 'quire', :email => 'quire@example.com',
+      hash = {:login => 'quire', :email => 'quire@example.com',
         :password => 'quire69', :password_confirmation => 'quire69' }.merge(options)
+      User.create(hash) 
     end
 end

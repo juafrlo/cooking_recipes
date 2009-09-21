@@ -275,6 +275,83 @@ es:
   noticia_created: Noticia creada
   noticia_updated: Noticia actualizada
   
+  #Recetas
+  receta_created: Receta creada
+  receta_updated: Receta actualizada
+  no_recetas_in_this_category: Todavía no hay recetas en esta categoría
+  receta_name: Nombre del plato
+  Category: Categoría
+  people_can_eat: ¿Para cuántas personas es este plato?
+  original_country: País de origen del plato
+  original_town: Localidad de origen del plato
+  description: Descripción
+  Add_ingredient: Añadir ingrediente
+  Add_step: Añadir paso
+  Ingredient: Ingrediente
+  Ingredients: Ingredientes
+  Delete_ingredient: Borrar ingrediente
+  Step: Paso
+  Steps: Pasos
+  Delete_step: Borrar paso
+  minutes: minutos
+  duration: Tiempo necesario para prepararlo
+  create_receta: Crear receta
+  update_receta: Actualizar receta
+  people: personas
+  description: Pequeña descripción de la receta
+  ingredients_intro: Ingredientes necesarios para preparar la receta
+  steps_intro: Pasos a seguir para preparar la receta
+  Currently: Actual
+  Stars: Estrellas
+  New_receta: Nueva receta
+  What_can_i_cook: ¿Qué puedo cocinar?
+  best_recetas_of: Las mejores recetas de
+  Edit_receta: Editar receta
+  Last_published_recetas: Últimas recetas publicadas
+  Best_recetas_by_category: Mejores recetas por categoría
+  Receta_by: Receta de
+  Receta_original_of: Plato típico de
+  Receta_to_people: Receta para
+  Searching_specific_receta: ¿Buscas una receta en concreto?
+  Recetas_searcher: Buscador de recetas
+  All: Todas
+  Search: Buscar
+  little_time_and_ingredients: ¿Tienes pocos ingredientes y poco tiempo?
+  Exact_recetas: Recetas exactas. 
+  Exact_recetas_intro: Son recetas en las que utilizarás todos los ingredientes indicados
+  No_exact_recetas_intro: Son recetas en las que sólo utilizarás algunos de los ingredientes indicados
+  Receta_prepared: Plato
+  Autor: Autor
+  No_exact_recetas: Recetas no exactas
+  no_results_found: No se encontraron resultados
+  Advanced_search: Búsqueda avanzada
+  Recetas_found: Recetas encontradas
+  must_search_by_params: Debes introducir algún parámaetro de búsqueda
+  duration_must_be_integer: El campo "duración" debe ser un número entero
+  
+  #Users
+  number_of_recetas: Número de recetas
+  number_of_posts: Número de posts
+  last_name: Apellidos
+  country: País
+  town: Localidad
+  info_about: Ficha de
+  edit_user_account: Edita tu cuenta de usuario
+  confirm_password: Confirmar contraseña
+  password: Contraseña
+  sign_up: Registrarse
+  sign_up_complete: Gracias por registrarte. Te estamos enviando un email con tu código de activación.
+  sign_up_failed: Lo sentimo, pero no ha sido posible crear tu cuenta.  Por favor, vuelve a intentarlo o ponte en contacto con nosotros.
+  user_data_updated: Ficha de usuario actualizada.
+  activation_success: ¡Registro completado! Por favor, introduce tu nombre de usuario y contraseña para continuar.
+  activation_failed: El código de activación no es correcto.  Por favor, utiliza la URL de tu email
+  activation_error_user: No pudimos encontrar un usuario con ese código de activación; comprueba tu email. Tal vez tu cuenta ya está activada. Prueba a introducir tu nombre de usuario y contraseña
+  puntuation: Puntuación
+  Recetas: Recetas
+  invite: ¿Invitar?
+  register: Regístrate como nuevo usuario
+  register_intro: Regístrare y podrás participar en todos los apartados de la web, compartiendo tus recetas y opinando sobre las del resto. ¡Es gratis y muy rápido!
+  
   #Others
   Show: Ver
   Edit: Editar

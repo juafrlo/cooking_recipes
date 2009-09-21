@@ -5,9 +5,11 @@ one:
   user_id: 1
   friend_id: 2
   status: "pending"
+  initiator: true
 
 two:
   id: 2
   user_id: 1
   friend_id: 3
   status: "accepted"
+  

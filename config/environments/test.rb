@@ -21,6 +21,6 @@ config.action_controller.allow_forgery_protection    = false
 # ActionMailer::Base.deliveries array.
 config.action_mailer.delivery_method = :test
 
-SITE_NAME = "Mis Receteas"
+SITE_NAME = "Mis Recetas"
 SITE_URL = "localhost:3000"
 SITE_EMAIL = "prueba@prueba.com"

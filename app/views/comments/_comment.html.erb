@@ -1,5 +1,5 @@
 <div id="<%="comment_#{comment.id}"%>" class="comment" 
-  <% if current_user && current_user.is_admin? %>
+  <% if current_user && current_user.admin? %>
   	onmouseover="$('<%="delete_#{comment.id}"%>').show();"
 	  onmouseout="$('<%="delete_#{comment.id}"%>').hide();"
   <% end %>
@@ -22,7 +22,7 @@
 	  <p class="no_spacing content-info">
 	    <%= l comment.created_at.to_time, :format => :custom%>
 	  </p>
-		<% if current_user && current_user.is_admin? %>
+		<% if current_user && current_user.admin? %>
  	    <%= link_to_remote 'x', :update => '',
 		    :url => comment_path(comment.commentable_type.to_s.underscore,
 		      comment.commentable_id, comment.id),

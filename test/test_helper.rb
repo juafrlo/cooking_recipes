@@ -38,6 +38,9 @@ class Test::Unit::TestCase
   
   def setup
     @request    = ActionController::TestRequest.new
+    ActionMailer::Base.delivery_method = :test
+    ActionMailer::Base.perform_deliveries = true
+    ActionMailer::Base.deliveries = []
   end
   
   def no_admin_actions

@@ -45,15 +45,20 @@ class ApplicationController < ActionController::Base
   def owner_required
     case controller_name
       when "forum_posts"
-       @forum_post = ForumPost.find(params[:id])
-       if !(@forum_post.user == current_user || current_user.admin?)
-         redirect_to '/'
-       end
+        @forum_post = ForumPost.find(params[:id])
+        if !(@forum_post.user == current_user || current_user.admin?)
+          redirect_to '/'
+        end
       when "forum_replies"
-       @forum_reply = ForumReply.find(params[:id])
-       if !(@forum_reply.user == current_user || current_user.admin?)
-         redirect_to '/'
-       end
+        @forum_reply = ForumReply.find(params[:id])
+        if !(@forum_reply.user == current_user || current_user.admin?)
+          redirect_to '/'
+        end
+      when "recetas"
+        @receta = Receta.find(params[:id])
+        if !(@receta.user == current_user || current_user.admin?)
+          redirect_to '/'
+        end
     end
   end
 end

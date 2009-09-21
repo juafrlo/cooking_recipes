@@ -1,14 +1,15 @@
 <h1 class="title"><%= title %></h1>
-<table>
-  <% users.each_with_index do |user,i| %>
-    <tr>
+<table class="th_paddings" border="0px" cellpadggin="0" cellspacing="0">
+  <tr>
 	  <th></th>
 	  <th>Nick</th>
-	  <th>Puntuación</th>
-	  <th>Recetas publicadas</th>
+	  <th><%= t(:puntuation)%></th>
+	  <th><%= t(:Recetas)%></th>
+	  <th><%= t(:invite)%></th>
 	  <th></th>
 	</tr>
-	<tr>
+  <% users.each_with_index do |user,i| %>
+	<tr class="<%= cycle('odd','par')%>">
 	  <td><%= image_tag(user.avatar.url(:small)) %></td>
   	  <td><%= link_to user.login, user_path(user) %></td>
 	  <td><%= user.puntuation %>/5</td>

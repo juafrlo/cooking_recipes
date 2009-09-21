@@ -7,39 +7,93 @@ class RecetasControllerTest < ActionController::TestCase
     assert_not_nil assigns(:recetas)
   end
 
+  test "should not get new" do
+    get :new
+    assert_redirected_to '/login'
+  end
+
   test "should get new" do
+    login_as :quentin
     get :new
     assert_response :success
   end
 
-  test "should create receta" do
-    assert_difference('Receta.count') do
+
+  test "should not create receta" do
+    assert_no_difference('Receta.count') do
       post :create, :receta => { }
     end
+    assert_redirected_to '/login'
+  end
 
+  test "should create receta" do
+    login_as :quentin
+    assert_difference('Receta.count') do
+      post :create,
+       :receta => {
+         :name => 'Some name',
+         :description => 'Some text',
+         :duration => '20' }
+    end
     assert_redirected_to receta_path(assigns(:receta))
   end
 
+
   test "should show receta" do
-    get :show, :id => recetas(:one).id
+    get :show, :id => recetas(:paella).id
     assert_response :success
+  end
+
+  test "should not get edit" do
+    get :edit, :id => recetas(:paella).id
+    assert_redirected_to '/login'
   end
 
   test "should get edit" do
-    get :edit, :id => recetas(:one).id
+    login_as :quentin
+    get :edit, :id => recetas(:paella).id
     assert_response :success
   end
 
-  test "should update receta" do
-    put :update, :id => recetas(:one).id, :receta => { }
-    assert_redirected_to receta_path(assigns(:receta))
+  test "should not update receta" do
+    put :update, :id => recetas(:paella).id, :receta => { }
+    assert_redirected_to '/login'
+  end
+  
+  test "other user should not update receta" do
+    login_as :aaron
+    put :update, :id => recetas(:paella).id, :receta => { }
+    assert_redirected_to '/'
   end
 
-  test "should destroy receta" do
-    assert_difference('Receta.count', -1) do
-      delete :destroy, :id => recetas(:one).id
-    end
+  test "owner should update receta" do
+    login_as :quentin
+    put :update, :id => recetas(:paella).id, :receta => { }
+    assert_redirected_to receta_path(recetas(:paella))
+  end
 
+  test "should not destroy receta" do
+    assert_no_difference 'Receta.count' do
+      delete :destroy, :id => recetas(:paella).id
+    end
+    assert_redirected_to '/'
+  end
+  
+  test "other user should not destroy receta" do
+    login_as :aaron
+    assert_no_difference 'Receta.count' do
+      delete :destroy, :id => recetas(:paella).id
+    end
+    assert_redirected_to '/'
+  end
+
+  test "admin should destroy receta" do
+    login_as :quentin
+    assert_difference('Receta.count',-1) do
+      delete :destroy, :id => recetas(:paella).id
+    end
     assert_redirected_to recetas_path
   end
+
+    
 end

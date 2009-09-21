@@ -1,35 +1,38 @@
-<h1 class="title">Buscador de recetas </h1>
-<br/>
+<h1 class="title"><%= t(:Recetas_searcher) %></h1>
 <% form_for :receta, :url => { :action => "resultados_busqueda" }   do |f| %>
+	<h2 class="clear"><%= t(:Searching_specific_receta) %></h2>  
+	<div class="form_div" style="padding-top:18px;">
+	   <div class="form_col1">
+	    <%= f.label :name, t(:receta_name) %><br />
+	    <%= f.text_field :name %>
+	  </div>
 
-<h2>¿Buscas un plato en concreto?</h2>  
-<div style="height:60px;">
-   <div style="float:left; width: 280px;">
-    <%= f.label "Nombre de la receta" %><br />
-    <%= f.text_field :name %>
-  </div>
+	  <div class="form_col2">
+	    <%= f.label :category, t(:Category) %><br />
+	  	<%= collection_select :receta, :category_id, @categories,
+	      :id, :name, {:include_blank => t(:All)} %>  
+	  </div>
+	</div>
 
-  <div style="float:left;">
-    <%= f.label "categoría" %><br />
-  	<%= collection_select :receta, :category_id, @categories, :id, :name, {:include_blank => 'Todas'} %>  
-  </div>
-</div>
+	<div class="clear"></div>
 
+	<div class="form_div">
+	  <div class="form_col1"
+	    <%= f.label :country, t(:original_country) %><br />
+	    <%= f.text_field :country %>
+	  </div>
 
-<div style="clear:both;"></div>
+	  <div class="form_col2">
+	    <%= f.label :town, t(:original_town) %><br />
+	    <%= f.text_field :town %>
+	  </div>
+	</div>
 
-<div style="height: 60px;">
-  <div style="float:left; width:280px;">
-    <%= f.label "País de origen del plato"%><br />
-    <%= f.text_field :country %>
-  </div>
+	<div class="clear"></div><br/><br/>
 
-  <div style="float:left; width:280px;">
-    <%= f.label "Localidad de origen del plato" %><br />
-    <%= f.text_field :town %>
-  </div>
-</div>
- <%= submit_tag 'Buscar' %>
+	<p class="clear">
+    <%= submit_tag t(:Search) %>
+	</p>
 <% end %>
 
 <div style="clear:both;"></div>
@@ -38,24 +41,27 @@
 
 
 <% form_for :receta, :url => { :action => "resultados" }   do |f| %>
-<h2>¿Tienes pocos ingredientes y poco tiempo?</h2> 
-<div>
-  <div style="padding-bottom: 40px;">
-  <%= f.label "tiempo necesario para preparar el plato" %><br />
-  	<div style="float:left;"><%= f.text_field :duration , :size => "5"%></div>
-	<div style="float:left; padding-left: 8px; padding-top: 5px;">minutos</div>
-  </div>
+  <h2><%= t(:little_time_and_ingredients) %></h2> 
+  <div class="form_div"  style="padding-top:5px;">
+		<div class="form_col1">
+		  <div>
+		    <%= f.label :duration, t(:duration) %><br />
+		  	<%= f.text_field :duration , :size => "5"%>
+			  <%= t(:minutes) %>
+		  </div>
+		</div>
+	</div>
 
+  <div style="clear:both;"></div>
 
-
-  <div id="ingredients">
-	<%= render :partial => 'ingredient', :collection => @receta.ingredients %>
-  </div>
-
-  <p>
-	<%= add_ingredient_link "Añadir ingrediente" %>
-  </p>
-</div>
+	<div class="form_div">
+	  <div id="ingredients">
+	  	<%= render :partial => 'ingredient', :collection => @receta.ingredients %>
+	  </div>
+	  <p>
+		  <%= add_ingredient_link t(:Add_ingredient) %>
+	  </p>
+	</div>
 
   <%= submit_tag 'Buscar' %>
 <% end %>

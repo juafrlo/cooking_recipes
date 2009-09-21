@@ -2,12 +2,11 @@ class UsersController < ApplicationController
   # Be sure to include AuthenticationSystem in Application Controller instead
   include AuthenticatedSystem
   skip_before_filter :verify_authenticity_token, :only => 'auto_complete_for_user_login'
-  before_filter :authorize, :only => [:mis_recetas]
- 
- 
+  before_filter :login_required, :only => 'auto_complete_for_user_login'
+  before_filter :be_same_user, :only => [:edit, :update, :mis_amigos]
+   
   def show
     @user = User.find(params[:id])
-    
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @user }
@@ -15,18 +14,15 @@ class UsersController < ApplicationController
   end
   
   def edit
-    @user = User.find(params[:id])
   end
   
   def mis_recetas
-    @recetas = Receta.find_ordered(current_user, :order => params[:order])
+    @user = User.find(params[:id])
+    @recetas = Receta.find_ordered(@user, :order => params[:order])
   end
 
   def mis_amigos
-    #@friends = current_user.friends
-    #@users_to_invite = current_user.can_invite
-    #@no_friends = current_user.no_friends
-    @users,@title = current_user.friends_list(params[:option])   
+    @users,@title = @user.friends_list(params[:option])   
   end
 
   def auto_complete_for_user_login
@@ -44,16 +40,13 @@ class UsersController < ApplicationController
     logout_keeping_session!
     @user = User.new(params[:user])
     success = @user && @user.save
-  
     @user.assignrole
     @user.delavatar
-  
-    if success && @user.errors.empty?
-        	  
+    if success && @user.errors.empty?        	  
       redirect_back_or_default('/')
-      flash[:notice] = "Gracias por registrarte. Te estamos enviando un email con tu código de activación."
+      flash[:notice] = t(:sign_up_complete)
     else
-      flash[:error]  = "Lo sentimo, pero no ha sido posible crear tu cuenta.  Por favor, vuelve a intentarlo o ponte en contacto con nosotros."
+      flash[:error]  = t(:sign_up_failed)
       render :action => 'new'
     end
   end
@@ -62,7 +55,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     respond_to do |format|
       if @user.update_attributes(params[:user])
-        flash[:notice] = 'Ficha de usuario actualizada.'
+        flash[:notice] = t(:user_data_updated)
         format.html { redirect_to(@user) }
         format.xml  { head :ok }
       else
@@ -78,14 +71,20 @@ class UsersController < ApplicationController
     case
     when (!params[:activation_code].blank?) && user && !user.active?
       user.activate!
-      flash[:notice] = "¡Registro completado! Por favor, introduce tu nombre de usuario y contraseña para continuar."
+      flash[:notice] = t(:activation_success)
       redirect_to '/login'
     when params[:activation_code].blank?
-      flash[:error] = "El código de activación no es correcto.  Por favor, utiliza la URL de tu email"
+      flash[:error] = t(:activation_failed)
       redirect_back_or_default('/')
     else 
-      flash[:error]  = "No pudimos encontrar un usuario con ese código de activación; comprueba tu email. Tal vez tu cuenta ya está activada. Prueba a introducir tu nombre de usuario y contraseña"
+      flash[:error]  = t(:activation_error_user)
       redirect_back_or_default('/login')
     end
+  end
+  
+  protected
+  def be_same_user
+    @user = User.find(params[:id])
+    redirect_to '/' unless (current_user && (current_user == @user || current_user.admin?))
   end
 end

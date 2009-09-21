@@ -4,23 +4,21 @@
 </div>
 
 <% form_for(@user, :html =>{ :multipart => true })   do |f| %>
-<div class="form_div" style="padding-top:15px;">
+<div class="form_div">
 	<div class="form_col1">
-		<%= label_tag 'nombre' %><br/>
+		<%= f.label :name, t(:Name) %><br/>
 		<%= f.text_field :name %>
 	</div>
 
 	<div class="form_col2">
-		<%= label_tag 'apellidos' %><br/>
+		<%= f.label :surname, t(:last_name) %><br/>
 		<%= f.text_field :surname %>
 	</div>
 </div>
 
-
 <div class="form_div">
 	<div class="form_col1">
-		<%= label_tag 'login' %><br/>
-		
+		<%= f.label :login, 'Login' %><br/>		
 		<% if action_name != 'new'%>
 			<%= f.text_field :login, :disabled => 'disabled' %>
 		<% else %>
@@ -29,34 +27,33 @@
 	</div>
 
 	<div class="form_col2">
-		<%= label_tag 'email' %><br/>
+		<%= f.label :email, 'Email' %><br/>
 		<%= f.text_field :email %>
 	</div>
 </div>
 
 <div class="form_div">
 	<div class="form_col1">
-		<%= label_tag 'password' %><br/>
+		<%= f.label :password, t(:password) %><br/>
 		<%= f.password_field :password %>
 	</div>
 
 	<div class="form_col2">
-		<%= label_tag 'password_confirmation', 'Confirmar password' %><br/>
+		<%= label_tag 'password_confirmation', t(:confirm_password) %><br/>
 		<%= f.password_field :password_confirmation %>
 	</div>
 </div>
 
-
 <div class="form_div">
 	<div class="form_col1">
-		<%= label_tag 'Localidad' %><br/>
-		<%= f.text_field :town %>
+		<%= f.label :country, t(:country) %><br/>
+		<%= f.text_field :country %>
 	</div>
 
 
 	<div class="form_col2">
-		<%= label_tag 'País' %><br/>
-		<%= f.text_field :country %>
+		<%= f.label :town, t(:town)%><br/>
+		<%= f.text_field :town %>
 	</div>	
 </div>
 
@@ -67,5 +64,12 @@
 	</div>
 </div>
 
-<p class="form_but"><%= submit_tag 'Registrarse' %></p>
+<div class="clear"></div><br/><br/>
+<p class="form_but">
+  <% if action_name != 'new'%>
+    <%= submit_tag t(:Update) %>
+  <% else %>
+    <%= submit_tag t(:sign_up) %>
+  <% end%>
+</p>
 <% end -%>
