@@ -14,7 +14,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :friendships, :collection => {:accept => :get, :deny => :get}
   map.resources :categories
   
-  map.resources :users, :member => {:mis_recetas => :get, :mis_amigos => :get} do |users|
+  map.resources :users, :member => {:mis_recetas => :get, :mis_amigos => :get}, :collection => {:forgot_password => :post} do |users|
     users.resources :messages, :collection => { :delete_selected => :post }
   end
 

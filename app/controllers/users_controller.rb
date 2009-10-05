@@ -82,6 +82,19 @@ class UsersController < ApplicationController
     end
   end
   
+  def forgot_password  
+    @user = User.find_by_email(params[:email])  
+    if @user && @user.reset_password
+      UserMailer.deliver_reset_password(@user)
+      @user.save
+      redirect_to login_url
+      flash[:notice] = t(:your_password_has_been_reset_and_emailed_to_you)
+    else
+      flash[:error] = t(:sorry_we_dont_recognize_that_email_address)
+    end 
+  end
+  
+  
   protected
   def be_same_user
     @user = User.find(params[:id])

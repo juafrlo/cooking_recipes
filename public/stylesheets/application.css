@@ -363,11 +363,8 @@ textarea{
 }
 
 input{
-	height: 15px;
-	padding-top: 7px;
+	padding: 4px 2px 3px 2px;
     margin-top:0px;
-    padding-left: 2px;
-	padding-right: 2px;
 }
 
 .form_span{
@@ -375,25 +372,25 @@ input{
 }
 
 .message-error {
-	padding: 2px 4px 2px 4px;
+    padding: 4px 8px 3px 8px;
 	font-size: 12px;
 	background:#FFDCD6;
 	border:1px solid #990000;
-	margin: 5px 0px 8px 0px;
+	margin: -2px 0px 8px 0px;
 	color:#BB0000;
 	float:left;
-	width: 98%;
+	width: 97%;
 }
 
 .message-ok {
-	padding: 2px 4px 2px 4px;
+    padding: 4px 8px 3px 8px;
 	font-size: 12px;
 	background: #CCFFCC;
 	border:1px solid  #00BB00;
-	margin: 5px 0px 8px 0px;
+	margin: -2px 0px 8px 0px;
 	color:#008800;
 	float:left;
-	width: 98%;
+	width: 97%;
 }
 
 .flash_text{
@@ -834,3 +831,21 @@ table tr.par {
 	margin-top:50px;
 	margin-bottom: 0px;
 }
+
+.login_check label{
+	float:left;
+}
+
+.login_check input{
+	float:left;
+	margin-top: 3px;
+}
+
+.login_button{
+	clear:both;
+}
+
+.login_button input{
+	margin-top:20px;
+}
+

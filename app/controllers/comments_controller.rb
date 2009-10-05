@@ -25,5 +25,11 @@ class CommentsController < ApplicationController
       format.js
     end        
   end
+  
+  private
+  def send_notification_to_owner
+    debugger
+    1+1
+  end
 
 end

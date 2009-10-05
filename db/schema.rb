@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090908073154) do
+ActiveRecord::Schema.define(:version => 20090930075939) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -171,6 +171,8 @@ ActiveRecord::Schema.define(:version => 20090908073154) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.boolean  "receive_comments_emails",                  :default => false
+    t.boolean  "receive_friends_emails",                   :default => false
   end
 
   add_index "users", ["login"], :name => "index_users_on_login", :unique => true

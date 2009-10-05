@@ -230,6 +230,21 @@ es:
   add_comment: Añadir comentario
   comments: commentarios
   
+  #Emails
+  password_reseted: Tu password ha sido reseteado a un nuevo valor
+  activate_your_account: Por favor, activa tu cuenta
+  account_activated: ¡Cuenta activada!
+  activation_completed: tu cuenta ha sido activada- ¡Bienvenido!
+  your_account_created: Tu cuenta ha sido creada
+  visit_to_activate: Visita el siguiente enlace para activar tu cuenta
+  your_password_reseted: Tu password ha sido reseteado
+  new_user_data_to_login: Para poder acceder necesitarás los siguientes datos  
+  thank_you_for_visiting: Gracias por visitar
+  your_password_has_been_reset_and_emailed_to_you: Tu password ha sido reseteado y enviadp a tu email
+  sorry_we_dont_recognize_that_email_address: Lo sentimos. No se ha podido reconocer ningún usuario con dicho email
+  comment_notification_intro: Has recibido un comentario en tu receta
+  check_comment_notification: Puedes leer el comentario visitando el siguiente enlace
+  
   #Forums
   category1: Categorías nivel 1
   category2: Categorías nivel 2
@@ -351,6 +366,13 @@ es:
   invite: ¿Invitar?
   register: Regístrate como nuevo usuario
   register_intro: Regístrare y podrás participar en todos los apartados de la web, compartiendo tus recetas y opinando sobre las del resto. ¡Es gratis y muy rápido!
+  forgot_your_password: ¿Has olvidado tu password? Solicita uno nuevo
+  here: aquí
+  want_new_password: Solicitar
+  forgot_password_intro: Índica tu dirección de email y en breve recibirás en dicho email tu nombre de usuario y contraseña.
+  receive_comments_emails_exp: ¿Deseas recibir emails con comentarios de otros usuarios de tus recetas publicadas?
+  receive_friends_emails_exp: ¿Deseas recibir un email cada vez que uno de tus amigos cree una receta nueva?
+  
   
   #Others
   Show: Ver
@@ -361,5 +383,6 @@ es:
   Back: Volver
   no_photo: Foto no disponible
   are_you_sure: ¿Estás seguro?
-  
-  
+  Remember_me: ¿Recordarme?
+  if_no_count: Si no todavía no dispones de una cuenta
+  free: ¡Es gratis!  

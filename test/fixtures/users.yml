@@ -10,6 +10,7 @@ quentin:
   remember_token: 902ba3cda1883801594b6e1b452790cc53948fda
   activation_code:           
   activated_at: <%= 5.days.ago.to_s :db %>
+  receive_comments_emails: true    
       
 aaron:
   id: 2
@@ -22,7 +23,7 @@ aaron:
   remember_token:            
   activation_code: fe5dbbcea5ce7e2988b8c69bcfdfde8904aabc1f
   activated_at:              
-
+  receive_comments_emails: false
 
 old_password_holder:
   id: 3

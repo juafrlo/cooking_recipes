@@ -1,22 +1,16 @@
 require File.dirname(__FILE__) + '/../test_helper'
-require 'user_mailer'
 
 class UserMailerTest < Test::Unit::TestCase
-  FIXTURES_PATH = File.dirname(__FILE__) + '/../fixtures'
-  CHARSET = "utf-8"
-
-  include ActionMailer::Quoting
-
-  def setup
-    ActionMailer::Base.delivery_method = :test
-    ActionMailer::Base.perform_deliveries = true
-    ActionMailer::Base.deliveries = []
-    @expected = TMail::Mail.new
-    @expected.set_content_type "text", "plain", { "charset" => CHARSET }
+  def test_reset_password
+    assert_difference 'ActionMailer::Base.deliveries.size', +1 do
+      UserMailer.deliver_reset_password(users(:quentin))
+    end
   end
-
-  def test_dummy_test
-    #do nothing
+  
+  def test_comment_alarm
+    assert_difference 'ActionMailer::Base.deliveries.size', +1 do
+      UserMailer.deliver_comment_notification(users(:quentin), recetas(:paella))
+    end
   end
 
   private

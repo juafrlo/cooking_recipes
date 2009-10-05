@@ -64,7 +64,20 @@
 	</div>
 </div>
 
-<div class="clear"></div><br/><br/>
+<div class="form_div">
+	<p class="login_check">
+    <%= f.check_box :receive_comments_emails %>
+		<%= f.label :receive_comments_emails, t(:receive_comments_emails_exp) %>
+	</p>
+  <div class="clear"></div>
+	<p class="login_check">
+    <%= f.check_box :receive_friends_emails %>
+		<%= f.label :receive_friends_emails, t(:receive_friends_emails_exp) %>
+	</p>
+</div>
+
+
+<div class="clear"></div><br/>
 <p class="form_but">
   <% if action_name != 'new'%>
     <%= submit_tag t(:Update) %>

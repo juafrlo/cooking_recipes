@@ -103,11 +103,20 @@ class UsersControllerTest < ActionController::TestCase
   def test_should_update
     login_as :quentin
     put :update, :id => users(:quentin).id,
-      :user => {:town =>"New town"}
+      :user => {:town =>"New town", :receive_comments_emails => true,
+        :receive_friends_emails => true}
     assert_equal assigns(:user).town, "New town"
+    assert_equal assigns(:user).receive_comments_emails, true
+    assert_equal assigns(:user).receive_friends_emails, true
     assert_redirected_to user_path(users(:quentin))
   end
 
+  def test_should_reset_password
+    assert_difference 'ActionMailer::Base.deliveries.size', 1 do
+      post :forgot_password, :email => users(:quentin).email
+      assert_redirected_to login_path    
+    end
+  end
 
   protected
     def create_user(options = {})

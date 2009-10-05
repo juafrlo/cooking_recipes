@@ -30,7 +30,7 @@ class User < ActiveRecord::Base
   # HACK HACK HACK -- how to do attr_accessible from here?
   # prevents a user from submitting a crafted form that bypasses activation
   # anything else you want your user to change should be added here.
-  attr_accessible :login, :email, :name, :password, :password_confirmation, :surname, :town, :country, :avatar
+  attr_accessible :login, :email, :name, :password, :password_confirmation, :surname, :town, :country, :avatar, :receive_comments_emails, :receive_friends_emails
 
 
   # Activates the user in the database.
@@ -160,6 +160,22 @@ class User < ActiveRecord::Base
   def to_param
     id.to_s << "-" << (login ? login.parameterize : '' )
   end
+  
+  def reset_password
+     new_password = newpass(8)
+     self.password = new_password
+     self.password_confirmation = new_password
+     return self.valid?
+  end
+  
+  def newpass( len )
+     chars = ("a".."z").to_a + ("A".."Z").to_a + ("0".."9").to_a
+     new_password = ""
+     1.upto(len) { |i| new_password << chars[rand(chars.size-1)] }
+     return new_password
+  end
+  
+  
   
   protected    
   def make_activation_code
