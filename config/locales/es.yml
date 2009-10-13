@@ -102,7 +102,13 @@ es:
         title: "Título"
         comment: "Post"
       forum_reply:
-        reply: "Respuesta"    
+        reply: "Respuesta" 
+      receta:
+        duration: "Duración"   
+        name: "Nombre"
+        description: "Descripción"
+      role:
+        title: "Título"
     models:
       forum post: "'post'" 
       forum cat l2: "'categoría nivel 2'"
@@ -244,6 +250,15 @@ es:
   sorry_we_dont_recognize_that_email_address: Lo sentimos. No se ha podido reconocer ningún usuario con dicho email
   comment_notification_intro: Has recibido un comentario en tu receta
   check_comment_notification: Puedes leer el comentario visitando el siguiente enlace
+  thanks_for_visiting: Gracias por visitar
+  friend_notification_intro: Uno de tus amigos ha publicado una nueva receta
+  check_friend_notification: Puedes consultar dicha receta visitando el siguiente enlace
+  check_comment_notification: Puedes leer los comentarios de dicha receta visitando el siguiente enlace
+  friendship_notification_intro: Un usario ha solicitado ser tu amigo
+  check_friendship_notification: Puedes consultar tus solicitudes de amistad recibidas pendientes visitando el siguiente enlace
+  message_notification_intro: Has recibido un mensaje privado
+  check_message_notification: Puedes leer el mensaje visitando el siguiente enlace
+  
   
   #Forums
   category1: Categorías nivel 1
@@ -279,6 +294,27 @@ es:
   Reply_created: Respuesta creada
   delete_post_and_replies: ¿Quieres borrar este post y todas sus respuestas?
   delete_reply: ¿Borrar respuesta?
+  
+  #Messages
+  Inbox: Buzón de entrada
+  Delete_q: ¿Borrar?
+  Subject: Asunto
+  From: De
+  Reception_date: Fecha de recepción
+  No_messages: No hay mensajes
+  Delete: Borrar
+  Sent: Enviados
+  Redact: Redactar
+  Sent_date: Fecha de envío
+  To: Para
+  Message_body: Mensaje
+  Send: Enviar
+  Message_sent: Mensaje enviado
+  Messages_deleted: Mensajes seleccionados borrados
+  You: ti
+  Received: Recibido
+  Reply: Responder
+  Read_message: Leer mensaje
   
   #News
   new_noticia: Nueva noticia
@@ -344,7 +380,12 @@ es:
   must_search_by_params: Debes introducir algún parámaetro de búsqueda
   duration_must_be_integer: El campo "duración" debe ser un número entero
   
+  #Sessions
+  session_created: ¡Ya estás dentro!
+  session_destroyed: ¡Has salido del sistema!
+  
   #Users
+  view_recetas: Ver recetas
   number_of_recetas: Número de recetas
   number_of_posts: Número de posts
   last_name: Apellidos
@@ -362,6 +403,8 @@ es:
   activation_failed: El código de activación no es correcto.  Por favor, utiliza la URL de tu email
   activation_error_user: No pudimos encontrar un usuario con ese código de activación; comprueba tu email. Tal vez tu cuenta ya está activada. Prueba a introducir tu nombre de usuario y contraseña
   puntuation: Puntuación
+  my_published_recipes: Mis recetas publicadas
+  published_recipes_of: Recetas publicadas de
   Recetas: Recetas
   invite: ¿Invitar?
   register: Regístrate como nuevo usuario
@@ -372,7 +415,9 @@ es:
   forgot_password_intro: Índica tu dirección de email y en breve recibirás en dicho email tu nombre de usuario y contraseña.
   receive_comments_emails_exp: ¿Deseas recibir emails con comentarios de otros usuarios de tus recetas publicadas?
   receive_friends_emails_exp: ¿Deseas recibir un email cada vez que uno de tus amigos cree una receta nueva?
-  
+  receive_friendships_emails_exp: ¿Deseas recibir un email cada vez que un usario desee hacerse amigo tuyo?
+  receive_messages_emails_exp: ¿Deseas recibir un email cada vez que recibas un mensaje privado?
+
   
   #Others
   Show: Ver
@@ -386,3 +431,6 @@ es:
   Remember_me: ¿Recordarme?
   if_no_count: Si no todavía no dispones de una cuenta
   free: ¡Es gratis!  
+  invitation: invitación
+  invitations: invitaciones
+  Publish: Publicar

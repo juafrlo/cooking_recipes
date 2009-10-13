@@ -7,11 +7,30 @@ class UserMailerTest < Test::Unit::TestCase
     end
   end
   
-  def test_comment_alarm
+  def test_comment_notification
     assert_difference 'ActionMailer::Base.deliveries.size', +1 do
       UserMailer.deliver_comment_notification(users(:quentin), recetas(:paella))
     end
   end
+
+  def test_friend_notification
+    assert_difference 'ActionMailer::Base.deliveries.size', +1 do
+      UserMailer.deliver_friend_notification(users(:quentin), recetas(:paella))
+    end
+  end
+
+  def test_friendship_notification
+    assert_difference 'ActionMailer::Base.deliveries.size', +1 do
+      UserMailer.deliver_friendship_notification(users(:aaron))
+    end
+  end
+  
+  def test_comment_notification
+    assert_difference 'ActionMailer::Base.deliveries.size', +1 do
+      UserMailer.deliver_message_notification(users(:quentin))
+    end
+  end
+
 
   private
     def read_fixture(action)

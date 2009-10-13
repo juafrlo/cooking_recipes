@@ -1,10 +1,19 @@
-<h2>Sent</h2>
-<table>
+<ul class="nav_buttons">
+  <li>
+		<%= link_to t(:Inbox), user_messages_path(@user) %>
+  </li>
+  <li>
+		<%= link_to t(:Redact), new_user_message_path(@user)%>
+	</li>
+</ul>
+
+<h2 class="title"><%= t(:Sent)%></h2>
+<table class="recetas_table messages" style="width:570px">
 	<tr>
-		<th>¿Borrar?</th>
-		<th>Asunto</th>
-		<th>De</th>
-		<th>Fecha de envío</th>
+		<th><%= t(:Delete_q)%></th>
+		<th><%= t(:Subject)%></th>
+		<th><%= t(:From)%></th>
+		<th><%= t(:Sent_date)%></th>
 	</tr>
 	<% if @messages.size == 0 %>
 		<tr>
@@ -18,14 +27,13 @@
 				<td><%= check_box_tag "delete[]", message.id %></td>
 				<td><%= link_to h(message.subject), user_message_path(@user, message) %></td>
   			<td><%= link_to h(message.recipient.login), user_path(@user) %></td>
-			  <td><%=h mydatetime_format(message.created_at) %></td>
+			  <td><%=h l message.created_at.to_time, :format => :custom %></td>
 			</tr>
 		<% end %>
 		<tr>
 			<td colspan="4">
-				<%= submit_tag "Delete" %>
+				<%= submit_tag t(:Delete) %>
 			</td>
 		</tr>
  	<% end %>
 </table>
-<%= link_to "Inbox", user_messages_path(@user)%>

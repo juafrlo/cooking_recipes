@@ -87,4 +87,12 @@ class RecetaTest < ActiveSupport::TestCase
     assert_equal Receta.search('arroz','2','Cuba',nil), [recetas(:arroz_a_la_cubana)]  
     assert_equal Receta.search('arroz','2',nil,nil), [recetas(:arroz_a_la_cubana)]  
   end
+  
+  def test_send_notification_to_friends
+    assert_difference 'ActionMailer::Base.deliveries.size' do
+      Receta.create(:name => 'A name', :description => 'A descr', :duration => 2,
+        :user_id => users(:quentin))      
+    end
+  end
+  
 end

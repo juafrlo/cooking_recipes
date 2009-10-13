@@ -1,14 +1,15 @@
-<h2 class="forum nav" >
+<h2 class="title small" >
   <%= link_to t(:Forums), forum_cat_l2s_path %> > 
   <%=link_to  @forum_post.forum_cat_l2.title, @forum_post.forum_cat_l2 %> >
 	<%= @forum_post.title %> 
 </h2>
 
-<div class="post_reply">
-	<%= link_to t(:New_forum_reply),new_forum_post_forum_reply_path(@forum_post)  %>
-</div>
+<ul class="nav_buttons">
+  <li>
+		<%= link_to t(:New_forum_reply),new_forum_post_forum_reply_path(@forum_post)  %>
+  </li>
+</ul>
 
-<div class="clear"></div>
 
 <table class="forum_post_table" border="1" cellspacing="0" cellpadding="4" >
   <tr>

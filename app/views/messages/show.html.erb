@@ -1,17 +1,35 @@
-<p><strong>De:</strong> <%= @message.sender == @user ? link_to("You", user_path(@user)) : link_to(h(@message.sender.login), user_path(@user)) %></p>
-<p>
-  <strong>Recibido:</strong>
-  <%= mydatetime_format(@message.created_at) %>
+<ul class="nav_buttons">
+  <li>
+		<%= link_to t(:Inbox), user_messages_path(@user) %>
+  </li>
+  <li>
+	  <%= link_to t(:Sent), user_messages_path(@user, :mailbox => :sent)%>
+	</li>
+</ul>
+
+
+<h2 class="title"><%= t(:Read_message)%></h2>
+<p class="clear">
+	<strong><%= t(:From)%>:</strong>
+  <%= message_user(@message.sender == @user,@message.sender)%>
 </p>
 
-<p><strong>Para:</strong> <%= @message.recipient == @user ? link_to("You", user_path(@user)) : link_to(h(@message.recipient.login), user_path(@user)) %></p>
+<p class="clear">
+  <strong><%= t(:Received)%>:</strong>
+  <%=h l @message.created_at.to_time, :format => :custom %>
+</p>
+
+<p class="clear">
+	<strong><%= t(:To)%>:</strong>
+	<%= message_user(@message.recipient == @user, @message.recipient)%>
+</p>
+
 <p>
   <strong>Mensaje:</strong><br />
   <%=h @message.body %>
 </p>
 <p>
   <% if @message.recipient == @user %>
-	  <%= link_to "Reply", new_user_message_path(@user, :reply_to => @message) %> |
+	  <%= link_to t(:Reply), new_user_message_path(@user, :reply_to => @message) %>
   <% end %>
-  <%= link_to "Inbox", user_messages_path(@user)%>
 </p>

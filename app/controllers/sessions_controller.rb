@@ -30,7 +30,7 @@ class SessionsController < ApplicationController
       else
         redirect_back_or_default('/')
       end
-      flash[:notice] = "¡Ya estás dentro!"
+      flash[:notice] = t(:session_created)
     else
       note_failed_signin
       @login       = params[:login]
@@ -41,7 +41,7 @@ class SessionsController < ApplicationController
 
   def destroy
     logout_killing_session!
-    flash[:notice] = "¡Has salido del sistema!"
+    flash[:notice] = t(:session_destroyed)
     request.env["HTTP_REFERER"].nil? ? redirect_to('/') : redirect_to(:back)  
   end
 

@@ -18,8 +18,8 @@ config.action_controller.perform_caching             = false
 # Don't care if the mailer can't send
 config.action_mailer.raise_delivery_errors = true
 
-SITE_NAME = "Mis Receteas"
+SITE_NAME = "Mis Recetas"
 SITE_URL = "localhost:3000"
-SITE_EMAIL = "prueba@prueba.com"
+SITE_EMAIL = "test_my_app@test.com"
 
 require 'ruby-debug'

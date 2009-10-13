@@ -11,6 +11,8 @@ quentin:
   activation_code:           
   activated_at: <%= 5.days.ago.to_s :db %>
   receive_comments_emails: true    
+  receive_friendships_emails: false
+  receive_messages_emails: false
       
 aaron:
   id: 2
@@ -24,6 +26,9 @@ aaron:
   activation_code: fe5dbbcea5ce7e2988b8c69bcfdfde8904aabc1f
   activated_at:              
   receive_comments_emails: false
+  receive_friendships_emails: true
+  receive_messages_emails: true
+
 
 old_password_holder:
   id: 3
@@ -34,3 +39,4 @@ old_password_holder:
   created_at: <%= 1.days.ago.to_s :db %>
   activation_code:           
   activated_at: <%= 5.days.ago.to_s :db %>
+  receive_friends_emails: true

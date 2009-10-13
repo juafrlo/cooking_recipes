@@ -27,13 +27,7 @@ def hello_user(user)
 end
 
 def user_unread_messages
-  if current_user.unread_message_count > 0
-    if current_user.unread_message_count == 1
-      "(#{current_user.unread_message_count} mensaje)"
-    else
-      "(#{current_user.unread_message_count} mensajes)"
-    end
-  end
+  "(#{current_user.unread_message_count})" if current_user.unread_message_count > 0
 end
 
 def my_flash_message(flash)
@@ -53,7 +47,7 @@ end
 
 def form_template_button(f)
   if action_name == 'new'
-	  f.submit t(:Create)
+	  f.submit t(:Publish)
 	else
 	  f.submit t(:Update)
   end 
@@ -76,7 +70,7 @@ def can_edit(item)
 end
 
 def invitations_number
-  current_user.received_invitations.size if current_user.received_invitations.size > 0
+  "(#{current_user.received_invitations.size})" if current_user.received_invitations.size > 0
 end
 
 def date_block(date)

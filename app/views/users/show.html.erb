@@ -1,11 +1,23 @@
-<h1 class="title"> <%= t(:info_about)%> <%= @user.login %> </h1>
+<% if can_edit_user(@user) %>
+	<ul class="nav_buttons">
+	  <li>
+			<%= link_to t(:Edit), edit_user_path(@user) %>
+	  </li>
+  </ul>
+<% end%>
 
+<h2 class="title"> <%= t(:info_about)%> <%= @user.login %> </h2>
 <div class="user_box">
 	<div class="user_info">
 		<%= image_tag @user.avatar.url(:smalL) %><br/>
 		<div class="user_participation">
 			<%= t(:number_of_recetas)%>: <%= @user.recetas.count %>
 			<%= t(:number_of_posts)%>: <%= @user.number_of_posts %>
+			<%= t(:puntuation)%>: <%= @user.puntuation %><br/>
+			<%= link_to t(:view_recetas), mis_recetas_user_path(@user) %><br/>
+      <%= invite_user_link(@user, "my_friend_link", "user_link_#{@user.id}") %>			
+	    <%= image_tag('web/spinner.gif', :id => "spiner_my_friend_link_",
+          :style=> 'display:none;')%>
 		</div>
 	</div>
 
@@ -47,9 +59,3 @@
 		</div>
 	</div>
 </div>
-
-<% if can_edit_user(@user) %>
-  <div id="edit_user_link">
-	  <%= link_to t(:Edit), edit_user_path(@user) %>
-  </div>
-<% end%>

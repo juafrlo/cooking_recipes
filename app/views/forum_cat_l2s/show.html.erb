@@ -1,11 +1,15 @@
-<h2 class="forum nav" >
+<h2 class="title small" >
   <%= link_to t(:Forums), forum_cat_l2s_path %> > <%=h @forum_cat_l2.title %>
 </h2>
 
-<br/>
+<ul class="nav_buttons">
+  <li>
+    <%= link_to t(:New_post),  new_forum_cat_l2_forum_post_path(@forum_cat_l2) %>
+  </li>
+</ul>
 
 <table class="forum_cat_table" border="1" cellspacing="0" cellpadding="4">
-  <tr >
+  <tr class="tr_title">
     <th style="width:700px;" class="th_title"><%= t(:Message)%></th>
     <th class="th_title"><%= t(:Replies)%></th>
     <th style="width: 200px;" class="th_title"><%= t(:Last_f)%></th>
@@ -25,6 +29,3 @@
 	  </tr>
 	<% end %>
 </table>	
-
-<br/>
-<%= link_to t(:New_post),  new_forum_cat_l2_forum_post_path(@forum_cat_l2) %>

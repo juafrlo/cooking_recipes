@@ -14,8 +14,8 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :friendships, :collection => {:accept => :get, :deny => :get}
   map.resources :categories
   
-  map.resources :users, :member => {:mis_recetas => :get, :mis_amigos => :get}, :collection => {:forgot_password => :post} do |users|
-    users.resources :messages, :collection => { :delete_selected => :post }
+  map.resources :users, :as => 'usuarios', :member => {:mis_recetas => :get, :mis_amigos => :get}, :collection => {:forgot_password => :post} do |users|
+    users.resources :messages, :as => 'mensajes', :collection => { :delete_selected => :post }
   end
 
   map.resources :forum_cat_l2s, :as => "forums", :has_many => :forum_posts

@@ -4,7 +4,6 @@ class MessagesController < ApplicationController
   auto_complete_for :message, :to
   skip_before_filter :verify_authenticity_token, :only => [:auto_complete_for_message_to]
   
-  
   def index
     if params[:mailbox] == "sent"
       @messages = @user.sent_messages
@@ -36,7 +35,7 @@ class MessagesController < ApplicationController
     @message.recipient = User.find_by_login(params[:message][:to])
 
     if @message.save
-      flash[:notice] = "Message sent"
+      flash[:notice] = t(:Message_sent)
       redirect_to user_messages_path(@user)
     else
       render :action => :new
@@ -50,7 +49,7 @@ class MessagesController < ApplicationController
           @message = Message.find(:first, :conditions => ["messages.id = ? AND (sender_id = ? OR recipient_id = ?)", id, @user, @user])
           @message.mark_deleted(@user) unless @message.nil?
         }
-        flash[:notice] = "Messages deleted"
+        flash[:notice] = t(:Messages_deleted)
       end
       redirect_to user_messages_path(@user)
     end

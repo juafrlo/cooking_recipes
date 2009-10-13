@@ -1,27 +1,37 @@
+<ul class="nav_buttons">
+  <li>
+		<%= link_to t(:Inbox), user_messages_path(@user) %>
+  </li>
+  <li>
+	  <%= link_to t(:Sent), user_messages_path(@user, :mailbox => :sent)%>
+	</li>
+</ul>
+
+
+<h2 class="title"><%= t(:Redact)%></h2>
 <% form_for @message, :url => user_messages_path(@user) do |f| %>
-
-
   <p>
-    <%= f.label :to, "Para" %>
-	<%= error_message_on @message, :to %>
-	<%= f.text_field :to ,{:autocomplete => "off"} %>
-	<div class="auto_complete" id="message_to_auto_complete"></div>
-	<%= auto_complete_field 'message_to', {:url => { :controller => "users",
-	 :action =>	'auto_complete_for_user_login'}, :tokens => [' ']} %>
+    <%= f.label :to, t(:To) %><br/>
+  	<%= error_message_on @message, :to %>
+	  <%= f.text_field :to ,{:autocomplete => "off"} %>
+	  <div class="auto_complete" id="message_to_auto_complete"></div>
+	  <%= auto_complete_field 'message_to', {:url => { :controller => "users",
+	    :action =>	'auto_complete_for_user_login'}, :tokens => [' ']} %>
   </p>
 
-
   <p>
-    Asunto:<br />
+    <%= f.label :subject, t(:Subject) %><br/>
     <%= f.text_field :subject %>
     <%= error_message_on @message, :subject %>
-    </p>
-    <p>
-      Mensaje<br />
-      <%= f.text_area :body %>
-			<%= error_message_on @message, :body %>
-    </p>
-    <p>
-      <%= submit_tag "Enviar" %>
-    </p>
+  </p>
+  
+  <p>
+    <%= f.label :body, t(:Message_body) %><br/>
+    <%= f.text_area :body %>
+  	<%= error_message_on @message, :body %>
+  </p>
+
+  <p>
+    <%= submit_tag t(:Send) %>
+  </p>
 <% end %>

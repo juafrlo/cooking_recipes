@@ -1,12 +1,14 @@
-<h1 class="title"><%= title %></h1>
-<table class="th_paddings" border="0px" cellpadggin="0" cellspacing="0">
+<h2 class="title"><%= title %></h2>
+<table class="recetas_table messages" style="width:570px">
   <tr>
-	  <th></th>
+	  <th>Avatar</th>
 	  <th>Nick</th>
 	  <th><%= t(:puntuation)%></th>
 	  <th><%= t(:Recetas)%></th>
-	  <th><%= t(:invite)%></th>
-	  <th></th>
+    <% if params[:option] != 'invitados' %>
+  	  <th><%= t(:invite)%></th>
+    <% end %>
+	  <th style="background:none;"></th>
 	</tr>
   <% users.each_with_index do |user,i| %>
 	<tr class="<%= cycle('odd','par')%>">
@@ -14,20 +16,22 @@
   	  <td><%= link_to user.login, user_path(user) %></td>
 	  <td><%= user.puntuation %>/5</td>
 	  <td><%= user.recetas.count %></td>	
-    <td id="accept_or_deny">
-	    <% if params[:option] == "mis_amigos" %>
-          <%= deny_friendship_link(user) %>
-	    <% elsif params[:option] == "invitaciones_recibidas" %>
-          <%= accept_friendship_link(user) %>
-          <%= deny_friendship_link(user) %>
-	    <% elsif params[:option] == "invitar" %>
-          <%= invite_user_link(user, "my_friend_link_#{i}", "user_link_#{user.id}") %>
-        <% end %>
-      </td>
-	  <td>
+    <% if params[:option] != 'invitados' %>
+        <td id="accept_or_deny">
+	  	    <% if params[:option] == "mis_amigos" %>
+              <%= deny_friendship_link(user) %>
+	  	    <% elsif params[:option] == "invitaciones_recibidas" %>
+              <%= accept_friendship_link(user) %>
+              <%= deny_friendship_link(user) %>
+	  	    <% elsif params[:option] == "invitar" %>
+              <%= invite_user_link(user, "my_friend_link_#{i}", "user_link_#{user.id}") %>
+            <% end %>
+          </td>
+	  	  <td>
+		<% end %>
 	    <%= image_tag('web/spinner.gif', :id => "spiner_my_friend_link_#{i}",
           :style=> 'display:none;')%>
-      </td>
+    </td>
 	</tr>
   <% end %>
 </table>

@@ -2,9 +2,9 @@
 <% for category in @categories %>
   <h3 class="forum_cat_l1_title"><%=h category.title %></h3>
   <table class="forum_cat_table" border="1" cellspacing="0" cellpadding="4">
- 	  <tr>
-	    <th style="width:450px;" class="th_title"><%= t(:Forum)%></th>
-	    <th style="width: 550px;" class="th_title"><%= t(:Last_message)%></th>
+ 	  <tr class="tr_title">
+	    <th><%= t(:Forum)%></th>
+	    <th><%= t(:Last_message)%></th>
 	  </tr>
 
 	 <% for forum_cat_l2 in @forum_cat_l2s %>

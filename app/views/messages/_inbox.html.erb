@@ -1,15 +1,24 @@
-<h2>Inbox</h2>
-<table>
+<ul class="nav_buttons">
+  <li>
+		<%= link_to t(:Sent), user_messages_path(@user, :mailbox => :sent)%>
+  </li>
+  <li>
+		<%= link_to t(:Redact), new_user_message_path(@user)%>
+	</li>
+</ul>		
+
+<h2 class="title"><%= t(:Inbox) %></h2>
+<table class="recetas_table messages" style="width:570px">
 	<tr>
-		<th>¿Borrar?</th>
-		<th>Asunto</th>
-		<th>De</th>
-		<th>Fecha recepción</th>
+		<th><%= t(:Delete_q)%></th>
+		<th><%= t(:Subject) %></th>
+		<th><%= t(:From) %></th>
+		<th><%= t(:Reception_date)%></th>
 	</tr>
 	<% if @messages.size == 0 %>
 		<tr>
 			<td colspan="4">
-				No messages
+				<%= t(:No_messages) %>
 			</td>
 		</tr>
 	<% else %>
@@ -24,15 +33,13 @@
 					<% end %>
 				</td>
 				<td><%= link_to h(message.sender.login), user_path(@user) %></td>
-		    <td><%=h mydatetime_format(message.created_at) %></td>
+		    <td><%=h l message.created_at.to_time, :format => :custom %></td>
 			</tr>
 		<% end %>
 		<tr>
 			<td colspan="4">
-				<%= submit_tag "Delete" %>
+				<%= submit_tag t(:Delete) %>
 			</td>
 		</tr>
 	<% end %>
 </table>
-<%= link_to "Enviados", user_messages_path(@user, :mailbox => :sent)%> |
-<%= link_to "Redactar", new_user_message_path(@user)%>

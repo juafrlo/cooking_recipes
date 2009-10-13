@@ -28,7 +28,6 @@ h1, h2, h3 {
 }
 
 h2{
-	color: #034c08;
 	font-size: 1.8em;
 }
 
@@ -43,6 +42,10 @@ h3.forum_cat_l1_title{
 	margin-bottom: 0px;
 }
 
+.tr_title th{
+	width: 450px;
+	background: #ADFF2F;
+}
 
 p, ol, ul {
 	margin-bottom: 1.8em;
@@ -60,6 +63,10 @@ a:hover {
 
 a img {
 	border: none;
+}
+
+.small{
+	width: 520px;
 }
 
 #wrapper {
@@ -101,7 +108,8 @@ a img {
 }
 
 #logo h1 a{
-	color:#1b6461;
+	//color:#1b6461;
+    color:gold;
     letter-spacing: 1px;
 	font-weight: bold;
 }
@@ -714,6 +722,31 @@ table.th_paddings td{
 	padding: 5px;
 }
 
+.nav_buttons{
+   text-align: right;
+   padding:0px;
+   margin-top: 0px;
+   margin-bottom: 10px;
+}
+
+.nav_buttons li{
+	font-size: 14px;
+    display: inline-block;
+    text-align: right;
+	border: 1px solid black;
+	background: #ADFF2F;
+	padding: 4px;
+}
+
+.nav_buttons li:hover{
+	background: #C0FF00;
+}
+
+.nav_buttons li a:hover{
+	color: purple;
+}
+
+
 #what_can_i_cook_boutton{
 	font-size: 14px;
 	float:right;
@@ -848,4 +881,9 @@ table tr.par {
 .login_button input{
 	margin-top:20px;
 }
+
+table.messages tr th{
+	width: 200px;
+}
+
 

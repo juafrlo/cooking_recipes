@@ -2,6 +2,10 @@ class Friendship < ActiveRecord::Base
   STATUS = ["pending", "accepted"] 
   validates_presence_of :user_id, :friend_id
   belongs_to :user
+  belongs_to :friend, :class_name => "User", :foreign_key => "friend_id"
+
+  
+  after_create :send_notification_to_user
   
   def self.accept_friendship(user_id, friend_id)
     friendships = Friendship.find(:all, :conditions =>
@@ -27,6 +31,13 @@ class Friendship < ActiveRecord::Base
       friend_id, user_id])
     friendships.each do |friendship|
       friendship.delete
+    end
+  end
+  
+  protected
+  def send_notification_to_user
+    if self.friend.receive_friendships_emails
+      UserMailer.deliver_friendship_notification(self.friend) 
     end
   end
   

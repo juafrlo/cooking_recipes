@@ -20,7 +20,21 @@ class FriendshipTest < ActiveSupport::TestCase
     assert_difference('Friendship.count', -1) do
       Friendship.deny_friendship(friendships(:two).user_id,friendships(:two).friend_id)
     end
-
   end
+  
+  test "should notify friendship petition" do
+    assert_difference 'ActionMailer::Base.deliveries.size' do
+      Friendship.create(:user_id => users(:quentin).id,
+        :friend_id => users(:aaron).id, :initiator => true)
+    end
+  end
+
+  test "should not notify friendship petition" do
+    assert_no_difference 'ActionMailer::Base.deliveries.size' do
+      Friendship.create(:user_id => users(:aaron).id,
+        :friend_id => users(:quentin).id, :initiator => true)
+    end
+  end
+
 
 end

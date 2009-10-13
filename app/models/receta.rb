@@ -2,14 +2,15 @@ class Receta < ActiveRecord::Base
   acts_as_rateable
   has_many :ingredients
   has_many :steps
-  has_attached_file :photo,
-   :styles => { :small => "150x150>"}
+  has_attached_file :photo, :styles => { :small => "150x150>"}
   after_update :save_steps
   belongs_to :user
   belongs_to :category
 	acts_as_commentable
   validates_presence_of :name, :description, :duration
   validates_numericality_of :duration
+  
+  after_create :send_notification_to_friends
 
 
   def ingredient_attributes=(ingredient_attributes)
@@ -131,4 +132,13 @@ class Receta < ActiveRecord::Base
       Receta.find(:all, :conditions => ["user_id = ?", user.id], :include => :category)
     end
   end  
+  
+  def send_notification_to_friends
+    self.user.friends.each do |friend|
+      if friend.receive_friends_emails
+        UserMailer.deliver_friend_notification(friend,self) 
+      end
+    end
+  end
+  
 end
