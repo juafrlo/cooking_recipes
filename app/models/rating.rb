@@ -1,7 +1,7 @@
 class Rating < ActiveRecord::Base
+  validates_uniqueness_of :rateable_id, :scope => [:rateable_type, :user_id]
+
   def self.rate(obj_id,rating,type,current_user)
-    Rating.delete_all(["rateable_type = ? AND rateable_id = ? AND user_id = ?", 
-                       type, obj_id, current_user.id])
     r = Rating.new(:rateable_type => type, :rateable_id => obj_id,
                 :rating => rating, :user_id => current_user.id)
     r.save!
@@ -23,8 +23,9 @@ class Rating < ActiveRecord::Base
   end
   
   def self.is_rated?(type,obj,current_user)
-    r = Rating.find(:all, :conditions => ['rateable_type = ? 
-              AND rateable_id = ?', type,obj.id])
+    r = Rating.find(:all, :conditions =>
+     ['rateable_type = ? AND rateable_id = ? AND user_id = ?',
+       type,obj.id, current_user.id])
     r.size == 1 ? true : false
   end
     

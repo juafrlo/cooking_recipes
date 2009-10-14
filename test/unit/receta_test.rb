@@ -95,4 +95,12 @@ class RecetaTest < ActiveSupport::TestCase
     end
   end
   
+  def test_top
+    assert_equal Receta.top(5), [recetas(:paella), recetas(:arroz_a_la_cubana)]
+  end
+  
+  def test_last_voted
+    assert_equal Receta.last_voted(5), [recetas(:arroz_a_la_cubana)]
+  end
+  
 end

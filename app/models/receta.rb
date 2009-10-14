@@ -141,4 +141,19 @@ class Receta < ActiveRecord::Base
     end
   end
   
+  def self.top(limit = 5)
+    Receta.find(:all, :order => "puntuation DESC", :limit => limit)
+  end
+  
+  def self.last_voted(limit = 5)
+    Receta.find_by_sql("SELECT * FROM ratings
+      INNER JOIN recetas ON rateable_id = recetas.id
+      WHERE rateable_type = 'Receta' 
+      ORDER BY ratings.created_at DESC
+      LIMIT #{limit}" )
+  end
+
+
+
+  
 end

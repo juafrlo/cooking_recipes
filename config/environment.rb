@@ -76,8 +76,8 @@ Rails::Initializer.run do |config|
   # config.active_record.observers = :cacher, :garbage_collector, :forum_observer
 
 
-
-config.active_record.observers = :user_observer
+  config.load_paths << "#{RAILS_ROOT}/app/sweepers"
+  config.active_record.observers = :user_observer
 
 
 end

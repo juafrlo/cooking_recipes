@@ -4,6 +4,7 @@ class RecetasController < ApplicationController
   before_filter :owner_required, :only => [:edit, :update]
   before_filter :admin_required, :only => [:destroy]
   before_filter :check_duration_is_integer, :only => [:resultados]
+  cache_sweeper :receta_sweeper, :only => [:update]
 
   require 'fileutils'
   

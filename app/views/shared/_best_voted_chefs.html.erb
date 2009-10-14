@@ -1,7 +1,12 @@
-<h3><%= t(:Best_voted_chefs) %></h3>
-<ul>
-	<li><a href="#">Antonio Pérez</a> 24 recetas (5.0)</li>
-	<li><a href="#">Antonio Pérez</a> 24 recetas (5.0)</li>
- 	<li><a href="#">Antonio Pérez</a> 24 recetas (5.0)</li>
-	<li><a href="#">Antonio Pérez</a> 24 recetas (5.0)</li>
-</ul>
+<% cache 'best_voted_chefs' do %>
+  <h3><%= t(:Best_voted_chefs) %></h3>
+  <ul>
+    <% for user in User.top %>
+	    <li>
+	      <%= link_to user.login, user_path(user) %>
+		    (<%= number_of_recipes(user.recetas.count)%>) 
+      </li>
+    <% end %>
+  </ul>
+<%end %>
+

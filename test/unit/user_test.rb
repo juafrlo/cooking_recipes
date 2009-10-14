@@ -140,6 +140,9 @@ class UserTest < ActiveSupport::TestCase
     assert_equal User.login_regexp('aar'), ['aaron']
   end
     
+  def test_top
+    assert_equal User.top(5), [users(:quentin)]
+  end
 
 protected
   def create_user(options = {})

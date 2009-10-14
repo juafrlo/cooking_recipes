@@ -177,6 +177,14 @@ class User < ActiveRecord::Base
      return new_password
   end
   
+  def self.top(limit = 5)
+    User.find_by_sql("SELECT *,avg(recetas.puntuation) AS avg_puntuation
+      FROM recetas
+      INNER JOIN users on recetas.id = user_id
+      ORDER BY avg_puntuation 
+      LIMIT #{limit}")
+  end
+  
   
   
   protected    

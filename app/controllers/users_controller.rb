@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   skip_before_filter :verify_authenticity_token, :only => 'auto_complete_for_user_login'
   before_filter :login_required, :only => 'auto_complete_for_user_login'
   before_filter :be_same_user, :only => [:edit, :update, :mis_amigos]
+  cache_sweeper :user_sweeper, :only => [:create, :update, :destroy]
    
   def show
     @user = User.find(params[:id])

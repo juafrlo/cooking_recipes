@@ -1,7 +1,13 @@
-<h3><%= t(:Last_recipes_voted)%></h3>
-<ul>
-	<li><a href="#">Arroz a la cubana</a> por Antonio Pérez (4.0)</li>
-	<li><a href="#">Marisco satinado</a></li>
-	<li><a href="#">Huevo de nido</a></li>
-	<li><a href="#">Tarta de la abuela</a></li>
-</ul>
+<% cache 'last_recipes_voted' do %>
+  <h3><%= t(:Last_recipes_voted) %></h3>
+  <ul>
+    <% for receta in Receta.last_voted %>
+	    <li>
+	      <%= link_to receta.name, receta_path(receta) %>
+		    <%= t(:by)%> <%= link_to receta.user.login, user_path(receta.user) %> 
+		    (<%= receta.rating %>) 
+      </li>
+    <% end %>
+  </ul>
+<%end %>
+

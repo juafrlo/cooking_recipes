@@ -3,13 +3,13 @@
 	<li class='current-rating' style='width:<%= (obj.rating * 30).to_i -%>px;'>
     	Currently <%= number_with_precision(obj.rating, :precision => 1) %>/5 Estrellas.
 	</li>
-</ul>
+</ul>	
 </div>
 
 <% if current_user %>
 	<% if Rating.is_rated?(type,obj,current_user) %>
 		<div style="float:left; padding-left: 20px; padding-top:10px;">
-			Ya has votado
+			<%= t(:you_have_voted) %>
 		</div>
 	<% else %>
 		<ul class='star-rating'>
@@ -38,14 +38,13 @@
 		            :action => "rate", :id => obj.id, :rating => 5, :type => type}},
 		            :class => 'five-stars', :name => '5 stars out of 5') %>
 		    </li>
-		</ul>
-	
+		</ul>	
 	<% end %>
 	
 	
 <% else %>
 	<div style="float:left; padding-left: 20px; padding-top:10px;">
-		<%= link_to '¡Vota!', '/login' %>
+		<%= link_to t(:vote_now), '/login' %>
 	</div>
 <% end %>
 

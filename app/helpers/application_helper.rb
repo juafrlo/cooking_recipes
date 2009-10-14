@@ -86,4 +86,8 @@ def number_of_comments(obj)
   "<span class='number_comments'>(#{obj.comments.size} #{t(:comments)})</span>"
 end
 
+def number_of_recipes(number)
+  number > 1 ? "#{number} #{t(:recetas)}" : "#{number} #{t(:receta)}"
+end
+
 end

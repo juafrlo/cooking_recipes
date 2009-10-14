@@ -326,7 +326,13 @@ es:
   noticia_created: Noticia creada
   noticia_updated: Noticia actualizada
   
+  #Ratings
+  you_have_voted: Ya has votado
+  vote_now: ¡Vota!
+  vote_added_and_new_puntuation: ¡Voto añadido! Nueva puntuación media
+  
   #Recetas
+  small_description: Breve descripción del plato
   receta_created: Receta creada
   receta_updated: Receta actualizada
   no_recetas_in_this_category: Todavía no hay recetas en esta categoría
@@ -434,3 +440,5 @@ es:
   invitation: invitación
   invitations: invitaciones
   Publish: Publicar
+  receta: receta
+  recetas: recetas
