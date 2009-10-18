@@ -1,4 +1,5 @@
-<h2 class="title"><%=  @noticia.title %></h2>
+<% title "#{t(:Read_news)} >#{@noticia.title}" %>
+<h2 class="title"><%= yield(:title) %></h2>
 
 <div id="noticias">
   <ul>

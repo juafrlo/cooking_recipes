@@ -1,3 +1,5 @@
-<h2 class="title"><%= t(:edit_user_account)%></h2>
+<% title t(:edit_user_account) %>
+<h2 class="title"><%= yield(:title) %></h2>
+
 <%= render :partial => 'form'%>
 

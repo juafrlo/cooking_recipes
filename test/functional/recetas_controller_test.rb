@@ -94,6 +94,11 @@ class RecetasControllerTest < ActionController::TestCase
     end
     assert_redirected_to recetas_path
   end
+  
+  test "all users should access to categoria" do
+    get :categoria, :id => 1
+    assert_response :success
+  end
 
     
 end

@@ -1,4 +1,5 @@
-<h2 class="title"><%= t(:edit_noticia) %></h2>
+<% title t(:edit_noticia) %>
+<h2 class="title"><%= yield(:title) %></h2>
 
 <%= render :partial => 'form', :locals => {:noticia => @noticia} %>
 

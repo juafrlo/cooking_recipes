@@ -1,19 +1,17 @@
-<span id="new_receta_button">
-  <%= link_to t(:New_receta), new_receta_path %>
-</span>
-<span id="what_can_i_cook_boutton"  style="margin-right: 20px;">
-  <%= link_to t(:What_can_i_cook), que_cocinar_hoy_recetas_path %>
-</span>
+<ul class="nav_buttons">
+  <li>
+    <%= link_to t(:New_receta), new_receta_path %>
+  </li>
+  <li>
+    <%= link_to t(:What_can_i_cook), que_cocinar_hoy_recetas_path %>
+  </li>
+</ul>
 
-<br/>
-<br/>
-<h1 class="title" style="margin-top: 20px;">
-  <%= t(:best_recetas_of)%>: <%= h @recetas[0].category.name %>
-</h1>
+<% title "#{t(:best_recetas_of)} #{@category.name}" %>
+<h2 class="title"><%= yield(:title) %></h2>
 
-<br/>
-<%= render :partial => 'list_recetas' %>
+<%= render :partial => 'list_recetas', :locals => {:recetas => @recetas} %>
 
-<div style="margin-top:50px;">
+<div style="margin-top:28px;">
 	<%= link_to t(:Back), recetas_path %>
 </div>

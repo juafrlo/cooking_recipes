@@ -1,3 +1,4 @@
-<h2 class="title forum"><%=  @forum_reply.forum_post.title %>: <%= t(:Edit_forum_reply)%></h2>
+<% title "#{@forum_reply.forum_post.title} > #{t(:Edit_forum_reply)}" %>
+<h2 class="title forum"><%= yield(:title) %></h2>
 
 <%= render :partial => "form"%>

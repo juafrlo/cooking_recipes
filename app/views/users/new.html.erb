@@ -1,4 +1,6 @@
-<h2 class="title"><%= t(:register)%></h2>
+<% title t(:register) %>
+<h2 class="title"><%= yield(:title) %></h2>
+
 <p class="message-ok" style="padding-left: 5px; padding-right: 5px">
   <%= t(:register_intro)%>
 </p>

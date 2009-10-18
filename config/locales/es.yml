@@ -303,7 +303,7 @@ es:
   Reception_date: Fecha de recepción
   No_messages: No hay mensajes
   Delete: Borrar
-  Sent: Enviados
+  Sent: Mensajes enviados
   Redact: Redactar
   Sent_date: Fecha de envío
   To: Para
@@ -325,6 +325,7 @@ es:
   Date: Fecha
   noticia_created: Noticia creada
   noticia_updated: Noticia actualizada
+  Read_news: Noticia
   
   #Ratings
   you_have_voted: Ya has votado
@@ -332,6 +333,7 @@ es:
   vote_added_and_new_puntuation: ¡Voto añadido! Nueva puntuación media
   
   #Recetas
+  Receta: Receta
   small_description: Breve descripción del plato
   receta_created: Receta creada
   receta_updated: Receta actualizada
@@ -414,6 +416,7 @@ es:
   Recetas: Recetas
   invite: ¿Invitar?
   register: Regístrate como nuevo usuario
+  register_as_new: regístrate como nuevo usuario
   register_intro: Regístrare y podrás participar en todos los apartados de la web, compartiendo tus recetas y opinando sobre las del resto. ¡Es gratis y muy rápido!
   forgot_your_password: ¿Has olvidado tu password? Solicita uno nuevo
   here: aquí
@@ -442,3 +445,4 @@ es:
   Publish: Publicar
   receta: receta
   recetas: recetas
+  Share_with: Compartir en

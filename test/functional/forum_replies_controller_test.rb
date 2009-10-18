@@ -1,17 +1,6 @@
 require 'test_helper'
 
 class ForumRepliesControllerTest < ActionController::TestCase
-  test "should get index" do
-    get :index
-    assert_response :success
-    assert_not_nil assigns(:forum_replies)
-  end
-
-  test "should get new" do
-    login_as :aaron
-    get :new, :forum_post_id => 1
-    assert_response :success
-  end
 
   test "should create forum_reply" do
     login_as :aaron
@@ -21,11 +10,6 @@ class ForumRepliesControllerTest < ActionController::TestCase
       :forum_post_id => 1
     end
     assert_redirected_to forum_post_path(assigns(:forum_reply).forum_post)
-  end
-
-  test "should show forum_reply" do
-    get :show, :id => forum_replies(:one).id
-    assert_response :success
   end
 
   test "should get edit" do
@@ -47,7 +31,7 @@ class ForumRepliesControllerTest < ActionController::TestCase
       :id => forum_replies(:one).id,
       :forum_reply => { },
       :forum_post_id => 1
-    assert_redirected_to forum_reply_path(assigns(:forum_reply))
+    assert_redirected_to forum_post_path(assigns(:forum_reply).forum_post)
   end
 
   test "other user should not update forum_reply" do

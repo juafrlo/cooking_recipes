@@ -1,4 +1,6 @@
-<h1 class="title"><%= t(:Edit_receta) %></h1>
+<% title t(:Edit_receta) %>
+<h2 class="title"><%= yield(:title) %></h2>
+
 
 <%= render :partial => "form" %>
 

@@ -1,11 +1,6 @@
 require 'test_helper'
 
 class ForumPostsControllerTest < ActionController::TestCase
-  test "should get index" do
-    get :index
-    assert_response :success
-    assert_not_nil assigns(:forum_posts)
-  end
 
   test "should get new" do
     login_as :quentin

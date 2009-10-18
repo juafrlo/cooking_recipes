@@ -1,11 +1,13 @@
-<h2><%= t(:Recetas_found) %>:</h2>
+<% title t(:Recetas_found) %>
+<h2 class="title"><%= yield(:title) %>:</h2>
+
 <% if @recetas.size > 0 %>
   <%= render :partial => 'list_recetas', :locals => {:recetas => @recetas}%>
 <% else %>
-	<%= t(:no_results_found) %>
+  <br/><%= t(:no_results_found) %>
 <% end %>
 
 <div style="margin-top: 50px;">
-<%= link_to t(:Advanced_search), que_cocinar_hoy_recetas_path %> |
-<%= link_to 'Volver', request.env["HTTP_REFERER"] %>
+  <%= link_to t(:Advanced_search), que_cocinar_hoy_recetas_path %> |
+  <%= link_to t(:Back), request.env["HTTP_REFERER"] %>
 </div>

@@ -3,24 +3,6 @@ class ForumRepliesController < ApplicationController
   before_filter :owner_required, :only => [:edit, :update]
   before_filter :admin_required, :only => [:destroy]
   
-  # GET /forum_replies
-  # GET /forum_replies.xml
-  def index
-    @forum_replies = ForumReply.find(:all)
-    
-  end
-
-  # GET /forum_replies/1
-  # GET /forum_replies/1.xml
-  def show
-    @forum_reply = ForumReply.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @forum_reply }
-    end
-  end
-
   # GET /forum_replies/new
   # GET /forum_replies/new.xml
   def new
@@ -66,7 +48,7 @@ class ForumRepliesController < ApplicationController
         @forum_post.updated_at = @forum_reply.updated_at
         @forum_post.save
         flash[:notice] = t(:Reply_updated)
-        format.html { redirect_to(@forum_reply) }
+        format.html { redirect_to forum_post_path(@forum_reply.forum_post)}
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

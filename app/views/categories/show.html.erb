@@ -1,3 +1,6 @@
+<% title "#{t(:Category)} - #{@category.name}"  %>
+<h2 class="title"><%= yield(:title) %></h2>
+
 <p>
   <b><%= t(:Name) %>:</b><br/>
   <%=h @category.name %>

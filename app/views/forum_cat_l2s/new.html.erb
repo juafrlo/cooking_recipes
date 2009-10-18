@@ -1,4 +1,5 @@
-<h2 class="title forum"><%= t(:new_category2)%></h2>
+<% title t(:new_category2) %>
+<h2 class="title forum"><%= yield(:title) %></h2>
 
 <%= render :partial => "form" %>
 

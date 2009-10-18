@@ -1,10 +1,11 @@
 class RecetasController < ApplicationController
+  cache_sweeper :receta_sweeper, :only => [:update]
+
   before_filter :authorize, :only => [:new, :edit, :delete, :create, :update]
   before_filter :find_categories, :only => [:index,:new, :create, :edit, :update, :que_cocinar_hoy]
   before_filter :owner_required, :only => [:edit, :update]
   before_filter :admin_required, :only => [:destroy]
   before_filter :check_duration_is_integer, :only => [:resultados]
-  cache_sweeper :receta_sweeper, :only => [:update]
 
   require 'fileutils'
   
@@ -105,7 +106,8 @@ class RecetasController < ApplicationController
   end
   
   def categoria
-    @recetas = Receta.find(:all, :order => "id desc" , :conditions => ["category_id = ?", params[:id]])    
+    @category = Category.find(params[:id])
+    @recetas = @category.recetas
     if @recetas.empty?
       flash[:notice] = t(:no_recetas_in_this_category)
       redirect_to(:back)

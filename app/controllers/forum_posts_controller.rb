@@ -3,17 +3,6 @@ class ForumPostsController < ApplicationController
   before_filter :owner_required, :only => [:edit, :update]
   before_filter :admin_required, :only => [:destroy]
 
-  # GET /forum_posts
-  # GET /forum_posts.xml
-  def index
-    @forum_posts = ForumPost.find(:all)
-    
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @forum_posts }
-    end
-  end
-
   # GET /forum_posts/1
   # GET /forum_posts/1.xml
   def show

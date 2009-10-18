@@ -1,7 +1,10 @@
-<h1 class="title">
+<% title "#{t(:Receta)} > #{@receta.name}" %>
+
+<h2 class="title">
   <%= t(:Receta_by)%>
   <%= link_to @receta.user.login, user_path(@receta.user) %>:
-</h1>
+</h2>
+
 
 <div class="receta_show_intro">
 	<div class="receta_show_photo">
@@ -75,6 +78,8 @@
     </ul>
   </div>
 
+	<%= render :partial => 'shared/social_buttons'%>
+
   <div class="receta_show_links">
 	  <% if current_user && (@receta.user == current_user || current_user.admin?)%>
       <%= link_to t(:Edit), edit_receta_path(@receta) %> |
@@ -82,5 +87,6 @@
     <%= link_to t(:Back), recetas_path %>
   </div>
 </div>
+
 
 <%= render :partial => 'comments/commenting_system', :locals => {:commentable => @receta}%>

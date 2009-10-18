@@ -1,3 +1,4 @@
-<h2 class="title"><%= t(:new_category)%></h2>
+<% title t(:new_category) %>
+<h2 class="title"><%= yield(:title) %></h2>
 
 <%= render :partial => 'form'%>

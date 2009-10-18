@@ -1,7 +1,7 @@
-<h2 class="title"><%= t(:edit_category1)%></h2>
+<% title t(:edit_category1) %>
+<h2 class="title"><%= yield(:title) %></h2>
 
 <%= render :partial => 'form'%>
-
 
 <%= link_to t(:Show), @forum_cat_l1 %> |
 <%= link_to t(:Back), forum_cat_l1s_path %>

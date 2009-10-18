@@ -7,8 +7,9 @@
 	</li>
 </ul>
 
+<% title t(:Read_message) %>
+<h2 class="title"><%= yield(:title) %></h2>
 
-<h2 class="title"><%= t(:Read_message)%></h2>
 <p class="clear">
 	<strong><%= t(:From)%>:</strong>
   <%= message_user(@message.sender == @user,@message.sender)%>

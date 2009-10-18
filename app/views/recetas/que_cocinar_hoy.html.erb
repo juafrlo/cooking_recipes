@@ -1,4 +1,6 @@
-<h1 class="title"><%= t(:Recetas_searcher) %></h1>
+<% title t(:Recetas_searcher) %>
+<h2 class="title"><%= yield(:title) %></h2>
+
 <% form_for :receta, :url => { :action => "resultados_busqueda" }   do |f| %>
 	<h2 class="clear"><%= t(:Searching_specific_receta) %></h2>  
 	<div class="form_div" style="padding-top:18px;">

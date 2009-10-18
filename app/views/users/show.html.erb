@@ -6,7 +6,10 @@
   </ul>
 <% end%>
 
-<h2 class="title"> <%= t(:info_about)%> <%= @user.login %> </h2>
+
+<% title "#{t(:info_about)} #{@user.login}"%>
+<h2 class="title"><%= yield(:title) %></h2>
+
 <div class="user_box">
 	<div class="user_info">
 		<%= image_tag @user.avatar.url(:smalL) %><br/>

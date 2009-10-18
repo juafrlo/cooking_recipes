@@ -1,4 +1,6 @@
-<h2 class="title forum"><%= t(:Forums) %></h2>
+<% title t(:Forums) %>
+<h2 class="title forum"><%= yield(:title) %></h2>
+
 <% for category in @categories %>
   <h3 class="forum_cat_l1_title"><%=h category.title %></h3>
   <table class="forum_cat_table" border="1" cellspacing="0" cellpadding="4">

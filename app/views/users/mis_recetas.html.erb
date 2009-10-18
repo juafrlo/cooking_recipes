@@ -1,4 +1,5 @@
-<h2 class="title"><%= t(:published_recipes_of)%> <%= @user.login%></h2>
+<% title "#{t(:published_recipes_of)} #{@user.login}" %>
+<h2 class="title"><%= yield(:title) %></h2>
 
 <table class="recetas_table" style="width:570px;">		
   <tr>

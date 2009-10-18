@@ -822,6 +822,7 @@ table tr.par {
 .receta_show_name{
 	text-align:center;
 	padding-bottom: 17px;
+	font-size: 17px;
 }
 
 .receta_show description_div{
@@ -848,7 +849,8 @@ table tr.par {
 }
 
 .receta_show_links{
-	padding-top: 15px
+	padding-top: 15px;
+	clear:both;
 }
 
 .receta_show_duration{
@@ -887,3 +889,22 @@ table.messages tr th{
 }
 
 
+ul#social_buttons {
+	margin: 0px;
+	padding: 0px;
+	list-style: none;
+	line-height: normal;
+	float: right;
+}
+
+ul#social_buttons li {
+	float: left;
+	margin: 0px;
+    padding-left: 2px;
+    padding-right: 2px;
+}
+
+ul#social_buttons ul li a {
+	display: block;
+	width: auto;
+}
