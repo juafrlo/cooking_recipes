@@ -31,10 +31,10 @@ class RecetasController < ApplicationController
       @comment = Comment.new 
     end
     
-    
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @receta }
+      format.print { render :layout => "print"}
     end
   end
 

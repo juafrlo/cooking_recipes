@@ -237,6 +237,13 @@ es:
   comments: commentarios
   
   #Emails
+  signup_notification_subject: "Por favor, activa tu cuenta"
+  activation_subject: "¡Cuenta activada!"
+  reset_password_subject: "Tu password ha sido reseteado"
+  comment_notification_subject: "Has recibido un comentario en unas de tus recetas"
+  friend_notification_subject: "Uno de tus amigos ha publicado una receta"
+  friendship_notification_subject: "Has recibido una petición de amistad"
+  message_notification_subject: "Has recibido un mensaje privado"
   password_reseted: Tu password ha sido reseteado a un nuevo valor
   activate_your_account: Por favor, activa tu cuenta
   account_activated: ¡Cuenta activada!
@@ -329,7 +336,7 @@ es:
   
   #Ratings
   you_have_voted: Ya has votado
-  vote_now: ¡Vota!
+  vote_now: ¡Vota ahora!
   vote_added_and_new_puntuation: ¡Voto añadido! Nueva puntuación media
   
   #Recetas
@@ -446,3 +453,4 @@ es:
   receta: receta
   recetas: recetas
   Share_with: Compartir en
+  Print: Imprimir

@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <title><%=SITE_NAME%>: <%= yield(:title) || controller.action_name %></title>
+  <%= stylesheet_link_tag 'application' %>
+  <%= stylesheet_link_tag 'rating' %>
+  <%= stylesheet_link_tag 'auto_complete' %>
+  <%= javascript_include_tag :defaults%>
+</head>
+
+<body class="no_background" onload="window.print();">
+	<div id="wrapper">
+    <div id="header" >
+	  	<div id="logo">
+	      <h1><%= link_to SITE_NAME, '/' %></h1>
+		  </div>
+    </div>
+
+    <div id="page">
+		  <div id="content" <%unless no_forums%>style="width:auto;"<%end%>>
+			  <div class="post">	
+				  <div class="clear"></div>
+				  <%= yield  %>
+			  </div>
+		  </div> <!-- end #content -->
+  		<div class="clear"></div>
+	  </div>	<!-- end #page -->	
+  </div>
+
+  <br/>
+  <br/>
+
+  <div id="footer">
+    <p><%= t(:Footer_content)%> <%= link_to 'Juan de Frías', '/'%></p>
+  </div>
+</body>
+
+</html>
