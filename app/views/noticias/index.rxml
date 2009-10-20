@@ -1,0 +1,15 @@
+xml.rss "version" => "2.0", "xmlns:dc" => "http//purl.org/dc/elements/1.1" do
+  xml.channel do
+    xml.title "#{SITE_NAME}: #{yield(:title)}"
+  
+    @noticias.each do |noticia|
+      xml.item do |item| 
+        xml.title noticia.title
+        xml.link noticia_url(noticia)
+        xml.description noticia.intro
+        xml.pubdate noticia.created_at
+        xml.author noticia.user.login if noticia.user
+      end
+    end
+  end
+end  

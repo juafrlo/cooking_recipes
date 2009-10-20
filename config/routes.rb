@@ -4,7 +4,7 @@ ActionController::Routing::Routes.draw do |map|
     :conditions => { :method => :get }
 
   #Home path
-  map.home '', :controller => "noticias"  
+  map.home '', :controller => "noticias"
   
   #Session resources and named routes and user namedroutes
   map.logout '/logout', :controller => 'sessions', :action => 'destroy'
@@ -31,7 +31,7 @@ ActionController::Routing::Routes.draw do |map|
   map.recetas_categoria 'recetas/categoria/:id', :controller => 'recetas', :action => 'categoria' 
 
   #Others
-  map.resources :noticias
+  map.resources :noticias 
   map.resources :categories, :as => 'categorias'
   map.resources :comments, :path_prefix => '/:commentable_type/:commentable_id'
   map.resources :admins, :as => 'administracion'

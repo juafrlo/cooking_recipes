@@ -6,6 +6,11 @@
 <h2 class="title"><%= yield(:title) %></h2>
 
 <div id="noticias">
+	<div class="rss_button">
+  	<%= link_to "RSS", formatted_noticias_path(:format => :rss)%>
+  </div>
+  <div class="clear" style="margin-bottom: 5px;"></div>
+
 	<ul>
 	<% for noticia in @noticias %>
 		<li>

@@ -912,3 +912,8 @@ ul#social_buttons ul li a {
 .no_background {
 	background: none;
 }
+
+.rss_button {
+	float: right;
+	margin-right:4px;
+}

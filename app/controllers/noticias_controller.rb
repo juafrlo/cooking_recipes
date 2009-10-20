@@ -4,9 +4,10 @@ class NoticiasController < ApplicationController
   # GET /noticias
   # GET /noticias.xml
   def index
-    @noticias = Noticia.find(:all, :order => 'created_at DESC')
+    @noticias = Noticia.sorted
     respond_to do |format|
       format.html # index.html.erb
+      format.rss { render :action => "index.rxml", :layout => false }
       format.xml  { render :xml => @noticias }
     end
   end
@@ -85,4 +86,5 @@ class NoticiasController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
 end

@@ -1,7 +1,10 @@
 <% title "Login" %>
 <h2 class="title"><%= yield(:title) %></h2>
 
-<%= t(:if_no_count)%>, <%= link_to t(:register_as_new), '/signup' %>. <%= t(:free)%>
+<p>
+  <%= t(:if_no_count)%>, 
+  <%= link_to t(:register_as_new), '/signup' %>. <%= t(:free)%>
+</p>
 
 <% form_tag session_path do %>
 	<p><%= label_tag 'login' %><br />
