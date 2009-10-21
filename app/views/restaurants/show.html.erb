@@ -1,0 +1,68 @@
+<p>
+  <b>Name:</b>
+  <%=h @restaurant.name %>
+</p>
+
+<p>
+  <b>Address:</b>
+  <%=h @restaurant.address %>
+</p>
+
+<p>
+  <b>Country:</b>
+  <%=h @restaurant.country %>
+</p>
+
+<p>
+  <b>Town:</b>
+  <%=h @restaurant.town %>
+</p>
+
+<p>
+  <b>Google maps code:</b>
+  <%=h @restaurant.google_maps_code %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%=h @restaurant.description %>
+</p>
+
+<p>
+  <b>Specialty:</b>
+  <%=h @restaurant.specialty %>
+</p>
+
+<p>
+  <b>Creator rating:</b>
+  <%=h @restaurant.creator_rating %>
+</p>
+
+<p>
+  <b>Avg price:</b>
+  <%=h @restaurant.avg_price %>
+</p>
+
+<p>
+  <b>Photo file name:</b>
+  <%=h @restaurant.photo_file_name %>
+</p>
+
+<p>
+  <b>Photo content type:</b>
+  <%=h @restaurant.photo_content_type %>
+</p>
+
+<p>
+  <b>Photo file size:</b>
+  <%=h @restaurant.photo_file_size %>
+</p>
+
+<p>
+  <b>Photo updated at:</b>
+  <%=h @restaurant.photo_updated_at %>
+</p>
+
+
+<%= link_to 'Edit', edit_restaurant_path(@restaurant) %> |
+<%= link_to 'Back', restaurants_path %>

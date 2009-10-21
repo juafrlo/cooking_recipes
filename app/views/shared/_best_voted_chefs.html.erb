@@ -4,7 +4,7 @@
     <% for user in User.top %>
 	    <li>
 	      <%= link_to user.login, user_path(user) %>
-		    (<%= number_of_recipes(user.recetas.count)%>) 
+		    (<%= number_with_precision(user.recetas_avg,:precision => 1) %>/5) 
       </li>
     <% end %>
   </ul>

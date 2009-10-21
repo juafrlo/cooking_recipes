@@ -5,7 +5,7 @@
 	    <li>
 	      <%= link_to receta.name, receta_path(receta) %>
 		    <%= t(:by)%> <%= link_to receta.user.login, user_path(receta.user) %> 
-		    (<%= receta.rating %>) 
+		    (<%= receta.rating %>/5) 
       </li>
     <% end %>
   </ul>

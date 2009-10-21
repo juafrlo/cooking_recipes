@@ -1,7 +1,5 @@
 class Rating < ActiveRecord::Base
   belongs_to :rateable, :polymorphic => true
-  
-  # NOTE: Comments belong to a user
   belongs_to :user
   
   # Helper class method to lookup all ratings assigned

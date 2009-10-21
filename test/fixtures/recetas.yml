@@ -3,22 +3,18 @@
 paella:
   id: 1
   name: Paella
-  puntuation: 1.5
   description: MyText
   category_id: 1
   user_id: 1
   duration: 90
   country: "Spain"
   town: "Valencia"
-  puntuation: 5
 
 arroz_a_la_cubana:
   id: 2
   name: Arroz a la cubana
-  puntuation: 1.5
   description: MyText
   category_id: 2
   user_id: 1
   duration: 20
   country: "Cuba"
-  puntuation: 4

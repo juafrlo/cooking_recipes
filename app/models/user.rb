@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
   has_many :replies
   has_attached_file :avatar, :styles => { :small => "50x50>" }, :default_url => "/images/avatars/small/missing.png"
   has_many :recetas
+  has_many :ratings
   has_many :friendships, :dependent => :destroy
   has_private_messages
 
@@ -144,8 +145,13 @@ class User < ActiveRecord::Base
     [users,title]
   end
   
-  def puntuation
-    self.recetas.average('puntuation').to_f
+  def update_recetas_avg
+    ratings = []
+    self.recetas.each do |receta|
+      ratings << receta.rating
+    end
+    self.recetas_avg = (ratings.sum/ratings.size).to_f
+    self.save!
   end
 
   def admin?
@@ -178,15 +184,10 @@ class User < ActiveRecord::Base
   end
   
   def self.top(limit = 5)
-    User.find_by_sql("SELECT *,avg(recetas.puntuation) AS avg_puntuation
-      FROM recetas
-      INNER JOIN users on recetas.id = user_id
-      ORDER BY avg_puntuation 
-      LIMIT #{limit}")
+    User.find(:all, :limit => limit, :order => "recetas_avg DESC",
+      :conditions => 'recetas_avg > 0.0')
   end
-  
-  
-  
+      
   protected    
   def make_activation_code
     self.activation_code = self.class.make_token

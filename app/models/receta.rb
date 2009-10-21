@@ -129,7 +129,8 @@ class Receta < ActiveRecord::Base
 
   def self.find_ordered(user,options = {})
     with_scope :find => options do
-      Receta.find(:all, :conditions => ["user_id = ?", user.id], :include => :category)
+      Receta.find(:all, :include => [:ratings, :category],
+       :conditions => ["recetas.user_id = ?", user.id])
     end
   end  
   
@@ -142,15 +143,14 @@ class Receta < ActiveRecord::Base
   end
   
   def self.top(limit = 5)
-    Receta.find(:all, :order => "puntuation DESC", :limit => limit)
+    Receta.find(:all, :include => 'ratings', :limit => limit, 
+      :order => "ratings.rating DESC")
   end
   
   def self.last_voted(limit = 5)
-    Receta.find_by_sql("SELECT * FROM ratings
-      INNER JOIN recetas ON rateable_id = recetas.id
-      WHERE rateable_type = 'Receta' 
-      ORDER BY ratings.created_at DESC
-      LIMIT #{limit}" )
+    Receta.find(:all, :include => :ratings,
+     :limit => limit, :order => 'ratings.created_at DESC',
+     :conditions => ["ratings.rating IS NOT ?", nil])
   end
 
 

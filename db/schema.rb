@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091008074536) do
+ActiveRecord::Schema.define(:version => 20091021074204) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -116,7 +116,6 @@ ActiveRecord::Schema.define(:version => 20091008074536) do
 
   create_table "recetas", :force => true do |t|
     t.string   "name"
-    t.float    "puntuation"
     t.text     "description"
     t.integer  "category_id"
     t.integer  "user_id"
@@ -129,8 +128,25 @@ ActiveRecord::Schema.define(:version => 20091008074536) do
     t.string   "country"
     t.string   "town"
     t.integer  "duration"
-    t.integer  "rating"
     t.integer  "people_can_eat"
+  end
+
+  create_table "restaurants", :force => true do |t|
+    t.string   "name"
+    t.string   "address"
+    t.string   "country"
+    t.string   "town"
+    t.text     "google_maps_code"
+    t.text     "description"
+    t.string   "specialty"
+    t.float    "creator_rating"
+    t.integer  "avg_price"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "roles", :force => true do |t|
@@ -175,6 +191,7 @@ ActiveRecord::Schema.define(:version => 20091008074536) do
     t.boolean  "receive_friends_emails",                    :default => false
     t.boolean  "receive_friendships_emails"
     t.boolean  "receive_messages_emails"
+    t.float    "recetas_avg",                               :default => 0.0
   end
 
   add_index "users", ["login"], :name => "index_users_on_login", :unique => true

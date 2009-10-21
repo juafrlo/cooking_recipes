@@ -1,0 +1,31 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+  address: MyString
+  country: MyString
+  town: MyString
+  google_maps_code: MyText
+  description: MyText
+  specialty: MyString
+  creator_rating: 1.5
+  avg_price: 1
+  photo_file_name: MyString
+  photo_content_type: MyString
+  photo_file_size: 1
+  photo_updated_at: 2009-10-20 10:14:40
+
+two:
+  name: MyString
+  address: MyString
+  country: MyString
+  town: MyString
+  google_maps_code: MyText
+  description: MyText
+  specialty: MyString
+  creator_rating: 1.5
+  avg_price: 1
+  photo_file_name: MyString
+  photo_content_type: MyString
+  photo_file_size: 1
+  photo_updated_at: 2009-10-20 10:14:40

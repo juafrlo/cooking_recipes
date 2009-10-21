@@ -127,8 +127,9 @@ class UserTest < ActiveSupport::TestCase
     assert_equal users(:quentin).no_friends, [users(:aaron)]
   end
   
-  def test_puntuation
-    assert_equal users(:quentin).puntuation, 6
+  def test_update_recetas_avg
+    users(:quentin).update_recetas_avg
+    assert_equal users(:quentin).reload.recetas_avg, 2.0
   end
   
   def test_admin?
@@ -141,10 +142,11 @@ class UserTest < ActiveSupport::TestCase
   end
     
   def test_top
+    users(:quentin).update_recetas_avg
     assert_equal User.top(5), [users(:quentin)]
   end
 
-protected
+  protected
   def create_user(options = {})
     record = User.new({ :login => 'quire', :email => 'quire@example.com', :password => 'quire69', :password_confirmation => 'quire69' }.merge(options))
     record.save

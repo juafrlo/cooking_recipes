@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :restaurants
+
   map.auto_complete ':controller/:action',
     :requirements => { :action => /auto_complete_for_\S+/},
     :conditions => { :method => :get }
