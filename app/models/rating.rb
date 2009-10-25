@@ -21,10 +21,10 @@ class Rating < ActiveRecord::Base
     end
   end
   
-  def self.is_rated?(type,obj,current_user)
+  def self.is_rated?(obj,current_user)
     r = Rating.find(:all, :conditions =>
      ['rateable_type = ? AND rateable_id = ? AND user_id = ?',
-       type,obj.id, current_user.id])
+       obj.class.to_s,obj.id, current_user.id])
     r.size == 1 ? true : false
   end
     

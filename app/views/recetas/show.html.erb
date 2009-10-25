@@ -42,8 +42,8 @@
 				(<%= num_votes(Rating.number_of_votes('Receta', @receta))%>)
 			</div>
 
-			<div id="star-ratings-block">
-				<div style="float:left">
+			<div id="star-ratings-block">		
+				<div>
 			    <%= render :partial => "rating/rating",
 			 		:locals => { :obj => @receta, :type => 'Receta' } %> 
 				</div>

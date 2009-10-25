@@ -28,9 +28,13 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :forum_posts, :as => "posts", :has_many => :forum_replies, :shallow => true
   map.resources :forum_replies, :as => "respuestas", :except => [:index, :show]
 
+
   #Recetas
   map.resources :recetas, :collection => {:categoria => :get, :que_cocinar_hoy => :get, :resultatos => :get}
   map.recetas_categoria 'recetas/categoria/:id', :controller => 'recetas', :action => 'categoria' 
+
+  #Rating
+  map.rate 'rating/rate/:id', :controller => 'rating', :action => 'rate'
 
   #Others
   map.resources :noticias 

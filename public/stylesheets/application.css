@@ -917,3 +917,25 @@ ul#social_buttons ul li a {
 	float: right;
 	margin-right:4px;
 }
+
+.rating_spinner{
+	float:left;
+	padding: 8px 0px 0px 10px;
+}
+
+.rate_text{
+	float:left;
+    padding: 8px 0px 0px 16px;
+}
+
+.rate_without_login{
+	float:left;
+    padding-left: 20px;
+    padding-top:10px;
+}
+
+.already_rated{
+	float:left;
+	padding-left: 20px;
+	padding-top:10px;
+}
