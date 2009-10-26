@@ -1,5 +1,4 @@
 class RecetasController < ApplicationController
-  cache_sweeper :receta_sweeper, :only => [:update]
 
   before_filter :authorize, :only => [:new, :edit, :delete, :create, :update]
   before_filter :find_categories, :only => [:index,:new, :create, :edit, :update, :que_cocinar_hoy]

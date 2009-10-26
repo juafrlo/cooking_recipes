@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-  cache_sweeper :user_sweeper, :only => [:create, :update, :destroy]
 
   # Be sure to include AuthenticationSystem in Application Controller instead
   include AuthenticatedSystem
