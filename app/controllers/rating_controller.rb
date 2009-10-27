@@ -7,6 +7,8 @@ class RatingController < ApplicationController
     if params[:type] == 'Receta'       
       @obj = Receta.find(params[:id])
       @obj.user.update_recetas_avg
+    elsif params[:type] == 'Restaurant'
+      @obj = Restaurant.find(params[:id])
     end
   end
 end

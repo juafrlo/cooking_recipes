@@ -1,5 +1,4 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :restaurants
 
   map.auto_complete ':controller/:action',
     :requirements => { :action => /auto_complete_for_\S+/},
@@ -28,14 +27,16 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :forum_posts, :as => "posts", :has_many => :forum_replies, :shallow => true
   map.resources :forum_replies, :as => "respuestas", :except => [:index, :show]
 
-
+  #Rating
+  map.rate 'rating/rate/:id', :controller => 'rating', :action => 'rate'
+  
   #Recetas
   map.resources :recetas, :collection => {:categoria => :get, :que_cocinar_hoy => :get, :resultatos => :get}
   map.recetas_categoria 'recetas/categoria/:id', :controller => 'recetas', :action => 'categoria' 
 
-  #Rating
-  map.rate 'rating/rate/:id', :controller => 'rating', :action => 'rate'
-
+  #Restaurants
+  map.resources :restaurants, :as => 'restaurantes'
+  
   #Others
   map.resources :noticias 
   map.resources :categories, :as => 'categorias'

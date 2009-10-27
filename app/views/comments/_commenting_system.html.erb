@@ -1,5 +1,5 @@
 <div class="comments">
-  <h2><%= t(:Comments)%></h2>
+  <h2 class="title" style="color:black;"><%= t(:Comments)%></h2>
 	<% if commentable.comments.first %>
 	  <%= render :partial => 'comments/comment',
 	    :locals => {:comment => commentable.comments.first} %>

@@ -1,0 +1,26 @@
+<table class="recetas_table" style="width:570px;">		
+  <tr>
+    <th>Name</th>
+    <th>Country</th>
+    <th>Town</th>
+    <th>Specialty</th>
+    <th>Avg price</th>
+    <th>Autor </th>
+    <th>Puntuación</th>
+
+  </tr>
+
+<% for restaurant in @restaurants %>
+  <tr class="<%= cycle('odd','par')%>" >
+    <td><%= link_to restaurant.name, restaurant_path(restaurant) %></td>
+    <td><%=h restaurant.country %></td>
+    <td><%=h restaurant.town %></td>
+    <td><%=h restaurant.specialty %></td>
+    <td><%=h restaurant.avg_price %></td>
+    <td><%= link_to restaurant.user.login, user_path(restaurant.user) %></td>
+    <td><%=h restaurant.rating %></td>
+
+  </tr>
+<% end %>
+</table>
+

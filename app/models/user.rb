@@ -12,6 +12,7 @@ class User < ActiveRecord::Base
   has_many :ratings
   has_many :friendships, :dependent => :destroy
   has_private_messages
+  has_many :restaurants
 
   validates_presence_of     :login
   validates_length_of       :login,    :within => 3..40

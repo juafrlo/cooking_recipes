@@ -397,6 +397,20 @@ es:
   must_search_by_params: Debes introducir algún parámaetro de búsqueda
   duration_must_be_integer: El campo "duración" debe ser un número entero
   
+  #Restaurants
+  New_restaurant: Nuevo restaurante
+  Where_can_i_eat: ¿Dónde puedo comer?
+  Last_published_restaurants: Últimos restaurantes publicados
+  Best_restaurants_by_category: Mejores restaurantes por categoría
+  Edit_restaurant: Editar restaurante
+  Restaurant: Restaurante
+  Restaurant_by: Restaurante analizado por
+  Specialty: Especialidad
+  Location: Situado
+  Avg_price: Precio medio por persona
+  creator_rating: Puntuación del creador de la reseña
+  small_rest_description: Descripción general del restaurante
+  
   #Sessions
   session_created: ¡Ya estás dentro!
   session_destroyed: ¡Has salido del sistema!

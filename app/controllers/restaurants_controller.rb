@@ -1,4 +1,7 @@
 class RestaurantsController < ApplicationController
+  before_filter :owner_required, :only => [:edit, :update]
+  before_filter :admin_required, :only => [:destroy]
+
   # GET /restaurants
   # GET /restaurants.xml
   def index
@@ -14,6 +17,7 @@ class RestaurantsController < ApplicationController
   # GET /restaurants/1.xml
   def show
     @restaurant = Restaurant.find(params[:id])
+    @comment = Comment.new if logged_in?
 
     respond_to do |format|
       format.html # show.html.erb
@@ -41,6 +45,7 @@ class RestaurantsController < ApplicationController
   # POST /restaurants.xml
   def create
     @restaurant = Restaurant.new(params[:restaurant])
+    @restaurant.user_id = current_user.id
 
     respond_to do |format|
       if @restaurant.save

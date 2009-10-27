@@ -25,10 +25,7 @@ class RecetasController < ApplicationController
     @receta = Receta.find(params[:id])
     @ingredients = Ingredient.find(:all, :conditions => ["receta_id = ?", params[:id]])    
     @steps = Step.find(:all, :conditions => ["receta_id = ?", params[:id]])    
-
-    if logged_in?
-      @comment = Comment.new 
-    end
+    @comment = Comment.new if logged_in?
     
     respond_to do |format|
       format.html # show.html.erb

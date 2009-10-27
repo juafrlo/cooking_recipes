@@ -1,68 +1,77 @@
-<p>
-  <b>Name:</b>
-  <%=h @restaurant.name %>
-</p>
+<% title "#{t(:Restaurant)} > #{@restaurant.name}" %>
 
-<p>
-  <b>Address:</b>
-  <%=h @restaurant.address %>
-</p>
-
-<p>
-  <b>Country:</b>
-  <%=h @restaurant.country %>
-</p>
-
-<p>
-  <b>Town:</b>
-  <%=h @restaurant.town %>
-</p>
-
-<p>
-  <b>Google maps code:</b>
-  <%=h @restaurant.google_maps_code %>
-</p>
-
-<p>
-  <b>Description:</b>
-  <%=h @restaurant.description %>
-</p>
-
-<p>
-  <b>Specialty:</b>
-  <%=h @restaurant.specialty %>
-</p>
-
-<p>
-  <b>Creator rating:</b>
-  <%=h @restaurant.creator_rating %>
-</p>
-
-<p>
-  <b>Avg price:</b>
-  <%=h @restaurant.avg_price %>
-</p>
-
-<p>
-  <b>Photo file name:</b>
-  <%=h @restaurant.photo_file_name %>
-</p>
-
-<p>
-  <b>Photo content type:</b>
-  <%=h @restaurant.photo_content_type %>
-</p>
-
-<p>
-  <b>Photo file size:</b>
-  <%=h @restaurant.photo_file_size %>
-</p>
-
-<p>
-  <b>Photo updated at:</b>
-  <%=h @restaurant.photo_updated_at %>
-</p>
+<h2 class="title">
+  <%= t(:Restaurant_by)%>
+  <%= link_to @restaurant.user.login, user_path(@restaurant.user) %>:
+</h2>
 
 
-<%= link_to 'Edit', edit_restaurant_path(@restaurant) %> |
-<%= link_to 'Back', restaurants_path %>
+<div class="receta_show_intro">
+	<div class="receta_show_photo">
+    <%= restaurant_show_photo(@restaurant)%>
+	</div>
+
+	<div class="receta_show_info">
+ 		<div class="receta_show_name">
+ 			<b><%=h @restaurant.name %></b>
+		</div>
+		
+		<div>
+		  <%= t(:Specialty) %>:
+		  <%=h @restaurant.specialty %>
+		</div>
+		
+		<div class="receta_show_origin"> 																																																																																																																																																																																																																			     
+		  <%= "#{t(:Location)}: #{@restaurant.town} (#{@restaurant.country})"%> <br/>
+      <%= @restaurant.address %><br/>
+      <%= @restaurant.google_maps_code %>
+		</div>
+
+ 		<div class="receta_show_duration">
+			<%= t(:Avg_price)%>:
+ 			<%=h @restaurant.avg_price %> euros
+		</div>				
+		
+ 		<div class="receta_show_people">
+  		<%= t(:creator_rating)%>:
+	  	<%= @restaurant.creator_rating %>
+	  </div>						
+		
+		<div id="rating_stars" style="height:50px;">		
+	  		<div class="puntuation">
+				<b><%= t(:puntuation)%>:</b>
+	 			<%= number_with_precision( Rating.rating('Restaurant',@restautant), :precision => 1) %>/5 
+				(<%= num_votes(Rating.number_of_votes('Restaurant', @restaurant))%>)
+			</div>
+
+			<div id="star-ratings-block">		
+				<div>
+			    <%= render :partial => "rating/rating",
+			 		:locals => { :obj => @restaurant, :type => 'Restaurant' } %> 
+				</div>
+			</div>
+		</div>
+		<div id="rating_status" style="color:green;"></div>	
+ 	</div>
+</div>
+
+<div class="clear"></div><br/>
+<div class="receta_show_body">
+  <div class="description_div">
+  	<span class="title_span"><%= t(:small_rest_description)%>:</span>
+	  <div class="description_text"><%=h @restaurant.description %></div>
+  </div>
+
+  <br/>
+	<%= render :partial => 'shared/social_buttons'%>
+
+  <div class="receta_show_links">
+	  <% if current_user && (@restaurant.user == current_user || current_user.admin?)%>
+      <%= link_to t(:Edit), edit_restaurant_path(@restaurant) %> |
+    <% end %>
+    <%= link_to t(:Back), restaurants_path %>
+  </div>
+</div>
+
+
+<%= render :partial => 'comments/commenting_system', :locals => {:commentable => @restaurant}%>
