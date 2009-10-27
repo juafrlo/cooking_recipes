@@ -1,0 +1,2 @@
+module RestCategoriesHelper
+end

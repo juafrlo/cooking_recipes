@@ -1,0 +1,15 @@
+<% title "#{t(:Rest_category)} - #{@rest_category.name}"  %>
+<h2 class="title"><%= yield(:title) %></h2>
+
+<p>
+  <b><%= t(:Name) %>:</b><br/>
+  <%=h @rest_category.name %>
+</p>
+
+<p>
+ <b><%= t(:Photo)%>:</b><br/>
+	<%= image_tag @rest_category.restcategoryphoto.url(:small) %> 
+</p>
+
+<%= link_to t(:Edit), edit_rest_category_path(@rest_category) %> |
+<%= link_to t(:Back), rest_categories_path %>

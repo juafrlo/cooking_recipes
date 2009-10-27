@@ -218,7 +218,7 @@ es:
 
   #Categories
   category: categoría
-  Listing_categories: Categorías
+  Listing_categories: Categorías de recetas
   Photo: Foto
   Name: Nombre
   Options: Opciones
@@ -410,6 +410,16 @@ es:
   Avg_price: Precio medio por persona
   creator_rating: Puntuación del creador de la reseña
   small_rest_description: Descripción general del restaurante
+  Country: País
+  Town: Población
+  Author: Autor
+  Puntuation: Puntuación
+  Avg_price_list: Precio
+  
+  
+  #Restaurant categories
+  Listing_rest_categories: Categorías de restaurantes
+  Rest_category: Categoría de restaurante
   
   #Sessions
   session_created: ¡Ya estás dentro!

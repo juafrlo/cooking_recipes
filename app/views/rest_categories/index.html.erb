@@ -1,0 +1,29 @@
+<% title t(:Listing_rest_categories) %>
+<h2 class="title"><%= yield(:title) %></h2>
+
+<table>
+  <tr>
+    <th style="width: 200px;"><%= t(:Photo) %></th>
+    <th><%= t(:Name) %></th>
+    <th><%= t(:Options)%></th>
+  </tr>
+
+<% for rest_category in @rest_categories %>
+  <tr>
+    <td>
+	    <%= draw_image(rest_category.restcategoryphoto.url(:small),
+	      rest_category.name)%>
+    </td>
+    <td><%=h rest_category.name %></td>
+    <td>
+      <%= link_to t(:Show), rest_category %> |
+      <%= link_to t(:Edit), edit_rest_category_path(rest_category) %> |
+      <%= link_to t(:Destroy), rest_category, :confirm => t(:are_you_sure_category),
+        :method => :delete %>
+    </td>
+  </tr>
+<% end %>
+</table>
+
+<br/>
+<%= link_to t(:new_category), new_rest_category_path %>

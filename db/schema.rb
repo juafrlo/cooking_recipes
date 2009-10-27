@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091026181557) do
+ActiveRecord::Schema.define(:version => 20091027070147) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -129,6 +129,16 @@ ActiveRecord::Schema.define(:version => 20091026181557) do
     t.string   "town"
     t.integer  "duration"
     t.integer  "people_can_eat"
+  end
+
+  create_table "rest_categories", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "restcategoryphoto_file_name"
+    t.string   "restcategoryphoto_content_type"
+    t.integer  "restcategoryphoto_file_size"
+    t.datetime "restcategoryphoto_updated_at"
   end
 
   create_table "restaurants", :force => true do |t|

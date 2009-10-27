@@ -40,6 +40,7 @@ ActionController::Routing::Routes.draw do |map|
   #Others
   map.resources :noticias 
   map.resources :categories, :as => 'categorias'
+  map.resources :rest_categories, :as => 'categorias_restaurantes'
   map.resources :comments, :path_prefix => '/:commentable_type/:commentable_id'
   map.resources :admins, :as => 'administracion'
 

@@ -1,24 +1,27 @@
 <table class="recetas_table" style="width:570px;">		
   <tr>
-    <th>Name</th>
-    <th>Country</th>
-    <th>Town</th>
-    <th>Specialty</th>
-    <th>Avg price</th>
-    <th>Autor </th>
-    <th>Puntuación</th>
+    <th><%= t(:Name) %></th>
+    <th><%= t(:Puntuation) %></th>
+    <th><%= t(:Country) %></th>
+    <th><%= t(:Town) %></th>
+    <th><%= t(:Specialty) %></th>
+    <th><%= t(:Avg_price_list) %></th>
+    <th><%= t(:Author) %> </th>
 
   </tr>
 
 <% for restaurant in @restaurants %>
   <tr class="<%= cycle('odd','par')%>" >
     <td><%= link_to restaurant.name, restaurant_path(restaurant) %></td>
+    <td>
+    	<%= number_with_precision( Rating.rating(restaurant, 'Restaurant'), :precision => 1) %>/5 
+	    (<%= num_votes(Rating.number_of_votes('Restaurant', restaurant))%>)
+	  </td>
     <td><%=h restaurant.country %></td>
     <td><%=h restaurant.town %></td>
     <td><%=h restaurant.specialty %></td>
     <td><%=h restaurant.avg_price %></td>
     <td><%= link_to restaurant.user.login, user_path(restaurant.user) %></td>
-    <td><%=h restaurant.rating %></td>
 
   </tr>
 <% end %>

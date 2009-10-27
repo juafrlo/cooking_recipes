@@ -1,0 +1,22 @@
+<% form_for(@rest_category, :html => {:multipart => true}) do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :name, t(:Name) %>:<br />
+    <%= f.text_field :name %>
+  </p>
+
+  <p>
+	  <%= f.label :restcategoryphoto, t(:Photo) %>:<br />
+	  <% unless @rest_category.restcategoryphoto_file_size.blank? %>
+  	  <%= image_tag @rest_category.restcategoryphoto.url(:small) %>
+      <br/>
+    <% end %>
+    <%= f.file_field :restcategoryphoto %><br />
+  </p>
+
+  <p>
+    <%= form_template_button(f) %>
+  </p>
+<% end %>
+
+<%= link_to t(:Back), rest_categories_path %>
