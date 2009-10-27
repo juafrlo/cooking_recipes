@@ -16,3 +16,12 @@
 
 
 <h1 class="title"><%= t(:Best_restaurants_by_category) %></h1>
+<% for rest_category in @rest_categories %>	
+	<div class="receta_category_div">
+		<div class ="receta_category_name"><%= rest_category.name %></div>
+		<div>
+			<%= link_to image_tag(rest_category.restcategoryphoto.url(:small), :size => "172x150"),
+			 restaurantes_especialidad_path(rest_category) %>		
+		</div>
+	</div>
+<% end %>

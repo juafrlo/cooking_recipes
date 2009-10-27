@@ -5,7 +5,8 @@ class RestaurantsController < ApplicationController
   # GET /restaurants
   # GET /restaurants.xml
   def index
-    @restaurants = Restaurant.find(:all)
+    @restaurants = Restaurant.find(:all, :limit => 5)
+    @rest_categories = RestCategory.find(:all, :order => 'name')    
 
     respond_to do |format|
       format.html # index.html.erb
@@ -74,6 +75,9 @@ class RestaurantsController < ApplicationController
         format.xml  { render :xml => @restaurant.errors, :status => :unprocessable_entity }
       end
     end
+  end
+  
+  def especialidad
   end
 
   # DELETE /restaurants/1

@@ -18,4 +18,8 @@ class RestCategory < ActiveRecord::Base
         FileUtils.rm_rf(category_route) 
     end
   end  
+  
+  def to_param
+    id.to_s << "-" << (name ? name.parameterize : '' )
+  end
 end

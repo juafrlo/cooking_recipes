@@ -35,7 +35,9 @@ ActionController::Routing::Routes.draw do |map|
   map.recetas_categoria 'recetas/categoria/:id', :controller => 'recetas', :action => 'categoria' 
 
   #Restaurants
-  map.resources :restaurants, :as => 'restaurantes'
+  map.resources :restaurants, :collection => {:especialidad => :get}, :as => 'restaurantes'
+  map.restaurantes_especialidad 'restaurantes/especialidad/:id', :controller => 'restaurants', :action => 'especialidad' 
+
   
   #Others
   map.resources :noticias 

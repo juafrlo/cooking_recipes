@@ -23,7 +23,7 @@
 		<div class ="receta_category_name"><%= category.name %></div>
 		<div>
 			<%= link_to image_tag(category.categoryphoto.url(:small), :size => "172x150"),
-			 recetas_categoria_path(:id => category.id.to_s + '-' + category.name.parameterize) %>		
+			 recetas_categoria_path(category) %>		
 		</div>
 	</div>
 <% end %>
