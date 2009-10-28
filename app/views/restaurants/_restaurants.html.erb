@@ -19,7 +19,7 @@
 	  </td>
     <td><%=h restaurant.country %></td>
     <td><%=h restaurant.town %></td>
-    <td><%=h restaurant.specialty %></td>
+    <td><%=h restaurant.rest_category.name %></td>
     <td><%=h restaurant.avg_price %></td>
     <td><%= link_to restaurant.user.login, user_path(restaurant.user) %></td>
 

@@ -109,6 +109,10 @@ es:
         description: "Descripción"
       role:
         title: "Título"
+      restaurant:
+        creator_rating: "Puntuación del creador de la reseña"
+        name: "Nombre"
+        description: "Descripción"
     models:
       forum post: "'post'" 
       forum cat l2: "'categoría nivel 2'"
@@ -401,7 +405,7 @@ es:
   New_restaurant: Nuevo restaurante
   Where_can_i_eat: ¿Dónde puedo comer?
   Last_published_restaurants: Últimos restaurantes publicados
-  Best_restaurants_by_category: Mejores restaurantes por categoría
+  Best_restaurants_by_category: Mejores restaurantes por especialidad
   Edit_restaurant: Editar restaurante
   Restaurant: Restaurante
   Restaurant_by: Restaurante analizado por
@@ -415,7 +419,12 @@ es:
   Author: Autor
   Puntuation: Puntuación
   Avg_price_list: Precio
-  
+  Address: Dirección
+  google_maps_code: Código de google maps
+  create_restaurant: Crear restaurante
+  update_restaurant: Actualizar restaurante
+  Restaurant_created: Restaurante creado
+  Restaurant_updated: Restaurante actualizado
   
   #Restaurant categories
   Listing_rest_categories: Categorías de restaurantes

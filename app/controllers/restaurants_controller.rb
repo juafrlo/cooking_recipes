@@ -1,12 +1,12 @@
 class RestaurantsController < ApplicationController
   before_filter :owner_required, :only => [:edit, :update]
   before_filter :admin_required, :only => [:destroy]
+  before_filter :find_rest_categories, :only => [:index,:new, :edit, :update]
 
   # GET /restaurants
   # GET /restaurants.xml
   def index
     @restaurants = Restaurant.find(:all, :limit => 5)
-    @rest_categories = RestCategory.find(:all, :order => 'name')    
 
     respond_to do |format|
       format.html # index.html.erb
@@ -50,7 +50,7 @@ class RestaurantsController < ApplicationController
 
     respond_to do |format|
       if @restaurant.save
-        flash[:notice] = 'Restaurant was successfully created.'
+        flash[:notice] = t(:Restaurant_created)
         format.html { redirect_to(@restaurant) }
         format.xml  { render :xml => @restaurant, :status => :created, :location => @restaurant }
       else
@@ -67,7 +67,7 @@ class RestaurantsController < ApplicationController
 
     respond_to do |format|
       if @restaurant.update_attributes(params[:restaurant])
-        flash[:notice] = 'Restaurant was successfully updated.'
+        flash[:notice] = t(:Restaurant_updated)
         format.html { redirect_to(@restaurant) }
         format.xml  { head :ok }
       else
@@ -90,5 +90,10 @@ class RestaurantsController < ApplicationController
       format.html { redirect_to(restaurants_url) }
       format.xml  { head :ok }
     end
+  end
+  
+  private
+  def find_rest_categories
+    @rest_categories = RestCategory.find(:all, :order => 'name')    
   end
 end
