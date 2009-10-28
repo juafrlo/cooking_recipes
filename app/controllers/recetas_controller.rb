@@ -103,7 +103,7 @@ class RecetasController < ApplicationController
   
   def categoria
     @category = Category.find(params[:id])
-    @recetas = @category.recetas
+    @recetas = @category.recetas.best_voted
     if @recetas.empty?
       flash[:notice] = t(:no_recetas_in_this_category)
       redirect_to(:back)

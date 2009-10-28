@@ -78,6 +78,12 @@ class RestaurantsController < ApplicationController
   end
   
   def especialidad
+    @rest_category = RestCategory.find(params[:id])
+    @restaurants = @rest_category.restaurants.best_voted
+    if @restaurants.empty?
+      flash[:notice] = t(:no_restaurants_in_this_category)
+      redirect_to(:back)
+    end
   end
 
   # DELETE /restaurants/1

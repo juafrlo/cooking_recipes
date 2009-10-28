@@ -425,6 +425,8 @@ es:
   update_restaurant: Actualizar restaurante
   Restaurant_created: Restaurante creado
   Restaurant_updated: Restaurante actualizado
+  no_restaurants_in_this_category: No se encuentran restaurantes en esta especialidad en estos momentos.
+  best_restaurants_of: Los mejores restaurantes de 
   
   #Restaurant categories
   Listing_rest_categories: Categorías de restaurantes

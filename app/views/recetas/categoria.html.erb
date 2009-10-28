@@ -1,13 +1,6 @@
-<ul class="nav_buttons">
-  <li>
-    <%= link_to t(:New_receta), new_receta_path %>
-  </li>
-  <li>
-    <%= link_to t(:What_can_i_cook), que_cocinar_hoy_recetas_path %>
-  </li>
-</ul>
+<%= render :partial => 'nav_buttons' %>
 
-<% title "#{t(:best_recetas_of)} #{@category.name}" %>
+<% title "#{t(:best_recetas_of)} '#{@category.name}'" %>
 <h2 class="title"><%= yield(:title) %></h2>
 
 <%= render :partial => 'list_recetas', :locals => {:recetas => @recetas} %>

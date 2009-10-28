@@ -8,6 +8,9 @@ class Restaurant < ActiveRecord::Base
 	validates_numericality_of :creator_rating,
 	 :only_integer => true, :greater_than_or_equal_to => 0, :less_than_or_equal_to => 5
 	
+	named_scope :best_voted, :order => "ratings.rating DESC", :include => 'ratings'
+  
+	
 	def to_param
     id.to_s << "-" << (name ? name.parameterize : '' )
   end

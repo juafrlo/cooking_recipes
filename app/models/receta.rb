@@ -12,6 +12,8 @@ class Receta < ActiveRecord::Base
   
   after_create :send_notification_to_friends
 
+  named_scope :best_voted, :order => "ratings.rating DESC", :include => 'ratings'
+  
 
   def ingredient_attributes=(ingredient_attributes)
     ingredient_attributes.each do |attributes|
@@ -144,6 +146,12 @@ class Receta < ActiveRecord::Base
   
   def self.top(limit = 5)
     Receta.find(:all, :include => 'ratings', :limit => limit, 
+      :order => "ratings.rating DESC")
+  end
+  
+  def self.top_by_category(cat_id)
+    Receta.find(:all, :include => 'ratings',
+      :conditions => {:category_id => cat_id},
       :order => "ratings.rating DESC")
   end
   
