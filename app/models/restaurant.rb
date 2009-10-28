@@ -7,12 +7,40 @@ class Restaurant < ActiveRecord::Base
 	validates_presence_of :name, :description
 	validates_numericality_of :creator_rating,
 	 :only_integer => true, :greater_than_or_equal_to => 0, :less_than_or_equal_to => 5
-	
-	named_scope :best_voted, :order => "ratings.rating DESC", :include => 'ratings'
+	validates_numericality_of :avg_price
   
 	
+	named_scope :best_voted, :order => "ratings.rating DESC", :include => 'ratings'
+  named_scope :by_name, lambda {|name|
+    name.blank? ? {} : {:conditions => ["name like ?", "%#{name}%"]}} 
+  named_scope :by_specialty,  lambda {|cat|
+    cat.blank? ? {} : {:conditions => {:rest_category_id => cat}}}
+  named_scope :by_country,  lambda {|country|
+    country.blank? ? {} : {:conditions => ["country like ?", "%#{country}%"]}} 
+  named_scope :by_town,  lambda {|town|
+    town.blank? ? {} : {:conditions => ["town like ?", "%#{town}%"]}} 
+  named_scope :by_description,  lambda {|desc|
+    desc.blank? ? {} : {:conditions => ["description like ?", "%#{desc}%"]}} 
+  named_scope :by_creator_rating,  lambda {|rating|
+    rating.blank? ? {} : {:conditions => ["creator_rating >= ?", rating]}} 
+  named_scope :by_avg_price,  lambda {|price|
+    price.blank? ? {} : {:conditions => ["avg_price <= ?", price]}} 
+    
+    
 	def to_param
     id.to_s << "-" << (name ? name.parameterize : '' )
+  end
+  
+  def self.search(options = {})
+    scope = Restaurant.scoped({})    
+    scope = scope.by_name(options[:name]) 
+    scope = scope.by_specialty(options[:specialty]) 
+    scope = scope.by_country(options[:country]) 
+    scope = scope.by_town(options[:town]) 
+    scope = scope.by_description(options[:description]) 
+    scope = scope.by_creator_rating(options[:creator_rating]) 
+    scope = scope.by_creator_rating(options[:creator_rating]) 
+    scope    
   end
     
 end

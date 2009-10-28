@@ -31,11 +31,11 @@ ActionController::Routing::Routes.draw do |map|
   map.rate 'rating/rate/:id', :controller => 'rating', :action => 'rate'
   
   #Recetas
-  map.resources :recetas, :collection => {:categoria => :get, :que_cocinar_hoy => :get, :resultatos => :get}
+  map.resources :recetas, :collection => {:categoria => :get, :que_cocinar_hoy => :get, :resultados => :get, :resultados_busqueda => :get}
   map.recetas_categoria 'recetas/categoria/:id', :controller => 'recetas', :action => 'categoria' 
 
   #Restaurants
-  map.resources :restaurants, :collection => {:especialidad => :get}, :as => 'restaurantes'
+  map.resources :restaurants, :collection => {:especialidad => :get, :donde_puedo_comer => :get, :resultados => :get}, :as => 'restaurantes'
   map.restaurantes_especialidad 'restaurantes/especialidad/:id', :controller => 'restaurants', :action => 'especialidad' 
 
   

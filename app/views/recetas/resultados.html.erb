@@ -1,11 +1,12 @@
 <% title t(:Exact_recetas) %>
-<h2 class="results_no_margin"><%= yield(:title) %></h2>
+<h2 class="title"><%= yield(:title) %></h2><br/>
 
 <%= t(:Exact_recetas_intro) %>
 <%= render :partial => 'list_recetas',
    :locals => {:recetas => @recetas_exact} %>
 
-<h2 class="results_margin"><%= t(:No_exact_recetas)%>:</h2>
+<br/><br/><br/>
+<h2 class="title"><%= t(:No_exact_recetas)%>:</h2><br/>
 <%= t(:No_exact_recetas_intro) %>
 <%= render :partial => 'list_recetas',
    :locals => {:recetas => @recetas_no_exact} %>

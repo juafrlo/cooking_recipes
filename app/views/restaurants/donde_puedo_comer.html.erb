@@ -1,0 +1,68 @@
+<% title t(:Restaurants_searcher) %>
+<h2 class="title"><%= t(:Searching_for_restaurant) %></h2>
+
+<% form_for :restaurant, :url => resultados_restaurants_path   do |f| %>
+	<div class="form_div">
+	   <div class="form_col1">
+	    <%= f.label :name, t(:Name_of_restaurant) %><br />
+	    <%= f.text_field :name %>
+	  </div>
+
+	  <div class="form_col2">
+	    <%= f.label :rest_category_id, t(:Specialty) %><br />
+	  	<%= collection_select :restaurant, :rest_category_id, @rest_categories,
+	      :id, :name, {:include_blank => t(:All)} %>  
+	  </div>
+	</div>
+
+	<div class="clear"></div>
+
+	<div class="form_div">
+	  <div class="form_col1"
+	    <%= f.label :country, t(:Country) %><br />
+	    <%= f.text_field :country, :size => 22 %>
+	  </div>
+
+	  <div class="form_col2">
+	    <%= f.label :town, t(:Town) %><br />
+	    <%= f.text_field :town, :size => 22 %>
+	  </div>
+	</div>
+
+	<div class="clear"></div><br/><br/>
+
+	<div class="form_div">
+		<div class="form_col1">
+	    <%= f.label :address, t(:Address) %><br />
+	    <%= f.text_field :address, :size => 71 %>
+		</div>
+	</div>
+	
+	<div class="clear"></div><br/>
+
+	<div class="form_div">
+    <%= f.label :description, t(:Description) %><br />
+    <%= f.text_area :description, :style => "width: 504px" %>
+	</div>
+
+  <div class="clear"></div><br/>
+
+	<div class="form_div">
+	  <div class="form_col1"
+      <%= f.label :creator_rating, t(:creator_rating) %><br />
+    	<%= f.text_field :creator_rating, :size => "5" %>/5
+	  </div>
+
+	  <div class="form_col2">
+	    <%= f.label :avg_price, t(:Avg_price) %><br />
+	  	<%= f.text_field :avg_price , :size => "5"%>
+      €
+	  </div>
+	</div>
+
+  <div class="clear"></div><br/><br/>
+
+	<p class="clear">
+    <%= submit_tag t(:Search) %>
+	</p>
+<% end %>

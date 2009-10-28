@@ -1,8 +1,7 @@
 <% title t(:Recetas_searcher) %>
-<h2 class="title"><%= yield(:title) %></h2>
+<h2 class="title"><%= t(:Searching_specific_receta) %></h2>
 
-<% form_for :receta, :url => { :action => "resultados_busqueda" }   do |f| %>
-	<h2 class="clear"><%= t(:Searching_specific_receta) %></h2>  
+<% form_for :receta, :url => resultados_busqueda_recetas_path   do |f| %>
 	<div class="form_div" style="padding-top:18px;">
 	   <div class="form_col1">
 	    <%= f.label :name, t(:receta_name) %><br />
@@ -42,8 +41,8 @@
 <br/>
 
 
-<% form_for :receta, :url => { :action => "resultados" }   do |f| %>
-  <h2><%= t(:little_time_and_ingredients) %></h2> 
+<h2 class="title"><%= t(:little_time_and_ingredients) %></h2><br/> 
+<% form_for :receta, :url => resultados_recetas_path do |f| %>
   <div class="form_div"  style="padding-top:5px;">
 		<div class="form_col1">
 		  <div>

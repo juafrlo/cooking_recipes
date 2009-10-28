@@ -1,7 +1,7 @@
 class RestaurantsController < ApplicationController
   before_filter :owner_required, :only => [:edit, :update]
   before_filter :admin_required, :only => [:destroy]
-  before_filter :find_rest_categories, :only => [:index,:new, :edit, :update]
+  before_filter :find_rest_categories, :only => [:index,:new, :edit, :update, :donde_puedo_comer]
 
   # GET /restaurants
   # GET /restaurants.xml
@@ -84,6 +84,10 @@ class RestaurantsController < ApplicationController
       flash[:notice] = t(:no_restaurants_in_this_category)
       redirect_to(:back)
     end
+  end
+  
+  def donde_puedo_comer
+    @restaurant = Restaurant.new    
   end
 
   # DELETE /restaurants/1

@@ -113,6 +113,7 @@ es:
         creator_rating: "Puntuación del creador de la reseña"
         name: "Nombre"
         description: "Descripción"
+        avg_price: "Precio medio por persona"
     models:
       forum post: "'post'" 
       forum cat l2: "'categoría nivel 2'"
@@ -427,6 +428,9 @@ es:
   Restaurant_updated: Restaurante actualizado
   no_restaurants_in_this_category: No se encuentran restaurantes en esta especialidad en estos momentos.
   best_restaurants_of: Los mejores restaurantes de 
+  Restaurants_searcher: ¿Dónde puedo comer?
+  Searching_for_restaurant: ¿Buscas un restaurante?
+  Name_of_restaurant: Nombre del restaurante
   
   #Restaurant categories
   Listing_rest_categories: Categorías de restaurantes
