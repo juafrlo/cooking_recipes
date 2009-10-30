@@ -24,6 +24,7 @@ class RestaurantsController < ApplicationController
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @restaurant }
+      format.print { render :layout => "print"}
     end
   end
 
