@@ -1,0 +1,12 @@
+<% cache 'best_restaurant_critics' do %>
+  <h3><%= t(:best_restaurant_critics) %></h3>
+  <ul>
+    <% for user in User.top_restaurant_critics %>
+	    <li>
+	      <%= link_to user.login, user_path(user) %>
+		    (<%= number_with_precision(user.recetas_avg,:precision => 1) %>/5) 
+      </li>
+    <% end %>
+  </ul>
+<%end %>
+

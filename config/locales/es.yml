@@ -401,6 +401,7 @@ es:
   Recetas_found: Recetas encontradas
   must_search_by_params: Debes introducir algún parámaetro de búsqueda
   duration_must_be_integer: El campo "duración" debe ser un número entero
+  best_recipes: Recetas mejor puntuadas
   
   #Restaurants
   New_restaurant: Nuevo restaurante
@@ -435,6 +436,9 @@ es:
   Original_country: ¿De qué país es típica su cocina?
   Typical_cooking_of: Cocina típica de
   fill_at_least_one_field: Debes rellenar al menos un campo para realizar la búsqueda
+  Last_restaurants_voted: Últimas puntuaciones
+  best_restaurant_critics: Mejores críticos 
+  best_restaurants: Mejores restaurantes
   
   #Restaurant categories
   Listing_rest_categories: Categorías de restaurantes

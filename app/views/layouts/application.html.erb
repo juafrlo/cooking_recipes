@@ -95,12 +95,21 @@
      	 							<% end %>
 						     	</ul>
 						    </li>
-         				<li>
-                  <%= render :partial => 'shared/last_recipes_voted'%>
-        				</li>			
-        				<li>
-                  <%= render :partial => 'shared/best_voted_chefs'%>
-        				</li>
+                <% if controller_name == "restaurants"%>
+	         				<li>
+	                  <%= render :partial => 'shared/best_restaurants'%>
+	        				</li>
+	        				<li>
+	                  <%= render :partial => 'shared/best_restaurant_critics'%>
+	        				</li>
+	              <% else %>
+         				  <li>
+                    <%= render :partial => 'shared/best_recipes'%>
+        				  </li>			
+        				  <li>
+                    <%= render :partial => 'shared/best_voted_chefs'%>
+         				  </li>
+	              <% end %>
           		</ul>
         		</div>
 				  </div>

@@ -154,6 +154,15 @@ class User < ActiveRecord::Base
     self.recetas_avg = (ratings.sum/ratings.size).to_f
     self.save!
   end
+  
+  def update_restaurants_avg
+    ratings = []
+    self.restaurants.each do |restaurant|
+      ratings << restaurant.rating
+    end
+    self.restaurants_avg = (ratings.sum/ratings.size).to_f
+    self.save!    
+  end
 
   def admin?
     self.roles.include?(Role.find_by_title("admin")) ? true : false
@@ -187,6 +196,11 @@ class User < ActiveRecord::Base
   def self.top(limit = 5)
     User.find(:all, :limit => limit, :order => "recetas_avg DESC",
       :conditions => 'recetas_avg > 0.0')
+  end
+  
+  def self.top_restaurant_critics(limit = 5)
+    User.find(:all, :limit => limit, :order => "restaurants_avg DESC",
+      :conditions => 'restaurants_avg > 0.0')
   end
       
   protected    

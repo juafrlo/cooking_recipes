@@ -12,3 +12,17 @@ one:
     rateable_type: "Receta"
     rateable_id: 2
     user_id: 2
+
+three:
+    id: 3
+    rating: 5
+    rateable_type: "Restaurant"
+    rateable_id: 2
+    user_id: 1
+
+four:
+    id: 4
+    rating: 4
+    rateable_type: "Restaurant"
+    rateable_id: 2
+    user_id: 2

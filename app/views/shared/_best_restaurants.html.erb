@@ -1,0 +1,13 @@
+<% cache 'best_restaurants' do %>
+  <h3><%= t(:best_restaurants) %></h3>
+  <ul>
+    <% for restaurant in Restaurant.top %>
+	    <li>
+	      <%= link_to restaurant.name, restaurant_path(restaurant) %>
+		    <%= t(:by)%> <%= link_to restaurant.user.login, user_path(restaurant.user) %> 
+		    (<%= restaurant.rating %>/5) 
+      </li>
+    <% end %>
+  </ul>
+<%end %>
+

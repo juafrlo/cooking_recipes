@@ -10,7 +10,12 @@ class RatingSweeper < ActionController::Caching::Sweeper
   end
 
   def expire_cache(rating)
-    expire_fragment 'last_recipes_voted'
-    expire_fragment 'best_voted_chefs'
+    if rating.rateable_type == "Restaurant"
+      expire_fragment 'best_restaurants'
+      expire_fragment 'best_restaurant_critics'
+    else
+      expire_fragment 'best_recipes'
+      expire_fragment 'best_voted_chefs'
+    end
   end
 end

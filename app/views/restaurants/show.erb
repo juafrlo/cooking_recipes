@@ -1,0 +1,66 @@
+<% title "#{t(:Restaurant)} > #{@restaurant.name}" %>
+
+<div class="receta_show_intro">
+	<div class="receta_show_photo">
+    <%= restaurant_show_photo(@restaurant)%>
+	</div>
+
+	<div class="receta_show_info">
+ 		<div class="receta_show_name" style="font-size: 22px;">
+ 			<b><%=h @restaurant.name %></b>
+		</div>
+		
+		<div>
+		  <%= t(:Typical_cooking_of) %>:
+		  <%=h @restaurant.original_country %>
+		</div>
+
+
+		<div>
+		  <%= t(:Specialty) %>:
+		  <%=h @restaurant.rest_category.name %>
+		</div>
+		
+		<div class="receta_show_origin"> 																																																																																																																																																																																																																			     
+		  <%= "#{t(:Location)}: #{@restaurant.town} (#{@restaurant.country})"%> <br/>
+      <%= @restaurant.address %><br/>
+      <%= @restaurant.google_maps_code %>
+		</div>
+
+ 		<div class="receta_show_duration">
+			<%= t(:Avg_price)%>:
+ 			<%=h @restaurant.avg_price %> euros
+		</div>				
+		
+ 		<div class="receta_show_people">
+  		<%= t(:creator_rating)%>:
+	  	<%= @restaurant.creator_rating %>
+	  </div>						
+		
+		<div id="rating_stars" style="height:50px;">		
+	  		<div class="puntuation">
+				<b><%= t(:puntuation)%>:</b>
+	 			<%= number_with_precision( Rating.rating('Restaurant',@restautant), :precision => 1) %>/5 
+				(<%= num_votes(Rating.number_of_votes('Restaurant', @restaurant))%>)
+			</div>
+		</div>
+		<div id="rating_status" style="color:green;"></div>	
+ 	</div>
+</div>
+
+<div class="clear"></div><br/>
+<div class="receta_show_body">
+  <div class="description_div">
+  	<span class="title_span"><%= t(:small_rest_description)%>:</span>
+	  <div class="description_text"><%=h @restaurant.description %></div>
+  </div>
+
+  <br/>
+
+  <div class="receta_show_links">
+	  <% if current_user && (@restaurant.user == current_user || current_user.admin?)%>
+      <%= link_to t(:Edit), edit_restaurant_path(@restaurant) %> |
+    <% end %>
+    <%= link_to t(:Back), restaurants_path %>
+  </div>
+</div>

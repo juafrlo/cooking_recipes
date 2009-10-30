@@ -1,0 +1,13 @@
+<% cache 'best_recipes' do %>
+  <h3><%= t(:best_recipes) %></h3>
+  <ul>
+    <% for receta in Receta.top %>
+	    <li>
+	      <%= link_to receta.name, receta_path(receta) %>
+		    <%= t(:by)%> <%= link_to receta.user.login, user_path(receta.user) %> 
+		    (<%= receta.rating %>/5) 
+      </li>
+    <% end %>
+  </ul>
+<%end %>
+

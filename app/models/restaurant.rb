@@ -48,5 +48,16 @@ class Restaurant < ActiveRecord::Base
     scope = scope.best_voted
     scope     
   end
-    
+  
+  def self.top(limit = 5)
+    Restaurant.find(:all, :include => 'ratings', :limit => limit, 
+      :order => "ratings.rating DESC")
+  end
+  
+  def self.last_voted(limit = 5)
+    Restaurant.find(:all, :include => :ratings,
+     :limit => limit, :order => 'ratings.created_at DESC',
+     :conditions => ["ratings.rating IS NOT ?", nil])
+  end
+  
 end

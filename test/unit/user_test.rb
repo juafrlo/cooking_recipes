@@ -145,6 +145,10 @@ class UserTest < ActiveSupport::TestCase
     users(:quentin).update_recetas_avg
     assert_equal User.top(5), [users(:quentin)]
   end
+  
+  def test_top_restaurant_critics
+    assert_equal User.top_restaurant_critics, [users(:quentin)]  
+  end
 
   protected
   def create_user(options = {})
