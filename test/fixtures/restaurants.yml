@@ -1,31 +1,35 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
-  name: MyString
+  id: 1
+  name: Bar Pepe
   address: MyString
-  country: MyString
-  town: MyString
+  country: Spain
+  town: Valencia
   google_maps_code: MyText
-  description: MyText
-  specialty: MyString
+  description: Lot of noise
+  rest_category_id: 1
   creator_rating: 1.5
-  avg_price: 1
+  avg_price: 10
   photo_file_name: MyString
   photo_content_type: MyString
   photo_file_size: 1
   photo_updated_at: 2009-10-20 10:14:40
+  user_id: 1
 
 two:
-  name: MyString
+  id: 2
+  name: Casa Antonio
   address: MyString
-  country: MyString
-  town: MyString
+  country: Italia
+  town: Milan
   google_maps_code: MyText
-  description: MyText
-  specialty: MyString
-  creator_rating: 1.5
-  avg_price: 1
+  description: Warm place
+  rest_category_id: 2
+  creator_rating: 4.5
+  avg_price: 20
   photo_file_name: MyString
   photo_content_type: MyString
   photo_file_size: 1
   photo_updated_at: 2009-10-20 10:14:40
+  user_id: 2

@@ -1,11 +1,11 @@
 <% title t(:Restaurants_searcher) %>
 <h2 class="title"><%= t(:Searching_for_restaurant) %></h2>
 
-<% form_for :restaurant, :url => resultados_restaurants_path   do |f| %>
+<% form_for :restaurant, :url => resultados_restaurants_path do |f| %>
 	<div class="form_div">
 	   <div class="form_col1">
 	    <%= f.label :name, t(:Name_of_restaurant) %><br />
-	    <%= f.text_field :name %>
+	    <%= f.text_field :name, :size => 22 %>
 	  </div>
 
 	  <div class="form_col2">
@@ -16,6 +16,16 @@
 	</div>
 
 	<div class="clear"></div>
+
+	<div class="form_div">
+		<div class="form_col1">
+	    <%= f.label :original_country, t(:Original_country) %><br />
+	    <%= f.text_field :original_country, :size => "22" %>
+		</div>
+	</div>		
+
+  <div class="clear"></div><br/>
+
 
 	<div class="form_div">
 	  <div class="form_col1"

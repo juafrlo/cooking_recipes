@@ -415,8 +415,8 @@ es:
   Avg_price: Precio medio por persona
   creator_rating: Puntuación del creador de la reseña
   small_rest_description: Descripción general del restaurante
-  Country: País
-  Town: Población
+  Country: País donde está ubicado
+  Town: Población donde está ubicado
   Author: Autor
   Puntuation: Puntuación
   Avg_price_list: Precio
@@ -431,6 +431,10 @@ es:
   Restaurants_searcher: ¿Dónde puedo comer?
   Searching_for_restaurant: ¿Buscas un restaurante?
   Name_of_restaurant: Nombre del restaurante
+  Restaurants_found: Restaurantes encontrados
+  Original_country: ¿De qué país es típica su cocina?
+  Typical_cooking_of: Cocina típica de
+  fill_at_least_one_field: Debes rellenar al menos un campo para realizar la búsqueda
   
   #Restaurant categories
   Listing_rest_categories: Categorías de restaurantes

@@ -1,7 +1,8 @@
 class RestaurantsController < ApplicationController
   before_filter :owner_required, :only => [:edit, :update]
   before_filter :admin_required, :only => [:destroy]
-  before_filter :find_rest_categories, :only => [:index,:new, :edit, :update, :donde_puedo_comer]
+  before_filter :find_rest_categories, :only => [:index,:new, :edit, :update, :donde_puedo_comer, :create]
+  before_filter :login_required, :only => [:new, :create]
 
   # GET /restaurants
   # GET /restaurants.xml
@@ -39,7 +40,6 @@ class RestaurantsController < ApplicationController
 
   # GET /restaurants/1/edit
   def edit
-    @restaurant = Restaurant.find(params[:id])
   end
 
   # POST /restaurants
@@ -63,8 +63,6 @@ class RestaurantsController < ApplicationController
   # PUT /restaurants/1
   # PUT /restaurants/1.xml
   def update
-    @restaurant = Restaurant.find(params[:id])
-
     respond_to do |format|
       if @restaurant.update_attributes(params[:restaurant])
         flash[:notice] = t(:Restaurant_updated)
@@ -88,6 +86,15 @@ class RestaurantsController < ApplicationController
   
   def donde_puedo_comer
     @restaurant = Restaurant.new    
+  end
+
+  def resultados
+    unless params[:restaurant].values.to_s.blank?
+      @restaurants = Restaurant.search(params[:restaurant]) 
+    else
+      flash[:error] = t(:fill_at_least_one_field)
+      redirect_to donde_puedo_comer_restaurants_path
+    end
   end
 
   # DELETE /restaurants/1

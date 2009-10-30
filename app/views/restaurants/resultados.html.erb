@@ -1,0 +1,12 @@
+<% title t(:Restaurants_found) %>
+<h2 class="title"><%= yield(:title) %>:</h2>
+
+<% if @restaurants.size > 0 %>
+  <%= render :partial => 'restaurants' %>
+<% else %>
+  <br/><%= t(:no_results_found) %>
+<% end %>
+
+<div style="margin-top: 50px;">
+  <%= link_to t(:Back), donde_puedo_comer_restaurants_path %>
+</div>
