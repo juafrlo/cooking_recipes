@@ -2,10 +2,9 @@
   <tr>
     <th><%= t(:Name) %></th>
     <th><%= t(:Puntuation) %></th>
-    <th><%= t(:Country) %></th>
-    <th><%= t(:Town) %></th>
+    <th><%= t(:Town_list) %></th>
+    <th><%= t(:Typical_of) %></th>
     <th><%= t(:Specialty) %></th>
-    <th><%= t(:Avg_price_list) %></th>
     <th><%= t(:Author) %> </th>
 
   </tr>
@@ -17,10 +16,9 @@
     	<%= number_with_precision( Rating.rating(restaurant, 'Restaurant'), :precision => 1) %>/5 
 	    (<%= num_votes(Rating.number_of_votes('Restaurant', restaurant))%>)
 	  </td>
-    <td><%=h restaurant.country %></td>
     <td><%=h restaurant.town %></td>
+    <td><%=h restaurant.original_country %></td>
     <td><%=h restaurant.rest_category.name %></td>
-    <td><%=h restaurant.avg_price %></td>
     <td><%= link_to restaurant.user.login, user_path(restaurant.user) %></td>
 
   </tr>

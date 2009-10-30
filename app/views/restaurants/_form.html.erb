@@ -6,11 +6,6 @@
 	    <%= f.label :name, t(:Name) %><br />
 	    <%= f.text_field :name, :size => "22" %>
 		</div>
-
-		<div class="form_col2">
-	    <%= f.label :rest_category_id, t(:Specialty) %><br />
-	  	<%= f.collection_select :rest_category_id, @rest_categories, :id, :name %>
-		</div>
 	</div>
 	
   <div class="clear"></div><br/>
@@ -19,6 +14,11 @@
 		<div class="form_col1">
 	    <%= f.label :original_country, t(:Original_country) %><br />
 	    <%= f.text_field :original_country, :size => "22" %>
+		</div>
+
+		<div class="form_col2">
+	    <%= f.label :rest_category_id, t(:Specialty) %><br />
+	  	<%= f.collection_select :rest_category_id, @rest_categories, :id, :name %>
 		</div>
 	</div>		
 

@@ -417,7 +417,9 @@ es:
   creator_rating: Puntuación del creador de la reseña
   small_rest_description: Descripción general del restaurante
   Country: País donde está ubicado
+  Country_list: País
   Town: Población donde está ubicado
+  Town_list: Población
   Author: Autor
   Puntuation: Puntuación
   Avg_price_list: Precio
@@ -439,6 +441,7 @@ es:
   Last_restaurants_voted: Últimas puntuaciones
   best_restaurant_critics: Mejores críticos 
   best_restaurants: Mejores restaurantes
+  Typical_of: Cocina típica de
   
   #Restaurant categories
   Listing_rest_categories: Categorías de restaurantes
