@@ -2,8 +2,7 @@ require 'test_helper'
 
 class RestaurantsControllerTest < ActionController::TestCase
   fixtures :all
-  
-  
+    
   test "should get index" do
     get :index
     assert_response :success
@@ -106,7 +105,5 @@ class RestaurantsControllerTest < ActionController::TestCase
     post :resultados, :restaurant => {}
     assert_response :success
   end
-
-
 
 end

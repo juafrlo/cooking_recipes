@@ -150,6 +150,11 @@ class UserTest < ActiveSupport::TestCase
     assert_equal User.top_restaurant_critics, [users(:quentin)]  
   end
 
+  def test_top_advicers
+    assert_equal User.top_advicers, [users(:quentin)]
+  end
+
+
   protected
   def create_user(options = {})
     record = User.new({ :login => 'quire', :email => 'quire@example.com', :password => 'quire69', :password_confirmation => 'quire69' }.merge(options))

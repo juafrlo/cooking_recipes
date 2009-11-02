@@ -44,6 +44,7 @@ class AdvicesController < ApplicationController
   # POST /advices
   # POST /advices.xml
   def create
+    @advice = Advice.new(params[:advice])    
     @advice.user_id = current_user.id
 
     respond_to do |format|

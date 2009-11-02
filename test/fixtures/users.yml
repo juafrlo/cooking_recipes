@@ -13,7 +13,8 @@ quentin:
   receive_comments_emails: true    
   receive_friendships_emails: false
   receive_messages_emails: false
-  restaurants_avg: 4.0      
+  restaurants_avg: 4.0
+  advices_avg: 4.0      
       
 aaron:
   id: 2
