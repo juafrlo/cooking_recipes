@@ -1,0 +1,8 @@
+<%= render :partial => 'nav_buttons' %>
+
+<% title t(:Last_published_advices) %>
+<h2 class="title"><%= yield(:title) %></h2>
+
+<%= render :partial => 'advices',
+   :locals => {:recetas => @advices} %>
+

@@ -1,0 +1,41 @@
+<% title "#{t(:Advice)} - #{@advice.title}"  %>
+<h2 class="title"><%= yield(:title) %></h2>
+
+<p>
+  <b><%= t(:Title) %>:</b><br/>
+  <%=h @advice.title %>
+</p>
+
+<div id="rating_stars" style="height:50px;">		
+		<div class="puntuation">
+		<b><%= t(:puntuation)%>:</b>
+		<%= number_with_precision( Rating.rating(@advice, 'Advice'), :precision => 1) %>/5 
+		(<%= num_votes(Rating.number_of_votes('Advice', @advice))%>)
+	</div>
+
+	<div id="star-ratings-block">		
+		<div>
+	    <%= render :partial => "rating/rating",
+	 		:locals => { :obj => @advice, :type => 'Advice' } %> 
+		</div>
+	</div>
+</div>
+<div id="rating_status" style="color:green;"></div>	
+
+
+<p>
+ <b><%= t(:Description)%>:</b><br/>
+	<%= h @advice.description %> 
+</p>
+
+<p>
+  <%= render :partial => 'shared/social_buttons'%>
+</p>
+
+<% if current_user && (@advice.user == current_user || current_user.admin?)%>
+  <%= link_to t(:Edit), edit_advice_path(@advice) %> |
+<% end %>
+<%= link_to t(:Back), advices_path %>
+
+
+

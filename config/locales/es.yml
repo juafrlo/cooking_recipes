@@ -221,6 +221,17 @@ es:
   #Administration
   Administration: "Administración"
 
+  #Advices
+  Advice: Consejo de cocina
+  Last_published_advices: Últimos consejos de cocina publicados
+  New_advice: Nuevo consejo
+  Searching_advice: ¿Buscas consejo?
+  Edit_advice: Editar consejo
+  Advice_created: Consejo creado
+  Advice_updated: Consejo actualizado
+  best_advices: Mejores consejos
+  best_advicers: Mejores consejeros
+
   #Categories
   category: categoría
   Listing_categories: Categorías de recetas

@@ -64,6 +64,11 @@ class ApplicationController < ActionController::Base
         if !current_user || !(@restaurant.user == current_user || current_user.admin?)
           redirect_to '/'
         end
+      when "advices"
+        @advice = Advice.find(params[:id])
+        if !current_user || !(@current_user.user == current_user || current_user.admin?)
+          redirect_to '/'
+        end
     end
   end
 end

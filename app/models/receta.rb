@@ -160,8 +160,5 @@ class Receta < ActiveRecord::Base
      :limit => limit, :order => 'ratings.created_at DESC',
      :conditions => ["ratings.rating IS NOT ?", nil])
   end
-
-
-
-  
+    
 end

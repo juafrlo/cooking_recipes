@@ -1,0 +1,20 @@
+<table class="recetas_table" style="width:570px;">		
+  <tr>
+    <th><%= t(:Title) %></th>
+    <th><%= t(:Puntuation) %></th>
+    <th><%= t(:Author) %></th>
+
+  </tr>
+
+<% for advice in @advices %>
+  <tr class="<%= cycle('odd','par')%>" >
+    <td><%= link_to truncate(advice.title,100), advice_path(advice) %></td>
+    <td>
+    	<%= number_with_precision( Rating.rating(advice, 'Advice'), :precision => 1) %>/5 
+	    (<%= num_votes(Rating.number_of_votes('Advice', advice))%>)
+	  </td>
+    <td><%= link_to advice.user.login, user_path(advice.user) %></td>
+  </tr>
+<% end %>
+</table>
+

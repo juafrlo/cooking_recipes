@@ -31,7 +31,7 @@
 		  		  <%= link_to t(:Recipes), recetas_path %>
 			    </li>
   			  <li>
-				    <%= link_to t(:Advises), '/' %>
+				    <%= link_to t(:Advises), advices_path %>
 			    </li>
   			  <li>
 				    <%= link_to t(:Restaurants), restaurants_path %>
@@ -101,6 +101,13 @@
 	        				</li>
 	        				<li>
 	                  <%= render :partial => 'shared/best_restaurant_critics'%>
+	        				</li>
+                <% elsif controller_name == "advices" %>
+	         				<li>
+	                  <%= render :partial => 'shared/best_advices'%>
+	        				</li>
+	        				<li>
+	                  <%= render :partial => 'shared/best_advicers'%>
 	        				</li>
 	              <% else %>
          				  <li>

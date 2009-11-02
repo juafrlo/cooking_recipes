@@ -1,0 +1,15 @@
+<% title "#{t(:Advice)} - #{@advice.title}"  %>
+<h2 class="title"><%= yield(:title) %></h2>
+
+<p>
+  <b><%= t(:Title) %>:</b><br/>
+  <%=h @advice.title %>
+</p>
+
+<p>
+ <b><%= t(:Description)%>:</b><br/>
+	<%= h @advice.description %> 
+</p>
+
+
+

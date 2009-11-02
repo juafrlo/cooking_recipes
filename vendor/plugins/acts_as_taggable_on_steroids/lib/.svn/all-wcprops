@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 139
+/repos/railsprojects/!svn/ver/28586/projects/fesmalla/trunk/vendor/plugins/community_engine/engine_plugins/acts_as_taggable_on_steroids/lib
+END
+tags_helper.rb
+K 25
+svn:wc:ra_dav:version-url
+V 154
+/repos/railsprojects/!svn/ver/28586/projects/fesmalla/trunk/vendor/plugins/community_engine/engine_plugins/acts_as_taggable_on_steroids/lib/tags_helper.rb
+END
+tagging.rb
+K 25
+svn:wc:ra_dav:version-url
+V 150
+/repos/railsprojects/!svn/ver/28586/projects/fesmalla/trunk/vendor/plugins/community_engine/engine_plugins/acts_as_taggable_on_steroids/lib/tagging.rb
+END
+tag_counts_extension.rb
+K 25
+svn:wc:ra_dav:version-url
+V 163
+/repos/railsprojects/!svn/ver/28586/projects/fesmalla/trunk/vendor/plugins/community_engine/engine_plugins/acts_as_taggable_on_steroids/lib/tag_counts_extension.rb
+END
+acts_as_taggable.rb
+K 25
+svn:wc:ra_dav:version-url
+V 159
+/repos/railsprojects/!svn/ver/28586/projects/fesmalla/trunk/vendor/plugins/community_engine/engine_plugins/acts_as_taggable_on_steroids/lib/acts_as_taggable.rb
+END
+tag_list.rb
+K 25
+svn:wc:ra_dav:version-url
+V 151
+/repos/railsprojects/!svn/ver/28586/projects/fesmalla/trunk/vendor/plugins/community_engine/engine_plugins/acts_as_taggable_on_steroids/lib/tag_list.rb
+END
+tag.rb
+K 25
+svn:wc:ra_dav:version-url
+V 146
+/repos/railsprojects/!svn/ver/28586/projects/fesmalla/trunk/vendor/plugins/community_engine/engine_plugins/acts_as_taggable_on_steroids/lib/tag.rb
+END

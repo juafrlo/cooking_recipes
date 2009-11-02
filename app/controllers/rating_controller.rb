@@ -10,6 +10,9 @@ class RatingController < ApplicationController
     elsif params[:type] == 'Restaurant'
       @obj = Restaurant.find(params[:id])
       @obj.user.update_restaurants_avg
+    elsif params[:type]  == "Advice"
+      @obj = Advice.find(params[:id])
+      @obj.user.update_advices_avg   
     end
   end
 end

@@ -13,6 +13,7 @@ class User < ActiveRecord::Base
   has_many :friendships, :dependent => :destroy
   has_private_messages
   has_many :restaurants
+  has_many :advices
 
   validates_presence_of     :login
   validates_length_of       :login,    :within => 3..40
@@ -35,8 +36,7 @@ class User < ActiveRecord::Base
   attr_accessible :login, :email, :name, :password, :password_confirmation, :surname,
    :town, :country, :avatar, :receive_comments_emails, :receive_friends_emails,
    :receive_friendships_emails, :receive_messages_emails
-
-
+  
   # Activates the user in the database.
   def activate!
     @activated = true
@@ -164,6 +164,17 @@ class User < ActiveRecord::Base
     self.save!    
   end
 
+  def update_advices_avg
+    ratings = []
+    self.advices.each do |advice|
+      ratings << advice.rating
+    end
+    self.advices_avg = (ratings.sum/ratings.size).to_f
+    self.save!    
+  end
+
+
+
   def admin?
     self.roles.include?(Role.find_by_title("admin")) ? true : false
   end
@@ -202,6 +213,12 @@ class User < ActiveRecord::Base
     User.find(:all, :limit => limit, :order => "restaurants_avg DESC",
       :conditions => 'restaurants_avg > 0.0')
   end
+
+  def self.top_advicers(limit = 5)
+    User.find(:all, :limit => limit, :order => "advices_avg DESC",
+      :conditions => 'advices_avg > 0.0')
+  end
+
       
   protected    
   def make_activation_code

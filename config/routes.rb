@@ -38,6 +38,8 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :restaurants, :collection => {:especialidad => :get, :donde_puedo_comer => :get, :resultados => :post}, :as => 'restaurantes'
   map.restaurantes_especialidad 'restaurantes/especialidad/:id', :controller => 'restaurants', :action => 'especialidad' 
 
+  #Advices
+  map.resources :advices, :as => 'consejos_de_cocina'
   
   #Others
   map.resources :noticias 

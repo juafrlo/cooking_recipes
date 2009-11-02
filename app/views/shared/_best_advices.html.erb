@@ -1,0 +1,13 @@
+<% cache 'best_advices' do %>
+  <h3><%= t(:best_advices) %></h3>
+  <ul>
+    <% for advice in Advice.top %>
+	    <li>
+	      <%= link_to advice.title, advice_path(advice) %>
+		    <%= t(:by)%> <%= link_to advice.user.login, user_path(advice.user) %> 
+		    (<%= advice.rating %>/5) 
+      </li>
+    <% end %>
+  </ul>
+<%end %>
+
