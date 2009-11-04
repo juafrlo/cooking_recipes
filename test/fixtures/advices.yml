@@ -3,13 +3,13 @@
 one:
   id: 1
   user_id: 1
-  title: MyString
-  description: MyText
+  title: Arroz
+  description: Cocer
   cached_tag_list: MyString
 
 two:
   id: 2
   user_id: 2
   title: MyString
-  description: MyText
+  description: Hervir
   cached_tag_list: MyString

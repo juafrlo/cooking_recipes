@@ -1,8 +1,13 @@
 require 'test_helper'
 
 class AdviceTest < ActiveSupport::TestCase
-  # Replace this with your real tests.
-  test "the truth" do
-    assert true
+    
+  test "search" do
+    assert_equal Advice.search({:title => 'arroz'}), [advices(:one)]
+    assert_equal Advice.search(:description => 'hervir'), [advices(:two)]
+    assert_equal Advice.search(:title => 'arroz', :description => 'cocer'), 
+      [advices(:one)]
+    assert_equal Advice.search({:title => 'arroz'}, "olor"), []
   end
+  
 end

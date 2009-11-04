@@ -5,9 +5,19 @@
     <%= f.label :title, t(:Title) %><br />
     <%= f.text_field :title %>
   </p>
+
   <p>
-    <%= f.label :description, t(:Description) %><br />
+    <%= f.label :description, t(:Description) %><br/>
     <%= f.text_area :description %>
+  </p>
+
+  <p>
+	  <%= label_tag :tags, t(:tags_comma_separated) %><br/>
+    <%= text_field_tag 'tag_list', @advice.tag_list, {:autocomplete => "off", :size => 35}%>
+    <div class="auto_complete" id="tag_list_auto_complete">
+      <%= auto_complete_field 'tag_list', {:url => { :controller => "tags", :action => 'auto_complete_for_tag_name'}, :tokens => [',', ' ']  }%>
+    </div>
+
   </p>
 
   <p>

@@ -98,6 +98,9 @@ es:
   
   activerecord:
     attributes:
+      advice:
+        title: "Título"
+        description: "Descripción"
       forum_post:
         title: "Título"
         comment: "Post"
@@ -231,6 +234,8 @@ es:
   Advice_updated: Consejo actualizado
   best_advices: Mejores consejos
   best_advicers: Mejores consejeros
+  Advices_searcher: Buscador de consejos
+  tags_comma_separated: Tags (separados por comas)
 
   #Categories
   category: categoría

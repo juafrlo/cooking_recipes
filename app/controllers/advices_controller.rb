@@ -1,12 +1,13 @@
 class AdvicesController < ApplicationController
   before_filter :owner_required, :only => [:edit, :update]
   before_filter :admin_required, :only => [:destroy]
-  before_filter :login_required, :only => [:new, :create]  
+  before_filter :login_required, :only => [:new, :create]    
 
   # GET /advices
   # GET /advices.xml
   def index
     @advices = Advice.find(:all)
+    @cloud_advices = Advice.tag_counts
 
     respond_to do |format|
       format.html # index.html.erb
@@ -46,6 +47,7 @@ class AdvicesController < ApplicationController
   def create
     @advice = Advice.new(params[:advice])    
     @advice.user_id = current_user.id
+    @advice.tag_list = params[:tag_list]
 
     respond_to do |format|
       if @advice.save
@@ -63,6 +65,7 @@ class AdvicesController < ApplicationController
   # PUT /advices/1.xml
   def update
     @advice = Advice.find(params[:id])
+    @advice.tag_list = params[:tag_list]
 
     respond_to do |format|
       if @advice.update_attributes(params[:advice])
@@ -87,4 +90,7 @@ class AdvicesController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
+  def buscador
+  end  
 end
