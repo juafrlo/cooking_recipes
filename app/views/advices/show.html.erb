@@ -43,5 +43,6 @@
 <% end %>
 <%= link_to t(:Back), advices_path %>
 
+<%= render :partial => 'comments/commenting_system', :locals => {:commentable => @advice}%>
 
 

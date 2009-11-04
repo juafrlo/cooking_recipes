@@ -19,6 +19,7 @@ class AdvicesController < ApplicationController
   # GET /advices/1.xml
   def show
     @advice = Advice.find(params[:id])
+    @comment = Comment.new if logged_in?
 
     respond_to do |format|
       format.html # show.html.erb

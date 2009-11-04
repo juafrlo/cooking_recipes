@@ -1,6 +1,7 @@
 class Advice < ActiveRecord::Base
   acts_as_taggable
   acts_as_rateable
+  acts_as_commentable
   belongs_to :user
   validates_presence_of :title, :description
   
