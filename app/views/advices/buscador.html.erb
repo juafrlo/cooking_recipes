@@ -1,11 +1,12 @@
 <% title t(:Advices_searcher) %>
 <h2 class="title"><%= yield(:title) %></h2>
 
-<% form_for :advice, :url => resultados_advices_path, :method => :get do |f| %>
+
+<% form_for :advice, :url => resultados_advices_path, :html => {:method => :get} do |f| %>
 	<div class="form_div">
 	   <div class="form_col1">
 	    <%= f.label :title, t(:Title) %><br />
-	    <%= f.text_field :title, :size => 22 %>
+	    <%= f.text_field :title %>
 	  </div>
 	</div>
 
@@ -14,21 +15,26 @@
 	<div class="form_div">
 		<div class="form_col1">
 	    <%= f.label :description, t(:Description) %><br />
-	    <%= f.text_field :description, :size => "22" %>
+	    <%= f.text_area :description %>
 		</div>
 	</div>		
-
-  <div class="clear"></div><br/>
 
 
 	<div class="form_div">
 	  <div class="form_col1"
-	    <%= label_tag :tags %><br />
-	    <%= f.text_field :tags, :size => 22 %>
+		  <%= label_tag :tags, t(:tags_comma_separated) %><br/>
+	    <%= text_field_tag 'tag_list', "", {:autocomplete => "off", :size => 35}%>
+	    <div class="auto_complete" id="tag_list_auto_complete">
+	      <%= auto_complete_field 'tag_list',
+	        {:url => { :controller => "tags", :action => 'auto_complete_for_tag_name'},
+	         :tokens => [',', ' ']  }%>
+	    </div>
 	  </div>
 	</div>
 
-	<p class="clear">
+	<div class="clear"></div><br/>
+
+	<p>
     <%= submit_tag t(:Search) %>
 	</p>
 <% end %>

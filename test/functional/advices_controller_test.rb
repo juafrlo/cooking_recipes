@@ -96,4 +96,14 @@ class AdvicesControllerTest < ActionController::TestCase
     assert_redirected_to '/'
   end
   
+  test "should get buscador" do
+    get :buscador
+    assert_response :success
+  end
+  
+  test "should get resultados" do
+    get :resultados, :advice => {:title => 'arroz'}, :tag_list => ""
+    assert_equal assigns(:advices).first, advices(:one)
+    assert_response :success
+  end
 end

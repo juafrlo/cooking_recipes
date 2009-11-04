@@ -236,6 +236,7 @@ es:
   best_advicers: Mejores consejeros
   Advices_searcher: Buscador de consejos
   tags_comma_separated: Tags (separados por comas)
+  Advices_results: Resultados de la búsqueda
 
   #Categories
   category: categoría
@@ -522,3 +523,4 @@ es:
   recetas: recetas
   Share_with: Compartir en
   Print: Imprimir
+  Seach: Buscar

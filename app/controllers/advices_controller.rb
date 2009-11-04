@@ -94,4 +94,8 @@ class AdvicesController < ApplicationController
   
   def buscador
   end  
+  
+  def resultados
+    @advices = Advice.search(params[:advice], params[:tag_list])
+  end
 end

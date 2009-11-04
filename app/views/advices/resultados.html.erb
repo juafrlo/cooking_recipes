@@ -1,0 +1,11 @@
+<% title t(:Advices_results) %>
+<h2 class="title"><%= yield(:title) %></h2>
+
+<%= render :partial => 'advices',
+   :locals => {:recetas => @advices} %>
+
+<br/><br/>
+<p>
+  <%= link_to t(:Back), advices_path %> |
+  <%= link_to t(:Seach), buscador_advices_path	%>																																																																																																					 
+</p>
