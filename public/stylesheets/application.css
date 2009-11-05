@@ -945,3 +945,35 @@ ul#social_buttons ul li a {
 .css2 { font-size: 1.2em; }
 .css3 { font-size: 1.4em; }
 .css4 { font-size: 1.6em; }
+
+.advices_col1{
+	padding: 4px 10px 0px 10px;
+	float:right
+}
+
+.advices_col1 div{
+	width: 250px;
+}
+
+.advices_col2{
+	float: left;
+}
+
+.advices_col2 div{
+	padding: 0px 10px 0px 10px;
+}
+
+.advices_col2 h2{
+	background:transparent url(../images/layo/img09.jpg) no-repeat scroll left top;
+	font-size:14px;
+	padding:7px 25px;
+}
+
+.advices_col2 .cloud{
+	width: 230px;
+}
+
+p.no_results_found{
+	padding-left: 10px;
+	font-size: 14px;
+}

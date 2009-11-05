@@ -1,8 +1,14 @@
 <% title t(:Advices_results) %>
 <h2 class="title"><%= yield(:title) %></h2>
 
-<%= render :partial => 'advices',
-   :locals => {:recetas => @advices} %>
+<% if @advices.size > 0 %>
+  <%= render :partial => 'advices',
+     :locals => {:recetas => @advices} %>
+<% else %>
+  <p class="no_results_found">
+    <%= t(:advices_no_results_found) %>
+  </p>
+<% end %>
 
 <br/><br/>
 <p>
