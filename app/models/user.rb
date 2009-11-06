@@ -14,6 +14,8 @@ class User < ActiveRecord::Base
   has_private_messages
   has_many :restaurants
   has_many :advices
+  
+  acts_as_favorite_user
 
   validates_presence_of     :login
   validates_length_of       :login,    :within => 3..40

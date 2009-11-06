@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091102065950) do
+ActiveRecord::Schema.define(:version => 20091106064149) do
 
   create_table "advices", :force => true do |t|
     t.integer  "user_id"
@@ -41,6 +41,22 @@ ActiveRecord::Schema.define(:version => 20091102065950) do
   end
 
   add_index "comments", ["user_id"], :name => "fk_comments_user"
+
+  create_table "favorites", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "favorable_type", :limit => 30
+    t.integer  "favorable_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "favourites", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "favouritable_id"
+    t.string   "favouritable_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "forum_cat_l1s", :force => true do |t|
     t.string   "title"

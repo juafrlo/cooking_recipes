@@ -7,6 +7,8 @@ class Receta < ActiveRecord::Base
   belongs_to :user
   belongs_to :category
 	acts_as_commentable
+  acts_as_favorite
+  
   validates_presence_of :name, :description, :duration
   validates_numericality_of :duration
   

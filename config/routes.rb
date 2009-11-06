@@ -41,6 +41,9 @@ ActionController::Routing::Routes.draw do |map|
   #Advices
   map.resources :advices, :as => 'consejos_de_cocina', :collection => {:buscador => :get, :resultados => :get}
   
+  #Favorites
+  map.resources :favorites, :only => [:create, :destroy]
+  
   #Others
   map.resources :noticias 
   map.resources :categories, :as => 'categorias'

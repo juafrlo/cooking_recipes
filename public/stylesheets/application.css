@@ -977,3 +977,8 @@ p.no_results_found{
 	padding-left: 10px;
 	font-size: 14px;
 }
+
+#favorite_spiner{
+    padding-right:1px;
+    width:10px;
+}

@@ -1,9 +1,10 @@
 class Restaurant < ActiveRecord::Base
+  acts_as_commentable
   acts_as_rateable
+  acts_as_favorite
   belongs_to :user
   belongs_to :rest_category
   has_attached_file :photo, :styles => { :small => "150x150>"}
-  acts_as_commentable
 	validates_presence_of :name, :description
 	validates_numericality_of :creator_rating, 
 	 :greater_than_or_equal_to => 0, :less_than_or_equal_to => 5,

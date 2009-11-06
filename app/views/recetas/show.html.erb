@@ -78,7 +78,7 @@
     </ul>
   </div>
 
-	<%= render :partial => 'shared/social_buttons'%>
+	<%= render :partial => 'shared/social_buttons', :locals => {:obj => @receta }%>
 
   <div class="receta_show_links">
 	  <% if current_user && (@receta.user == current_user || current_user.admin?)%>
