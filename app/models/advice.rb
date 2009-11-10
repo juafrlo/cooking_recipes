@@ -37,4 +37,10 @@ class Advice < ActiveRecord::Base
     scope     
   end
   
+  def self.find_ordered(user,options = {})
+    with_scope :find => options do
+      Advice.find(:all, :include => [:ratings],
+       :conditions => ["advices.user_id = ?", user.id])
+    end
+  end  
 end

@@ -1,5 +1,6 @@
 class FavoritesController < ApplicationController
   before_filter :login_required
+  before_filter :owner_required, :only => :destroy
 
   def create
     if params[:type] == "Receta"
@@ -11,11 +12,15 @@ class FavoritesController < ApplicationController
     end
     render :update do |page|
       page.replace_html 'favorite_link',
-       "<span style='color:green;'>#{t(:Added_to_favorites)}</span>"
+       "<span class='added_to_favorites'>#{t(:Added_to_favorites)}</span>"
     end
   end
   
   def destroy
-    # render none
+    @favorite = Favorite.find(params[:id])
+    @favorite.destroy
+    render :update do |page|
+      page.visual_effect  :fade, "favorite_#{@favorite.id}"
+    end
   end
 end

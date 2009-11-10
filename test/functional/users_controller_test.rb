@@ -83,20 +83,15 @@ class UsersControllerTest < ActionController::TestCase
     get :edit, :id => users(:quentin).id
     assert_response :redirect
   end
-  
-  def test_should_get_mis_recetas
-    get :mis_recetas, :id => users(:quentin).id
-    assert_response :success
-  end
-  
-  def test_should_get_mis_amigos
+    
+  def test_should_get_amigos
     login_as :quentin
-    get :mis_recetas, :id => users(:quentin).id
+    get :amigos, :id => users(:quentin).id
     assert_response :success
   end
   
-  def test_should_not_get_mis_amigos
-    get :mis_amigos, :id => users(:quentin).id
+  def test_should_not_get_amigos
+    get :amigos, :id => users(:quentin).id
     assert_response :redirect
   end
   
@@ -117,6 +112,37 @@ class UsersControllerTest < ActionController::TestCase
       assert_redirected_to login_path    
     end
   end
+
+  test "should get user recetas" do
+    get :recetas, :id => 1
+    assert_response :success
+  end
+
+  test "should get user favorite recetas" do
+    get :recetas_favoritas, :id => 1
+    assert_response :success
+  end
+  
+  test "should get user restaurants" do
+    get :restaurantes, :id => 1
+    assert_response :success
+  end
+
+  test "should get user favorite restaurants" do
+    get :restaurantes_favoritos, :id => 1
+    assert_response :success
+  end
+
+  test "should get user advices" do
+    get :consejos, :id => 1
+    assert_response :success
+  end
+
+  test "should get user favorite advices" do
+    get :consejos_favoritos, :id => 1
+    assert_response :success
+  end
+
 
   protected
     def create_user(options = {})

@@ -103,7 +103,5 @@ class RecetasControllerTest < ActionController::TestCase
   test "should get print version" do
     get :show, :formmat => :print, :id => recetas(:paella).id
     assert_response :success
-  end
-
-    
+  end    
 end

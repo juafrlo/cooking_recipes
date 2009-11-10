@@ -1,0 +1,22 @@
+<table class="recetas_table" style="width:570px;">		
+  <tr>
+    <th><%= order_recetas_links(t(:Name), 'name') %></th>
+    <th><%= order_recetas_links(t(:Puntuation), 'ratings.rating') %></th>
+    <th><%= order_recetas_links(t(:Typical_of), 'rest_categories.name') %></th>
+    <th><%= order_recetas_links(t(:Category), 'rest_categories.name') %></th>
+    <th><%= order_recetas_links(t(:Date), 'created_at') %></th>
+  </tr>
+
+<% for restaurant in @restaurants %>
+  <tr class="<%= cycle('odd','par')%>" >
+    <td><%= link_to restaurant.name, restaurant %></td>
+    <td>
+		  <%= number_with_precision( Rating.rating(restaurant, 'Restaurant'), :precision => 1) %>/5 
+		  (<%= num_votes(Rating.number_of_votes('Restaurant', restaurant))%>)
+	  </td>
+    <td><%=h restaurant.original_country %></td>
+    <td><%=h restaurant.rest_category.name %></td>
+    <td><%=h restaurant.created_at.to_s(:date) %></td>
+  </tr>
+<% end %>
+</table>

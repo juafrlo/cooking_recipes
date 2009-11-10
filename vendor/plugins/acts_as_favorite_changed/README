@@ -1,10 +1,10 @@
-= ActsAsFavorite
+Acts As Favorite
+=================
 
-http://svn.webwideconsulting.com/svn/acts_as_favorite
+   This is an update made by Juan de Frías of 'act_as_favorite' plugin made by Josh Martin, in order to make it work on Rails versions 2.2.1 and higher.
 
-This plugin provides a simple way to track users favorites within the system using
+   This plugin provides a simple way to track users favorites within the system using
 ActiveRecord models. 
-
 
 == Requirements
   As we are not generating anything and there is no config, it is assumed in this version
@@ -13,41 +13,34 @@ ActiveRecord models.
 == Installation and Configuration
 
 1) Install as a plugin using script/plugin.
-2) Generate the Favorite model, migrations, and tests with
-    ./script/generate favorite_model Favorite
+2) Generate the Favorite model, migrations, and tests with ./script/generate favorite_model Favorite
 3) rake migrate to create the required tables
 4) add <tt>acts_as_favorite_user</tt> to your User model
 5) add <tt>acts_as_favorite</tt> to any models which you want to provide to users for favorites.
 
-== The Specifics
+== How to use it
 
-  Below are some specifics of using the plugin...
+  In the following examples, considerar there is a User model and
+  a Restaurant model, which acts_as_favorite, so a user can have many favorite
+  restaurants.
+  Obviously, as long as a model is set to acts_as_favorite, it can use all the next methods,
+  changing 'restaurant' by 'model_name' 
 
-=== Setting and Using favorites
+- To add a favorite to a user:
+  current_user.has_favorite(Restaurant.find(2))  
 
-To Set:
-current_user.has_favorite(Blog.find(43))
+- To test favorites (returns true/false):  
+  current_user.has_favorite?(Restaurant.find(2)) 
+  current_user.has_favorite_restaurants?  
 
-To Test(returns true/false):
-current_user.has_favorite?(Blog.find(99))
-current_user.has_favorite_venues?
-
-To Find:
-current_user.all_favorites  (all favorite referenced objects, blogs, etc)
-current_user.favorite_blogs  (metaprogramming references Blog entries only)
-Blog.find(43).favoriting_users (returns users which have the specified blog set as a favorite)
-
-=== Dynamic methods through the Identity mixin
-
-The Identity mixin provides some dynamic methods for accessing favorite based information. You
-can replace 'blahs' with any model class that acts_as_favorite.
-
-user.has_favorite_blahs?  --> returns true/false if the user has any favorites within the Blah class.
-user.favorite_blahs       --> returns an array of Blah's that are set as the users favorites.
+- To find favorites:
+  current_user.all_favorites  (all favorite referenced objects, like restaurants, etc)
+  current_user.favorite_restaurants  (metaprogramming references Restaurant entries only)
+  Restaurant.find(2).favoriting_users (returns users which have this restaurant set as a favorite)
 
 == License
 MIT License applies.
 
 == Authors
-Josh Martin
-
+  Juan de Frías
+  Original version by Josh Martin (code at http://github.com/joergbattermann/acts_as_favorite/)

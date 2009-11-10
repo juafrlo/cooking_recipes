@@ -10,15 +10,19 @@ function fbs_click(){
 <ul id="social_buttons">
   <% if current_user %>
 	  <li>
-      <span id="favorite_link">
-			  <%= image_tag('web/spinner.gif', :id => "favorite_spiner",
-			    :style=> 'display:none;')%>
-		    <%= link_to_remote t(:Add_to_favorites), :update => "",
-			    :url  => favorites_path(:obj_id => obj.id, :type => obj.class.to_s),
-		      :loading => "$('favorite_spiner').appear();",
-			    :method => :post %>
-			 </span>
-			 |
+      <% unless current_user.has_favorite?(obj) %>
+	      <span id="favorite_link">
+					  <%= image_tag('web/spinner.gif', :id => "favorite_spiner",
+					    :style=> 'display:none;')%>
+				    <%= link_to_remote t(:Add_to_favorites), :update => "",
+					    :url  => favorites_path(:obj_id => obj.id, :type => obj.class.to_s),
+				      :loading => "$('favorite_spiner').appear();",
+					    :method => :post %>
+				</span>
+      <% else %>
+        <span class="added_to_favorites"><%= t(:Added_to_favorites) %> </span>
+      <% end %>
+			|
 		</li>
 	<% end %>
   <li>

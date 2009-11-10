@@ -93,15 +93,25 @@ module UsersHelper
   def order_recetas_links(text,order)
     html = "<div class='small_arrows_word'>"
     html += "#{text} "
-    html += "</div"
+    html += "</div>"
     html += "<div class='small_arrows'>"
     html +=  "#{link_to image_tag('web/small_arrow_up.png'), :params=> {:order => order + ' ASC'}}"
     html +=  "#{link_to image_tag('web/small_arrow_down.png'), :params=> {:order => order + ' DESC'}}"
     html += "</div>"
     return html
   end
-
+  
   def can_edit_user(user)
     current_user && (current_user == user || current_user.admin?)
   end
+    
+
+  def favorites_link(str1,str2,dest)
+    if current_user && current_user == @user
+      str = str1
+    else
+      str = str2
+    end
+    link_to str, dest
+  end  
 end

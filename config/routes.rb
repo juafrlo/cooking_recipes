@@ -16,7 +16,12 @@ ActionController::Routing::Routes.draw do |map|
   map.resource :session
   
   #Users
-  map.resources :users, :as => 'usuarios', :member => {:mis_recetas => :get, :mis_amigos => :get}, :collection => {:forgot_password => :post} do |user|
+  map.resources :users, :as => 'usuarios',
+   :member => {:amigos => :get,
+               :recetas => :get, :recetas_favoritas => :get,
+               :restaurantes => :get, :restaurantes_favoritos => :get,
+               :consejos => :get, :consejos_favoritos => :get},
+   :collection => {:forgot_password => :post} do |user|
     user.resources :messages, :as => 'mensajes', :collection => { :delete_selected => :post }
   end
   map.resources :friendships, :only => [:create], :collection => {:accept => :get, :deny => :get}

@@ -1,12 +1,9 @@
-<% title "#{t(:published_recipes_of)} #{@user.login}" %>
-<h2 class="title"><%= yield(:title) %></h2>
-
 <table class="recetas_table" style="width:570px;">		
   <tr>
-    <th><%= order_recetas_links('Plato', 'name') %></th>
-    <th><%= order_recetas_links('Puntuación', 'ratings.rating') %></th>
-    <th><%= order_recetas_links('Categoría', 'categories.name') %></th>
-    <th><%= order_recetas_links('Fecha', 'created_at') %></th>
+    <th><%= order_recetas_links(t(:Receta_prepared), 'name') %></th>
+    <th><%= order_recetas_links(t(:Puntuation), 'ratings.rating') %></th>
+    <th><%= order_recetas_links(t(:Category), 'categories.name') %></th>
+    <th><%= order_recetas_links(t(:Date), 'created_at') %></th>
   </tr>
 
 <% for receta in @recetas %>

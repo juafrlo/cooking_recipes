@@ -1,0 +1,11 @@
+<ul class="nav_buttons">
+  <li>
+    <%= favorites_link t(:My_favorite_recipes), t(:Other_user_favorite_recipes),
+      recetas_favoritas_user_path(@user) %>
+  </li>
+</ul>
+
+<% title "#{t(:published_recipes_of)} #{@user.login}" %>
+<h2 class="title"><%= yield(:title) %></h2>
+
+<%= render :partial => 'user_recipes' %>

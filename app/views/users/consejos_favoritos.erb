@@ -1,0 +1,11 @@
+<ul class="nav_buttons">
+  <li>
+	  <%= favorites_link(t(:My_published_advices), t(:Other_user_published_advices),
+	    consejos_user_path(@user)) %>
+  </li>
+</ul>
+
+<% title "#{t(:favorite_advices_of)} #{@user.login}" %>
+<h2 class="title"><%= yield(:title) %></h2>
+
+<%= render :partial => 'user_advices' %>

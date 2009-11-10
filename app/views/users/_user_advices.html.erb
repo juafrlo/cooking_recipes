@@ -1,0 +1,18 @@
+<table class="recetas_table" style="width:570px;">		
+  <tr>
+    <th><%= order_recetas_links(t(:Title), 'title') %></th>
+    <th><%= order_recetas_links(t(:Puntuation), 'ratings.rating') %></th>
+    <th><%= order_recetas_links(t(:Date), 'created_at') %></th>
+  </tr>
+
+<% for advice in @advices %>
+  <tr class="<%= cycle('odd','par')%>" >
+    <td><%= link_to advice.title, advice %></td>
+    <td>
+		<%= number_with_precision( Rating.rating(advice, 'Advice'), :precision => 1) %>/5 
+		(<%= num_votes(Rating.number_of_votes('Advice', advice))%>)
+	</td>
+    <td><%=h advice.created_at.to_s(:date) %></td>
+  </tr>
+<% end %>
+</table>

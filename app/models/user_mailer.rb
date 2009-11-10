@@ -35,7 +35,7 @@ class UserMailer < ActionMailer::Base
     setup_email(user)
     @subject += I18n.t(:friendship_notification_subject)
     @user = user
-    @body[:url]  = "http://#{SITE_URL}/#{mis_amigos_user_path(user).to_s}"
+    @body[:url]  = "http://#{SITE_URL}/#{amigos_user_path(user).to_s}"
   end
 
   def message_notification(user)

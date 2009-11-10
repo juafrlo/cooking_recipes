@@ -4,7 +4,9 @@ class UsersController < ApplicationController
   include AuthenticatedSystem
   skip_before_filter :verify_authenticity_token, :only => 'auto_complete_for_user_login'
   before_filter :login_required, :only => 'auto_complete_for_user_login'
-  before_filter :be_same_user, :only => [:edit, :update, :mis_amigos]
+  before_filter :be_same_user, :only => [:edit, :update, :amigos]
+  before_filter :find_user, :only => [:recetas, :recetas_favoritas, :restaurantes,
+     :restaurantes_favoritos, :consejos, :consejos_favoritos]
    
   def show
     @user = User.find(params[:id])
@@ -17,12 +19,7 @@ class UsersController < ApplicationController
   def edit
   end
   
-  def mis_recetas
-    @user = User.find(params[:id])
-    @recetas = Receta.find_ordered(@user, :order => params[:order])
-  end
-
-  def mis_amigos
+  def amigos
     @users,@title = @user.friends_list(params[:option])   
   end
 
@@ -95,8 +92,35 @@ class UsersController < ApplicationController
     end 
   end
   
+  def recetas
+    @recetas = Receta.find_ordered(@user, :order => params[:order])
+  end
+    
+  def recetas_favoritas
+    @recetas = @user.favorite_recetas
+  end
+  
+  def restaurantes
+    @restaurants = Restaurant.find_ordered(@user, :order => params[:order])
+  end
+
+  def restaurantes_favoritos
+    @restaurants = @user.favorite_restaurants
+  end
+  
+  def consejos
+    @advices = Advice.find_ordered(@user, :order => params[:order])
+  end
+  
+  def consejos_favoritos
+    @advices = @user.favorite_advices
+  end
   
   protected
+  def find_user
+    @user = User.find(params[:id])
+  end
+  
   def be_same_user
     @user = User.find(params[:id])
     redirect_to '/' unless (current_user && (current_user == @user || current_user.admin?))

@@ -5,7 +5,6 @@
   <tr>
 	  <th>Avatar</th>
 	  <th>Nick</th>
-	  <th><%= t(:puntuation)%></th>
 	  <th><%= t(:Recetas)%></th>
     <% if params[:option] != 'invitados' %>
   	  <th><%= t(:invite)%></th>
@@ -16,7 +15,6 @@
 	<tr class="<%= cycle('odd','par')%>">
 	  <td><%= image_tag(user.avatar.url(:small)) %></td>
   	  <td><%= link_to user.login, user_path(user) %></td>
-	  <td><%= user.puntuation %>/5</td>
 	  <td><%= user.recetas.count %></td>	
     <% if params[:option] != 'invitados' %>
         <td id="accept_or_deny">

@@ -473,7 +473,9 @@ es:
   session_destroyed: ¡Has salido del sistema!
   
   #Users
-  view_recetas: Ver recetas
+  View_recetas: Ver recetas
+  View_restaurants: Ver restaurantes
+  View_advices: Ver consejos
   number_of_recetas: Número de recetas
   number_of_posts: Número de posts
   last_name: Apellidos
@@ -488,10 +490,9 @@ es:
   sign_up_failed: Lo sentimo, pero no ha sido posible crear tu cuenta.  Por favor, vuelve a intentarlo o ponte en contacto con nosotros.
   user_data_updated: Ficha de usuario actualizada.
   activation_success: ¡Registro completado! Por favor, introduce tu nombre de usuario y contraseña para continuar.
-  activation_failed: El código de activación no es correcto.  Por favor, utiliza la URL de tu email
+  activation_failed: El código de activación no es correcto.  Por favoruyyy, utiliza la URL de tu email
   activation_error_user: No pudimos encontrar un usuario con ese código de activación; comprueba tu email. Tal vez tu cuenta ya está activada. Prueba a introducir tu nombre de usuario y contraseña
   puntuation: Puntuación
-  my_published_recipes: Mis recetas publicadas
   published_recipes_of: Recetas publicadas de
   Recetas: Recetas
   invite: ¿Invitar?
@@ -506,11 +507,27 @@ es:
   receive_friends_emails_exp: ¿Deseas recibir un email cada vez que uno de tus amigos cree una receta nueva?
   receive_friendships_emails_exp: ¿Deseas recibir un email cada vez que un usario desee hacerse amigo tuyo?
   receive_messages_emails_exp: ¿Deseas recibir un email cada vez que recibas un mensaje privado?
-
+  My_favorite_recipes: Mis recetas favoritas
+  My_published_recipes: Mis recetas publicadas
+  My_favorite_restaurants: Mis restaurantes favoritos
+  My_published_restaurants: Mis restaurantes publicados
+  My_favorite_advices: Mis consejos favoritos
+  My_published_advices: Mis consejos publicados
+  favorite_recipes_of: Recetas favoritas de
+  My_restaurants: Mis restaurantes
+  My_advices: Mis consejos
+  Other_user_published_recipes: Sus recetas publicadas
+  Other_user_favorite_recipes: Sus recetas favoritas
+  Other_user_published_restaurants: Sus restaurantes publicados
+  Other_user_favorite_restaurants: Sus restaurantes favoritos
+  Other_user_favorite_advices: Sus consejos favoritos
+  Other_user_published_advices: Sus consejos publicados
+  favorite_advices_of: Consejos favoritos de
   
   #Others
   Show: Ver
   Edit: Editar
+  Edit_personal_data: Editar ficha
   Destroy: Borrar
   Create: Crear
   Update: Actualizar

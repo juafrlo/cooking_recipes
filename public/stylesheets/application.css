@@ -982,3 +982,7 @@ p.no_results_found{
     padding-right:1px;
     width:10px;
 }
+
+.added_to_favorites{
+    color:green;	
+}

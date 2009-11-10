@@ -1,7 +1,7 @@
 module FriendshipsHelper
   def friends_link(text,option,number = 0)
     link_to "#{text} #{show_count(option,number)}", 
-      mis_amigos_user_path(current_user,:option => option) 
+      amigos_user_path(current_user,:option => option) 
   end
 
   def show_count(option,number)

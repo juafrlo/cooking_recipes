@@ -61,4 +61,10 @@ class Restaurant < ActiveRecord::Base
      :conditions => ["ratings.rating IS NOT ?", nil])
   end
   
+  def self.find_ordered(user,options = {})
+    with_scope :find => options do
+      Restaurant.find(:all, :include => [:ratings, :rest_category],
+       :conditions => ["restaurants.user_id = ?", user.id])
+    end
+  end  
 end
