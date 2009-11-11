@@ -19,7 +19,13 @@ class UserMailer < ActionMailer::Base
  
   def comment_notification(user,obj)
     setup_email(user)
-    @subject    += I18n.t(:comment_notification_subject)
+    if obj.class == Receta
+      @subject    += I18n.t(:comment_receta_notification_subject)
+    elsif obj.class == Advice
+      @subject    += I18n.t(:comment_advice_notification_subject)
+    elsif obj.class == Restaurant
+      @subject    += I18n.t(:comment_restaurant_notification_subject)
+    end
     @obj = obj
     if obj.class == Receta
       rel_path = receta_path(obj).to_s

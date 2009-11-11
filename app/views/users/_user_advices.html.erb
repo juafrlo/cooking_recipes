@@ -10,7 +10,7 @@
 
 <% for advice in @advices %>
   <tr class="<%= cycle('odd','par')%>" id=<%="favorite_#{advice.id}"%>>
-    <td><%= link_to advice.title, advice %></td>
+    <td><%= link_to advice.name, advice %></td>
     <td>
 		  <%= number_with_precision( Rating.rating(advice, 'Advice'), :precision => 1) %>/5 
  	  	(<%= num_votes(Rating.number_of_votes('Advice', advice))%>)
