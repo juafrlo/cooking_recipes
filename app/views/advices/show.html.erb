@@ -35,7 +35,7 @@
 
 
 <p>
-  <%= render :partial => 'shared/social_buttons'%>
+  <%= render :partial => 'shared/social_buttons', :locals => {:obj => @advice}%>
 </p>
 
 <% if current_user && (@advice.user == current_user || current_user.admin?)%>

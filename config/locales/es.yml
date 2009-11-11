@@ -523,6 +523,9 @@ es:
   Other_user_favorite_advices: Sus consejos favoritos
   Other_user_published_advices: Sus consejos publicados
   favorite_advices_of: Consejos favoritos de
+  published_advices_of: Consejos publicados por
+  published_restaurants_of: Restaurantes publicados por
+  favorite_restaurants_of: Restaurantes favoritos de
   
   #Others
   Show: Ver
@@ -547,3 +550,4 @@ es:
   Seach: Buscar
   Add_to_favorites: Añadir a favoritos
   Added_to_favorites: Añadido a mis favoritos
+  Delete_from_favorites: Borrar de mis favoritos

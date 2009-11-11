@@ -4,17 +4,24 @@
     <th><%= order_recetas_links(t(:Puntuation), 'ratings.rating') %></th>
     <th><%= order_recetas_links(t(:Category), 'categories.name') %></th>
     <th><%= order_recetas_links(t(:Date), 'created_at') %></th>
+    <% if current_user == @user && action_name == 'recetas_favoritas' %>
+      <th><%= t(:Delete) %></th>
+    <% end %>
   </tr>
 
 <% for receta in @recetas %>
-  <tr class="<%= cycle('odd','par')%>" >
+  <tr class="<%= cycle('odd','par')%>" id=<%="favorite_#{receta.id}"%>>
     <td><%= link_to receta.name,receta %></td>
     <td>
-		<%= number_with_precision( Rating.rating(receta, 'Receta'), :precision => 1) %>/5 
-		(<%= num_votes(Rating.number_of_votes('Receta', receta))%>)
-	</td>
+		  <%= number_with_precision( Rating.rating(receta, 'Receta'), :precision => 1) %>/5 
+		  (<%= num_votes(Rating.number_of_votes('Receta', receta))%>)
+	  </td>
     <td><%=h receta.category.name %></td>
     <td><%=h receta.created_at.to_s(:date) %></td>
+    <% if current_user == @user && action_name == 'recetas_favoritas' %>
+	    <td> <%= delete_favorite_link(receta) %></td>
+    <% end %>
+
   </tr>
 <% end %>
 </table>

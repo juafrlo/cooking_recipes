@@ -986,3 +986,7 @@ p.no_results_found{
 .added_to_favorites{
     color:green;	
 }
+
+.delete_favorite_spinner{
+	padding-left: 5px;
+}
