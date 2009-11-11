@@ -6,7 +6,7 @@ class AdvicesController < ApplicationController
   # GET /advices
   # GET /advices.xml
   def index
-    @advices = Advice.find(:all)
+    @advices = Advice.find(:all, :order => 'created_at DESC', :limit => 5)
     @cloud_advices = Advice.tag_counts
 
     respond_to do |format|
@@ -41,6 +41,7 @@ class AdvicesController < ApplicationController
 
   # GET /advices/1/edit
   def edit
+    @advice = @obj
   end
 
   # POST /advices

@@ -266,7 +266,7 @@ es:
   signup_notification_subject: "Por favor, activa tu cuenta"
   activation_subject: "¡Cuenta activada!"
   reset_password_subject: "Tu password ha sido reseteado"
-  comment_notification_subject: "Has recibido un comentario en unas de tus recetas"
+  comment_notification_subject: "Has recibido un comentario en uno de tus contenidos publicados"
   friend_notification_subject: "Uno de tus amigos ha publicado una receta"
   friendship_notification_subject: "Has recibido una petición de amistad"
   message_notification_subject: "Has recibido un mensaje privado"
@@ -281,7 +281,7 @@ es:
   thank_you_for_visiting: Gracias por visitar
   your_password_has_been_reset_and_emailed_to_you: Tu password ha sido reseteado y enviadp a tu email
   sorry_we_dont_recognize_that_email_address: Lo sentimos. No se ha podido reconocer ningún usuario con dicho email
-  comment_notification_intro: Has recibido un comentario en tu receta
+  comment_notification_intro: Has recibido un comentario de un contenido creado por ti
   check_comment_notification: Puedes leer el comentario visitando el siguiente enlace
   thanks_for_visiting: Gracias por visitar
   friend_notification_intro: Uno de tus amigos ha publicado una nueva receta
@@ -551,3 +551,4 @@ es:
   Add_to_favorites: Añadir a favoritos
   Added_to_favorites: Añadido a mis favoritos
   Delete_from_favorites: Borrar de mis favoritos
+  view_recetas: Ver recetas

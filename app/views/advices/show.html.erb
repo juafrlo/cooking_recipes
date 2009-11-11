@@ -1,9 +1,9 @@
-<% title "#{t(:Advice)} - #{@advice.title}"  %>
+<% title "#{t(:Advice)} - #{@advice.name}"  %>
 <h2 class="title"><%= yield(:title) %></h2>
 
 <p>
   <b><%= t(:Title) %>:</b><br/>
-  <%=h @advice.title %>
+  <%=h @advice.name %>
 </p>
 
 <div id="rating_stars" style="height:50px;">		

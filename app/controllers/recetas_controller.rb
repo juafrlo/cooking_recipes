@@ -11,7 +11,7 @@ class RecetasController < ApplicationController
   # GET /recetas
   # GET /recetas.xml
   def index
-    @recetas = Receta.find(:all, :limit => 5)
+    @recetas = Receta.find(:all, :order => 'created_at DESC', :limit => 5)
     
     respond_to do |format|
       format.html # index.html.erb

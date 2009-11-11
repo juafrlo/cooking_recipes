@@ -4,17 +4,17 @@ class Advice < ActiveRecord::Base
   acts_as_commentable
   acts_as_favorite
   belongs_to :user
-  validates_presence_of :title, :description
+  validates_presence_of :name, :description
   
-  named_scope :by_title, lambda {|title|
-    title.blank? ? {} : {:conditions => ["title like ?", "%#{title}%"]}} 
+  named_scope :by_name, lambda {|name|
+    name.blank? ? {} : {:conditions => ["name like ?", "%#{name}%"]}} 
   named_scope :by_description, lambda {|description|
     description.blank? ? {} : {:conditions => ["description like ?", "%#{description}%"]}} 
   named_scope :best_voted, :order => "ratings.rating DESC", :include => 'ratings'
   
   
   def to_param
-    id.to_s << "-" << (title ? title.parameterize : '' )
+    id.to_s << "-" << (name ? name.parameterize : '' )
   end
 
   def self.top(limit = 5)
@@ -30,7 +30,7 @@ class Advice < ActiveRecord::Base
   
   def self.search(options = {}, tags = "")
     scope = Advice.scoped({})    
-    scope = scope.by_title(options[:title]) 
+    scope = scope.by_name(options[:name]) 
     scope = scope.by_description(options[:description]) 
     scope = scope.best_voted 
     scope = scope.find_tagged_with(tags) unless tags.empty?

@@ -17,11 +17,18 @@ class UserMailer < ActionMailer::Base
     @body[:url]  = "http://#{SITE_URL}/"
   end
  
-  def comment_notification(user,receta)
+  def comment_notification(user,obj)
     setup_email(user)
     @subject    += I18n.t(:comment_notification_subject)
-    @receta = receta
-    @body[:url]  = "http://#{SITE_URL}/#{receta_path(receta).to_s}"
+    @obj = obj
+    if obj.class == Receta
+      rel_path = receta_path(obj).to_s
+    elsif obj.class == Advice
+      rel_path = advice_path(obj).to_s
+    elsif obj.class == Restaurant
+      rel_path = restaurant_path(obj).to_s
+    end    
+    @body[:url] = "http://#{SITE_URL}/#{rel_path}"
   end
   
   def friend_notification(user,receta)
