@@ -116,12 +116,12 @@ module UsersHelper
   end
   
   def delete_favorite_link(obj)
-    html = link_to_remote image_tag('web/delete.png'), :update => '',
-      :url => favorite_path(obj.id, :type => obj.class.to_s), 
+    html = link_to_remote image_tag('web/delete.png', :class => 'delete_favorite_img'),
+      :update => '', :url => favorite_path(obj.id, :type => obj.class.to_s), 
       :loading => "$('spinner_#{obj.id}').appear();",
-      :method => :delete 
+      :method => :delete
     html += image_tag 'web/spinner.gif', :class => 'delete_favorite_spinner',
-      :id => "spinner_#{obj.id}", :style => 'display:none;' 
+      :id => "spinner_#{obj.id}", :style => 'display:none; float:left;' 
     html
   end  
   

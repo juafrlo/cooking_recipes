@@ -29,8 +29,10 @@
           </td>
 	  	  <td>
 		<% end %>
-	    <%= image_tag('web/spinner.gif', :id => "spiner_my_friend_link_#{i}",
-          :style=> 'display:none;')%>
+		  <div style="width: 20px;">
+  	    <%= image_tag('web/spinner.gif', :id => "spiner_my_friend_link_#{i}",
+         :style=> 'display:none')%>
+      </div>
     </td>
 	</tr>
   <% end %>
