@@ -148,7 +148,7 @@ class Receta < ActiveRecord::Base
   
   def self.top(limit = 5)
     Receta.find(:all, :include => 'ratings', :limit => limit, 
-      :order => "ratings.rating DESC")
+      :order => "ratings.rating DESC, recetas.created_at DESC")
   end
   
   def self.top_by_category(cat_id)

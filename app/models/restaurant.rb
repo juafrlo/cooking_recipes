@@ -54,7 +54,7 @@ class Restaurant < ActiveRecord::Base
   
   def self.top(limit = 5)
     Restaurant.find(:all, :include => 'ratings', :limit => limit, 
-      :order => "ratings.rating DESC")
+      :order => "ratings.rating DESC, restaurants.created_at DESC")
   end
   
   def self.last_voted(limit = 5)

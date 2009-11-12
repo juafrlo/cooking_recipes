@@ -20,7 +20,7 @@ class Advice < ActiveRecord::Base
 
   def self.top(limit = 5)
     Advice.find(:all, :include => 'ratings', :limit => limit, 
-      :order => "ratings.rating DESC")
+      :order => "ratings.rating DESC, advices.created_at DESC")
   end
     
   def self.last_voted(limit = 5)
