@@ -11,6 +11,8 @@ class Restaurant < ActiveRecord::Base
 	 :unless => lambda {|restaurant| restaurant.creator_rating.blank? }
 	validates_numericality_of :avg_price, :greater_than_or_equal_to => 0,
 	 :unless => lambda {|restaurant| restaurant.avg_price.blank? }
+	after_create :send_notification_to_friends
+  
   
 	
 	named_scope :best_voted, :order => "ratings.rating DESC", :include => 'ratings'
@@ -59,6 +61,14 @@ class Restaurant < ActiveRecord::Base
     Restaurant.find(:all, :include => :ratings,
      :limit => limit, :order => 'ratings.created_at DESC',
      :conditions => ["ratings.rating IS NOT ?", nil])
+  end
+  
+  def send_notification_to_friends
+    self.user.friends.each do |friend|
+      if friend.receive_friends_emails
+        UserMailer.deliver_friend_notification(friend,self) 
+      end
+    end
   end
   
   def self.find_ordered(user,options = {})

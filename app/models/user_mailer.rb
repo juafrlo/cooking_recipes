@@ -27,21 +27,22 @@ class UserMailer < ActionMailer::Base
       @subject    += I18n.t(:comment_restaurant_notification_subject)
     end
     @obj = obj
-    if obj.class == Receta
-      rel_path = receta_path(obj).to_s
-    elsif obj.class == Advice
-      rel_path = advice_path(obj).to_s
-    elsif obj.class == Restaurant
-      rel_path = restaurant_path(obj).to_s
-    end    
+    rel_path = get_relative_path(obj)
     @body[:url] = "http://#{SITE_URL}/#{rel_path}"
   end
   
-  def friend_notification(user,receta)
+  def friend_notification(user,obj)
     setup_email(user)
-    @subject += I18n.t(:friend_notification_subject)
-    @receta = receta
-    @body[:url]  = "http://#{SITE_URL}/#{receta_path(receta).to_s}"
+    if obj.class == Receta
+      @subject    += I18n.t(:friend_receta_notification_subject)
+    elsif obj.class == Advice
+      @subject    += I18n.t(:friend_advice_notification_subject)
+    elsif obj.class == Restaurant
+      @subject    += I18n.t(:friend_restaurant_notification_subject)
+    end
+    @obj = obj
+    rel_path = get_relative_path(obj)
+    @body[:url] = "http://#{SITE_URL}/#{rel_path}"
   end
   
   def friendship_notification(user)
@@ -61,10 +62,21 @@ class UserMailer < ActionMailer::Base
  
   protected
     def setup_email(user)
+      content_type "text/html"
       @recipients  = "#{user.email}"
       @from        = "#{SITE_EMAIL}"
       @subject     = "#{SITE_NAME}: "
       @sent_on     = Time.now
       @body[:user] = user
+    end
+    
+    def get_relative_path(obj)
+      if obj.class == Receta
+        rel_path = receta_path(obj).to_s
+      elsif obj.class == Advice
+        rel_path = advice_path(obj).to_s
+      elsif obj.class == Restaurant
+        rel_path = restaurant_path(obj).to_s
+      end
     end
 end

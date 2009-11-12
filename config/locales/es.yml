@@ -270,7 +270,9 @@ es:
   comment_receta_notification_subject: "Has recibido un comentario en una de tus recetas publicadas"
   comment_advice_notification_subject: "Has recibido un comentario en uno de tus consejos publicados"
   comment_restaurant_notification_subject: "Has recibido un comentario en uno de tus restaurantes publicados"
-  friend_notification_subject: "Uno de tus amigos ha publicado una receta"
+  friend_receta_notification_subject: "Uno de tus amigos ha publicado una receta"
+  friend_advice_notification_subject: "Uno de tus amigos ha publicado un consejo de cocina"
+  friend_restaurant_notification_subject: "Uno de tus amigos ha publicado una crítica de restaurante"
   friendship_notification_subject: "Has recibido una petición de amistad"
   message_notification_subject: "Has recibido un mensaje privado"
   password_reseted: Tu password ha sido reseteado a un nuevo valor
@@ -287,8 +289,11 @@ es:
   comment_notification_intro: Has recibido un comentario de un contenido creado por ti
   check_comment_notification: Puedes leer el comentario visitando el siguiente enlace
   thanks_for_visiting: Gracias por visitar
-  friend_notification_intro: Uno de tus amigos ha publicado una nueva receta
-  check_friend_notification: Puedes consultar dicha receta visitando el siguiente enlace
+  friend_notification_intro: Uno de tus amigos ha publicado un nuevo contenido
+  check_friend_notification: Puedes consultar el detalle visitando el siguiente enlace
+  friend_receta_notification_intro: Uno de tus amigos ha publicado una nueva receta
+  friend_advice_notification_intro: Uno de tus amigos ha publicado un nuevo consejo de cocina
+  friend_restaurant_notification_intro: Uno de tus amigos ha publicado una nueva crítica de restaurante  
   check_comment_notification: Puedes leer los comentarios de dicha receta visitando el siguiente enlace
   friendship_notification_intro: Un usario ha solicitado ser tu amigo
   check_friendship_notification: Puedes consultar tus solicitudes de amistad recibidas pendientes visitando el siguiente enlace

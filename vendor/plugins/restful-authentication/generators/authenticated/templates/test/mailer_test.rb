@@ -13,7 +13,7 @@ class <%= class_name %>MailerTest < Test::Unit::TestCase
     ActionMailer::Base.deliveries = []
 
     @expected = TMail::Mail.new
-    @expected.set_content_type "text", "plain", { "charset" => CHARSET }
+    @expected.set_content_type "text", "html", { "charset" => CHARSET }
   end
 
   def test_dummy_test

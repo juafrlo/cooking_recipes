@@ -82,11 +82,11 @@
 							        <% end %> 
 							      </li>	
 								    <% if logged_in? %>
+  				          	<li><%= link_to t(:My_data), current_user %></li>
 								      <li><%= link_to t(:Privated_messages), 	
           						  user_messages_path(current_user)%>
 								        <span class="alert"><%= user_unread_messages %></span>
           						</li>
-					          	<li><%= link_to t(:My_data), current_user %></li>
            						<li><%= link_to t(:My_recipes), recetas_user_path(current_user)%></li>
            						<li><%= link_to t(:My_advices), consejos_user_path(current_user)%></li>
            						<li><%= link_to t(:My_restaurants), restaurantes_user_path(current_user)%></li>
