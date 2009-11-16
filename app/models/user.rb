@@ -30,6 +30,8 @@ class User < ActiveRecord::Base
   validates_uniqueness_of   :email
   validates_format_of       :email,    :with => Authentication.email_regex, :message => Authentication.bad_email_message
 
+  validates_acceptance_of   :terms_of_service,    :on => :create
+
   before_create :make_activation_code 
 
   # HACK HACK HACK -- how to do attr_accessible from here?
@@ -37,7 +39,7 @@ class User < ActiveRecord::Base
   # anything else you want your user to change should be added here.
   attr_accessible :login, :email, :name, :password, :password_confirmation, :surname,
    :town, :country, :avatar, :receive_comments_emails, :receive_friends_emails,
-   :receive_friendships_emails, :receive_messages_emails
+   :receive_friendships_emails, :receive_messages_emails, :terms_of_service
   
   # Activates the user in the database.
   def activate!
@@ -87,7 +89,8 @@ class User < ActiveRecord::Base
     end
   end
   
-  def assignrole
+  def assign_role
+    debugger
     roles << Role.find(2)
     save!  
   end

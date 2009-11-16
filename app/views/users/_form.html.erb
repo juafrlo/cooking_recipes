@@ -4,22 +4,24 @@
 </div>
 
 <% form_for(@user, :html =>{ :multipart => true })   do |f| %>
+<!--
 <div class="form_div">
 	<div class="form_col1">
-		<%= f.label :name, t(:Name) %><br/>
-		<%= f.text_field :name %>
+		<%#= f.label :name, t(:Name) %><br/>
+		<%#= f.text_field :name %>
 	</div>
 
 	<div class="form_col2">
-		<%= f.label :surname, t(:last_name) %><br/>
-		<%= f.text_field :surname %>
+		<%#= f.label :surname, t(:last_name) %><br/>
+		<%#= f.text_field :surname %>
 	</div>
 </div>
+-->
 
 <div class="form_div">
 	<div class="form_col1">
 		<%= f.label :login, 'Login' %><br/>		
-		<% if action_name != 'new'%>
+		<% if action_name != 'new' && action_name != 'create' %>
 			<%= f.text_field :login, :disabled => 'disabled' %>
 		<% else %>
 			<%= f.text_field :login %>
@@ -44,23 +46,25 @@
 	</div>
 </div>
 
+<!--
 <div class="form_div">
 	<div class="form_col1">
-		<%= f.label :country, t(:country) %><br/>
-		<%= f.text_field :country %>
+		<%#= f.label :country, t(:country) %><br/>
+		<%#= f.text_field :country %>
 	</div>
 
 
 	<div class="form_col2">
-		<%= f.label :town, t(:town)%><br/>
-		<%= f.text_field :town %>
+		<%#= f.label :town, t(:town)%><br/>
+		<%#= f.text_field :town %>
 	</div>	
 </div>
+-->
 
 <div class="form_div">
 	<div class="form_col1">
 		<%= label_tag 'Avatar' %><br/>
-		<%= f.file_field :avatar %>
+		<%= f.file_field :avatar, :style => 'height:20px;' %>
 	</div>
 </div>
 
@@ -84,7 +88,18 @@
     <%= f.check_box :receive_messages_emails %>
 		<%= f.label :receive_messages_emails, t(:receive_messages_emails_exp) %>
 	</p>
-
+	
+	<% if action_name == 'new' || action_name == 'create' %>
+		<div class="clear"></div>
+		<br/>
+		<p class="login_check terms">
+	    <%= f.check_box :terms_of_service %>
+	    <label for="user_terms_of_service">
+	      <%= "#{t(:accept_terms)} " %>
+	    </label>
+	    <span> <%= link_to t(:terms), '#' %></span>
+		</p>
+  <% end %>
 </div>
 
 

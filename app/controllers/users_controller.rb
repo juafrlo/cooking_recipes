@@ -38,13 +38,13 @@ class UsersController < ApplicationController
     logout_keeping_session!
     @user = User.new(params[:user])
     success = @user && @user.save
-    @user.assignrole
     @user.delavatar
     if success && @user.errors.empty?        	  
+      @user.assign_role
       redirect_back_or_default('/')
       flash[:notice] = t(:sign_up_complete)
     else
-      flash[:error]  = t(:sign_up_failed)
+      #flash[:error]  = t(:sign_up_failed)
       render :action => 'new'
     end
   end

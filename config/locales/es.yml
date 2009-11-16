@@ -117,6 +117,11 @@ es:
         name: "Nombre"
         description: "Descripción"
         avg_price: "Precio medio por persona"
+      user:
+        password: "Contraseña"
+        password_confirmation: "Confirmación de contraseña"
+        terms_of_service: "Términos de servicio"
+        
     models:
       forum post: "'post'" 
       forum cat l2: "'categoría nivel 2'"
@@ -142,7 +147,7 @@ es:
         empty: "no puede estar vacío"
         blank: "no puede estar en blanco"
         too_long: "es demasiado largo ({{count}} caracteres máximo)"
-        too_short: "es demasiado corto ({{count}} caracteres mínimo)"
+        too_short: "tiene una longitud demasiado corta ({{count}} caracteres mínimo)"
         wrong_length: "no tiene la longitud correcta ({{count}} caracteres exactos)"
         taken: "ya está en uso"
         not_a_number: "no es un número"
@@ -506,7 +511,7 @@ es:
   invite: ¿Invitar?
   register: Regístrate como nuevo usuario
   register_as_new: regístrate como nuevo usuario
-  register_intro: Regístrare y podrás participar en todos los apartados de la web, compartiendo tus recetas y opinando sobre las del resto. ¡Es gratis y muy rápido!
+  register_intro: Regístrare y podrás participar en todos los apartados de la web, compartiendo tus recetas, consejos de cocina y críticas de restaurantes. ¡Es gratis y muy rápido!
   forgot_your_password: ¿Has olvidado tu password? Solicita uno nuevo
   here: aquí
   want_new_password: Solicitar
@@ -560,3 +565,5 @@ es:
   Added_to_favorites: Añadido a mis favoritos
   Delete_from_favorites: Borrar de mis favoritos
   view_recetas: Ver recetas
+  accept_terms: Acepto los
+  terms: " términos"

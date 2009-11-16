@@ -401,6 +401,10 @@ input{
 	width: 97%;
 }
 
+.signup{
+	margin-top: 10px;
+}
+
 .flash_text{
 	float:left;
 }
@@ -993,4 +997,18 @@ p.no_results_found{
 
 .delete_favorite_img{
 	float:left;
+}
+
+.terms{
+    margin-bottom: 0px;
+}
+
+.terms span{
+	padding-left: 5px;
+	
+}
+
+.login_check .fieldWithErrors{
+	display: block;
+	padding:0px;
 }
