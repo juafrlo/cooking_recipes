@@ -1,20 +1,10 @@
-<ul class="nav_buttons">
-  <li>
-    <%= link_to t(:View_recetas), recetas_user_path(@user) %>
-  </li>
-  <li>
-    <%= link_to t(:View_advices), consejos_user_path(@user) %>
-  </li>
-  <li>
-    <%= link_to t(:View_restaurants), restaurantes_user_path(@user) %>
-  </li>
-	<% if can_edit_user(@user) %>
+<% if can_edit_user(@user) %>
+	<ul class="nav_buttons">
 	  <li>
 			<%= link_to t(:Edit_personal_data), edit_user_path(@user) %>
 	  </li>
-	<% end%>
-</ul>
-
+	</ul>
+<% end %>
 
 
 
@@ -25,10 +15,8 @@
 	<div class="user_info">
 		<%= image_tag @user.avatar.url(:smalL) %><br/>
 		<div class="user_participation">
-			<%= t(:number_of_recetas)%>: <%= @user.recetas.count %>
-			<%= t(:number_of_posts)%>: <%= @user.number_of_posts %>
+			<%= @user.login %> <br/>
 			<%= t(:puntuation)%>: <%= number_with_precision(@user.recetas_avg,:precision => 1) %>/5<br/>
-			<%= link_to t(:view_recetas), recetas_user_path(@user) %><br/>
       <%= invite_user_link(@user, "my_friend_link", "user_link_#{@user.id}") %>			
 	    <%= image_tag('web/spinner.gif', :id => "spiner_my_friend_link_",
           :style=> 'display:none;')%>
@@ -36,30 +24,6 @@
 	</div>
 
 	<div class="user_data">
-		<div class="form_div" style="padding-top:15px;">
-			<div class="form_col1_show">
-				<span class="form_span"><%= label_tag t(:name) %></span><br/>
-				<%=h @user.name %>
-			</div>
-
-			<div class="form_col2_show">
-				<span class="form_span"><%= label_tag t(:last_name) %></span><br/>
-				<%=h @user.surname %>
-			</div>
-		</div>
-
-		<div class="form_div">
-			<div class="form_col1_show">
-				<span class="form_span"><%= label_tag 'login' %></span><br/>
-				<%=h @user.login %>
-			</div>
-
-			<div class="form_col2_show">
-				<span class="form_span"><%= label_tag 'email' %></span><br/>
-				<%=h @user.email %>
-			</div>
-		</div>
-
 		<div class="form_div">
 			<div class="form_col1_show">
 				<span class="form_span"><%= label_tag t(:country) %></span><br/>
@@ -71,5 +35,32 @@
 				<%=h @user.town %>
 			</div>
 		</div>
+
+		<div class="form_div">
+			<div class="form_col1_show">
+				<span class="form_span"><%= t(:number_of_recetas)%>:</span><br/>
+				<%= @user.recetas.count %> (<%= link_to t(:view), recetas_user_path(@user) %>)
+			</div>
+
+			<div class="form_col2_show">
+				<span class="form_span"><%= t(:number_of_advices)%>:</span><br/>
+				<%= @user.advices.count %> (<%= link_to t(:view), consejos_user_path(@user) %>)
+			</div>
+		</div>
+
+		<div class="form_div">
+			<div class="form_col1_show">
+				<span class="form_span"><%= t(:number_of_restaurants)%>:</span><br/>
+				<%= @user.restaurants.count %> (<%= link_to t(:view), restaurantes_user_path(@user) %>)
+			</div>
+
+			<div class="form_col2_show">
+				<span class="form_span"><%= t(:number_of_posts)%>:</span><br/>
+				<%= @user.number_of_posts %>
+			</div>
+		</div>
+
+
+
 	</div>
 </div>

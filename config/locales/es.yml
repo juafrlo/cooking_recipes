@@ -539,6 +539,8 @@ es:
   published_advices_of: Consejos publicados por
   published_restaurants_of: Restaurantes publicados por
   favorite_restaurants_of: Restaurantes favoritos de
+  number_of_advices: Número de consejos
+  number_of_restaurants: Número de restaurantes
   
   #Others
   Show: Ver
@@ -567,3 +569,4 @@ es:
   view_recetas: Ver recetas
   accept_terms: Acepto los
   terms: " términos"
+  view: ver
