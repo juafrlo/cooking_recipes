@@ -101,6 +101,9 @@ es:
       advice:
         title: "Título"
         description: "Descripción"
+      contact:
+        name: "Nombre"
+        comment: "Comentario"
       forum_post:
         title: "Título"
         comment: "Post"
@@ -231,6 +234,7 @@ es:
 
   #Advices
   Advice: Consejo de cocina
+  Advices: Consejos
   Last_published_advices: Últimos consejos de cocina publicados
   New_advice: Nuevo consejo
   Searching_advice: ¿Buscas consejo?
@@ -258,6 +262,16 @@ es:
   category_created: Categoría creada
   category_updated: Categoría actualizada
   are_you_sure_category: ¿Estás seguro? Muchas recetas pueden pertenecer a esta categoría. Dichas recetas no se borrarán.
+  
+  #Contact
+  contact_intro: Mi nombre es Juan de Frías es un Ingeniero Superior de Telecomunicaciones especializado en Telemática con experiencia contrastada en el mundo del desarrollo web.
+  why_this_project: no es más que un proyecto personal, desarrollado en íntegramente en Ruby on Rails, con la intención tanto de poner en práctica conceptos adquiridos como de ofrecer esta herramienta para toda la gente interesada por el mundo de la cocina.
+  how_to_contact: Ante cualquier duda o consulta puedes contactar conmigo a través del siguiente formulario
+  Comment: Comentario
+  Sent_contact_form: ¡Enviado!
+  A_response_will_arrive_soon: Pronto recibirás una respuesta
+  someone_wants_to_contact_you: Alguien quiere contactar contigo
+  has_commented_to_you: te ha comentado
   
   #Comments
   sure_to_delete_comment: '¿Estás seguro que quieres borrar este comentario?'
@@ -508,7 +522,7 @@ es:
   puntuation: Puntuación
   published_recipes_of: Recetas publicadas de
   Recetas: Recetas
-  invite: ¿Invitar?
+  invite: Acciones
   register: Regístrate como nuevo usuario
   register_as_new: regístrate como nuevo usuario
   register_intro: Regístrare y podrás participar en todos los apartados de la web, compartiendo tus recetas, consejos de cocina y críticas de restaurantes. ¡Es gratis y muy rápido!
@@ -541,6 +555,12 @@ es:
   favorite_restaurants_of: Restaurantes favoritos de
   number_of_advices: Número de consejos
   number_of_restaurants: Número de restaurantes
+  Recetas_avg: Media recetas
+  Advices_avg: Media consejos
+  Restaurants_avg: Media restaurantes
+  why_have_friends: Tener amigos en '{{site_name}}' permite que seas informado mediante email de los contenidos publicados por tus amigos, a la vez que permite que tus amigos sepan cuando has publicado un contenido. Puedes configuar la recepción y de dichos emails en tu ficha de usuario.
+  how_to_get_friends: Puedes invitar a amigos desde esta sección o apretando el enlace de 'hacerse amigo' debajo del nombre los usuarios.
+  before_be_friends: Para poder ser amigo de otro usuario debes esperar a que el otro usuario acepte tu amistad.
   
   #Others
   Show: Ver

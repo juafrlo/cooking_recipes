@@ -40,7 +40,7 @@
 			  	  <%= link_to t(:Forums), :controller => 'forums', :action => 'index' %>
 			    </li>
     			<li>
-		    		<%= link_to t(:Contact), '/' %>
+		    		<%= link_to t(:Contact), contacts_path %>
 		 	    </li>
 		    </ul>
 	    </div>
@@ -129,7 +129,7 @@
   </div>
 
   <div id="footer">
-    <p><%= t(:Footer_content)%> <%= link_to 'Juan de Frías', '/'%></p>
+    <p><%= t(:Footer_content)%> <%= link_to 'Juan de Frías', contacts_path %></p>
   </div>
   
 </body>

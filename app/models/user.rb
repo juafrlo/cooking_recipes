@@ -224,6 +224,10 @@ class User < ActiveRecord::Base
       :conditions => 'advices_avg > 0.0')
   end
 
+  def self.first_admin
+    User.find(:first, :include => [:roles],
+     :conditions => {"roles.title" => 'admin'})
+  end
       
   protected    
   def make_activation_code

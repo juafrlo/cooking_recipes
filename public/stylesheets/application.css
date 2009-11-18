@@ -195,12 +195,6 @@ a img {
 	font-size: 18px;
 }
 
-textarea{
-	width: 400px;
-	height: 100px;
-}
-
-
 .post .title h1 {
 }
 
@@ -687,7 +681,7 @@ span.dateblock_year{
 
 .user_info{
 	float:left;
-	width: 150px;
+	width: 152px;
 	text-align:center;
 	padding-top: 20px;
 }
@@ -698,7 +692,7 @@ span.dateblock_year{
 
 .user_data{
 	float:left;
-	width:380px;
+	width:378px;
 	padding-left: 40px;
 }
 
@@ -1011,4 +1005,29 @@ p.no_results_found{
 .login_check .fieldWithErrors{
 	display: block;
 	padding:0px;
+}
+
+#spiner_my_friend_link{
+	width: 10px;
+	height: 10px;
+}
+
+#success_form{
+  font-size: 14px;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.errorExplanation p {
+  margin-top:0px;
+}
+
+.comment-text-area{
+	width:400px;
+	min-height:100px;	
+}
+
+.form_div textarea{
+	width:400px;
+	height:100px;	
 }

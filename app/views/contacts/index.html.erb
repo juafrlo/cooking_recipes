@@ -1,0 +1,45 @@
+<% title t(:Contact) %>
+<h2 class="title"><%= yield(:title) %></h2>
+
+<p class="contact_intro">
+  <%= t(:contact_intro) %>
+</p>
+
+<p class="contact_intro">
+	<%= SITE_NAME %> <%= t(:why_this_project) %><br/>
+</p>
+<p class="contact_intro">
+  <%= t(:how_to_contact) %>:
+</p>
+
+
+ <% form_remote_for @contact, :url => :contacts do |f| %>
+
+   <div id="form_errors"></div>
+   <p>
+     <%= f.label :name, t(:Name) %><br/>
+     <%= f.text_field :name %>
+   </p>
+
+   <p>
+     <%= f.label :email %><br/>
+     <%= f.text_field :email %>
+   </p>
+
+   <p>
+     <%= f.label :comment, t(:Comment) %><br/>
+     <%= f.text_area :comment %>
+   </p>
+
+   <p>
+	   <%= recaptcha_tags :ajax => true %>
+	 </p>
+
+   <%= f.submit t(:Send) %>
+
+ <% end %>
+
+ <p id="success_form" class="message-ok" style="display:none;">
+ 	 <%= t(:Sent_contact_form) %><br/>
+   <%= t(:A_response_will_arrive_soon) %> 
+ </p>

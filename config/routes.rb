@@ -6,6 +6,9 @@ ActionController::Routing::Routes.draw do |map|
 
   #Home path
   map.home '', :controller => "noticias"
+
+  #Contact
+  map.resources :contacts, :as => 'contacto', :only => [:index, :create]
   
   #Session resources and named routes and user namedroutes
   map.logout '/logout', :controller => 'sessions', :action => 'destroy'

@@ -58,6 +58,14 @@ class UserMailer < ActionMailer::Base
     @user = user
     @body[:url]  = "http://#{SITE_URL}/#{user_messages_path(user).to_s}"
   end
+  
+  def contact_notification(contact)
+    @user = User.first_admin
+    setup_email(@user)
+    @from += "- #{contact.email}"
+    @subject    += I18n.t(:someone_wants_to_contact_you)
+    @contact = contact
+  end
 
  
   protected

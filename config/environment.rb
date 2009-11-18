@@ -76,4 +76,7 @@ Rails::Initializer.run do |config|
   # config.active_record.observers = :cacher, :garbage_collector, :forum_observer
   config.load_paths << "#{RAILS_ROOT}/app/sweepers"
   config.active_record.observers = :user_observer
+  
+  ENV['RECAPTCHA_PUBLIC_KEY'] = "fb990a63c42fc529b14334617eb472e2ddbf5cb33e3975bd0a6e9cef444f0ec9109262b7f19f13757fb222c106072532500a730e67b10e978Dd9e51f02243a957"
+  ENV['RECAPTCHA_PRIVATE_KEY'] = "fb990a63c42fc529b14334617eb472e2ddbf5cb33e3975bd556e9cef444f0ec9109262b7f19f13757fb222c106072532500a730e67b10e558d9e51f02243a957"
 end

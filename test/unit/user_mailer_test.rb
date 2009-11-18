@@ -31,6 +31,12 @@ class UserMailerTest < Test::Unit::TestCase
     end
   end
 
+  def test_contact_notification
+    assert_difference 'ActionMailer::Base.deliveries.size', +1 do
+      UserMailer.deliver_contact_notification(contacts(:one))
+    end
+  end
+
 
   private
     def read_fixture(action)

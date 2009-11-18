@@ -16,9 +16,12 @@
 		<%= image_tag @user.avatar.url(:smalL) %><br/>
 		<div class="user_participation">
 			<%= @user.login %> <br/>
-			<%= t(:puntuation)%>: <%= number_with_precision(@user.recetas_avg,:precision => 1) %>/5<br/>
+			<%= t(:Recetas_avg)%>: <%= @user.recetas_avg.to_f %>/5<br/>
+			<%= t(:Advices_avg)%>: <%= @user.advices_avg.to_f %>/5<br/>
+			<%= t(:Restaurants_avg)%>: <%= @user.restaurants_avg.to_f %>/5<br/>
+
       <%= invite_user_link(@user, "my_friend_link", "user_link_#{@user.id}") %>			
-	    <%= image_tag('web/spinner.gif', :id => "spiner_my_friend_link_",
+	    <%= image_tag('web/spinner.gif', :id => "spiner_my_friend_link",
           :style=> 'display:none;')%>
 		</div>
 	</div>
