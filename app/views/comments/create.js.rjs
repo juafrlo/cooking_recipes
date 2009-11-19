@@ -3,6 +3,10 @@ unless @comment.new_record?
    :locals => {:comment => @comment}
   page.visual_effect  :highlight, "comment_#{@comment.id}"
   page["new_comment_form".to_sym].reset
+else
+  page << "$('comment_error').show();"
+  page[:comment_error].innerHTML = I18n.t(:must_fill_comment)
+  page.visual_effect  :highlight, :comment_error
 end
 
 

@@ -280,6 +280,7 @@ es:
   View_less: Ver menos
   add_comment: Añadir comentario
   comments: commentarios
+  must_fill_comment: ¡Debes rellenar el comentario!
   
   #Emails
   signup_notification_subject: "Por favor, activa tu cuenta"

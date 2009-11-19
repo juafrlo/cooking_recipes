@@ -43,7 +43,7 @@
 <% form_remote_for(@comment,
  :url => comments_path(commentable.class.to_s.underscore, commentable.id, 
    :locator => "newest_comment_#{commentable.id}"),
- :loading => "$('spinner_#{commentable.id}').show();",
+ :loading => "$('comment_error').hide(); $('spinner_#{commentable.id}').show();",
  :complete => "$('spinner_#{commentable.id}').hide();",
  :html => {:id => 'new_comment_form'}) do |f| %>
   <p class="comment-box">
@@ -55,6 +55,7 @@
   <%= f.submit 'Comentar'%>
   <%= image_tag 'web/spinner.gif', :style => 'display:none;',
     :id => "spinner_#{commentable.id}" %>
+  <span id="comment_error"></span>
   </p>
 <% end %>
 

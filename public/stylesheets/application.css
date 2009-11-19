@@ -1041,3 +1041,9 @@ p.no_results_found{
 .redbox_content{
 	clear:both;
 }
+
+#comment_error{
+	padding-left: 6px;
+	color: red;
+	padding-top: 1px;
+}
