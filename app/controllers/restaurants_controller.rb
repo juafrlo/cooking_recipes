@@ -41,6 +41,7 @@ class RestaurantsController < ApplicationController
 
   # GET /restaurants/1/edit
   def edit
+    @restaurant = @obj
   end
 
   # POST /restaurants
@@ -64,6 +65,7 @@ class RestaurantsController < ApplicationController
   # PUT /restaurants/1
   # PUT /restaurants/1.xml
   def update
+    @restaurant = @obj
     respond_to do |format|
       if @restaurant.update_attributes(params[:restaurant])
         flash[:notice] = t(:Restaurant_updated)

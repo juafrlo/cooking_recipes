@@ -7,8 +7,8 @@
 
 
 <div class="receta_show_intro">
-	<div class="receta_show_photo">
-    <%= restaurant_show_photo(@restaurant)%>
+	<div class="restaurant_show_photo">
+    <%= restaurant_show_photo(@restaurant)%><br/>
 	</div>
 
 	<div class="receta_show_info">
@@ -30,7 +30,16 @@
 		<div class="receta_show_origin"> 																																																																																																																																																																																																																			     
 		  <%= "#{t(:Location)}: #{@restaurant.town} (#{@restaurant.country})"%> <br/>
       <%= @restaurant.address %><br/>
-      <%= @restaurant.google_maps_code %>
+	    <% unless @restaurant.google_maps_code.blank? %>
+		    <%= link_to_redbox( t(:view_google_maps), "google_maps_code") %>
+		    <div id="google_maps_code" style="display:none;">
+					<%= link_to_close_redbox(image_tag('web/close.png'), :class => 'close_button') %>
+			    <div class="redbox_content">
+			      <%= @restaurant.google_maps_code %>
+			    </div>
+			  </div>
+	    <% end %>
+
 		</div>
 
  		<div class="receta_show_duration">

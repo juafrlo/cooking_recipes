@@ -66,7 +66,7 @@ class AdvicesController < ApplicationController
   # PUT /advices/1
   # PUT /advices/1.xml
   def update
-    @advice = Advice.find(params[:id])
+    @advice = @obj
     @advice.tag_list = params[:tag_list]
 
     respond_to do |format|

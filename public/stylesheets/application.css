@@ -802,6 +802,14 @@ table tr.par {
 	text-align:center;
 }
 
+.restaurant_show_photo{
+	float:left;
+	width: 250px;
+	text-align:center;
+	margin-top: 36px;
+}
+
+
 .receta_show_info{
 	float:left;
 	width: 300px;
