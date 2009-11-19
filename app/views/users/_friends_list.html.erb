@@ -32,10 +32,10 @@
 	    <% if params[:option] != 'invitados' %>
 	        <td id="accept_or_deny">
 		  	    <% if params[:option] == "mis_amigos" %>
-	              <%= deny_friendship_link(user) %>
+	              <%= deny_friendship_link(user,i) %>
 		  	    <% elsif params[:option] == "invitaciones_recibidas" %>
-	              <%= accept_friendship_link(user) %>
-	              <%= deny_friendship_link(user) %>
+	              <%= accept_friendship_link(user,i) %>
+	              <%= deny_friendship_link(user,i) %>
 		  	    <% elsif params[:option] == "invitar" %>
 	              <%= invite_user_link(user, "my_friend_link_#{i}", "user_link_#{user.id}") %>
 	            <% end %>

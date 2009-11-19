@@ -15,21 +15,19 @@ module FriendshipsHelper
   end
   
 
-=begin  
-  def accept_friendship_link(user)
-    link_to_remote 'Aceptar', spiner_my_friend_link_
-	    :loading => "$('spiner_#{user.id}').show();",
-	    :complete => "$('spiner_#{user.id}').hide();", 
-	    :url => {:controller => 'friendships', :action => 'accept', 
-		  :users => {:user_id => current_user.id, :friend_id => user.id}},
-		  :html => {:id => "my_link_#{user.id}"}
+  def accept_friendship_link(user,i)
+    link_to_remote 'Aceptar amistad',
+      :loading => "$('spiner_my_friend_link_#{i}').show();",
+      :complete => "$('spiner_my_friend_link_#{i}').hide();", 
+      :url => {:controller => 'friendships', :action => 'accept', 
+  	  :users => {:user_id => current_user.id, :friend_id => user.id}},
+  	  :html => {:id => "my_link_#{user.id}"}
   end
-=end
   
-  def deny_friendship_link(user)
+  def deny_friendship_link(user,i)
     link_to_remote 'Rechazar',
-	    :loading => "$('spiner_#{user.id}').show();",
-	    :complete => "$('spiner_#{user.id}').hide();", 
+    :loading => "$('spiner_my_friend_link_#{i}').show();",
+    :complete => "$('spiner_my_friend_link_#{i}').hide();", 
 	    :url => {:controller => 'friendships', :action => 'deny', 
 		  :users => {:user_id => current_user.id, :friend_id => user.id}},
 		:html => {:id => "my_link_#{user.id}"}
