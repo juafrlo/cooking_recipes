@@ -1031,3 +1031,13 @@ p.no_results_found{
 	width:400px;
 	height:100px;	
 }
+
+.close_button{
+	float:right;
+	display:block;
+	padding-bottom:11px;
+}
+
+.redbox_content{
+	clear:both;
+}

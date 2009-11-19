@@ -1,37 +1,34 @@
-<% if current_user %>
-  <% if Rating.is_rated?(obj,current_user) %>
-		<div style="float:left">	
-		  <ul class='star-rating'>	
-			  <li class='current-rating' style='width:<%= (obj.rating * 30).to_i -%>px;'>
-		    	<%= "#{t(:Currently_rat)} 
+<% if current_user && Rating.is_rated?(obj,current_user) || !current_user %>
+  <div style="float:left">	
+	  <ul class='star-rating'>	
+		  <li class='current-rating' style='width:<%= (obj.rating * 30).to_i -%>px;'>
+		    <%= "#{t(:Currently_rat)} 
 		      #{number_with_precision(obj.rating, :precision => 1)}/5 #{t(:stars)}" %>
-			  </li>
-		  </ul>	
-		</div>
-		<div class="already_rated" style="float:left;">
-			<%= t(:you_have_voted) %>
-		</div>
-	<% else %>
-		<ul class='star-rating'>
-			<li><%= rate_link(obj,1)%></li>
-			<li><%= rate_link(obj,2)%></li>
-			<li><%= rate_link(obj,3)%></li>
-			<li><%= rate_link(obj,4)%></li>
-			<li><%= rate_link(obj,5)%></li>    	
-		</ul>		
-		
-		<div class="rate_text">
-		  <%= t(:vote_now) %>
-		</div>			
-
-		<div class="rating_spinner">
-		  <%= image_tag('web/spinner.gif', :id => "rating_spinner",
-		  :style => "display:none;") %> 
-		</div>	
-		
-	<% end %>
-<% else %>
-	<div class="rate_without_login" >
-		<%= link_to t(:vote_now), '/login' %>
+			</li>
+		</ul>	
+  </div>
+	<div class="already_rated" style="float:left;">
+	  <% if current_user %>
+  	  <%= t(:you_have_voted) %>
+		<% else %>
+			<%= link_to t(:vote_now), '/login' %>
+		<% end %>
 	</div>
+<% else %>
+	<ul class='star-rating'>
+		<li><%= rate_link(obj,1)%></li>
+		<li><%= rate_link(obj,2)%></li>
+		<li><%= rate_link(obj,3)%></li>
+		<li><%= rate_link(obj,4)%></li>
+		<li><%= rate_link(obj,5)%></li>    	
+	</ul>		
+		
+	<div class="rate_text">
+	  <%= t(:vote_now) %>
+	</div>			
+
+	<div class="rating_spinner">
+	  <%= image_tag('web/spinner.gif', :id => "rating_spinner",
+	  :style => "display:none;") %> 
+	</div>	
 <% end %>

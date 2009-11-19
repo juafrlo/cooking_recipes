@@ -1,0 +1,82 @@
+8
+
+dir
+30058
+https://radagast.gnuine.com/repos/railsprojects/projects/fesmalla/trunk/vendor/plugins/redbox
+https://radagast.gnuine.com/repos/railsprojects
+
+
+
+2009-09-16T13:48:39.599379Z
+29871
+jfrias
+
+
+svn:special svn:externals svn:needs-lock
+
+test
+dir
+
+Rakefile
+file
+
+
+
+
+2007-03-25T23:37:27.000000Z
+5e2f990aa4f62ff688a5aed335422a00
+2009-09-16T13:48:39.599379Z
+29871
+jfrias
+
+images
+dir
+
+init.rb
+file
+
+
+
+
+2007-03-25T23:37:27.000000Z
+079bdfe33c40d567baf23cc87c0d814f
+2009-09-16T13:48:39.599379Z
+29871
+jfrias
+
+tasks
+dir
+
+lib
+dir
+
+install.rb
+file
+
+
+
+
+2007-03-25T23:37:27.000000Z
+9f8b248d06ae4e37e5026bbd7c2c1743
+2009-09-16T13:48:39.599379Z
+29871
+jfrias
+
+javascripts
+dir
+
+stylesheets
+dir
+
+README
+file
+
+
+
+
+2007-03-27T23:48:09.000000Z
+edc1caf25019f190f85f9ca77c67463a
+2009-09-16T13:48:39.599379Z
+29871
+jfrias
+
