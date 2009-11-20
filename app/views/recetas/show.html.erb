@@ -16,13 +16,13 @@
  			<b><%=h @receta.name %></b>
 		</div>
 		
-
 		<div class="autor">
 		  <%= t(:Author) %>:
 		  <%= link_to @receta.user.login, user_path(@receta.user) %>
-		  <%= invite_user_link(@receta.user, "my_friend_link", "user_link_#{@receta.user.id}", true) %>)
-		  <%= image_tag('web/spinner.gif', :id => 'my_friend_link', :style=> 'display:none;') %>
+		  <%= invite_user_link(@receta.user, "my_friend_link", "user_link_#{@receta.user.id}", true) %>
+		  <%= image_tag('web/spinner.gif', :id => 'spiner_my_friend_link', :style=> 'display:none;') %>
 		</div>
+
 		<div>
 		  <%= t(:Category) %>:
 		  <%=h @receta.category.name %>

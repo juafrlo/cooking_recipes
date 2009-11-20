@@ -16,6 +16,14 @@
  			<b><%=h @restaurant.name %></b>
 		</div>
 		
+		<div class="autor">
+		  <%= t(:Author) %>:
+		  <%= link_to @restaurant.user.login, user_path(@restaurant.user) %>
+		  <%= invite_user_link(@restaurant.user, "my_friend_link",
+		   "user_link_#{@restaurant.user.id}", true) %>
+		  <%= image_tag('web/spinner.gif', :id => 'spiner_my_friend_link', :style=> 'display:none;') %>
+		</div>
+		
 		<div>
 		  <%= t(:Typical_cooking_of) %>:
 		  <%=h @restaurant.original_country %>
@@ -39,7 +47,6 @@
 			    </div>
 			  </div>
 	    <% end %>
-
 		</div>
 
  		<div class="receta_show_duration">
@@ -70,7 +77,7 @@
  	</div>
 </div>
 
-<div class="clear"></div><br/>
+<div class="clear"></div><br/><br/>
 <div class="receta_show_body">
   <div class="description_div">
   	<span class="title_span"><%= t(:small_rest_description)%>:</span>

@@ -800,6 +800,7 @@ table tr.par {
 	float:left;
 	width: 250px;
 	text-align:center;
+	margin-top: 36px;
 }
 
 .restaurant_show_photo{
@@ -1068,4 +1069,8 @@ p.no_results_found{
 
 .autor{
 	margin-bottom: 10px;
+}
+
+.advice_title{
+	font-size: 18px;
 }

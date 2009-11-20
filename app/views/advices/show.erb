@@ -1,9 +1,12 @@
-<% title "#{t(:Advice)} - #{@advice.title}"  %>
-<h2 class="title"><%= yield(:title) %></h2>
+<% title "#{t(:Advice)} - #{@advice.name}"  %>
+<h2 class="title">
+  <%= t(:Advice_by)%>
+  <%= link_to @advice.user.login, user_path(@advice.user) %>:
+</h2>
 
 <p>
   <b><%= t(:Title) %>:</b><br/>
-  <%=h @advice.name %>
+  <span class="advice_title"><%=h @advice.name %></span>
 </p>
 
 <p>

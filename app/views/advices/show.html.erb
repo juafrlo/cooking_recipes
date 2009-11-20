@@ -7,7 +7,14 @@
 
 <p>
   <b><%= t(:Title) %>:</b><br/>
-  <%=h @advice.name %>
+  <span class="advice_title"><%=h @advice.name %></span>
+</p>
+
+<p>
+  <b><%= t(:Author) %>:</b><br/>
+  <%= link_to @advice.user.login, user_path(@advice.user) %>
+  <%= invite_user_link(@advice.user, "my_friend_link", "user_link_#{@advice.user.id}", true) %>
+  <%= image_tag('web/spinner.gif', :id => 'spiner_my_friend_link', :style=> 'display:none;') %>
 </p>
 
 <div id="rating_stars" style="height:50px;">		
