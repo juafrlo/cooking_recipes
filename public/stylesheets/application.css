@@ -921,7 +921,11 @@ ul#social_buttons ul li a {
 
 .rss_button {
 	float: right;
-	margin-right:4px;
+	margin: 4px 9px 0px 0px;
+}
+
+.rss_button img{
+	width: 18px;
 }
 
 .rating_spinner{
@@ -1060,4 +1064,8 @@ p.no_results_found{
 	padding-left: 6px;
 	color: red;
 	padding-top: 1px;
+}
+
+.autor{
+	margin-bottom: 10px;
 }

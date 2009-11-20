@@ -33,15 +33,16 @@ module FriendshipsHelper
 		:html => {:id => "my_link_#{user.id}"}
   end
   
-  def invite_user_link(user, link_id, link_class)
+  def invite_user_link(user, link_id, link_class, brackets = false)
     if current_user && current_user != user && current_user.can_invite.include?(user)
-      link_to_remote 'Invitar amigo',
+      html = link_to_remote t(:ask_to_be_friend),
 	  	  :loading => "$('spiner_#{link_id}').appear();",
 	  	  :complete => "$('spiner_#{link_id}').hide();", 
 	  	  :url => {:controller => 'friendships', :action => 'create',
           :link_id => link_id, :link_class => link_class, 
 	  	    :users => {:user_id => current_user.id, :friend_id => user.id}},
 	  		:html => {:id => link_id, :class => link_class}
+    	brackets ? "(#{html})" : html
     end
   end
 end

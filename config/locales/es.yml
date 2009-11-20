@@ -570,7 +570,10 @@ es:
   term5: "Se prohibe la publicación de cualquier contenido con fin publicitario."
   term6: "Se prohibe la publicación de fotos de usuarios del foro sin su consentimiento."
   term7: "Se prohiben Mensajes con insultos o ataques a otra u otras personas."
-  Terms_of_service: "Términos de servicio"
+  Terms_of_service: Términos de servicio
+  ask_to_be_friend: Pedir amistad
+  petition_sent: ¡Petición enviada!
+  
 
   #Others
   Show: Ver

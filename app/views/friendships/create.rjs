@@ -2,7 +2,7 @@ page.select("a.#{@link_class}").each do |value|
   value.update(' ')
 end
 
-page[@link_id.to_sym].replace "<span id='#{@link_id}' style='color:green;'>¡Invitación enviada!</span>"
+page[@link_id.to_sym].replace "<span id='#{@link_id}' style='color:green;'>#{t(:petition_sent)}</span>"
 page[@link_id.to_sym].visual_effect :highlight
 
 
