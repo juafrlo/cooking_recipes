@@ -1048,6 +1048,12 @@ p.no_results_found{
 
 .redbox_content{
 	clear:both;
+	width: 400px;
+}
+
+.redbox_content h2{
+	color: black;
+	text-align: center;
 }
 
 #comment_error{

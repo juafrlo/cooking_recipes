@@ -88,10 +88,15 @@
     <div id="terms_of_service" style="display:none;">
 			<%= link_to_close_redbox(image_tag('web/close.png'), :class => 'close_button') %>
       <div class="redbox_content">
+        <h2><%= t(:Terms_of_service) %></h2>
 	      <ul>
-	        <li><%= t(:term1) %></li>
+	        <li><%= t(:term1, :site_name => SITE_NAME ) %></li>
 	        <li><%= t(:term2) %></li>
-	        <li><%= t(:term3) %></li>
+	        <li><%= t(:term3, :site_name => SITE_NAME) %></li>
+	        <li><%= t(:term4) %></li>
+	        <li><%= t(:term5) %></li>
+	        <li><%= t(:term6) %></li>
+	        <li><%= t(:term7) %></li>
 	      </ul>
       </div>
 	  </div>		

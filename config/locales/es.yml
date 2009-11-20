@@ -218,7 +218,7 @@ es:
   Restaurants: Restaurantes
   Forums: Foros
   Contact: Contacto
-  Search: Buscar
+  Search_title: Buscar receta
   Privated_menu: Menú privado
   Register: Regístrate
   Privated_messages: Mensajes privados
@@ -235,6 +235,7 @@ es:
   #Advices
   Advice: Consejo de cocina
   Advices: Consejos
+  Advice_by: Consejo de
   Last_published_advices: Últimos consejos de cocina publicados
   New_advice: Nuevo consejo
   Searching_advice: ¿Buscas consejo?
@@ -439,7 +440,7 @@ es:
   All: Todas
   Search: Buscar
   little_time_and_ingredients: ¿Tienes pocos ingredientes y poco tiempo?
-  Exact_recetas: Recetas exactas. 
+  Exact_recetas: "Recetas exactas:" 
   Exact_recetas_intro: Son recetas en las que utilizarás todos los ingredientes indicados
   No_exact_recetas_intro: Son recetas en las que sólo utilizarás algunos de los ingredientes indicados
   Receta_prepared: Plato
@@ -562,7 +563,15 @@ es:
   why_have_friends: Tener amigos en '{{site_name}}' permite que seas informado mediante email de los contenidos publicados por tus amigos, a la vez que permite que tus amigos sepan cuando has publicado un contenido. Puedes configuar la recepción y de dichos emails en tu ficha de usuario.
   how_to_get_friends: Puedes invitar a amigos desde esta sección o apretando el enlace de 'hacerse amigo' debajo del nombre los usuarios.
   before_be_friends: Para poder ser amigo de otro usuario debes esperar a que el otro usuario acepte tu amistad.
-  
+  term1: "{{site_name}} es un servicio gratuito, por lo tanto la administración de la web se reserva el derecho de admisión o eliminiación de contendios sin previo aviso. El objetivo de esta web es permitir que los aficionados a la cocina compartan sus conocimientos e inquietudes sobre el mundo de la cocina."
+  term2: "Los contenidos escritos publicados deben guardar relación con el mundo de la cocina. Cualquier contenido que desde administración sea considerado no apropiado puede ser borrado sin previo aviso."
+  term3: "{{site_name}} no se hace responsable de los datos y contenidos facilitados por sus usuarios ni de su apropiación por parte de terceros."
+  term4: "Se prohiben imágenes de mal gusto o que no sean recomendadas para menores de 18 años."
+  term5: "Se prohibe la publicación de cualquier contenido con fin publicitario."
+  term6: "Se prohibe la publicación de fotos de usuarios del foro sin su consentimiento."
+  term7: "Se prohiben Mensajes con insultos o ataques a otra u otras personas."
+  Terms_of_service: "Términos de servicio"
+
   #Others
   Show: Ver
   Edit: Editar
