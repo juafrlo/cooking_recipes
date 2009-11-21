@@ -52,6 +52,9 @@ ActionController::Routing::Routes.draw do |map|
   #Favorites
   map.resources :favorites, :only => [:create, :destroy]
   
+  #Captcha
+  map.simple_captcha '/simple_captcha/:action', :controller => 'simple_captcha'
+  
   #Others
   map.resources :noticias 
   map.resources :categories, :as => 'categorias'

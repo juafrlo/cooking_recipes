@@ -3,6 +3,7 @@
 
 class ApplicationController < ActionController::Base
   include AuthenticatedSystem
+  include SimpleCaptcha::ControllerHelpers
 
   helper :all # include all helpers, all the time
   #before_filter :set_locale
