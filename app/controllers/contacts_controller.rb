@@ -9,7 +9,7 @@ class ContactsController < ApplicationController
   
   def create
     @contact = Contact.new(params[:contact])
-    @contact.save
+    @errors = verify_recaptcha(@contact) && @contact.save ? false : true
   end
   
 end

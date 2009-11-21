@@ -2,6 +2,7 @@ if @contact.errors.blank?
   page.visual_effect :fade, :new_contact
   page.visual_effect :appear, :success_form
 else
+  page.replace :dynamic_recaptcha, recaptcha_tags(:ajax => true)
   page.replace :form_errors, 
     "<div id='form_errors'>" +
       error_messages_for('contact', :header_message => '').to_s +
