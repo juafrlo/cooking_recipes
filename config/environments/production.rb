@@ -22,3 +22,9 @@ config.action_controller.perform_caching             = true
 
 # Disable delivery errors, bad email addresses will be ignored
 # config.action_mailer.raise_delivery_errors = false
+config.action_mailer.raise_delivery_errors = true
+
+SITE_NAME = "Antes de cocinar"
+SITE_URL = "www.antesdecocinar.com"
+SITE_EMAIL = "antes_de_cocinar@gmail.com"
+

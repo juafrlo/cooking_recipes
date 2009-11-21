@@ -227,7 +227,7 @@ es:
   My_friends: Mis amigos
   Last_recipes_voted: Últimas recetas puntuadas
   Best_voted_chefs: Chefs mejor puntuados
-  Footer_content: Mis recetas.com es un proyecto personal de
+  Footer_content: "'{{site_name}}' es un proyecto personal de"
 
   #Administration
   Administration: "Administración"
