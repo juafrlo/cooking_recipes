@@ -11,7 +11,7 @@ class FavoritesControllerTest < ActionController::TestCase
   test "should destroy favorite" do
     login_as :quentin
     assert_difference 'Favorite.count', -1 do 
-      delete :destroy, :id => 1
+      delete :destroy, :id => 2, :type => "Receta"
     end
   end
   
@@ -23,8 +23,8 @@ class FavoritesControllerTest < ActionController::TestCase
   
   test "should not destroy other user favorite" do
     login_as :aaron
-    assert_no_difference 'Favorite.count', -1 do 
-      delete :destroy, :id => 1
+    assert_no_difference 'Favorite.count' do 
+      delete :destroy, :id => 1, :type => "Receta"
     end
   end
 

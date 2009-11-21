@@ -19,9 +19,11 @@ class FavoritesController < ApplicationController
     @favorite = Favorite.find(:first,
       :conditions => {:user_id => current_user.id, :favorable_type => params[:type],
         :favorable_id => params[:id]})
-    @favorite.destroy
+    @favorite.destroy unless @favorite.blank?
     render :update do |page|
-      page.visual_effect  :fade, "favorite_#{@favorite.favorable_id}"
+      unless @favorite.blank? 
+        page.visual_effect  :fade, "favorite_#{@favorite.favorable_id}"
+      end
     end
   end
 end

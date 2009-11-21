@@ -69,7 +69,7 @@ class RestaurantsControllerTest < ActionController::TestCase
     assert_redirected_to restaurant_path(assigns(:restaurant))
   end
 
-  test "should not update of other restaurant" do
+  test "should not update restaurant of other user" do
     login_as :aaron
     put :update, :id => restaurants(:one).id, :restaurant => { }
     assert_redirected_to '/'
@@ -102,7 +102,7 @@ class RestaurantsControllerTest < ActionController::TestCase
   end
 
   test "should get resultados" do
-    post :resultados, :restaurant => {}
+    post :resultados, :restaurant => {:name => 'A name'}
     assert_response :success
   end
 

@@ -29,12 +29,12 @@ class AdvicesControllerTest < ActionController::TestCase
   test "should create advice" do
     login_as :quentin
     assert_difference('Advice.count') do
-      post :create, :advice => {:title => 'Name', :description => 'Desc' }
+      post :create, :advice => {:name => 'Name', :description => 'Desc' }
     end
     assert_redirected_to advice_path(assigns(:advice))
   end
   
-  test "should not create advice without title" do
+  test "should not create advice without name" do
     login_as :quentin
     assert_no_difference('Advice.count') do
       post :create, :advice => { }
@@ -102,7 +102,7 @@ class AdvicesControllerTest < ActionController::TestCase
   end
   
   test "should get resultados" do
-    get :resultados, :advice => {:title => 'arroz'}, :tag_list => ""
+    get :resultados, :advice => {:name => 'arroz'}, :tag_list => ""
     assert_equal assigns(:advices).first, advices(:one)
     assert_response :success
   end

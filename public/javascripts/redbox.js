@@ -79,7 +79,7 @@ var RedBox = {
     $("RB_window").style['left'] = ((pagesize[0] - width)/2) + "px";
 		posY = getScreenCenterY();  
 
-    $("RB_window").style['top'] = posY - 1.1 * height + "px";
+    $("RB_window").style['top'] = posY - 0.6 * height + "px";
 
 
 

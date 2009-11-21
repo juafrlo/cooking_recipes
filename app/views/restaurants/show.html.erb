@@ -42,7 +42,7 @@
 		    <%= link_to_redbox( t(:view_google_maps), "google_maps_code") %>
 		    <div id="google_maps_code" style="display:none;">
 					<%= link_to_close_redbox(image_tag('web/close.png'), :class => 'close_button') %>
-			    <div class="redbox_content">
+			    <div class="redbox_content_map">
 			      <%= @restaurant.google_maps_code %>
 			    </div>
 			  </div>
@@ -60,11 +60,11 @@
 	  </div>						
 		
 		<div id="rating_stars" style="height:50px;">		
-	  		<div class="puntuation">
-				<b><%= t(:puntuation)%>:</b>
-	 			<%= number_with_precision( Rating.rating('Restaurant',@restautant), :precision => 1) %>/5 
-				(<%= num_votes(Rating.number_of_votes('Restaurant', @restaurant))%>)
-			</div>
+	  	<div class="puntuation">
+			<b><%= t(:puntuation)%>:</b>
+  	 		<%= number_with_precision( Rating.rating(@restaurant,'Restaurant'), :precision => 1) %>/5 
+	  		(<%= num_votes(Rating.number_of_votes('Restaurant', @restaurant))%>)
+		  </div>
 
 			<div id="star-ratings-block">		
 				<div>

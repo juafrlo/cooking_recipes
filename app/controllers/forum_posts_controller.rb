@@ -33,6 +33,7 @@ class ForumPostsController < ApplicationController
 
   # GET /forum_posts/1/edit
   def edit
+    @forum_post = @obj
   end
 
   # POST /forum_posts
@@ -61,6 +62,7 @@ class ForumPostsController < ApplicationController
   # PUT /forum_posts/1
   # PUT /forum_posts/1.xml
   def update
+    @forum_post = @obj
     respond_to do |format|
       if @forum_post.update_attributes(params[:forum_post])
         flash[:notice] = t(:Forum_post_updated)

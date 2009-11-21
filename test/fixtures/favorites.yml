@@ -2,6 +2,8 @@
 first:
   user_id: 1
   id: 1
+  favorable_type: "Receta"
+  favorable_id: 2
 another:
   user_id: 2
   id: 2
