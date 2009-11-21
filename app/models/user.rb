@@ -90,7 +90,6 @@ class User < ActiveRecord::Base
   end
   
   def assign_role
-    debugger
     roles << Role.find(2)
     save!  
   end
