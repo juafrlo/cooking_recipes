@@ -1079,3 +1079,12 @@ p.no_results_found{
 .advice_title{
 	font-size: 18px;
 }
+
+/* IE7 */
+.fixed_width{
+	width: 148px;
+}
+
+.file_type{
+	height:25px !important;
+}

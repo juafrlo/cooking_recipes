@@ -4,7 +4,8 @@
 		  <%= t(:Ingredient) %>: <%= ingredient_form.text_field :name, :index => nil %>
 			<% if ingredient.new_record? %>
 				<%= link_to_function image_tag('web/delete.png', :alt =>t(:Delete_ingredient)),
-				 "this.up('.ingredient').remove()" %>
+				 "Element.extend(this).up($('.ingredient')).remove();" %>
+				
 			<% else %>
 				<%= link_to_function t(:Delete_ingredient), "mark_for_destroy(this)"%>
 				<%= ingredient_form.hidden_field :id, :index => nil %>

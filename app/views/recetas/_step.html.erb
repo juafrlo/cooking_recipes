@@ -4,7 +4,8 @@
 		  <%= t(:Step) %>: <%= step_form.text_field :explanation, :index => nil %>
 			<% if step.new_record? %>
 				<%= link_to_function image_tag('web/delete.png', :alt => t(:Delete_step)),
-				 "this.up('.step').remove()" %>
+				 "Element.extend(this).up($('.step')).remove();" %>
+				
 			<% else %>
 				<%= link_to_function t(:Delete_step), "mark_for_destroy(this)"%>
 				<%= step_form.hidden_field :id, :index => nil %>

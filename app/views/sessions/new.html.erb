@@ -11,7 +11,7 @@
 	<%= text_field_tag 'login', @login %></p>
 
 	<p><%= label_tag 'password' %><br/>
-	<%= password_field_tag 'password', nil %></p>
+	<%= password_field_tag 'password', nil, :class => 'fixed_width' %></p>
 
 	<p class="login_check">
 	<%= label_tag 'remember_me',  t(:Remember_me) %>
