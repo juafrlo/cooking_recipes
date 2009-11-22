@@ -34,7 +34,9 @@
   <br/>
 
   <div id="footer">
-    <p><%= t(:Footer_content)%> <%= link_to 'Juan de Frías', '/'%></p>
+    <p><%= t(:Footer_content, :site_name => SITE_NAME)%>
+  	   <%= link_to 'Juan de Frías', contacts_path %>
+	  </p>
   </div>
 </body>
 
