@@ -62,7 +62,8 @@ class UserMailer < ActionMailer::Base
   def contact_notification(contact)
     @user = User.first_admin
     setup_email(@user)
-    @from += "- #{contact.email}"
+    @recipients  = "#{SITE_EMAIL}"
+    @from = "#{contact.email}"
     @subject    += I18n.t(:someone_wants_to_contact_you)
     @contact = contact
   end

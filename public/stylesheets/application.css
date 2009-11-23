@@ -1056,6 +1056,12 @@ p.no_results_found{
 	width: 400px;
 }
 
+.redbox_photo{
+	clear:both;
+	width: 300px;
+}
+
+
 .redbox_content_map{
 	clear:both;
 	width: 425px;

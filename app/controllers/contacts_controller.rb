@@ -10,6 +10,5 @@ class ContactsController < ApplicationController
   def create
     @contact = Contact.new(params[:contact])
     @errors = verify_recaptcha(@contact) && @contact.save ? false : true
-  end
-  
+  end  
 end
