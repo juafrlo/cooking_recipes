@@ -60,7 +60,7 @@ module Ambethia
           unless answer == 'true'
             session[:recaptcha_error] = error
             model.valid? if model
-            model.errors.add_to_base "Captcha response is incorrect, please try again." if model
+            model.errors.add_to_base "El código de seguridad no es correcto. Por favor, inténtelo de nuevo." if model
             return false
           else
             session[:recaptcha_error] = nil

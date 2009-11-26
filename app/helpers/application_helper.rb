@@ -94,4 +94,11 @@ module ApplicationHelper
     number > 1 ? "#{number} #{t(:recetas)}" : "#{number} #{t(:receta)}"
   end
   
+  def uses_redbox
+    controller_name == "recetas" && action_name == 'show' || 
+    controller_name == "restaurants" && action_name == 'show' ||
+    controller_name == "users" && action_name == 'new' ||
+    controller_name == "users" && action_name == 'create'
+  end
+  
 end

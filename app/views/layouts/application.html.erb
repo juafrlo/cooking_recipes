@@ -4,13 +4,17 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+	<meta name="keywords" content="<%= KEYWORDS %>">
+	<meta name="description" content="<%= DESCRIPTION %>">
   <title><%=SITE_NAME%>: <%= yield(:title) || controller.action_name %></title>
   <%= stylesheet_link_tag 'application' %>
   <%= stylesheet_link_tag 'rating' %>
   <%= stylesheet_link_tag 'auto_complete' %>
   <%= javascript_include_tag :defaults %>
-	<%= stylesheet_link_tag 'redbox' %>
-  <%= javascript_include_tag 'redbox' %>
+  <% if uses_redbox %>
+  	<%= stylesheet_link_tag 'redbox' %>
+    <%= javascript_include_tag 'redbox' %>
+  <% end %>
 </head>
 
 <body>
@@ -39,7 +43,7 @@
 				    <%= link_to t(:Restaurants), restaurants_path %>
   			  </li>
   			  <li>
-			  	  <%= link_to t(:Forums), :controller => 'forums', :action => 'index' %>
+			  	  <%= link_to t(:Forums), forum_cat_l2s_path %>
 			    </li>
     			<li>
 		    		<%= link_to t(:Contact), contacts_path %>
@@ -93,7 +97,7 @@
            						<li><%= link_to t(:My_advices), consejos_user_path(current_user)%></li>
            						<li><%= link_to t(:My_restaurants), restaurantes_user_path(current_user)%></li>
           						<li>
-                        <%= link_to t(:My_friends), amigos_user_path(current_user)%> 
+                        <%= link_to t(:My_friends), amigos_user_path(current_user) %> 
                         <span class="alert"><%= invitations_number %></span>
 	                    </li>
      	 							<% end %>

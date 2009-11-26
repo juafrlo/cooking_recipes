@@ -85,6 +85,10 @@
 	    <span> <%= link_to_redbox(t(:terms), "terms_of_service") %></span>
 		</p> 
     
+    <p>
+  	   <%= recaptcha_tags :ajax => true %>
+	  </p>
+
     <div id="terms_of_service" style="display:none;">
 			<%= link_to_close_redbox(image_tag('web/close.png'), :class => 'close_button') %>
       <div class="redbox_content">

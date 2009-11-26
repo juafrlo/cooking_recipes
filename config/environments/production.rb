@@ -28,3 +28,4 @@ SITE_NAME = "Antes de cocinar"
 SITE_URL = "www.antesdecocinar.com"
 SITE_EMAIL = "admin@antesdecocinar.com"
 
+

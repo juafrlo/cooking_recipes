@@ -4,6 +4,10 @@
 # you don't control web/app server and can't set it the proper way
 # ENV['RAILS_ENV'] ||= 'production'
 
+if RAILS_ENV == production 
+  ENV["GEM_PATH"]="/home/USUARIO/ruby/gems:/usr/local/lib/ruby/gems/1.8"
+end
+
 # Specifies gem version of Rails to use when vendor/rails is not present
 RAILS_GEM_VERSION = '2.2.2' unless defined? RAILS_GEM_VERSION
 
@@ -79,4 +83,7 @@ Rails::Initializer.run do |config|
   
   ENV['RECAPTCHA_PUBLIC_KEY'] = "6Ld_igkAAAAAAF0pfRNL7Demw5SOWgEAqpWVUKMx"
   ENV['RECAPTCHA_PRIVATE_KEY'] = "6Ld_igkAAAAAAIDrGuHJ0DZzmPNEhgo1zEq06Jau"
+  
+  KEYWORDS = "Recetas de cocina, crítica de restaurantes, consejos de cocina, qué cocinar hoy con pocos ingredientes, cocina, Juan de Frías, Ruby on Rails, comunidad, red social, cocineros"
+  DESCRIPTION = "Coumunidad de amantes de la cocina, donde podrás crear y compartir recetas de cocina, consejos de cocina y críticas de restaurantes, además de poder encontrar qué cocinar hoy"  
 end

@@ -1094,3 +1094,31 @@ p.no_results_found{
 .file_type{
 	height:25px !important;
 }
+
+#index_options{
+	display: inline-block;
+	margin-bottom: 18px;
+}
+
+.index_option{
+	float:left;
+    margin: 10px 20px;
+}
+
+
+.index_option .photo{
+	float:left;
+    margin-right: 8px;
+}
+
+.index_option .content{
+    width: 167px;
+    float:left;
+    text-align: left;
+}
+
+
+.index_option span{
+	display:block;
+	padding-bottom:7px;
+}

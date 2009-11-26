@@ -39,7 +39,7 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     success = @user && @user.save
     @user.delavatar
-    if success && @user.errors.empty?        	  
+    if verify_recaptcha(@user) && success && @user.errors.empty?        	  
       @user.assign_role
       redirect_back_or_default('/')
       flash[:notice] = t(:sign_up_complete)

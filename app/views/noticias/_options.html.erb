@@ -1,0 +1,14 @@
+<div id="index_options">
+	<%= what_to_do('icons/cacerola.jpg',t(:recipes_opt),
+	  t(:recipes_opt_intro),recetas_path) %>
+	<%= what_to_do('icons/gorro.jpg',t(:rest_opt),
+	  t(:rest_opt_intro),restaurants_path) %>
+	<%= what_to_do('icons/bascula.jpg',t(:advices_opt),
+	  t(:advices_opt_intro),advices_path) %>
+	<%= what_to_do('icons/lupa.jpg',t(:search_opt),
+	  t(:search_opt_intro),que_cocinar_hoy_recetas_path) %>
+	<%= what_to_do('icons/cafe.jpg',t(:forums_opt),
+	  t(:forums_opt_intro),forum_cat_l2s_path) %>
+	<%= what_to_do('icons/buzon.jpg',t(:friends_opt),
+	  t(:friends_opt_intro), current_user ? amigos_user_path(current_user) : login_path) %>
+</div>

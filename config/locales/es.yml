@@ -515,7 +515,7 @@ es:
   confirm_password: Confirmar contraseña
   password: Contraseña
   sign_up: Registrarse
-  sign_up_complete: Gracias por registrarte. Te estamos enviando un email con tu código de activación.
+  sign_up_complete: "¡Gracias por registrarte! Te estamos enviando un email con tu código de activación. Si no llega en unos minutos, comprueba tu buzón de correo no deseado."
   sign_up_failed: Lo sentimo, pero no ha sido posible crear tu cuenta.  Por favor, vuelve a intentarlo o ponte en contacto con nosotros.
   user_data_updated: Ficha de usuario actualizada.
   activation_success: ¡Registro completado! Por favor, introduce tu nombre de usuario y contraseña para continuar.
@@ -604,3 +604,15 @@ es:
   terms: " términos"
   view: ver
   view_google_maps: Consultar Google Maps
+  recipes_opt: Recetas de cocina
+  recipes_opt_intro: Consulta o crea tus propias recetas
+  rest_opt: Crítica de restaurantes
+  rest_opt_intro: Consulta o crea tus propias críticas
+  advices_opt: Consejos de cocina
+  advices_opt_intro: Consulta o da tu propios consejos
+  search_opt: Encuentra lo que buscas
+  search_opt_intro: Cocina utilizando tan sólo los ingredientes que tienes en casa
+  forums_opt: Participa en los foros
+  forums_opt_intro: Propón temas o busca respuesta a preguntas del mundo de la cocina
+  friends_opt: Manténte informado
+  friends_opt_intro: Recibe emails cada vez que tus amigos creen nuevos contenidos 
