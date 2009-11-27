@@ -1097,7 +1097,7 @@ p.no_results_found{
 
 #index_options{
 	display: inline-block;
-	margin-bottom: 18px;
+	margin: 10px 0px 18px 0px;
 }
 
 .index_option{
