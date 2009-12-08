@@ -16,7 +16,7 @@
 				<%= only_admin(t(:Edit), edit_forum_cat_l2_path(forum_cat_l2), "|")%><br/>
 				<%= forum_cat_l2.description %>
 			</td>
-			<td style="text-align:center;">
+			<td>
         <% if forum_cat_l2.last_post_id %>
   				<%= forum_cat_l2.last_post.updated_at.to_s(:date) %> -
 	  			<b> <%= forum_cat_l2.last_post.user.login %></b><br/>

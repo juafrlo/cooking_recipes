@@ -1,4 +1,4 @@
-<% title "#{@forum_post.title} > #{t(:New_forum_reply)}" %>
+<% title truncate(@forum_post.title, 65) %>
 <h2 class="title forum"><%= yield(:title) %></h2>
 
 <%= render :partial => "form"%>

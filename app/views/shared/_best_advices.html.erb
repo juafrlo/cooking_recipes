@@ -3,7 +3,7 @@
   <ul>
     <% for advice in Advice.top %>
 	    <li>
-	      <%= link_to advice.name, advice_path(advice) %>
+	      <%= link_to truncate(advice.name,20), advice_path(advice) %>
 		    <%= t(:by)%> <%= link_to advice.user.login, user_path(advice.user) %> 
 		    (<%= advice.rating %>/5) 
       </li>

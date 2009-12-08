@@ -3,7 +3,7 @@
   <ul>
     <% for restaurant in Restaurant.top %>
 	    <li>
-	      <%= link_to restaurant.name, restaurant_path(restaurant) %>
+	      <%= link_to truncate(restaurant.name,20), restaurant_path(restaurant) %>
 		    <%= t(:by)%> <%= link_to restaurant.user.login, user_path(restaurant.user) %> 
 		    (<%= restaurant.rating %>/5) 
       </li>

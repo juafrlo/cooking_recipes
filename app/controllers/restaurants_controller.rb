@@ -7,7 +7,7 @@ class RestaurantsController < ApplicationController
   # GET /restaurants
   # GET /restaurants.xml
   def index
-    @restaurants = Restaurant.find(:all, :order => 'created_at DESC', :limit => 5)
+    @restaurants = Restaurant.find(:all, :order => 'created_at DESC', :limit => 8)
 
     respond_to do |format|
       format.html # index.html.erb
