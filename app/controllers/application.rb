@@ -4,6 +4,11 @@
 class ApplicationController < ActionController::Base
   include AuthenticatedSystem
 
+  #Delete once all is correct
+  USERNAME, PASSWORD = "admin", "test"
+  before_filter :authenticate_with_http if RAILS_ENV == "production"
+
+
   helper :all # include all helpers, all the time
   #before_filter :set_locale
 
@@ -22,6 +27,12 @@ class ApplicationController < ActionController::Base
   #end
 
   private
+  def authenticate_with_http
+    authenticate_or_request_with_http_basic do |username, password|
+      username == USERNAME && password == PASSWORD
+    end
+  end
+  
   def authorize
     unless logged_in?
       session[:protected_page] = request.request_uri
