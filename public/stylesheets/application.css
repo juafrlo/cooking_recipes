@@ -720,20 +720,21 @@ table.th_paddings td{
 	padding: 5px;
 }
 
-.nav_buttons{
-   text-align: right;
-   padding:0px;
-   margin-top: 0px;
-   margin-bottom: 10px;
+.nav_buttons {
+  padding: 0px;
+  margin: 5px 10px 10px 0px ;
+	text-align: right;
 }
-
-.nav_buttons li{
-	font-size: 14px;
-    display: inline-block;
-    text-align: right;
-	border: 1px solid black;
-	background: #ADFF2F;
+.nav_buttons li {
+	margin: 0px 0px 0px 10px;
 	padding: 4px;
+  border: 1px solid black;
+	font-size: 14px;
+	background: #adff2f;
+	text-align: right;
+  list-style:none;
+  width: 0;
+  display: inline;
 }
 
 .nav_buttons li:hover{
