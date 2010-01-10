@@ -71,7 +71,8 @@
 					      <li id="search">
 						      <h3><%= t(:Search_title)%></h3>
 							    <% form_for :receta, 
-							    :url => { :controller => "recetas", :action => "resultados_busqueda" }   do |f| %>
+							    :url => { :controller => "recetas", :action => "resultados_busqueda" },
+							    :html => {:id => 'search_form'}   do |f| %>
 								    <fieldset>
 								      <%= f.text_field :name, :size => 24, :value => "" %>
 								      <%= f.submit t(:Search) %>

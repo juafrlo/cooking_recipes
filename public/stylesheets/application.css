@@ -300,6 +300,11 @@ a img {
 	width: 160px;
 }
 
+#search_form{
+	padding:0px;
+	margin:0px;
+}
+
 /* Footer */
 
 #footer {
@@ -1113,7 +1118,7 @@ p.no_results_found{
 }
 
 .index_option .content{
-    width: 167px;
+    width: 150px;
     float:left;
     text-align: left;
 }
