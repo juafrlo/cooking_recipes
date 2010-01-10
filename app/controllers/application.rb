@@ -4,9 +4,9 @@
 class ApplicationController < ActionController::Base
   include AuthenticatedSystem
 
-  #Delete once all is correct
-  USERNAME, PASSWORD = "admin", "test"
-  before_filter :authenticate_with_http if RAILS_ENV == "production"
+  #Comment once all is correct
+  #USERNAME, PASSWORD = "admin", "test"
+  #before_filter :authenticate_with_http if RAILS_ENV == "production"
 
 
   helper :all # include all helpers, all the time
