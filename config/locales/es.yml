@@ -452,6 +452,7 @@ es:
   must_search_by_params: Debes introducir algún parámaetro de búsqueda
   duration_must_be_integer: El campo "duración" debe ser un número entero
   best_recipes: Recetas mejor puntuadas
+  observations: Observaciones
   
   #Restaurants
   New_restaurant: Nuevo restaurante

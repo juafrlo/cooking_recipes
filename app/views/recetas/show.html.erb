@@ -85,6 +85,12 @@
     </ul>
   </div>
 
+  <div class="description_div observations">
+  	<span class="title_span"><b><%= t(:observations)%>:</b></span>
+	  <div class="description_text"><%=h @receta.observations %></div>
+  </div>
+
+
 	<%= render :partial => 'shared/social_buttons', :locals => {:obj => @receta }%>
 
   <div class="receta_show_links">

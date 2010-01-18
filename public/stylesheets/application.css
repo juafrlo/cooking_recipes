@@ -1077,6 +1077,11 @@ p.no_results_found{
 	padding: 4px 2px 3px 2px;
 }
 
+.observations{
+	padding-top:0px !important;
+	margin-bottom: 15px !important;
+}
+
 .close_button{
 	float:right;
 	display:block;

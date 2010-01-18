@@ -86,7 +86,10 @@
 	  </p>
 	</div>
 
-  <div class="clear"></div><br/>
+	<div class="form_div observations">
+    <%= f.label :observations, t(:observations) %><br />
+    <%= f.text_area :observations, :style => "width: 504px" %>
+	</div>
 
   <p class="clear">
     <% if action_name == 'new' %>
