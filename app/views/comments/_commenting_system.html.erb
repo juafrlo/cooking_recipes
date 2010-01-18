@@ -40,6 +40,15 @@
 <div id =<%="newest_comment_#{commentable.id}"%> class="newest_comment"></div>
 
 <% if logged_in? %>
+<div class="foto-user avatar_spacing">
+  <p class="no_spacing">
+    <%= image_tag current_user.avatar.url(:small) %>
+  </p>
+  <p class="no_spacing">
+    <%= link_to current_user.login, user_path(current_user.id) %>
+  </p>
+</div>  
+
 <% form_remote_for(@comment,
  :url => comments_path(commentable.class.to_s.underscore, commentable.id, 
    :locator => "newest_comment_#{commentable.id}"),
@@ -54,7 +63,7 @@
   <p>
   <%= f.submit 'Comentar'%>
   <%= image_tag 'web/spinner.gif', :style => 'display:none;',
-    :id => "spinner_#{commentable.id}" %>
+    :id => "spinner_#{commentable.id}", :class => "comment_spinner" %>
   <span id="comment_error"></span>
   </p>
 <% end %>

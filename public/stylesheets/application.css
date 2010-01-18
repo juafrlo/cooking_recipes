@@ -439,8 +439,6 @@ input{
 }
 
 #new_comment_form{
-  padding-top: 10px;
-  clear:both;	
 }
 
 .more-comments{
@@ -461,6 +459,10 @@ input{
 	padding-top: 7px;
 	padding-bottom: 7px;
 	width: 100%;
+}
+
+.avatar_spacing{
+	padding-top: 22px;
 }
 
 .no_spacing{
@@ -904,7 +906,7 @@ table.messages tr th{
 
 ul#social_buttons {
 	margin: 0px;
-	padding: 0px;
+	padding: 0px 4px 0px 0px;
 	list-style: none;
 	line-height: normal;
 	float: right;
@@ -1042,8 +1044,19 @@ p.no_results_found{
 }
 
 .comment-text-area{
-	width:400px;
+	width:450px;
 	min-height:100px;	
+	padding: 5px;
+}
+
+.comment_spinner{
+	float:right;
+	margin: 3px 12px 0px 0px;
+}
+
+#comment_submit{
+	float: right;
+	margin-right: 27px;
 }
 
 .form_div textarea{
