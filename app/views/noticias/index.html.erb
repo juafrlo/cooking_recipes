@@ -10,14 +10,13 @@
   	<%= link_to image_tag('web/ico-rss.png', :alt => "RSS"),
       formatted_noticias_path(:format => :rss) %>
   </div>
-  <div class="clear" style="margin-bottom: 5px;"></div>
 
 	<ul>
 	<% for noticia in @noticias %>
 		<li>
       <%= date_block(noticia.date) %>
-			<div class="right-column">
-				<h3 class="forum_cat_l1_title" style="padding-top: 3px;">
+			<div class="right-column noticia_item">
+				<h3 class="noticia_title">
 				  <%= link_to noticia.title, noticia %>
 				</h3>
 			  <h4><%= noticia.subtitle %></h4>
@@ -33,7 +32,6 @@
 				</p>
       </div>
 		</li>
-	<div class="clear">&nbsp;</div>
 	<% end %>
 	</ul>
 </div>

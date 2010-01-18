@@ -42,6 +42,17 @@ h3.forum_cat_l1_title{
 	margin-bottom: 0px;
 }
 
+h3.noticia_title{
+	color: black;
+	border: 0px;
+	padding-top: 4px;
+	margin-bottom: 0px;
+}
+
+.noticia_item{
+	margin-bottom: 12px;
+}
+
 .tr_title th{
 	width: 450px;
 	background: #ADFF2F;
@@ -622,7 +633,8 @@ fieldset{
 
 #noticias ul li{
 	border-top: 1px dotted grey;
-    padding-top: 10px;
+  padding-top: 10px;
+	clear:both;
 }
 
 
@@ -930,7 +942,7 @@ ul#social_buttons ul li a {
 
 .rss_button {
 	float: right;
-	margin: 4px 9px 0px 0px;
+	margin: 4px 9px 10px 0px;
 }
 
 .rss_button img{
