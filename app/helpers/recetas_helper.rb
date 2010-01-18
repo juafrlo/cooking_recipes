@@ -25,4 +25,7 @@ module RecetasHelper
 		end
   end
   
+  def receta_country(receta)
+    "(#{receta.country})" unless receta.country.blank?
+  end
 end

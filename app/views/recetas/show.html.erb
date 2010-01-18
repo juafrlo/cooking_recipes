@@ -29,7 +29,7 @@
 		</div>
 		
 		<div class="receta_show_origin"> 																																																																																																																																																																																																																			     
-		  <%= "#{t(:Receta_original_of)}: #{@receta.town} (#{@receta.country})"%>
+		  <%= "#{t(:Receta_original_of)}: #{@receta.town} #{receta_country(@receta)}"%>
 		</div>
 
  		<div class="receta_show_duration">

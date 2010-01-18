@@ -26,7 +26,7 @@ class NoticiasController < ApplicationController
   # GET /noticias/new
   # GET /noticias/new.xml
   def new
-    @noticia = Noticia.new
+    @noticia = Noticia.new  
 
     respond_to do |format|
       format.html # new.html.erb
@@ -43,6 +43,8 @@ class NoticiasController < ApplicationController
   # POST /noticias.xml
   def create
     @noticia = Noticia.new(params[:noticia])
+    @noticia.intro = RedCloth.new(@noticia.intro.to_s).to_html
+    @noticia.content = RedCloth.new(@noticia.content.to_s).to_html
     @noticia.user_id = current_user.id
 
     respond_to do |format|

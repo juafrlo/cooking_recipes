@@ -1060,8 +1060,9 @@ p.no_results_found{
 }
 
 .form_div textarea{
-	width:400px;
+	width:390px;
 	height:100px;	
+	padding: 4px 2px 3px 2px;
 }
 
 .close_button{
