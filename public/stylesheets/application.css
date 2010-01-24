@@ -443,6 +443,10 @@ input{
   clear:both;	
 }
 
+#receta_step_attributes__explanation{
+  width: 450px;
+}
+
 .more-comments{
   padding-top: 10px;
 }
