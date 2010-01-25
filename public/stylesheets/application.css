@@ -452,6 +452,10 @@ input{
 #new_comment_form{
 }
 
+#receta_step_attributes__explanation{
+  width: 450px;
+}
+
 .more-comments{
   padding-top: 10px;
 }
