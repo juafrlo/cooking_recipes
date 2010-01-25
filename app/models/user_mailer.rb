@@ -2,19 +2,19 @@ class UserMailer < ActionMailer::Base
   def signup_notification(user)
     setup_email(user)
     @subject    += I18n.t(:signup_notification_subject)
-    @body[:url]  = "http://#{SITE_URL}/activate/#{user.activation_code}"
+    @body[:url]  = "http://#{SITE_URL}activate/#{user.activation_code}"
   end
  
   def activation(user)
     setup_email(user)
     @subject    += I18n.t(:activation_subject)
-    @body[:url]  = "http://#{SITE_URL}/"
+    @body[:url]  = "http://#{SITE_URL}"
   end
   
   def reset_password(user)
     setup_email(user)
     @subject    += I18n.t(:reset_password_subject)
-    @body[:url]  = "http://#{SITE_URL}/"
+    @body[:url]  = "http://#{SITE_URL}"
   end
  
   def comment_notification(user,obj)
@@ -28,7 +28,7 @@ class UserMailer < ActionMailer::Base
     end
     @obj = obj
     rel_path = get_relative_path(obj)
-    @body[:url] = "http://#{SITE_URL}/#{rel_path}"
+    @body[:url] = "http://#{SITE_URL}#{rel_path}"
   end
   
   def friend_notification(user,obj)
@@ -42,21 +42,21 @@ class UserMailer < ActionMailer::Base
     end
     @obj = obj
     rel_path = get_relative_path(obj)
-    @body[:url] = "http://#{SITE_URL}/#{rel_path}"
+    @body[:url] = "http://#{SITE_URL}#{rel_path}"
   end
   
   def friendship_notification(user)
     setup_email(user)
     @subject += I18n.t(:friendship_notification_subject)
     @user = user
-    @body[:url]  = "http://#{SITE_URL}/#{amigos_user_path(user).to_s}"
+    @body[:url]  = "http://#{SITE_URL}#{amigos_user_path(user).to_s}"
   end
 
   def message_notification(user)
     setup_email(user)
     @subject    += I18n.t(:message_notification_subject)
     @user = user
-    @body[:url]  = "http://#{SITE_URL}/#{user_messages_path(user).to_s}"
+    @body[:url]  = "http://#{SITE_URL}#{user_messages_path(user).to_s}"
   end
   
   def contact_notification(contact)
