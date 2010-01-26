@@ -87,3 +87,5 @@ Rails::Initializer.run do |config|
   KEYWORDS = "Recetas de cocina, crítica de restaurantes, consejos de cocina, qué cocinar hoy con pocos ingredientes, cocina, Juan de Frías, Ruby on Rails, comunidad, red social, cocineros"
   DESCRIPTION = "Coumunidad de amantes de la cocina, donde podrás crear y compartir recetas de cocina, consejos de cocina y críticas de restaurantes, además de poder encontrar qué cocinar hoy"  
 end
+
+ActionMailer::Base.delivery_method = :sendmail
