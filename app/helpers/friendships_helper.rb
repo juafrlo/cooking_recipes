@@ -3,7 +3,7 @@ module FriendshipsHelper
     link_to "#{text} #{show_count(option,number)}", 
       amigos_user_path(current_user,:option => option) 
   end
-
+  
   def show_count(option,number)
     if number > 0 && option == "invitaciones_recibidas"
       "<span id= '#{option}' style='color:red;'>(#{number})</span>"

@@ -98,7 +98,8 @@
            						<li><%= link_to t(:My_advices), consejos_user_path(current_user)%></li>
            						<li><%= link_to t(:My_restaurants), restaurantes_user_path(current_user)%></li>
           						<li>
-                        <%= link_to t(:My_friends), amigos_user_path(current_user) %> 
+                        <%= link_to t(:My_friends),
+ 												amigos_user_path(current_user,:option => 'mis_amigos') %> 
                         <span class="alert"><%= invitations_number %></span>
 	                    </li>
      	 							<% end %>
