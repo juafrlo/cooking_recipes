@@ -37,7 +37,7 @@ class Friendship < ActiveRecord::Base
   protected
   def send_notification_to_user
     if self.friend.receive_friendships_emails
-      UserMailer.deliver_friendship_notification(self.friend) 
+      UserMailer.deliver_friendship_notification(self.friend) if self.initiator == false
     end
   end
   
