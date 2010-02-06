@@ -440,12 +440,12 @@ es:
   All: Todas
   Search: Buscar
   little_time_and_ingredients: ¿Tienes pocos ingredientes y poco tiempo?
-  Exact_recetas: "Recetas exactas:" 
-  Exact_recetas_intro: Son recetas que cumplen exáctamente los requisitos de la búsqueda
+  Exact_recetas: "Resultados sugeridos:" 
+  Exact_recetas_intro: Son recetas que se ajustan mejor a los requisitos de la búsqueda
   No_exact_recetas_intro: Son recetas en las que sólo utilizarás algunos de los ingredientes indicados
   Receta_prepared: Plato
   Autor: Autor
-  No_exact_recetas: Recetas no exactas
+  No_exact_recetas: Otros resultados
   no_results_found: No se encontraron resultados
   Advanced_search: Búsqueda avanzada
   Recetas_found: Recetas encontradas
