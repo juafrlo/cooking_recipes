@@ -132,7 +132,11 @@ class RecetasController < ApplicationController
   end
 
   def resultados_busqueda
-      @recetas = Receta.search(params[:receta][:name],params[:receta][:category_id],params[:receta][:country],params[:receta][:town])
+      @recetas = if params[:receta][:name].blank? && params[:receta][:category_id].blank? && params[:receta][:country].blank? && params[:receta][:town].blank?
+         []
+      else
+        Receta.search(params[:receta][:name],params[:receta][:category_id],params[:receta][:country],params[:receta][:town])
+      end
   end  
   
 
