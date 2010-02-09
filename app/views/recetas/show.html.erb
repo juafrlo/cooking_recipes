@@ -13,11 +13,11 @@
 
 	<div class="receta_show_info">
  		<div class="receta_show_name">
- 			<b><%=h @receta.name %></b>
+ 			<b><%= h @receta.name %></b>
 		</div>
 		
 		<div class="autor">
-		  <%= t(:Author) %>:
+		  <%= h t(:Author) %>:
 		  <%= link_to @receta.user.login, user_path(@receta.user) %>
 		  <%= invite_user_link(@receta.user, "my_friend_link", "user_link_#{@receta.user.id}", true) %>
 		  <%= image_tag('web/spinner.gif', :id => 'spiner_my_friend_link', :style=> 'display:none;') %>
@@ -25,21 +25,21 @@
 
 		<div>
 		  <%= t(:Category) %>:
-		  <%=h @receta.category.name %>
+		  <%= h @receta.category.name %>
 		</div>
 		
 		<div class="receta_show_origin"> 																																																																																																																																																																																																																			     
-		  <%= "#{t(:Receta_original_of)}: #{@receta.town} #{receta_country(@receta)}"%>
+		  <%= h "#{t(:Receta_original_of)}: #{@receta.town} #{receta_country(@receta)}"%>
 		</div>
 
  		<div class="receta_show_duration">
 			<%= t(:duration)%>:
- 			<%=h @receta.duration %> <%= t(:minutes)%>
+ 			<%= h @receta.duration %> <%= t(:minutes)%>
 		</div>				
 		
  		<div class="receta_show_people">
   		<%= t(:Receta_to_people)%>:
-	  	<%=h @receta.people_can_eat %> <%= t(:people)%>
+	  	<%= h @receta.people_can_eat %> <%= t(:people)%>
 	  </div>						
 		
 		<div id="rating_stars" style="height:50px;">		
@@ -64,14 +64,14 @@
 <div class="receta_show_body">
   <div class="description_div">
   	<span class="title_span"><%= t(:small_description)%>:</span>
-	  <div class="description_text"><%=h @receta.description %></div>
+	  <div class="description_text"><%= h @receta.description %></div>
   </div>
 
   <div class="ingredients_div">
 	  <span class="title_span"><%= t(:Ingredients) %>: </span>
 	  <ul style="margin-top: 5px;">
 		  <% for ingredient in @ingredients %>
-			  <%if !ingredient.name.empty? %><li><%= ingredient.name %> </li> <%end%>
+			  <%if !ingredient.name.empty? %><li><%= h ingredient.name %> </li> <%end%>
   		<% end %>
 	  </ul>
   </div>
@@ -80,7 +80,7 @@
 	  <span class="title_span"><%= t(:Steps) %>:</span>
   	<ul style="margin-top:5px;">
     	<% for step in @steps %>
-    		<%if !step.explanation.empty? %><li><%= step.explanation %> </li> <%end%>
+    		<%if !step.explanation.empty? %><li><%= h step.explanation %> </li> <%end%>
     	<% end %>
     </ul>
   </div>
@@ -88,7 +88,7 @@
 	<% unless @receta.observations.blank? %>
 	  <div class="description_div observations">
 	  	<span class="title_span"><b><%= t(:observations)%>:</b></span>
-		  <div class="description_text"><%=h @receta.observations %></div>
+		  <div class="description_text"><%= h @receta.observations %></div>
 	  </div>
 	<% end %>
 
@@ -99,6 +99,10 @@
       <%= link_to t(:Edit), edit_receta_path(@receta) %> |
     <% end %>
     <%= link_to t(:Back), recetas_path %>
+		<% if current_user && current_user.admin? %>
+			| <%= link_to t(:Destroy), @receta,
+			 	:confirm => t(:are_you_sure), :method => :delete %>
+		<% end %>
   </div>
 </div>
 

@@ -96,6 +96,7 @@ class RecetasController < ApplicationController
     @receta.destroy
 
     respond_to do |format|
+      flash[:notice] = t(:receta_deleted)
       format.html { redirect_to(recetas_url) }
       format.xml  { head :ok }
     end

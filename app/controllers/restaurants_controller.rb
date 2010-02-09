@@ -107,6 +107,7 @@ class RestaurantsController < ApplicationController
     @restaurant.destroy
 
     respond_to do |format|
+      flash[:notice] = t(:restaurant_deleted)
       format.html { redirect_to(restaurants_url) }
       format.xml  { head :ok }
     end

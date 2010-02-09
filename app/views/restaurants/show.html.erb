@@ -13,7 +13,7 @@
 
 	<div class="receta_show_info">
  		<div class="receta_show_name">
- 			<b><%=h @restaurant.name %></b>
+ 			<b><%= h @restaurant.name %></b>
 		</div>
 		
 		<div class="autor">
@@ -26,18 +26,18 @@
 		
 		<div>
 		  <%= t(:Typical_cooking_of) %>:
-		  <%=h @restaurant.original_country %>
+		  <%= h @restaurant.original_country %>
 		</div>
 
 
 		<div>
 		  <%= t(:Specialty) %>:
-		  <%=h @restaurant.rest_category.name %>
+		  <%= h @restaurant.rest_category.name %>
 		</div>
 		
 		<div class="receta_show_origin"> 																																																																																																																																																																																																																			     
 		  <%= "#{t(:Location)}: #{@restaurant.town} (#{@restaurant.country})"%> <br/>
-      <%= @restaurant.address %><br/>
+      <%= h @restaurant.address %><br/>
 	    <% unless @restaurant.google_maps_code.blank? %>
 		    <%= link_to_redbox( t(:view_google_maps), "google_maps_code") %>
 		    <div id="google_maps_code" style="display:none;">
@@ -51,12 +51,12 @@
 
  		<div class="receta_show_duration">
 			<%= t(:Avg_price)%>:
- 			<%=h @restaurant.avg_price %> euros
+ 			<%= h @restaurant.avg_price %> euros
 		</div>				
 		
  		<div class="receta_show_people">
   		<%= t(:creator_rating)%>:
-	  	<%= @restaurant.creator_rating %>
+	  	<%= h @restaurant.creator_rating %>
 	  </div>						
 		
 		<div id="rating_stars" style="height:50px;">		
@@ -81,7 +81,7 @@
 <div class="receta_show_body">
   <div class="description_div">
   	<span class="title_span"><%= t(:small_rest_description)%>:</span>
-	  <div class="description_text"><%=h @restaurant.description %></div>
+	  <div class="description_text"><%= h @restaurant.description %></div>
   </div>
 
   <br/>
@@ -92,6 +92,10 @@
       <%= link_to t(:Edit), edit_restaurant_path(@restaurant) %> |
     <% end %>
     <%= link_to t(:Back), restaurants_path %>
+		<% if current_user && current_user.admin? %>
+			| <%= link_to t(:Destroy), @restaurant,
+			 	:confirm => t(:are_you_sure), :method => :delete %>
+		<% end %>
   </div>
 </div>
 

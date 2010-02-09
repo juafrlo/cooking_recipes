@@ -53,6 +53,10 @@
   <%= link_to t(:Edit), edit_advice_path(@advice) %> |
 <% end %>
 <%= link_to t(:Back), advices_path %>
+<% if current_user && current_user.admin? %>
+	| <%= link_to t(:Destroy), @advice,
+	 	:confirm => t(:are_you_sure), :method => :delete %>
+<% end %>
 
 <%= render :partial => 'comments/commenting_system', :locals => {:commentable => @advice}%>
 

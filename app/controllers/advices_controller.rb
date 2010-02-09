@@ -88,6 +88,7 @@ class AdvicesController < ApplicationController
     @advice.destroy
 
     respond_to do |format|
+      flash[:notice] = t(:advice_deleted)
       format.html { redirect_to(advices_url) }
       format.xml  { head :ok }
     end

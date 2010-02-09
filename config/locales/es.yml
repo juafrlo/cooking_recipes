@@ -251,6 +251,7 @@ es:
   Advices_intro2: Desde esta página podrás acceder de una forma rápida a los últimos consejos publicados, los mejores consejos puntuados por los usuarios, los mejores consejeros y una lista de los temas que más preocupan.
   Most_commented_advices: Temas más comunes en los consejos
   advices_no_results_found: No se encontraron resultados
+  advice_deleted: Consejo borrado
 
   #Categories
   category: categoría
@@ -453,6 +454,7 @@ es:
   duration_must_be_integer: El campo "duración" debe ser un número entero
   best_recipes: Recetas mejor puntuadas
   observations: Observaciones
+  receta_deleted: Receta borrada
   
   #Restaurants
   New_restaurant: Nuevo restaurante
@@ -493,6 +495,7 @@ es:
   best_restaurant_critics: Mejores críticos 
   best_restaurants: Mejores restaurantes
   Typical_of: Cocina típica de
+  restaurant_deleted: Restaurante borrado
   
   #Restaurant categories
   Listing_rest_categories: Categorías de restaurantes
