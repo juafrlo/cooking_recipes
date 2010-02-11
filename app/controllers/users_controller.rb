@@ -31,7 +31,11 @@ class UsersController < ApplicationController
 
   # render new.rhtml
   def new
-    @user = User.new
+    @user = User.new(params[:user])
+    @user.receive_comments_emails = true
+    @user.receive_friends_emails = true
+    @user.receive_friendships_emails = true
+    @user.receive_messages_emails = true
   end
  
   def create
@@ -39,12 +43,12 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     success = @user && @user.save
     @user.delavatar
-    if verify_recaptcha(@user) && success && @user.errors.empty?        	  
+    if (RAILS_ENV == "production" && verify_recaptcha(@user) || RAILS_ENV != "production") &&
+     success && @user.errors.empty?        	  
       @user.assign_role
       redirect_back_or_default('/')
       flash[:notice] = t(:sign_up_complete)
     else
-      #flash[:error]  = t(:sign_up_failed)
       render :action => 'new'
     end
   end
