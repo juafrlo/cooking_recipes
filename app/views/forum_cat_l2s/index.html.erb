@@ -17,7 +17,11 @@
 				<%= forum_cat_l2.description %>
 			</td>
 			<td>
-        <% if forum_cat_l2.last_post_id %>
+				<% if forum_cat_l2.last_post_id && !forum_cat_l2.last_post.forum_replies.blank? %>
+					<%= forum_cat_l2.last_post.forum_replies.last.updated_at.to_s(:date) %> -
+	  			<b> <%= forum_cat_l2.last_post.forum_replies.last.user.login %></b><br/>
+		  		<%= link_to forum_cat_l2.last_post.title, forum_post_path(forum_cat_l2.last_post) %>
+        <% elsif forum_cat_l2.last_post_id %>
   				<%= forum_cat_l2.last_post.updated_at.to_s(:date) %> -
 	  			<b> <%= forum_cat_l2.last_post.user.login %></b><br/>
 		  		<%= link_to forum_cat_l2.last_post.title, forum_post_path(forum_cat_l2.last_post) %>

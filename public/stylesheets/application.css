@@ -418,6 +418,7 @@ input{
 .flash_text{
 	float:left;
 	width: 538px;
+	padding: 7px 0px;
 }
 
 .close_flash{

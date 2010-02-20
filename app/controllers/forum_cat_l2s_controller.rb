@@ -4,7 +4,7 @@ class ForumCatL2sController < ApplicationController
   # GET /forum_cat_l2s
   # GET /forum_cat_l2s.xml
   def index
-    @forum_cat_l2s = ForumCatL2.find(:all)
+    @forum_cat_l2s = ForumCatL2.find(:all, :include => [:forum_posts => :forum_replies])
     @categories = ForumCatL1.find(:all)
     
     respond_to do |format|

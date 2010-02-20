@@ -306,8 +306,9 @@ es:
   your_password_reseted: Tu password ha sido reseteado
   new_user_data_to_login: Para poder acceder necesitarás los siguientes datos  
   thank_you_for_visiting: Gracias por visitar
-  your_password_has_been_reset_and_emailed_to_you: Tu password ha sido reseteado y enviadp a tu email
+  your_password_has_been_reset_and_emailed_to_you: Tu password ha sido reseteado y enviado a tu email
   sorry_we_dont_recognize_that_email_address: Lo sentimos. No se ha podido reconocer ningún usuario con dicho email
+  sorry_password_could_not_be_reseted: Lo sentimos, pero el password no ha podido ser reseteado. Si el problema persiste, envíe la incidencia a través de la sección de contacto.
   comment_notification_intro: Has recibido un comentario de un contenido creado por ti
   check_comment_notification: Puedes leer el comentario visitando el siguiente enlace
   thanks_for_visiting: Gracias por visitar
