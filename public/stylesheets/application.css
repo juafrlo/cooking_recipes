@@ -301,11 +301,15 @@ a img {
 }
 
 #search fieldset {
-	margin-left: 20px;
 	padding: 0px;
 	border: none;
 	padding-top: 15px;
 }
+
+#search fieldset input#receta_name{
+	margin-left: 20px;
+}
+
 
 #search #s {
 	width: 160px;
@@ -346,8 +350,29 @@ a img {
 }
 
 .form_col2{
-	float:left;	
-    margin-left: 100px;
+	float:right;
+	margin-right:20px;	
+}
+
+form input#receta_photo{
+	width: 280px;
+}
+
+.form_col2 select{
+	width: 200px;
+	margin-right: 20px;
+}
+
+.form_col2 input{
+	width: 200px;
+}
+
+#receta_duration{
+	width: 30px;
+}
+
+.form_col2.duration{
+	margin-right: 40px;
 }
 
 .form_col1_show{
@@ -367,13 +392,13 @@ a img {
 }
 
 .form_div select{
-	width: 176px;
 }
 
 .form_div input{
 	height: 15px;
 	padding-top: 6px;
-    margin-top:3px;
+  margin-top:3px;
+	width:200px;
 }
 
 .little_search_time{
@@ -382,7 +407,7 @@ a img {
 
 input{
 	padding: 4px 2px 3px 2px;
-    margin-top:0px;
+  margin-top:0px;
 }
 
 .form_span{
@@ -907,6 +932,7 @@ table tr.par {
 .login_check input{
 	float:left;
 	margin-top: 3px;
+	width: auto;
 }
 
 .login_button{
