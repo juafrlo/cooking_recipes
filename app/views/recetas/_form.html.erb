@@ -18,14 +18,14 @@
 	<div class="form_div">
 		<div class="form_col1">
 	    <%= f.label :people_can_eat, t(:people_can_eat) %><br />
-	  	<%= f.text_field :people_can_eat, :size => "5" %>
+	  	<%= f.text_field :people_can_eat, :class => "small_field" %>
 		  <%= t(:people) %>
 		</div>
 
 		<div class="form_col2 duration">
 		  <div>
 		    <%= f.label :duration, t(:duration) %><br />
-		  	<%= f.text_field :duration , :size => "5"%>
+		  	<%= f.text_field :duration, :class => "small_field" %>
 			  <%= t(:minutes) %>
 		  </div>
 		</div>
@@ -59,7 +59,7 @@
 
 	<div class="form_div">
     <%= f.label :description, t(:description) %><br />
-    <%= f.text_area :description, :style => "width: 504px" %>
+    <%= f.text_area :description, :class => "big_field" %>
 	</div>
 
   <div class="clear"></div><br/>
@@ -88,7 +88,7 @@
 
 	<div class="form_div observations">
     <%= f.label :observations, t(:observations) %><br />
-    <%= f.text_area :observations, :style => "width: 504px" %>
+    <%= f.text_area :observations, :class => "big_field" %>
 	</div>
 
   <p class="clear">

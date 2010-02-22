@@ -4,7 +4,7 @@
 	<div class="form_div">
 		<div class="form_col1">
 	    <%= f.label :name, t(:Name) %><br />
-	    <%= f.text_field :name, :size => "22" %>
+	    <%= f.text_field :name %>
 		</div>
 	</div>
 	
@@ -13,10 +13,10 @@
 	<div class="form_div">
 		<div class="form_col1">
 	    <%= f.label :original_country, t(:Original_country) %><br />
-	    <%= f.text_field :original_country, :size => "22" %>
+	    <%= f.text_field :original_country %>
 		</div>
 
-		<div class="form_col2">
+		<div class="form_col2 rest_category">
 	    <%= f.label :rest_category_id, t(:Specialty) %><br />
 	  	<%= f.collection_select :rest_category_id, @rest_categories, :id, :name %>
 		</div>
@@ -28,13 +28,13 @@
 	<div class="form_div">
 		<div class="form_col1">
 	    <%= f.label :creator_rating, t(:creator_rating) %><br />
-	  	<%= f.text_field :creator_rating, :size => "5" %>/5
+	  	<%= f.text_field :creator_rating, :class => "small_field" %>/5
 		</div>
 
-		<div class="form_col2">
+		<div class="form_col2 avg_price">
 		  <div>
 		    <%= f.label :avg_price, t(:Avg_price) %><br />
-		  	<%= f.text_field :avg_price , :size => "5"%>
+		  	<%= f.text_field :avg_price, :class => "small_field" %>
         €
 		  </div>
 		</div>
@@ -54,12 +54,12 @@
 	<div class="form_div">
 		<div class="form_col1">
 	    <%= f.label :country, t(:Country) %><br />
-	    <%= f.text_field :country, :size => "22" %>
+	    <%= f.text_field :country %>
 		</div>
 
 		<div class="form_col2">
 	    <%= f.label :town, t(:Town) %><br />
-	    <%= f.text_field :town, :size => "22" %>
+	    <%= f.text_field :town %>
 		</div>
 	</div>
 	
@@ -68,7 +68,7 @@
 	<div class="form_div">
 		<div class="form_col1">
 	    <%= f.label :address, t(:Address) %><br />
-	    <%= f.text_field :address, :size => 71 %>
+	    <%= f.text_field :address %>
 		</div>
 	</div>
 	
@@ -78,7 +78,7 @@
 	<div class="form_div">
 		<div class="form_col1">
 	    <%= f.label :google_maps_code, t(:google_maps_code) %><br />
-	    <%= f.text_area :google_maps_code, :style => "width:502px;" %>
+	    <%= f.text_area :google_maps_code, :class => "big_field" %>
 		</div>
 	</div>
 	
@@ -86,7 +86,7 @@
 
 	<div class="form_div">
     <%= f.label :description, t(:Description) %><br />
-    <%= f.text_area :description, :style => "width: 504px" %>
+    <%= f.text_area :description, :class => "big_field" %>
 	</div>
 
   <div class="clear"></div><br/>
