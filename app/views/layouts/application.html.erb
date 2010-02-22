@@ -8,6 +8,8 @@
 	<meta name="description" content="<%= DESCRIPTION %>">
   <title><%=SITE_NAME%>: <%= yield(:title) || controller.action_name %></title>
   <%= stylesheet_link_tag 'application' %>
+	<!--[if IE]> <%= stylesheet_link_tag 'ie' %> <![endif]-->
+		
   <%= stylesheet_link_tag 'rating' %>
   <%= stylesheet_link_tag 'auto_complete' %>
   <%= javascript_include_tag :defaults %>
