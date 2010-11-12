@@ -1,4 +1,4 @@
-<ul class="nav_buttons">
+<ul class="nav_buttons<%=  ' index_buttons restaurans_bt' if main_index? %>">
   <li>
     <%= link_to t(:New_restaurant), new_restaurant_path %>
   </li>

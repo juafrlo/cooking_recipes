@@ -1,17 +1,10 @@
 <% title "#{t(:Advice)} - #{@advice.name}"  %>
-<h2 class="title">
-  <%= t(:Advice_by)%>
-  <%= link_to @advice.user.login, user_path(@advice.user) %>:
-</h2>
-
-
-<p>
-  <b><%= t(:Title) %>:</b><br/>
+<h1>
   <span class="advice_title"><%=h @advice.name %></span>
-</p>
+</h1>
 
 <p>
-  <b><%= t(:Author) %>:</b><br/>
+  <b><%= t(:Advice_by) %>:</b><br/>
   <%= link_to @advice.user.login, user_path(@advice.user) %>
   <%= invite_user_link(@advice.user, "my_friend_link", "user_link_#{@advice.user.id}", true) %>
   <%= image_tag('web/spinner.gif', :id => 'spiner_my_friend_link', :style=> 'display:none;') %>

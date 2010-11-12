@@ -2,6 +2,14 @@
 module ApplicationHelper
   include TagsHelper
   
+  def homepage?
+    controller_name == 'noticias' && action_name == 'index'
+  end
+  
+  def main_index?
+    (controller_name == 'recetas' || controller_name == 'advices' || controller_name == 'restaurants') && action_name == 'index'
+  end
+  
   def title(page_title)
     content_for(:title) {page_title}
   end
@@ -100,5 +108,4 @@ module ApplicationHelper
     controller_name == "users" && action_name == 'new' ||
     controller_name == "users" && action_name == 'create'
   end
-  
 end

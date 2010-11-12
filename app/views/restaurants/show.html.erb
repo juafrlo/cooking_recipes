@@ -1,23 +1,18 @@
 <% title "#{t(:Restaurant)} > #{@restaurant.name}" %>
 
-<h2 class="title">
-  <%= t(:Restaurant_by)%>
-  <%= link_to @restaurant.user.login, user_path(@restaurant.user) %>:
-</h2>
+<h1 class="title">
+	<%= h @restaurant.name %>
+</h1>
 
 
 <div class="receta_show_intro">
-	<div class="restaurant_show_photo">
+	<div class="receta_show_photo">
     <%= restaurant_show_photo(@restaurant)%><br/>
 	</div>
 
 	<div class="receta_show_info">
- 		<div class="receta_show_name">
- 			<b><%= h @restaurant.name %></b>
-		</div>
-		
 		<div class="autor">
-		  <%= t(:Author) %>:
+		  <%= t(:Restaurant_by) %>:
 		  <%= link_to @restaurant.user.login, user_path(@restaurant.user) %>
 		  <%= invite_user_link(@restaurant.user, "my_friend_link",
 		   "user_link_#{@restaurant.user.id}", true) %>

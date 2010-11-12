@@ -1,5 +1,10 @@
 <% title "#{t(:Receta)} > #{@receta.name}" %>
 
+<h1>
+	<%=  h @receta.name %>
+</h1>
+
+
 <div class="receta_show_intro">
   <table>
     <td>		
@@ -9,9 +14,6 @@
     </td>
     <td style="padding-left:40px;">
 			<div class="receta_show_info">
-		 		<div class="receta_show_name" style="font-size: 22px;">
-		 			<b><%=h @receta.name %></b>
-				</div>
 		
 				<div>
 				  <%= t(:Category) %>:

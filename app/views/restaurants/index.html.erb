@@ -1,14 +1,12 @@
-<%= render :partial => 'nav_buttons' %>
-
 <% title t(:Last_published_restaurants) %>
-<h2 class="title"><%= yield(:title) %></h2>
+<h1><%= yield(:title) %></h1>
 
 <%= render :partial => 'restaurants' %>
 
 <br /><br />
 
 
-<h1 class="title"><%= t(:Best_restaurants_by_category) %></h1>
+<h2><%= t(:Best_restaurants_by_category) %></h2>
 <% for rest_category in @rest_categories %>	
 	<div class="receta_category_div">
 		<div class ="receta_category_name"><%= rest_category.name %></div>
@@ -18,3 +16,6 @@
 		</div>
 	</div>
 <% end %>
+
+<div class="clear"></div>
+<%= render :partial => 'nav_buttons' %>

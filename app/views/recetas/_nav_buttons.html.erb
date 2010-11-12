@@ -1,4 +1,4 @@
-<ul class="nav_buttons">
+<ul class="nav_buttons<%=  ' index_buttons recetas_bt' if main_index? %>">
   <li>
     <%= link_to t(:New_receta), new_receta_path %>
   </li>

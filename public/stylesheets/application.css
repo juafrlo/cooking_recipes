@@ -32,7 +32,7 @@ h2{
 }
 
 h1 {
-	font-size: 2.4em;
+	font-size: 14px;
 }
 
 h3.forum_cat_l1_title{
@@ -95,6 +95,11 @@ a img {
 	background: url(../images/layo/img06.jpg) repeat-x left top;
 }
 
+.t{
+	position: absolute;
+	top:18px;
+}
+
 #header a {
 	text-decoration: none;
 	color: #FFFFFF;
@@ -104,25 +109,22 @@ a img {
 
 #logo {
 	float: left;
-	padding-left: 20px;
+	padding: 40px 0px 0px 20px;
 }
 
-#logo h1, #logo p {
+#logo p {
 	margin: 0px;
 	line-height: normal;
 	font-weight: normal;
 	color: #FFFFFF;
 }
 
-#logo h1 {
-	padding: 40px 0px 0px 0px;
-}
-
-#logo h1 a{
+#logo  a{
 	//color:#1b6461;
     color:gold;
     letter-spacing: 1px;
 	font-weight: bold;
+		font-size: 31px;
 }
 
 #logo p {
@@ -173,6 +175,11 @@ a img {
 	background: #FFFFFF;
 }
 
+.no_homepage{
+	padding-top: 110px !important;
+}
+
+
 #header-pic {
 	background: url(../images/layo/img05.jpg) no-repeat left top;
 	width: 900px;
@@ -191,6 +198,10 @@ a img {
 	margin: 0px 0px 30px 0px;
 }
 
+.index{
+	margin-top: 34px;
+}
+
 .post .title {
 	margin: 0px;
 	background: #444444 url(../images/layo/img07.jpg) no-repeat left top;
@@ -198,6 +209,14 @@ a img {
 	font-size: 1.4em;
 }
 
+.post h1, .post h2{
+	padding-bottom:10px;
+	margin: 0px;
+	background: #444444 url(../images/layo/img07.jpg) no-repeat left top;
+	padding: 7px 25px;
+	font-size: 1.4em;
+
+}
 .forum {
 	width: 520px;
 }
@@ -793,6 +812,25 @@ table.th_paddings td{
   margin: 5px 10px 10px 0px ;
 	text-align: right;
 }
+
+.index_buttons {
+	position:absolute;
+	top:127px;
+}
+
+.recetas_bt {
+	margin-left: 314px;		
+}
+
+.advices_bt {
+	margin-left: 328px;		
+}
+
+.restaurans_bt {
+	margin-left: 274px;		
+}
+
+
 .nav_buttons li {
 	margin: 0px 0px 0px 10px;
 	padding: 4px;
@@ -869,7 +907,7 @@ table tr.par {
 	float:left;
 	width: 250px;
 	text-align:center;
-	margin-top: 36px;
+	margin-top: 0px;
 }
 
 .restaurant_show_photo{
@@ -899,6 +937,11 @@ table tr.par {
 	text-align:center;
 	padding-bottom: 17px;
 	font-size: 17px;
+}
+
+.receta_show_name h1{
+	color:black;
+	font-size: 20px;
 }
 
 .receta_show description_div{
@@ -1103,6 +1146,11 @@ p.no_results_found{
 
 .errorExplanation p {
   margin-top:0px;
+}
+
+#errorExplanation h2{
+	background: none !important;
+	padding-left:0px;
 }
 
 .comment-text-area{

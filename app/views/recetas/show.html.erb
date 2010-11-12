@@ -1,9 +1,8 @@
 <% title "#{t(:Receta)} > #{@receta.name}" %>
 
-<h2 class="title">
-  <%= t(:Receta_by)%>
-  <%= link_to @receta.user.login, user_path(@receta.user) %>:
-</h2>
+<h1>
+	<%=  h @receta.name %>
+</h1>
 
 
 <div class="receta_show_intro">
@@ -12,12 +11,8 @@
 	</div>
 
 	<div class="receta_show_info">
- 		<div class="receta_show_name">
- 			<b><%= h @receta.name %></b>
-		</div>
-		
 		<div class="autor">
-		  <%= h t(:Author) %>:
+		  <%= t(:Receta_by) %>:
 		  <%= link_to @receta.user.login, user_path(@receta.user) %>
 		  <%= invite_user_link(@receta.user, "my_friend_link", "user_link_#{@receta.user.id}", true) %>
 		  <%= image_tag('web/spinner.gif', :id => 'spiner_my_friend_link', :style=> 'display:none;') %>

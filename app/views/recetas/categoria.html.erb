@@ -1,7 +1,7 @@
 <%= render :partial => 'nav_buttons' %>
 
 <% title "#{t(:best_recetas_of)} '#{@category.name}'" %>
-<h2 class="title"><%= yield(:title) %></h2>
+<h1><%= yield(:title) %></h1>
 
 <%= render :partial => 'list_recetas', :locals => {:recetas => @recetas} %>
 

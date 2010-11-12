@@ -1,7 +1,6 @@
-<%= render :partial => 'nav_buttons' %>
  
 <% title t(:Last_published_recetas) %>
-<h2 class="title"><%= yield(:title) %></h2>
+<h1><%= yield(:title) %></h1>
 
 <%= render :partial => 'list_recetas',
    :locals => {:recetas => @recetas} %>
@@ -9,7 +8,7 @@
 <br /><br />
 
 
-<h1 class="title"><%= t(:Best_recetas_by_category) %></h1>
+<h2><%= t(:Best_recetas_by_category) %></h2>
 
 <% for category in @categories %>	
 	<div class="receta_category_div">
@@ -20,4 +19,7 @@
 		</div>
 	</div>
 <% end %>
+
+<div class="clear"></div>
+<%= render :partial => 'nav_buttons' %>
 <br/>

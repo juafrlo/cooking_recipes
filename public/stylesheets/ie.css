@@ -8,3 +8,30 @@
 	padding-left: 3px !important;
 	float:left;
 }
+
+.t{
+	position: absolute;
+	top:24px;
+}
+
+.index{
+		margin-top: 40px;
+}
+
+.index_buttons{
+	padding: 10px;
+}
+
+.recetas_bt{
+	margin-left: 297px;		
+}
+
+.advices_bt{
+	margin-left: 310px;		
+}
+
+.restaurans_bt {
+	margin-left: 254px;		
+}
+
+

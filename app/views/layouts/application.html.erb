@@ -9,6 +9,9 @@
   <title><%=SITE_NAME%>: <%= yield(:title) || controller.action_name %></title>
   <%= stylesheet_link_tag 'application' %>
 	<!--[if IE]> <%= stylesheet_link_tag 'ie' %> <![endif]-->
+	<!--[if gte IE 8]>
+	<%= stylesheet_link_tag 'ie8' %>
+	<![endif]-->
 		
   <%= stylesheet_link_tag 'rating' %>
   <%= stylesheet_link_tag 'auto_complete' %>
@@ -21,45 +24,17 @@
 
 <body>
 	<div id="wrapper">
-    <div id="header">
-	  	<div id="logo">
-	      <h1><%= link_to SITE_NAME, '/' %></h1>
-		  </div>
-		  <div id="menu">
-		    <ul>
-			    <% if current_user && current_user.admin? %> 
-    			  <li>
-		    		  <%= link_to t(:Administration), admins_path %>
-			      </li>
-			    <% end %>
-			    <li>
-				    <%= link_to t(:News), noticias_path %>
-			    </li>
-    			<li>
-		  		  <%= link_to t(:Recipes), recetas_path %>
-			    </li>
-  			  <li>
-				    <%= link_to t(:Advises), advices_path %>
-			    </li>
-  			  <li>
-				    <%= link_to t(:Restaurants), restaurants_path %>
-  			  </li>
-  			  <li>
-			  	  <%= link_to t(:Forums), forum_cat_l2s_path %>
-			    </li>
-    			<li>
-		    		<%= link_to t(:Contact), contacts_path %>
-		 	    </li>
-		    </ul>
-	    </div>
-	  </div>	<!-- end #header -->
-
-    <div id="page">
+		<% if homepage? %>
+			<%= render :partial => 'layouts/header' %>
+		<% end %>
+    <div id="page" <%= "class='no_homepage'" unless homepage? %>>
 		  <div id="content" <%unless no_forums%>style="width:auto;"<%end%>>
-			  <div class="post">	
-				  <div class="flash_message">
-					  <%= my_flash_message(flash) %>
-		      </div>	   
+			  <div class="post<%=  ' index' if main_index? %>">	
+					<% unless flash.blank? %>
+					  <div class="flash_message">
+						  <%= my_flash_message(flash) %>
+			      </div>	   
+					<% end %>
 				  <div class="clear"></div>
 				  <%= yield  %>
 			  </div>
@@ -136,6 +111,9 @@
       <% end %>
 		<div class="clear"></div>
 	  </div>	<!-- end #page -->	
+		<% unless homepage? %>
+			<%= render :partial => 'layouts/header' %>
+		<% end %>
   </div>
 
   <div id="footer">

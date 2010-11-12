@@ -10,7 +10,12 @@
  			<b><%=h @restaurant.name %></b>
 		</div>
 		
-		<div>
+		<div class="receta_show_origin">
+			<%= t(:Restaurant_by) %>:
+		  <%= @restaurant.user.login %>
+		</div>
+		
+		<div class="receta_show_duration">
 		  <%= t(:Typical_cooking_of) %>:
 		  <%=h @restaurant.original_country %>
 		</div>
