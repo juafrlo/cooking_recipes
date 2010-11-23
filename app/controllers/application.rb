@@ -67,9 +67,8 @@ class ApplicationController < ActionController::Base
       if seo_id != 0
         params[:id] = seo_id
       else
-        headers["Status"] = "301 Moved Permanently"  
         old_id = params[:id].scan(/(\d+).+/).to_s
-        redirect_to request.url.gsub(/#{old_id}-/,'') << "-#{old_id}"
+        head :moved_permanently, :location => request.url.gsub(/#{old_id}-/,'') << "-#{old_id}"
       end
     end
   end
