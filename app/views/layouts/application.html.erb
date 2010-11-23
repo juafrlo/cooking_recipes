@@ -5,8 +5,8 @@
 <head>
   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
 	<meta name="keywords" content="<%= KEYWORDS %>">
-	<meta name="description" content="<%= DESCRIPTION %>">
-  <title><%=SITE_NAME%>: <%= yield(:title) || controller.action_name %></title>
+	<meta name="description" content="<%= page_description %>">
+  <title><%=SITE_NAME%> <%="- #{yield(:title) || controller.action_name}" unless homepage?%></title>
   <%= stylesheet_link_tag 'application' %>
 	<!--[if IE]> <%= stylesheet_link_tag 'ie' %> <![endif]-->
 	<!--[if gte IE 8]>

@@ -8,6 +8,7 @@ class RestaurantsController < ApplicationController
   # GET /restaurants.xml
   def index
     @restaurants = Restaurant.find(:all, :order => 'created_at DESC', :limit => 8)
+    @page_description = t(:restaurants_index_description)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -20,6 +21,7 @@ class RestaurantsController < ApplicationController
   def show
     @restaurant = Restaurant.find(params[:id])
     @comment = Comment.new if logged_in?
+    @page_description = @restaurant.description
 
     respond_to do |format|
       format.html # show.html.erb
@@ -81,6 +83,7 @@ class RestaurantsController < ApplicationController
   def especialidad
     @rest_category = RestCategory.find(params[:id])
     @restaurants = @rest_category.restaurants.best_voted
+    @page_description= "#{t(:best_restaurants_by_category_desc)} #{@rest_category.name}"
     if @restaurants.empty?
       flash[:notice] = t(:no_restaurants_in_this_category)
       redirect_to(:back)
@@ -88,10 +91,12 @@ class RestaurantsController < ApplicationController
   end
   
   def donde_puedo_comer
+    @page_description = t(:restaurants_searcher)
     @restaurant = Restaurant.new    
   end
 
   def resultados
+    @page_description = t(:restaurant_results)
     unless params[:restaurant].values.to_s.blank?
       @restaurants = Restaurant.search(params[:restaurant]) 
     else

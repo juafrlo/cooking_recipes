@@ -8,6 +8,7 @@ class ForumPostsController < ApplicationController
   def show
     @forum_post = ForumPost.find(params[:id])
     @forum_post.comment = RedCloth.new(@forum_post.comment).to_html 
+    @page_description = @forum_post.title + " - #{t(:forum_post_description)}" + " #{@forum_post.forum_cat_l2.title}"
   
     @forum_post.forum_replies.each do |forum_reply|
       forum_reply.reply = RedCloth.new(forum_reply.reply).to_html

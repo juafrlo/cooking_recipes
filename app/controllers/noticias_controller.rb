@@ -17,6 +17,7 @@ class NoticiasController < ApplicationController
   def show
     @noticia = Noticia.find(params[:id])
     @comment = Comment.new if logged_in?  
+    @page_description = @noticia.intro.to_s[0..300]
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @noticia }

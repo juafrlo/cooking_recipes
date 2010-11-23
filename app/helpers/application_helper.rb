@@ -103,9 +103,29 @@ module ApplicationHelper
   end
   
   def uses_redbox
-    controller_name == "recetas" && action_name == 'show' || 
-    controller_name == "restaurants" && action_name == 'show' ||
+    receta_page? || 
+    restaurant_page? ||
     controller_name == "users" && action_name == 'new' ||
     controller_name == "users" && action_name == 'create'
+  end
+    
+  def page_description
+    @page_description.blank? ? DESCRIPTION: @page_description
+  end
+  
+  def home_page?
+    controller_name == "noticias" && action_name == 'index'
+  end
+  
+  def receta_page?
+    controller_name == "recetas" && action_name == 'show'
+  end
+  
+  def advice_page?
+    controller_name == "advices" && action_name == 'show'
+  end
+  
+  def restaurant_page?
+    controller_name == "restaurants" && action_name == 'show'
   end
 end

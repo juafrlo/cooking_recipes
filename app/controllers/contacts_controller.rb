@@ -5,6 +5,7 @@ class ContactsController < ApplicationController
     else
       @contact = Contact.new(params[:contact])
     end
+    @page_description = t(:contact_description)
   end
   
   def create

@@ -12,6 +12,7 @@ class RecetasController < ApplicationController
   # GET /recetas.xml
   def index
     @recetas = Receta.find(:all, :order => 'created_at DESC', :limit => 8)
+    @page_description = t(:recetas_index_description)
     
     respond_to do |format|
       format.html # index.html.erb
@@ -26,6 +27,7 @@ class RecetasController < ApplicationController
     @ingredients = Ingredient.find(:all, :conditions => ["receta_id = ?", params[:id]])    
     @steps = Step.find(:all, :conditions => ["receta_id = ?", params[:id]])    
     @comment = Comment.new if logged_in?
+    @page_description = @receta.description
     
     respond_to do |format|
       format.html # show.html.erb
@@ -105,6 +107,7 @@ class RecetasController < ApplicationController
   def categoria
     @category = Category.find(params[:id])
     @recetas = @category.recetas.best_voted
+    @page_description= "#{t(:best_recetas_by_category_desc)} #{@category.name}"
     if @recetas.empty?
       flash[:notice] = t(:no_recetas_in_this_category)
       redirect_to(:back)
@@ -114,9 +117,11 @@ class RecetasController < ApplicationController
   def que_cocinar_hoy
     @receta = Receta.new    
     3.times{ @receta.ingredients.build }
+    @page_description = t(:que_cocinar_hoy_desc)
   end
   
   def resultados
+     @page_description = t(:receta_suggested_results)
      if params[:receta][:name]
        @recetas = Receta.search(
          params[:receta][:name],
@@ -133,6 +138,7 @@ class RecetasController < ApplicationController
   end
 
   def resultados_busqueda
+    @page_description = t(:receta_results)    
       @recetas = if params[:receta][:name].blank? && params[:receta][:category_id].blank? && params[:receta][:country].blank? && params[:receta][:town].blank?
          []
       else

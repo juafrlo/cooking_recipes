@@ -247,11 +247,15 @@ es:
   Advices_searcher: Buscador de consejos
   tags_comma_separated: Etiquetas (separadas por comas)
   Advices_results: Resultados de la búsqueda
-  Advices_intro: Todo el mundo necesita consejo en algún momenot para mejorar sus platos. Aquí podrás encontrar pequeñas ayudas para facilitar tu día a día en la cocina
-  Advices_intro2: Desde esta página podrás acceder de una forma rápida a los últimos consejos publicados, los mejores consejos puntuados por los usuarios, los mejores consejeros y una lista de los temas que más preocupan.
+  Advices_intro: Todo el mundo necesita consejo en algún momento para mejorar sus platos. Aquí podrás encontrar pequeñas ayudas para facilitar tu día a día en la cocina
+  Advices_intro2: "Desde esta página podrás acceder de una forma rápida a los últimos consejos publicados, los mejores consejos puntuados por los usuarios, los mejores consejeros y una lista de los temas que más preocupan."
   Most_commented_advices: Temas más comunes en los consejos
   advices_no_results_found: No se encontraron resultados
   advice_deleted: Consejo borrado
+  advices_index_description: "Aquí encontrarás todos los consejos de cocina que necesitas: Los últimos consejos publicados, los mejores consejos puntuados por los usuarios, los mejores consejeros y una lista de los temas que más preocupan en la cocina. Comparte también tus consejos de cocina"
+  advices_searcher: Buscador de consejos de cocina. Encuentra aquí el consejo de cocina que necesitas
+  advice_results: Resultados de la búsquea de consejos de cocina
+  advice_results_by_tag: Consejos de cocina de 
 
   #Categories
   category: categoría
@@ -358,6 +362,9 @@ es:
   Reply_created: Respuesta creada
   delete_post_and_replies: ¿Quieres borrar este post y todas sus respuestas?
   delete_reply: ¿Borrar respuesta?
+  forums_descriptions: Foros de Antes de cocinar. Propón temas o busca respuesta a preguntas del mundo de la cocina.
+  forum_cat_l2_description: Foro de Antes de cocinar sobre
+  forum_post_description: Hilo del foro de Antes de cocinar 
   
   #Messages
   Inbox: Buzón de entrada
@@ -456,6 +463,11 @@ es:
   best_recipes: Recetas mejor puntuadas
   observations: Observaciones
   receta_deleted: Receta borrada
+  recetas_index_description: "Aquí encontrarás todas las recetas de cocina que necesitas: Los últimas recetas de cocina publicados, los mejores recetas de cocina puntuadas por los usuarios y los mejores cocineros. Comparte tus propias recetas de cocina"
+  best_recetas_by_category_desc: "Las mejores recetas de cocina de"
+  que_cocinar_hoy_desc: "Cocina utilizando tan sólo los ingredientes que tienes en casa o busca una receta en concreto"
+  receta_results: "Resultados de la búsqueda de recetas"
+  receta_suggested_results: "Resultados sugeridos de la búsqueda de recetas"
   
   #Restaurants
   New_restaurant: Nuevo restaurante
@@ -497,7 +509,11 @@ es:
   best_restaurants: Mejores restaurantes
   Typical_of: Cocina típica de
   restaurant_deleted: Restaurante borrado
-  
+  restaurants_index_description: "Aquí encontrarás todas las críticas de restaurantes que necesitas: Las últimas críticas de restaurantes, los mejores restaurantes puntuados por los usuarios y los mejores críticos de restaurantes. Crea también tus propias críticas de restaurantes"
+  best_restaurants_by_category_desc: "Los mejores restaurantes de la especialidad de"
+  restaurants_searcher: "Buscador de restaurantes"
+  restaurant_results: Resultados de la búsqueda de restaurantes
+    
   #Restaurant categories
   Listing_rest_categories: Categorías de restaurantes
   Rest_category: Categoría de restaurante
@@ -578,7 +594,16 @@ es:
   Terms_of_service: Términos de servicio
   ask_to_be_friend: Pedir amistad
   petition_sent: ¡Petición enviada!
-  
+  user_contents: Sus recetas, consejos de cocina y críticas de restaurantes.
+  recetas_by: Recetas de cocina de
+  advices_by: Consejos de cocina de
+  restaurants_by: Críticas de restaurantes de
+  favourite_recetas_by: Recetas de cocina favoritas de
+  favourite_advices_by: Consejos de cocina favoritos de
+  favourite_restaurants_by: Críticas de restaurantes favoritas de
+
+  #Contacts
+  contact_description: "Mi nombre es Juan de Frías. Soy Ingeniero Superior de Telecomunicaciones especializado en Telemática con experiencia contrastada en el mundo del desarrollo web. Antes de cocinar es un desarrollado íntegramente en Ruby on Rails, con la intención tanto de poner en práctica conceptos adquiridos como de ofrecer esta herramienta para toda la gente interesada por el mundo de la cocina."
 
   #Others
   Show: Ver
@@ -620,4 +645,4 @@ es:
   forums_opt: Participa en los foros
   forums_opt_intro: Propón temas o busca respuesta a preguntas del mundo de la cocina
   friends_opt: Manténte informado
-  friends_opt_intro: Recibe emails cada vez que tus amigos creen nuevos contenidos 
+  friends_opt_intro: Recibe emails cada vez que tus amigos creen nuevos contenidos   

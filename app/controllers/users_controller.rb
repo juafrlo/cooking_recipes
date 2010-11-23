@@ -10,6 +10,7 @@ class UsersController < ApplicationController
    
   def show
     @user = User.find(params[:id])
+    @page_description = "#{t(:info_about)} #{@user.login}. #{t(:user_contents)}"
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @user }
@@ -101,26 +102,32 @@ class UsersController < ApplicationController
   end
   
   def recetas
+    @page_description = "#{t(:recetas_by)} #{@user.login}"
     @recetas = Receta.find_ordered(@user, :order => params[:order])
   end
     
   def recetas_favoritas
+    @page_description = "#{t(:favourite_recetas_by)} #{@user.login}"
     @recetas = @user.favorite_recetas
   end
   
   def restaurantes
+    @page_description = "#{t(:restaurants_by)} #{@user.login}"
     @restaurants = Restaurant.find_ordered(@user, :order => params[:order])
   end
 
   def restaurantes_favoritos
+    @page_description = "#{t(:favourite_restaurants_by)} #{@user.login}"
     @restaurants = @user.favorite_restaurants
   end
   
   def consejos
+    @page_description = "#{t(:advices_by)} #{@user.login}"
     @advices = Advice.find_ordered(@user, :order => params[:order])
   end
   
   def consejos_favoritos
+    @page_description = "#{t(:favourite_advices_by)} #{@user.login}"
     @advices = @user.favorite_advices
   end
   

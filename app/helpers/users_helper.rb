@@ -95,8 +95,8 @@ module UsersHelper
     html += "#{text} "
     html += "</div>"
     html += "<div class='small_arrows'>"
-    html +=  "#{link_to image_tag('web/small_arrow_up.png'), :params=> {:order => order + ' ASC'}}"
-    html +=  "#{link_to image_tag('web/small_arrow_down.png'), :params=> {:order => order + ' DESC'}}"
+    html +=  "#{link_to image_tag('web/small_arrow_up.png'), {:params=> {:order => order + ' ASC'}}, {:rel => 'nofollow'}}"
+    html +=  "#{link_to image_tag('web/small_arrow_down.png'), {:params=> {:order => order + ' DESC'}}, {:rel => 'nofollow'}}"
     html += "</div>"
     return html
   end

@@ -3,9 +3,10 @@ class ForumCatL2sController < ApplicationController
   
   # GET /forum_cat_l2s
   # GET /forum_cat_l2s.xml
-  def index
+  def index    
     @forum_cat_l2s = ForumCatL2.find(:all, :include => [:forum_posts => :forum_replies])
     @categories = ForumCatL1.find(:all)
+    @page_description = t(:forums_descriptions)
     
     respond_to do |format|
       format.html # index.html.erb
@@ -20,6 +21,7 @@ class ForumCatL2sController < ApplicationController
     @forum_posts = ForumPost.find(:all,
      :conditions => ["forum_cat_l2_id = ?", params[:id]],
      :order => 'updated_at DESC')
+    @page_description = t(:forum_cat_l2_description) + " #{@forum_cat_l2.title}"
 
     respond_to do |format|
       format.html # show.html.erb

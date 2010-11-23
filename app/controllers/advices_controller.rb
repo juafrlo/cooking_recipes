@@ -8,6 +8,7 @@ class AdvicesController < ApplicationController
   def index
     @advices = Advice.find(:all, :order => 'created_at DESC', :limit => 8)
     @cloud_advices = Advice.tag_counts
+    @page_description = t(:advices_index_description)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -20,6 +21,7 @@ class AdvicesController < ApplicationController
   def show
     @advice = Advice.find(params[:id])
     @comment = Comment.new if logged_in?
+    @page_description = @advice.description
 
     respond_to do |format|
       format.html # show.html.erb
@@ -95,9 +97,15 @@ class AdvicesController < ApplicationController
   end
   
   def buscador
+    @page_description = t(:advices_searcher)
   end  
   
   def resultados
+    if params[:tag_list].blank?
+      @page_description = t(:advice_results)
+    else
+      @page_description = "#{t(:advice_results_by_tag)} #{params[:tag_list]}"
+    end
     @advices = Advice.search(params[:advice], params[:tag_list])
   end
 end
