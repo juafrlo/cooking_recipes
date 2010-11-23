@@ -191,7 +191,7 @@ class User < ActiveRecord::Base
   end
   
   def to_param
-    id.to_s << "-" << (login ? login.parameterize : '' )
+    (login ? login.parameterize : '' ) << "-" << id.to_s
   end
   
   def reset_password

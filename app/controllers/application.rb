@@ -3,6 +3,7 @@
 
 class ApplicationController < ActionController::Base
   include AuthenticatedSystem
+  before_filter :find_seo_id
 
   #Comment once all is correct
   #USERNAME, PASSWORD = "admin", "test"
@@ -59,4 +60,9 @@ class ApplicationController < ActionController::Base
       redirect_to '/' 
     end
   end
+  
+  def find_seo_id
+    params[:id] = params[:id].scan(/.+-(.+)?/).to_s.to_i unless params[:id].blank?
+  end
+
 end

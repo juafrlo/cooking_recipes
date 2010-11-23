@@ -20,6 +20,6 @@ class Category < ActiveRecord::Base
   end  
   
   def to_param
-    id.to_s << "-" << (name ? name.parameterize : '' )
+    (name ? name.parameterize : '' ) << "-" << id.to_s
   end
 end

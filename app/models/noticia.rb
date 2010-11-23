@@ -6,7 +6,7 @@ class Noticia < ActiveRecord::Base
   
 
   def to_param
-    id.to_s << "-" << (title ? title.parameterize : '' )
+    (title ? title.parameterize : '' ) << "-" << id.to_s
   end
   
 end

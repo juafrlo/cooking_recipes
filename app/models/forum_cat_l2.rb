@@ -7,6 +7,6 @@ class ForumCatL2 < ActiveRecord::Base
   end
 
   def to_param
-    id.to_s << "-" << (title ? title.parameterize : '' )
+    (title ? title.parameterize : '' ) << "-" << id.to_s
   end
 end

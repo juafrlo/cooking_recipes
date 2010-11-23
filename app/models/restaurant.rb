@@ -35,7 +35,7 @@ class Restaurant < ActiveRecord::Base
     
     
 	def to_param
-    id.to_s << "-" << (name ? name.parameterize : '' )
+    (name ? name.parameterize : '' ) << "-" << id.to_s
   end
   
   def self.search(options = {})
