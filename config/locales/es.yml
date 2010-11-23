@@ -468,6 +468,7 @@ es:
   que_cocinar_hoy_desc: "Cocina utilizando tan sólo los ingredientes que tienes en casa o busca una receta en concreto"
   receta_results: "Resultados de la búsqueda de recetas"
   receta_suggested_results: "Resultados sugeridos de la búsqueda de recetas"
+  Cooking_recipe: Receta de cocina
   
   #Restaurants
   New_restaurant: Nuevo restaurante
