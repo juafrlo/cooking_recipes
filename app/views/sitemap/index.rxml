@@ -1,0 +1,55 @@
+xml.instruct! :xml, :version => '1.0'
+xml.tag! 'urlset', 'xmlns' => "http://www.sitemaps.org/schemas/sitemap/0.9" do
+  xml.tag! 'url' do
+    xml.tag! 'loc', absolute_url
+  end
+  xml.tag! 'url' do
+    xml.tag! 'loc', absolute_url(url_for(:controller => :contacts))
+  end
+  @recetas.each do |receta|
+    xml.tag! 'url' do
+      xml.tag! 'loc', absolute_url(url_for(receta))
+    end
+  end
+  @categories.each do |category|
+    xml.tag! 'url' do
+      xml.tag! 'loc', absolute_url(recetas_categoria_path(category))
+    end
+  end
+  @advices.each do |advice|
+    xml.tag! 'url' do
+      xml.tag! 'loc', absolute_url(url_for(advice))
+    end
+  end  
+  @tags.each do |tag|
+    xml.tag! 'url' do
+      xml.tag! 'loc', absolute_url(tag_path(tag))
+    end
+  end  
+  
+  @restaurants.each do |restaurant|
+    xml.tag! 'url' do
+      xml.tag! 'loc', absolute_url(url_for(restaurant))
+    end
+  end  
+  @rest_categories.each do |rest_category|
+    xml.tag! 'url' do
+      xml.tag! 'loc', absolute_url(restaurantes_especialidad_path(rest_category))
+    end
+  end
+
+  @users.each do |user|
+    xml.tag! 'url' do
+      xml.tag! 'loc', absolute_url(url_for(user))
+    end
+    xml.tag! 'url' do
+      xml.tag! 'loc', absolute_url(recetas_user_path(user))
+    end
+    xml.tag! 'url' do
+      xml.tag! 'loc', absolute_url(consejos_user_path(user))
+    end
+    xml.tag! 'url' do
+      xml.tag! 'loc', absolute_url(restaurantes_user_path(user))
+    end
+  end  
+end

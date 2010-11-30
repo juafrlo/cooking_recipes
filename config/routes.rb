@@ -1,8 +1,10 @@
 ActionController::Routing::Routes.draw do |map|
-
   map.auto_complete ':controller/:action',
     :requirements => { :action => /auto_complete_for_\S+/},
     :conditions => { :method => :get }
+
+  #Sitemap
+  map.sitemap '/sitemap.xml', :controller => 'sitemap'
 
   #Home path
   map.home '', :controller => "noticias"
@@ -47,6 +49,7 @@ ActionController::Routing::Routes.draw do |map|
   map.restaurantes_especialidad 'restaurantes/especialidad/:id', :controller => 'restaurants', :action => 'especialidad' 
 
   #Advices
+  map.tag 'consejos_de_cocina/tag/:id', :controller => 'advices', :action => 'tag'  
   map.resources :advices, :as => 'consejos_de_cocina', :collection => {:buscador => :get, :resultados => :get}
   
   #Favorites

@@ -63,7 +63,7 @@ class ApplicationController < ActionController::Base
   end
   
   def find_seo_id
-    unless params[:id].blank?
+    unless params[:id].blank? || params[:action] == 'tag'
       seo_id = params[:id].scan(/.+-(.+)?/).to_s.to_i
       if seo_id != 0
         params[:id] = seo_id
@@ -76,7 +76,6 @@ class ApplicationController < ActionController::Base
   
   def redirect_pages_without_www
     if RAILS_ENV == 'production' && request.host.scan(/^www./).blank?
-      headers["Status"] = "301 Moved Permanently"  
       head :moved_permanently, :location => request.url.gsub('http://','http://www.')      
     end
   end
