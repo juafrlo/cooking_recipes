@@ -7,6 +7,7 @@
 	<meta name="keywords" content="<%= KEYWORDS %>">
 	<meta name="description" content="<%= page_description %>">
   <title><%="#{yield(:title) || controller.action_name} - " unless homepage?%> <%=SITE_NAME%></title>
+	<%= meta_robots_tags %>
   <%= stylesheet_link_tag 'application' %>
 	<!--[if IE]> <%= stylesheet_link_tag 'ie' %> <![endif]-->
 	<!--[if gte IE 8]>

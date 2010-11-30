@@ -128,4 +128,8 @@ module ApplicationHelper
   def restaurant_page?
     controller_name == "restaurants" && action_name == 'show'
   end
+  
+  def meta_robots_tags
+    "<meta content='noindex,follow' name='robots' />" unless @meta_no_index_follow.blank?
+  end
 end

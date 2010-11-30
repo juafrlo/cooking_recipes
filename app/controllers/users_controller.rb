@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   skip_before_filter :verify_authenticity_token, :only => 'auto_complete_for_user_login'
   before_filter :login_required, :only => 'auto_complete_for_user_login'
   before_filter :be_same_user, :only => [:edit, :update, :amigos]
-  before_filter :find_user, :only => [:recetas, :recetas_favoritas, :restaurantes,
+  before_filter :find_user, :set_no_index_follow, :only => [:recetas, :recetas_favoritas, :restaurantes,
      :restaurantes_favoritos, :consejos, :consejos_favoritos]
    
   def show
@@ -139,5 +139,9 @@ class UsersController < ApplicationController
   def be_same_user
     @user = User.find(params[:id])
     redirect_to '/' unless (current_user && (current_user == @user || current_user.admin?))
+  end
+  
+  def set_no_index_follow
+    @meta_no_index_follow = true unless params[:order].blank?
   end
 end

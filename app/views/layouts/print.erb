@@ -5,6 +5,7 @@
 <head>
   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
   <title><%=SITE_NAME%>: <%= yield(:title) || controller.action_name %></title>
+	<meta content='noindex,follow' name='robots' />
   <%= stylesheet_link_tag 'application' %>
   <%= stylesheet_link_tag 'rating' %>
   <%= stylesheet_link_tag 'auto_complete' %>

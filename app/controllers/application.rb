@@ -4,6 +4,7 @@
 class ApplicationController < ActionController::Base
   include AuthenticatedSystem
   before_filter :find_seo_id
+  before_filter :redirect_pages_without_www
 
   #Comment once all is correct
   #USERNAME, PASSWORD = "admin", "test"
@@ -70,6 +71,13 @@ class ApplicationController < ActionController::Base
         old_id = params[:id].scan(/(\d+).+/).to_s
         head :moved_permanently, :location => request.url.gsub(/#{old_id}-/,'') << "-#{old_id}"
       end
+    end
+  end
+  
+  def redirect_pages_without_www
+    if RAILS_ENV == 'production' && request.host.scan(/^www./).blank?
+      headers["Status"] = "301 Moved Permanently"  
+      head :moved_permanently, :location => request.url.gsub('http://','http://www.')      
     end
   end
 end
