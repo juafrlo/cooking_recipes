@@ -39,7 +39,7 @@ class ApplicationController < ActionController::Base
     unless logged_in?
       session[:protected_page] = request.request_uri
       flash[:notice] = "Por favor, haga login primero"
-      redirect_to(:controller => 'sessions', :action => 'new')
+      head :moved_permanently, :location => '/login'
       return false
     end      
   end
@@ -58,7 +58,7 @@ class ApplicationController < ActionController::Base
   def owner_required
     @obj = controller_name.singularize.camelize.constantize.find(params[:id])
     if !current_user || !(@obj.user == current_user || current_user.admin?)
-      redirect_to '/' 
+      head :moved_permanently, :location => '/'
     end
   end
   
