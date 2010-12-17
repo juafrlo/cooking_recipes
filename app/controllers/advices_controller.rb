@@ -101,7 +101,7 @@ class AdvicesController < ApplicationController
   end  
   
   def resultados
-    if params[:tag_list].blank?
+    if !params[:advice].blank?
       @page_description = t(:advice_results)
     else
       head :moved_permanently, :location => tag_path(params[:tag_list].parameterize)
@@ -111,7 +111,8 @@ class AdvicesController < ApplicationController
   end
   
   def tag
-    @page_description = "#{t(:advice_results_by_tag)} #{params[:tag_list]}"
+    @tag = Tag.find_by_name(params[:id].gsub('-',' '))
+    @page_description = "#{t(:advice_results_by_tag)} #{@tag.name}"
     @advices = Advice.search('', params[:id]) 
     render :template => 'advices/resultados'
   end

@@ -42,8 +42,12 @@ class Advice < ActiveRecord::Base
     scope = scope.by_name(options[:name]) 
     scope = scope.by_description(options[:description]) 
     scope = scope.best_voted 
-    scope = scope.find_tagged_with(tags) unless tags.empty?
-    scope     
+    unless tags.empty?
+      Advice.find_tagged_with(tags).each do |advice|
+        scope << advice
+      end
+    end
+    scope.uniq
   end
   
   def self.find_ordered(user,options = {})

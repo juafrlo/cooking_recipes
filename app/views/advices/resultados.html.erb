@@ -1,4 +1,8 @@
-<% title t(:Advices_results) %>
+<% if params[:id].blank? %>
+	<% title t(:Advices_results) %>
+<% else %>
+	<% title "#{t(:Tag_results)} #{@tag.name}" %> 
+<% end %>	
 <h1><%= yield(:title) %></h1>
 
 <% if @advices.size > 0 %>

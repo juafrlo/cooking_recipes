@@ -247,6 +247,7 @@ es:
   Advices_searcher: Buscador de consejos
   tags_comma_separated: Etiquetas (separadas por comas)
   Advices_results: Resultados de la búsqueda
+  Tag_results: Consejos de cocina sobre
   Advices_intro: Todo el mundo necesita consejo en algún momento para mejorar sus platos. Aquí podrás encontrar pequeñas ayudas para facilitar tu día a día en la cocina
   Advices_intro2: "Desde esta página podrás acceder de una forma rápida a los últimos consejos publicados, los mejores consejos puntuados por los usuarios, los mejores consejeros y una lista de los temas que más preocupan."
   Most_commented_advices: Temas más comunes en los consejos
@@ -255,7 +256,7 @@ es:
   advices_index_description: "Aquí encontrarás todos los consejos de cocina que necesitas: Los últimos consejos publicados, los mejores consejos puntuados por los usuarios, los mejores consejeros y una lista de los temas que más preocupan en la cocina. Comparte también tus consejos de cocina"
   advices_searcher: Buscador de consejos de cocina. Encuentra aquí el consejo de cocina que necesitas
   advice_results: Resultados de la búsquea de consejos de cocina
-  advice_results_by_tag: Consejos de cocina de 
+  advice_results_by_tag: Consejos de cocina relacionados con  
 
   #Categories
   category: categoría

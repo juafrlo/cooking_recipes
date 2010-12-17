@@ -1,6 +1,7 @@
 class MessagesController < ApplicationController
   
   before_filter :set_user
+  before_filter :set_seo_id
   auto_complete_for :message, :to
   skip_before_filter :verify_authenticity_token, :only => [:auto_complete_for_message_to]
   
@@ -57,6 +58,17 @@ class MessagesController < ApplicationController
   
   private
     def set_user
-      @user = User.find(params[:user_id])
+      if params[:user_id].scan(/.+(\d+)/).blank?
+        seo_id = params[:user_id].scan(/.+-(.+)?/).to_s.to_i
+      else
+        seo_id = params[:user_id].scan(/.+(\d+)/).flatten.first.to_i
+      end
+      @user = User.find(seo_id)
+    end
+    
+    def set_seo_id
+      if !params[:id].blank? && !params[:id].scan(/-(\d+)/).blank?
+        params[:id] = params[:id].scan(/-(\d+)/).flatten.first.to_i
+      end
     end
 end

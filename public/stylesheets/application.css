@@ -448,14 +448,12 @@ input{
 }
 
 .message-error {
-    padding: 4px 8px 3px 8px;
+  padding: 4px 8px 3px 8px;
 	font-size: 12px;
 	background:#FFDCD6;
-	border:1px solid #990000;
 	margin: -2px 0px 8px 0px;
-	color:#BB0000;
 	float:left;
-	width: 97%;
+	width: 91%;
 }
 
 .message-ok {
