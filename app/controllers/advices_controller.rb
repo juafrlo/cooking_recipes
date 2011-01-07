@@ -113,7 +113,7 @@ class AdvicesController < ApplicationController
   def tag
     @tag = Tag.find_by_name(params[:id].gsub('-',' '))
     @page_description = "#{t(:advice_results_by_tag)} #{@tag.name}"
-    @advices = Advice.search('', params[:id]) 
+    @advices = Advice.find_tagged_with(params[:id]) 
     render :template => 'advices/resultados'
   end
 end
