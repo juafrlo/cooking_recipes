@@ -7,10 +7,11 @@
 
   <div class="foto-user">
     <p class="no_spacing">
-      <%= image_tag comment.user.avatar.url(:small) %>
+      <%= link_to image_tag(comment.user.avatar.url(:small), :alt => comment.user.login),
+ 				user_path(comment.user) %>
     </p>
     <p class="no_spacing">
-      <%= link_to comment.user.login, user_path(comment.user_id) %>
+      <%= link_to comment.user.login, user_path(comment.user) %>
 	    <%= invite_user_link(comment.user, "comment_link_#{comment.id}",
 	      "user_link_#{comment.user.id}") %>
 	    <%= image_tag('web/spinner.gif', :id => "spiner_comment_link_#{comment.id}",

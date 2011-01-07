@@ -42,7 +42,8 @@
 <% if logged_in? %>
 <div class="foto-user avatar_spacing">
   <p class="no_spacing">
-    <%= image_tag current_user.avatar.url(:small) %>
+    <%= link_to image_tag(current_user.avatar.url(:small), :alt => current_user.login),
+ 			user_path(current_user)%>
   </p>
   <p class="no_spacing">
     <%= link_to current_user.login, user_path(current_user.id) %>
