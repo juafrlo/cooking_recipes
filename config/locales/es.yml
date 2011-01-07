@@ -600,9 +600,9 @@ es:
   recetas_by: Recetas de cocina de
   advices_by: Consejos de cocina de
   restaurants_by: Críticas de restaurantes de
-  favourite_recetas_by: Recetas de cocina favoritas de
-  favourite_advices_by: Consejos de cocina favoritos de
-  favourite_restaurants_by: Críticas de restaurantes favoritas de
+  favourite_recetas_by: Recetas de cocina favoritas del usuario
+  favourite_advices_by: Consejos de cocina favoritos del usuario
+  favourite_restaurants_by: Críticas de restaurantes favoritas del usuario
 
   #Contacts
   contact_description: "Mi nombre es Juan de Frías. Soy Ingeniero Superior de Telecomunicaciones especializado en Telemática con experiencia contrastada en el mundo del desarrollo web. Antes de cocinar es un desarrollado íntegramente en Ruby on Rails, con la intención tanto de poner en práctica conceptos adquiridos como de ofrecer esta herramienta para toda la gente interesada por el mundo de la cocina."
