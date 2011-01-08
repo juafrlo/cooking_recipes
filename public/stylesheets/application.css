@@ -1275,3 +1275,12 @@ h2.forum_post a{
 	color: white;
 	text-decoration:none;
 }
+
+#ad_block_hor{
+	margin: 2px 0px;
+}
+
+#ad_block_side{
+	margin-left: 25px;
+	margin-bottom: 10px;
+}
