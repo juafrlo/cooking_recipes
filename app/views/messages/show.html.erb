@@ -16,14 +16,20 @@
 </p>
 
 <p class="clear">
-  <strong><%= t(:Received)%>:</strong>
-  <%=h l @message.created_at.to_time, :format => :custom %>
+  <strong><%= t(:Subject)%>:</strong>
+  <%=h @message.subject %>
 </p>
 
 <p class="clear">
 	<strong><%= t(:To)%>:</strong>
 	<%= message_user(@message.recipient == @user, @message.recipient)%>
 </p>
+
+<p class="clear">
+  <strong><%= t(:Received)%>:</strong>
+  <%=h l @message.created_at.to_time, :format => :custom %>
+</p>
+
 
 <p>
   <strong>Mensaje:</strong><br />

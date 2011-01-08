@@ -62,7 +62,7 @@ class MessagesController < ApplicationController
       if params[:user_id].scan(/.+(\d+)/).blank?
         seo_id = params[:user_id].scan(/.+-(.+)?/).to_s.to_i
       else
-        seo_id = params[:user_id].scan(/.+(\d+)/).flatten.first.to_i
+        seo_id = params[:user_id].scan(/.+-(\d+)/).flatten.first.to_i
       end
       @user = User.find(seo_id)
     end
