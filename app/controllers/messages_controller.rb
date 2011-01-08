@@ -2,6 +2,7 @@ class MessagesController < ApplicationController
   
   before_filter :set_user
   before_filter :set_seo_id
+  before_filter :same_user_required
   auto_complete_for :message, :to
   skip_before_filter :verify_authenticity_token, :only => [:auto_complete_for_message_to]
   
@@ -69,6 +70,15 @@ class MessagesController < ApplicationController
     def set_seo_id
       if !params[:id].blank? && !params[:id].scan(/-(\d+)/).blank?
         params[:id] = params[:id].scan(/-(\d+)/).flatten.first.to_i
+      end
+    end
+    
+    def same_user_required
+      if current_user.blank? || current_user != @user
+        session[:protected_page] = request.request_uri
+        flash[:notice] = "Por favor, haga login primero"
+        head :moved_permanently, :location => '/login'
+        return false        
       end
     end
 end
