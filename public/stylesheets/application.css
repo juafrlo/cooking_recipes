@@ -1288,3 +1288,8 @@ h2.forum_post a{
 #ad_block_bottom{
 	margin:6px 0px 20px 0px;
 }
+
+#register_link a{
+	font-weight: bold;
+	color: red; 
+}

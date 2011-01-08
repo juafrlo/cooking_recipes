@@ -78,7 +78,7 @@
 				      		  <li>
 				              <%= log_in_out %> 
 				              <% if !logged_in? %>
-							    		  / <%= link_to t(:Register), signup_path %>
+							    		  / <span id="register_link"><%= link_to t(:Register), signup_path %></span>
 							        <% end %> 
 							      </li>	
 								    <% if logged_in? %>
