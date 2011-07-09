@@ -40,8 +40,11 @@ function fbs_click(){
   </li>
 
   <li>	
+    
+    
+    
 		<%= link_to image_tag('social_buttons/bot-link-twitter.gif', :alt => "twitter"),
-		   "http://twitter.com/home?status=Leyendo%20en%20www.antesdecocinar.com%20#{url_for(:only_path => false)}", 
+		   "http://twitter.com/home?status=#{twitter_message}%20#{url_for(:only_path => false)}", 
 		   :target => 'blank' %>
   </li>
 

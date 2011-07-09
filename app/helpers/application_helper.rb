@@ -136,4 +136,11 @@ module ApplicationHelper
   def meta_robots_tags
     "<meta content='noindex,follow' name='robots' />" unless @meta_no_index_follow.blank?
   end
+  
+  def twitter_message
+    title_element = @advice || @receta || @restaurant
+    if title_element.present?
+      @advice.title.gsub(' ', '%20')
+    end
+  end
 end
