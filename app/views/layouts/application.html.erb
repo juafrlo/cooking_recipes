@@ -22,9 +22,11 @@
   	<%= stylesheet_link_tag 'redbox' %>
     <%= javascript_include_tag 'redbox' %>
   <% end %>
-  <script type="text/javascript" src="https://apis.google.com/js/plusone.js">
-    {lang: 'es'}
-  </script>
+  <% if social_page? %>
+    <script type="text/javascript" src="https://apis.google.com/js/plusone.js">
+      {lang: 'es'}
+    </script>
+  <% end %>
 </head>
 
 <body>
