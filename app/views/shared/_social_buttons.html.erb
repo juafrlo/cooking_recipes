@@ -41,22 +41,11 @@ function fbs_click(){
 
   <li>	
 		<%= link_to image_tag('social_buttons/bot-link-twitter.gif', :alt => "twitter"),
-		   "http://twitter.com/home?status=Currently%20reading%20#{url_for(:only_path => false)}"%>
+		   "http://twitter.com/home?status=Leyendo%20en%20%20antesdecocinar#{url_for(:only_path => false)}"%>
   </li>
 
-  <li>
-		<%= link_to image_tag('social_buttons/bot-link-myspace.gif', :alt => 'myspace'),
-		  "http://www.myspace.com/Modules/PostTo/Pages/?u=#{url_for(:only_path => false)}"%>
+  <li>	
+		<g:plusone size="small"></g:plusone>
   </li>
-
-  <li>
-		<%= link_to image_tag('social_buttons/bot-link-delicious.gif', :alt => 'delicious'),
-		  "http://del.icio.us/post?url=#{url_for(:only_path => false)}" %>
-  </li>
-
-  <li>
-		<%= link_to image_tag('social_buttons/bot-link-meneame.gif', :alt => 'meneame'),
-		  "http://meneame.net/submit.php?url=#{url_for(:only_path => false)}"%>
-	  </li>
 </ul>
 <div class="clear"></div>
