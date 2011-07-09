@@ -140,7 +140,7 @@ module ApplicationHelper
   def twitter_message
     title_element = @advice || @receta || @restaurant
     if title_element.present?
-      @advice.title.gsub(' ', '%20')
+      title_element.name.gsub(' ', '%20')
     end
   end
 end
