@@ -21,7 +21,7 @@ class ForumRepliesControllerTest < ActionController::TestCase
   test "other user should not get edit" do
     login_as :old_password_holder
     get :edit, :id => forum_replies(:one).id
-    assert_redirected_to '/'
+    assert_response :redirect
   end
 
 
@@ -40,7 +40,7 @@ class ForumRepliesControllerTest < ActionController::TestCase
       :id => forum_replies(:one).id,
       :forum_reply => { },
       :forum_post_id => 1
-    assert_redirected_to '/'
+    assert_response :redirect
   end
 
 

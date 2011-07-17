@@ -42,7 +42,7 @@ class AdvicesControllerTest < ActionController::TestCase
   end
 
   test "should show advice" do
-    get :show, :id => advices(:one).id
+    get :show, :id => "name-#{advices(:one).id}"
     assert_response :success
   end
 
@@ -72,7 +72,7 @@ class AdvicesControllerTest < ActionController::TestCase
   test "should not update of other advice" do
     login_as :aaron
     put :update, :id => advices(:one).id, :advice => { }
-    assert_redirected_to '/'
+    assert_redirected_to '/consejos_de_cocina/1'
   end
 
   test "should destroy advice" do

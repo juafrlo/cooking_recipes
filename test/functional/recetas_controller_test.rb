@@ -9,7 +9,7 @@ class RecetasControllerTest < ActionController::TestCase
 
   test "should not get new" do
     get :new
-    assert_redirected_to '/login'
+    assert_response :redirect
   end
 
   test "should get new" do
@@ -23,7 +23,7 @@ class RecetasControllerTest < ActionController::TestCase
     assert_no_difference('Receta.count') do
       post :create, :receta => { }
     end
-    assert_redirected_to '/login'
+    assert_response :redirect
   end
 
   test "should create receta" do
@@ -40,13 +40,13 @@ class RecetasControllerTest < ActionController::TestCase
 
 
   test "should show receta" do
-    get :show, :id => recetas(:paella).id
+    get :show, :id => "name-#{recetas(:paella).id}"
     assert_response :success
   end
 
   test "should not get edit" do
     get :edit, :id => recetas(:paella).id
-    assert_redirected_to '/login'
+    assert_response :redirect
   end
 
   test "should get edit" do
@@ -57,13 +57,13 @@ class RecetasControllerTest < ActionController::TestCase
 
   test "should not update receta" do
     put :update, :id => recetas(:paella).id, :receta => { }
-    assert_redirected_to '/login'
+    assert_response :redirect
   end
   
   test "other user should not update receta" do
     login_as :aaron
     put :update, :id => recetas(:paella).id, :receta => { }
-    assert_redirected_to '/'
+    assert_response :redirect
   end
 
   test "owner should update receta" do
@@ -101,7 +101,7 @@ class RecetasControllerTest < ActionController::TestCase
   end
   
   test "should get print version" do
-    get :show, :formmat => :print, :id => recetas(:paella).id
+    get :show, :formmat => :print, :id => "name-#{recetas(:paella).id}"
     assert_response :success
   end    
 end

@@ -7,14 +7,14 @@ class RatingTest < ActiveSupport::TestCase
   end
   
   test "rate" do
-    Rating.rate(recetas(:two).id,4,"Receta",users(:quentin))
+    Rating.rate(recetas(:arroz_a_la_cubana).id,4,"Receta",users(:quentin))
     assert_equal Rating.rating(Receta.find(2), "Receta"), 4
   end  
 
   test "number of votes" do 
-    assert_equal Rating.number_of_votes("Receta",recetas(:two)), 1
+    assert_equal Rating.number_of_votes("Receta",recetas(:arroz_a_la_cubana)), 1
     Rating.rate(2,4,"Receta",users(:quentin))
-    assert_equal Rating.number_of_votes("Receta",recetas(:two)), 2
+    assert_equal Rating.number_of_votes("Receta",recetas(:arroz_a_la_cubana)), 2
   end
   
   test "rating" do
@@ -24,9 +24,9 @@ class RatingTest < ActiveSupport::TestCase
   end
 
   test "is_rated?" do
-    assert_equal Rating.is_rated?("Receta",Receta.find(1),users(:quentin)), false
+    assert_equal Rating.is_rated?(Receta.find(1),users(:quentin)), false
     Rating.rate(1,4,"Receta",users(:quentin))
-    assert_equal Rating.is_rated?("Receta",Receta.find(1),users(:quentin)), true
+    assert_equal Rating.is_rated?(Receta.find(1),users(:quentin)), true
   end
 
 end

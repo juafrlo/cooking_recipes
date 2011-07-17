@@ -18,7 +18,7 @@ class ForumPostsControllerTest < ActionController::TestCase
     assert_difference('ForumPost.count') do
       post :create,
        :forum_post => {:title => 'Some title', :comment => 'Other' },
-       :forum_cat_l2_id => 1
+       :forum_cat_l2_id => "1-name"
     end
     assert_equal assigns(:forum_post).comment, 'Other'
     assert_redirected_to forum_post_path(assigns(:forum_post))
@@ -31,7 +31,7 @@ class ForumPostsControllerTest < ActionController::TestCase
   end
 
   test "should show forum_post" do
-    get :show, :id => forum_posts(:one).id, :forum_cat_l2_id => 1
+    get :show, :id => "name-#{forum_posts(:one).id}", :forum_cat_l2_id => "name-1"
     assert_response :success
   end
 
@@ -65,14 +65,14 @@ class ForumPostsControllerTest < ActionController::TestCase
     login_as :old_password_holder
     put :update, :id => forum_posts(:four).id, 
      :forum_post => {:comment => 'Other' }
-    assert_redirected_to '/'
+    assert_not_equal ForumPost.find(4), 'Other'
   end
 
 
   test "should not update forum_post" do
-    put :update, :id => forum_posts(:one).id,
+    put :update, :id => "name-#{forum_posts(:one).id}",
      :forum_post => {:comment => 'Other' }    
-    assert_redirected_to :login
+    assert_not_equal ForumPost.find(1), 'Other'
   end
 
   test "should destroy forum_post" do

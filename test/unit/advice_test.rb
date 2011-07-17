@@ -7,7 +7,7 @@ class AdviceTest < ActiveSupport::TestCase
     assert_equal Advice.search(:description => 'hervir'), [advices(:two)]
     assert_equal Advice.search(:name => 'arroz', :description => 'cocer'), 
       [advices(:one)]
-    assert_equal Advice.search({:name => 'arroz'}, "olor"), []
+    assert_equal Advice.search({:name => 'arroz'}, "olor"), [advices(:one)]
   end
   
 end

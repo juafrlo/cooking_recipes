@@ -1,6 +1,6 @@
 require File.dirname(__FILE__) + '/../test_helper'
 
-class UserMailerTest < Test::Unit::TestCase
+class UserMailerTest < ActionMailer::TestCase
   def test_reset_password
     assert_difference 'ActionMailer::Base.deliveries.size', +1 do
       UserMailer.deliver_reset_password(users(:quentin))

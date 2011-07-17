@@ -44,7 +44,7 @@ class ForumCatL2sControllerTest < ActionController::TestCase
   end
 
   test "should show forum_cat_l2" do
-    get :show, :id => forum_cat_l2s(:one).id
+    get :show, :id => "name-#{forum_cat_l2s(:one).id}"
     assert_response :success
   end
 

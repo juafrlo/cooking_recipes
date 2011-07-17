@@ -36,7 +36,7 @@ class NoticiasControllerTest < ActionController::TestCase
   end
 
   test "should show noticia" do
-    get :show, :id => noticias(:one).id
+    get :show, :id => "name-#{noticias(:one).id}"
     assert_response :success
   end
 

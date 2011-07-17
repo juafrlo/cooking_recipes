@@ -42,7 +42,7 @@ class RestaurantsControllerTest < ActionController::TestCase
   end
 
   test "should show restaurant" do
-    get :show, :id => restaurants(:one).id
+    get :show, :id => "name-#{restaurants(:one).id}"
     assert_response :success
   end
 
@@ -72,7 +72,7 @@ class RestaurantsControllerTest < ActionController::TestCase
   test "should not update restaurant of other user" do
     login_as :aaron
     put :update, :id => restaurants(:one).id, :restaurant => { }
-    assert_redirected_to '/'
+    assert_response :redirect
   end
 
   test "should destroy restaurant" do

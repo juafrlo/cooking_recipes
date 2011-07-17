@@ -1,5 +1,5 @@
 unless @comment.new_record?
-  page.insert_html :bottom, @newest_comment_id, :partial => 'comments/comment.html.haml',
+  page.insert_html :bottom, @newest_comment_id, :partial => 'comments/comment.html.erb',
    :locals => {:comment => @comment}
   page.visual_effect  :highlight, "comment_#{@comment.id}"
   page["new_comment_form".to_sym].reset

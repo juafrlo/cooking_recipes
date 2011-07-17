@@ -102,7 +102,7 @@ class UserTest < ActiveSupport::TestCase
    
   def test_assignrole 
     assert_equal users(:quentin).roles.count, 1
-    users(:quentin).assignrole
+    users(:quentin).assign_role
     assert_equal users(:quentin).roles.count, 2
   end
   

@@ -26,7 +26,7 @@ class RestCategoriesControllerTest < ActionController::TestCase
   end
 
   test "should show rest_category" do
-    get :show, :id => rest_categories(:one).id
+    get :show, :id => "name-#{rest_categories(:one).id}"
     assert_response :success
   end
 
