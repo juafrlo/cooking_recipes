@@ -30,7 +30,7 @@ class ForumCatL1sControllerTest < ActionController::TestCase
   end
 
   test "should get edit" do
-    get :edit, :id => forum_cat_l1s(:one).id
+    get :edit, :id => "test-#{forum_cat_l1s(:one).id}"
     assert_response :success
   end
 
@@ -43,7 +43,7 @@ class ForumCatL1sControllerTest < ActionController::TestCase
     count1 = ForumCatL2.find(:all,
      :conditions => ['forum_cat_l1_id = ?', forum_cat_l1s(:one).id]).size
     assert_difference('ForumCatL1.count', -1) do
-      delete :destroy, :id => forum_cat_l1s(:one).id
+      delete :destroy, :id => "test-#{forum_cat_l1s(:one).id}"
     end
     assert_not_equal count1, 
      ForumCatL2.find(:all,

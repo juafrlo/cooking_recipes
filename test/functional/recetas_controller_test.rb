@@ -51,7 +51,7 @@ class RecetasControllerTest < ActionController::TestCase
 
   test "should get edit" do
     login_as :quentin
-    get :edit, :id => recetas(:paella).id
+    get :edit, :id => "test-#{recetas(:paella).id}"
     assert_response :success
   end
 
@@ -68,13 +68,13 @@ class RecetasControllerTest < ActionController::TestCase
 
   test "owner should update receta" do
     login_as :quentin
-    put :update, :id => recetas(:paella).id, :receta => { }
+    put :update, :id => "test-#{recetas(:paella).id}", :receta => { }
     assert_redirected_to receta_path(recetas(:paella))
   end
 
   test "should not destroy receta" do
     assert_no_difference 'Receta.count' do
-      delete :destroy, :id => recetas(:paella).id
+      delete :destroy, :id => "test-#{recetas(:paella).id}"
     end
     assert_redirected_to '/'
   end
@@ -82,7 +82,7 @@ class RecetasControllerTest < ActionController::TestCase
   test "other user should not destroy receta" do
     login_as :aaron
     assert_no_difference 'Receta.count' do
-      delete :destroy, :id => recetas(:paella).id
+      delete :destroy, :id => "test-#{recetas(:paella).id}"
     end
     assert_redirected_to '/'
   end
@@ -90,13 +90,13 @@ class RecetasControllerTest < ActionController::TestCase
   test "admin should destroy receta" do
     login_as :quentin
     assert_difference('Receta.count',-1) do
-      delete :destroy, :id => recetas(:paella).id
+      delete :destroy, :id => "test-#{recetas(:paella).id}"
     end
     assert_redirected_to recetas_path
   end
   
   test "all users should access to categoria" do
-    get :categoria, :id => 1
+    get :categoria, :id => "test-1"
     assert_response :success
   end
   

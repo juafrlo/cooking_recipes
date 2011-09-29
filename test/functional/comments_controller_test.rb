@@ -17,14 +17,14 @@ class CommentsControllerTest < ActionController::TestCase
   test 'should destroy comment' do
     login_as :quentin
     assert_difference('Comment.count', -1) do
-      delete :destroy, :id => Comment.last.id
+      delete :destroy, :id => "test-#{Comment.last.id}"
     end
   end
   
   test 'should not destroy comment' do
     login_as :aaron
     assert_no_difference('Comment.count') do
-      delete :destroy, :id => Comment.last.id
+      delete :destroy, :id => "test-#{Comment.last.id}"
     end
   end
 

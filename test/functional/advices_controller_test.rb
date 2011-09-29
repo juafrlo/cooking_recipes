@@ -48,7 +48,7 @@ class AdvicesControllerTest < ActionController::TestCase
 
   test "should get edit" do
     login_as :quentin
-    get :edit, :id => advices(:one).id
+    get :edit, :id => "test-#{advices(:one).id}"
     assert_response :success
   end
 
@@ -78,7 +78,7 @@ class AdvicesControllerTest < ActionController::TestCase
   test "should destroy advice" do
     login_as :quentin
     assert_difference('Advice.count', -1) do
-      delete :destroy, :id => advices(:one).id
+      delete :destroy, :id => "advice-test-#{advices(:one).id}"
     end
 
     assert_redirected_to advices_path
@@ -86,12 +86,12 @@ class AdvicesControllerTest < ActionController::TestCase
 
   test "should not destroy advice" do
     assert_no_difference 'Advice.count' do
-      delete :destroy, :id => advices(:one).id
+      delete :destroy, :id => "test-#{advices(:one).id}"
     end
     assert_redirected_to '/'
     login_as :aaron
     assert_no_difference 'Advice.count' do
-      delete :destroy, :id => advices(:one).id
+      delete :destroy, :id => "test-#{advices(:one).id}"
     end
     assert_redirected_to '/'
   end

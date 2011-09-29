@@ -37,13 +37,13 @@ class ForumPostsControllerTest < ActionController::TestCase
 
   test "should get edit" do
     login_as :aaron
-    get :edit, :id => forum_posts(:four).id, :forum_cat_l2_id => 1
+    get :edit, :id => "test-#{forum_posts(:four).id}", :forum_cat_l2_id => "test-1"
     assert_response :success
   end
 
   test "other user should not get edit" do
     login_as :old_password_holder
-    get :edit, :id => forum_posts(:four).id, :forum_cat_l2_id => 1
+    get :edit, :id => "test-#{forum_posts(:four).id}", :forum_cat_l2_id => "test-1"
     assert_response :redirect
   end
 
@@ -55,7 +55,7 @@ class ForumPostsControllerTest < ActionController::TestCase
 
   test "should update forum_post" do
     login_as :aaron
-    put :update, :id => forum_posts(:four).id, 
+    put :update, :id => "test-#{forum_posts(:four).id}", 
      :forum_post => {:comment => 'Other' }
     assert_equal assigns(:forum_post).comment, 'Other'
     assert_redirected_to forum_post_path(assigns(:forum_post))
@@ -80,7 +80,7 @@ class ForumPostsControllerTest < ActionController::TestCase
     count1 = ForumReply.find(:all,
      :conditions => ['forum_post_id = ?', forum_posts(:one).id]).size
     assert_difference('ForumPost.count', -1) do
-      delete :destroy, :id => forum_posts(:one).id
+      delete :destroy, :id => "test-#{forum_posts(:one).id}"
     end
     assert_not_equal count1, 
      ForumReply.find(:all,

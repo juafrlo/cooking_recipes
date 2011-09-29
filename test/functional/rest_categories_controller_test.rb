@@ -31,7 +31,7 @@ class RestCategoriesControllerTest < ActionController::TestCase
   end
 
   test "should get edit" do
-    get :edit, :id => rest_categories(:one).id
+    get :edit, :id => "test-#{rest_categories(:one).id}"
     assert_response :success
   end
 
@@ -42,7 +42,7 @@ class RestCategoriesControllerTest < ActionController::TestCase
 
   test "should destroy rest_category" do
     assert_difference('RestCategory.count', -1) do
-      delete :destroy, :id => rest_categories(:one).id
+      delete :destroy, :id => "test-#{rest_categories(:one).id}"
     end
     assert_redirected_to rest_categories_path
   end

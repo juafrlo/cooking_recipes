@@ -14,7 +14,7 @@ class ForumRepliesControllerTest < ActionController::TestCase
 
   test "should get edit" do
     login_as :aaron
-    get :edit, :id => forum_replies(:one).id
+    get :edit, :id => "test-#{forum_replies(:one).id}"
     assert_response :success
   end
 
@@ -28,9 +28,9 @@ class ForumRepliesControllerTest < ActionController::TestCase
   test "should update forum_reply" do
     login_as :aaron
     put :update,
-      :id => forum_replies(:one).id,
+      :id => "test-#{forum_replies(:one).id}",
       :forum_reply => { },
-      :forum_post_id => 1
+      :forum_post_id => "test-1"
     assert_redirected_to forum_post_path(assigns(:forum_reply).forum_post)
   end
 
@@ -47,7 +47,7 @@ class ForumRepliesControllerTest < ActionController::TestCase
   test "should destroy forum_reply" do
     login_as :quentin
     assert_difference('ForumReply.count', -1) do
-      delete :destroy, :id => forum_replies(:one).id
+      delete :destroy, :id => "test-#{forum_replies(:one).id}"
     end
     assert_redirected_to forum_post_path(forum_replies(:one).forum_post)
   end

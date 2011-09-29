@@ -74,7 +74,7 @@ class UsersControllerTest < ActionController::TestCase
   
   def test_should_edit_user_info
     login_as :quentin
-    get :edit, :id => users(:quentin).id
+    get :edit, :id => "test-#{users(:quentin).id}"
     assert_response :success
   end
 
@@ -86,7 +86,7 @@ class UsersControllerTest < ActionController::TestCase
     
   def test_should_get_amigos
     login_as :quentin
-    get :amigos, :id => users(:quentin).id
+    get :amigos, :id => "test-#{users(:quentin).id}"
     assert_response :success
   end
   
@@ -97,7 +97,7 @@ class UsersControllerTest < ActionController::TestCase
   
   def test_should_update
     login_as :quentin
-    put :update, :id => users(:quentin).id,
+    put :update, :id => "test-#{users(:quentin).id}",
       :user => {:town =>"New town", :receive_comments_emails => true,
         :receive_friends_emails => true}
     assert_equal assigns(:user).town, "New town"
@@ -114,32 +114,32 @@ class UsersControllerTest < ActionController::TestCase
   end
 
   test "should get user recetas" do
-    get :recetas, :id => 1
+    get :recetas, :id => "test-1"
     assert_response :success
   end
 
   test "should get user favorite recetas" do
-    get :recetas_favoritas, :id => 1
+    get :recetas_favoritas, :id => "test-1"
     assert_response :success
   end
   
   test "should get user restaurants" do
-    get :restaurantes, :id => 1
+    get :restaurantes, :id => "test-1"
     assert_response :success
   end
 
   test "should get user favorite restaurants" do
-    get :restaurantes_favoritos, :id => 1
+    get :restaurantes_favoritos, :id => "test-1"
     assert_response :success
   end
 
   test "should get user advices" do
-    get :consejos, :id => 1
+    get :consejos, :id => "test-1"
     assert_response :success
   end
 
   test "should get user favorite advices" do
-    get :consejos_favoritos, :id => 1
+    get :consejos_favoritos, :id => "test-1"
     assert_response :success
   end
 

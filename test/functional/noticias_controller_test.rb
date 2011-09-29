@@ -42,7 +42,7 @@ class NoticiasControllerTest < ActionController::TestCase
 
   test "should get edit" do
     login_as :quentin
-    get :edit, :id => noticias(:one).id
+    get :edit, :id => "test-#{noticias(:one).id}"
     assert_response :success
   end
 
@@ -59,13 +59,13 @@ class NoticiasControllerTest < ActionController::TestCase
   end
 
   test "should not update noticia" do
-    put :update, :id => noticias(:one).id, :noticia => { }
+    put :update, :id => "test-#{noticias(:one).id}", :noticia => { }
     assert_redirected_to '/'
   end
 
   test "should not destroy noticia" do
     assert_no_difference('Noticia.count') do
-      delete :destroy, :id => noticias(:one).id
+      delete :destroy, :id => "test-#{noticias(:one).id}"
     end
     assert_redirected_to '/'
   end

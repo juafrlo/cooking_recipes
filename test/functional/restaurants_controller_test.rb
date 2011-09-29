@@ -48,7 +48,7 @@ class RestaurantsControllerTest < ActionController::TestCase
 
   test "should get edit" do
     login_as :quentin
-    get :edit, :id => restaurants(:one).id
+    get :edit, :id => "test-#{restaurants(:one).id}"
     assert_response :success
   end
 
@@ -78,7 +78,7 @@ class RestaurantsControllerTest < ActionController::TestCase
   test "should destroy restaurant" do
     login_as :quentin
     assert_difference('Restaurant.count', -1) do
-      delete :destroy, :id => restaurants(:one).id
+      delete :destroy, :id => "test-#{restaurants(:one).id}"
     end
 
     assert_redirected_to restaurants_path
@@ -86,12 +86,12 @@ class RestaurantsControllerTest < ActionController::TestCase
 
   test "should not destroy restaurant" do
     assert_no_difference 'Restaurant.count' do
-      delete :destroy, :id => restaurants(:one).id
+      delete :destroy, :id => "test-#{restaurants(:one).id}"
     end
     assert_redirected_to '/'
     login_as :aaron
     assert_no_difference 'Restaurant.count' do
-      delete :destroy, :id => restaurants(:one).id
+      delete :destroy, :id => "test-#{restaurants(:one).id}"
     end
     assert_redirected_to '/'
   end
