@@ -154,6 +154,7 @@ a img {
 	width: auto;
 	padding: 6px 20px 6px 10px;
 	background: url(../images/layo/img10.gif) no-repeat left 50%;
+	font-size: 16px;
 }
 
 #menu a:hover {
@@ -1012,7 +1013,8 @@ ul#social_buttons {
 	padding: 0px 4px 0px 0px;
 	list-style: none;
 	line-height: normal;
-	float: right;
+	margin-top: 10px;
+	float: left;
 }
 
 ul#social_buttons li {
@@ -1025,6 +1027,10 @@ ul#social_buttons li {
 ul#social_buttons ul li a {
 	display: block;
 	width: auto;
+}
+
+ul#social_buttons span{
+	color: #CCC;
 }
 
 .no_background {
@@ -1277,7 +1283,7 @@ h2.forum_post a{
 }
 
 #ad_block_hor{
-	margin: 2px 0px;
+	margin: 20px 0px;
 }
 
 #ad_block_side{
@@ -1286,8 +1292,21 @@ h2.forum_post a{
 }
 
 #ad_block_bottom{
-	margin:6px 0px 20px 0px;
+	margin-top: 30px;
 }
+
+#ad_block_bottom div{
+	margin-bottom: 20px;
+}
+
+#side-skyscrapper{
+	margin: 20px 0px 20px 70px;
+}
+
+#link-unit-side{
+	margin: 15px 0px 20px 90px;
+}
+
 
 #register_link a{
 	font-weight: bold;

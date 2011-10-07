@@ -4,17 +4,7 @@
 </h1>
 
 <div id="ad_block_hor">
-	<script type="text/javascript"><!--
-	google_ad_client = "ca-pub-6226687068928040";
-	/* Banner horizontal www.antesdecocinar.com */
-	google_ad_slot = "0448318974";
-	google_ad_width = 468;
-	google_ad_height = 60;
-	//-->
-	</script>
-	<script type="text/javascript"
-	src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
-	</script>
+  <%= render :partial => '/shared/ads/link_unit_top'%>
 </div>
 
 <p>
@@ -39,12 +29,16 @@
 	</div>
 </div>
 <div id="rating_status" style="color:green;"></div>	
+<%= render :partial => 'shared/social_buttons', :locals => {:obj => @advice}%>
 
+<br/>
+<br/>
 
 <p>
  <b><%= t(:Description)%>:</b><br/>
 	<%= h @advice.description %> 
 </p>
+
 
 <p>
  <b>Tags:</b><br/>
@@ -52,22 +46,10 @@
 </p>
 
 <div id="ad_block_bottom">
-	<script type="text/javascript"><!--
-	google_ad_client = "ca-pub-6226687068928040";
-	/* Banner pie www.antesdecocinar.com */
-	google_ad_slot = "1466003618";
-	google_ad_width = 468;
-	google_ad_height = 15;
-	//-->
-	</script>
-	<script type="text/javascript"
-	src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
-	</script>
+  <div><%= render :partial => '/shared/ads/link_unit_bottom' %></div>
+  <div><%= render :partial => '/shared/ads/ad_bottom' %></div>
 </div>
 
-<p>
-  <%= render :partial => 'shared/social_buttons', :locals => {:obj => @advice}%>
-</p>
 
 <% if current_user && (@advice.user == current_user || current_user.admin?)%>
   <%= link_to t(:Edit), edit_advice_path(@advice) %> |
