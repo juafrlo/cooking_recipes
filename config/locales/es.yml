@@ -522,7 +522,7 @@ es:
   
   #Sessions
   session_created: ¡Ya estás dentro!
-  session_destroyed: ¡Has salido del sistema!
+  session_destroyed: ¡Has salido de la sesión!
   
   #Users
   View_recetas: Ver recetas

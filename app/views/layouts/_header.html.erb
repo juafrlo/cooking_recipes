@@ -4,7 +4,7 @@
 			<%= link_to SITE_NAME, '/' %>
     <%= '</h1>' if homepage? %>
   </div>
-  <div id="menu">
+  <div id="menu" <%if logged_in?%>class="small_size"<%end%>>
     <ul>
 	    <% if current_user && current_user.admin? %> 
 			  <li>
