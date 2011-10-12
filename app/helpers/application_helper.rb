@@ -47,7 +47,7 @@ module ApplicationHelper
       flash_class = flash[:error].blank? ? 'message-ok' : 'message-error'
       html = "<div class='#{flash_class}'>"
       html += "<div class='flash_text'>"
-      html += flash[:notice] || flash[:error]
+      html += flash[:notice] || flash[:error] rescue ''
       html += "</div>"
       html += "<div class='close_flash'>"
       html += "<a href='#' onclick=\"$$('div.flash_message')[0].fade();return false\">x</a>"
