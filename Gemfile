@@ -4,3 +4,4 @@ gem "rake", "0.9.2"
 gem "rdoc"
 gem 'rails', '2.3.8'    # explicitly require rails (even in production)
 gem 'pg', '0.10.1'
+gem 'paperclip'
