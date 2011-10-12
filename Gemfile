@@ -5,7 +5,6 @@ gem "rdoc"
 gem 'rails', '2.3.11'    # explicitly require rails (even in production)
 gem 'pg', '0.10.1'
 gem 'paperclip'
-gem 'recaptcha', :require => 'recaptcha/rails'
 gem 'RedCloth'
 
 group :development do

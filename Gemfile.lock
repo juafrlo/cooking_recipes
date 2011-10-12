@@ -36,7 +36,6 @@ GEM
     rbx-require-relative (0.0.5)
     rdoc (3.10)
       json (~> 1.4)
-    recaptcha (0.3.1)
     ruby-debug (0.10.4)
       columnize (>= 0.1)
       ruby-debug-base (~> 0.10.4.0)
@@ -54,5 +53,4 @@ DEPENDENCIES
   rails (= 2.3.11)
   rake (= 0.9.2)
   rdoc
-  recaptcha
   ruby-debug
