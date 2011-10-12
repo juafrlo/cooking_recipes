@@ -73,6 +73,8 @@ Rails::Initializer.run do |config|
   # config.active_record.schema_format = :sql
 
 
+  config.gem "recaptcha", :lib => "recaptcha/rails"
+
   # Activate observers that should always be running
   # Please note that observers generated using script/generate observer need to have an _observer suffix
   # config.active_record.observers = :cacher, :garbage_collector, :forum_observer
@@ -83,6 +85,3 @@ Rails::Initializer.run do |config|
   DESCRIPTION = "Coumunidad de amantes de la cocina, donde podrás crear y compartir recetas de cocina, consejos de cocina y críticas de restaurantes, además de poder encontrar qué cocinar hoy"  
 
 end
-
-
-require 'recaptcha'
