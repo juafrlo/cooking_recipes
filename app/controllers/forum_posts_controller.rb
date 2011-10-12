@@ -2,7 +2,6 @@ class ForumPostsController < ApplicationController
   before_filter :authorize, :only => [:new, :create, :edit, :update]
   before_filter :owner_required, :only => [:edit, :update]
   before_filter :admin_required, :only => [:destroy]
-  require 'redcloth'
 
   # GET /forum_posts/1
   # GET /forum_posts/1.xml
