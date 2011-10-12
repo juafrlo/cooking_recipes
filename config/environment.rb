@@ -83,6 +83,3 @@ Rails::Initializer.run do |config|
   DESCRIPTION = "Coumunidad de amantes de la cocina, donde podrás crear y compartir recetas de cocina, consejos de cocina y críticas de restaurantes, además de poder encontrar qué cocinar hoy"  
 
 end
-
-
-require 'recaptcha'
