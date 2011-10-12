@@ -21,3 +21,4 @@ config.action_mailer.raise_delivery_errors = true
 SITE_NAME = "Antes de cocinar"
 SITE_URL = "localhost:3000"
 SITE_EMAIL = "test_my_app@test.com"
+ActionMailer::Base.delivery_method = :sendmail

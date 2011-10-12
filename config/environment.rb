@@ -1,5 +1,4 @@
-# Be sure to restart your server when you modify this file
-
+# encoding: UTF-8
 # Uncomment below to force Rails into production mode when
 # you don't control web/app server and can't set it the proper way
 # ENV['RAILS_ENV'] ||= 'production'
@@ -85,5 +84,3 @@ Rails::Initializer.run do |config|
   KEYWORDS = "Recetas de cocina, crítica de restaurantes, consejos de cocina, qué cocinar hoy con pocos ingredientes, cocina, Juan de Frías, Ruby on Rails, comunidad, red social, cocineros"
   DESCRIPTION = "Coumunidad de amantes de la cocina, donde podrás crear y compartir recetas de cocina, consejos de cocina y críticas de restaurantes, además de poder encontrar qué cocinar hoy"  
 end
-
-ActionMailer::Base.delivery_method = :sendmail

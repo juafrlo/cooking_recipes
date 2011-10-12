@@ -24,3 +24,4 @@ config.action_mailer.delivery_method = :test
 SITE_NAME = "Mis Recetas"
 SITE_URL = "localhost:3000"
 SITE_EMAIL = "prueba@prueba.com"
+ActionMailer::Base.delivery_method = :sendmail
