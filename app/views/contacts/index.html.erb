@@ -33,6 +33,8 @@
 
    <p>
 	   <%= recaptcha_tags :ajax => true %>
+     <%= recaptcha_tags(:ajax => true, :display => {:theme =>'white', :custom_translations => { :instructions_visual => t(:recaptcha_text) }}) %>
+
 	 </p>
 
    <%= f.submit t(:Send) %>
