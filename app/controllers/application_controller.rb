@@ -79,7 +79,7 @@ class ApplicationController < ActionController::Base
   end
   
   def redirect_pages_without_www
-    if RAILS_ENV == 'production' && request.host.scan(/^www./).blank? && request.host.scan('/heroku/').blank?
+    if RAILS_ENV == 'production' && request.host.scan(/^www./).blank? && request.host.scan('heroku').blank?
       head :moved_permanently, :location => request.url.gsub('http://','http://www.')      
     end
   end
