@@ -76,11 +76,7 @@ Rails::Initializer.run do |config|
   # Please note that observers generated using script/generate observer need to have an _observer suffix
   # config.active_record.observers = :cacher, :garbage_collector, :forum_observer
   config.load_paths << "#{RAILS_ROOT}/app/sweepers"
-  config.active_record.observers = :user_observer
-  
-  ENV['RECAPTCHA_PUBLIC_KEY'] = "6Ld_igkAAAAAAF0pfRNL7Demw5SOWgEAqpWVUKMx"
-  ENV['RECAPTCHA_PRIVATE_KEY'] = "6Ld_igkAAAAAAIDrGuHJ0DZzmPNEhgo1zEq06Jau"
-  
+  config.active_record.observers = :user_observer  
   KEYWORDS = "Recetas de cocina, crítica de restaurantes, consejos de cocina, qué cocinar hoy con pocos ingredientes, cocina, Juan de Frías, Ruby on Rails, comunidad, red social, cocineros"
   DESCRIPTION = "Coumunidad de amantes de la cocina, donde podrás crear y compartir recetas de cocina, consejos de cocina y críticas de restaurantes, además de poder encontrar qué cocinar hoy"  
 end
