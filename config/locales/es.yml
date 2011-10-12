@@ -275,7 +275,10 @@ es:
   why_this_project: no es más que un proyecto personal, desarrollado íntegramente en Ruby on Rails, con la intención tanto de poner en práctica conceptos adquiridos como de ofrecer esta herramienta para toda la gente interesada por el mundo de la cocina.
   how_to_contact: "Ante cualquier duda o consulta puedes contactar conmigo a través de mi <a href='http://www.juandefrias.com' alt='juandefrias.com' target='blank' rel='nofollow'>blog</a> o del siguiente formulario"
   Comment: Comentario
-  recaptcha_text: "El código de seguridad no es correcto. Por favor, inténtelo de nuevo"
+  recaptcha_text: "Escriba las dos palabras"
+  recaptcha:
+    errors:
+      verification_failed: "Las palabras de paso son incorrectas."
   Sent_contact_form: ¡Enviado!
   A_response_will_arrive_soon: Pronto recibirás una respuesta
   someone_wants_to_contact_you: Alguien quiere contactar contigo
