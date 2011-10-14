@@ -47,12 +47,14 @@
 	</div>	
 </div>
 
-<div class="form_div">
-	<div class="form_col1">
-		<%= label_tag 'Avatar' %><br/>
-		<%= f.file_field :avatar, :style => 'height:20px;' %>
-	</div>
-</div>
+<% if RAILS_ENV != 'production' %>
+  <div class="form_div">
+  	<div class="form_col1">
+  		<%= label_tag 'Avatar' %><br/>
+  		<%= f.file_field :avatar, :style => 'height:20px;' %>
+  	</div>
+  </div>
+<% end %>
 
 <div class="form_div">
 	<p class="login_check">

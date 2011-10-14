@@ -33,12 +33,14 @@
 
   <div class="clear"></div><br/>
 
-	<div class="form_div">
-		<div class="form_col1">
-	    <%= f.label :photo, t(:Photo) %><br />
-		  <%= f.file_field :photo, :class => 'file_type' %>
-		</div>
-	</div>
+  <% if RAILS_ENV != 'production' %>
+  	<div class="form_div">
+  		<div class="form_col1">
+  	    <%= f.label :photo, t(:Photo) %><br />
+  		  <%= f.file_field :photo, :class => 'file_type' %>
+  		</div>
+  	</div>
+  <% end %>
 
   <div class="clear"></div><br/>
 

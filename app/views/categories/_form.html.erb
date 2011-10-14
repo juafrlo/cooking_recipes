@@ -5,14 +5,16 @@
     <%= f.text_field :name %>
   </p>
 
-  <p>
-	  <%= f.label :categoryphoto, t(:Photo) %>:<br />
-	  <% unless @category.categoryphoto_file_size.blank? %>
-  	  <%= image_tag @category.categoryphoto.url(:small) %>
-      <br/>
-    <% end %>
-    <%= f.file_field :categoryphoto %><br />
-  </p>
+  <% if RAILS_ENV != 'production' %>
+    <p>
+  	  <%= f.label :categoryphoto, t(:Photo) %>:<br />
+  	  <% unless @category.categoryphoto_file_size.blank? %>
+    	  <%= image_tag @category.categoryphoto.url(:small) %>
+        <br/>
+      <% end %>
+      <%= f.file_field :categoryphoto %><br />
+    </p>
+  <% end %>
 
   <p>
     <%= form_template_button(f) %>

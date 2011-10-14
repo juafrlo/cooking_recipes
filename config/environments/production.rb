@@ -26,4 +26,4 @@ config.action_mailer.raise_delivery_errors = true
 
 SITE_NAME = "Antes de cocinar"
 SITE_URL = "www.antesdecocinar.com"
-SITE_EMAIL = "admin@antesdecocinar.com"
+SITE_EMAIL = "antesdecocinar@gmail.com"
