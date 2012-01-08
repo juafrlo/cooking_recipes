@@ -71,9 +71,9 @@ class RecetaTest < ActiveSupport::TestCase
     assert_equal Receta.find_ordered(User.find(1), {:order => "category_id" + ' DESC'}),
       [recetas(:arroz_a_la_cubana), recetas(:paella)]
     assert_equal Receta.find_ordered(User.find(1), {:order => "ratings.rating" + ' ASC'}),
-      [recetas(:paella), recetas(:arroz_a_la_cubana)]
-    assert_equal Receta.find_ordered(User.find(1), {:order => "ratings.rating" + ' DESC'}),
       [recetas(:arroz_a_la_cubana), recetas(:paella)]
+    assert_equal Receta.find_ordered(User.find(1), {:order => "ratings.rating" + ' DESC'}),
+      [recetas(:paella), recetas(:arroz_a_la_cubana)]
   end
   
   def test_search

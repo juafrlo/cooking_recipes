@@ -67,34 +67,34 @@ es:
       half_a_minute: "medio minuto" 
       less_than_x_seconds:
         one:  "menos de 1 segundo" 
-        other: "menos de {{count}} segundos"
+        other: "menos de %{count} segundos"
       x_seconds:
         one:  "1 segundo" 
-        other: "{{count}} segundos" 
+        other: "%{count} segundos" 
       less_than_x_minutes:
         one:  "menos de 1 minuto" 
-        other: "menos de {{count}} minutos" 
+        other: "menos de %{count} minutos" 
       x_minutes:
         one:  "1 minuto" 
-        other: "{{count}} minutos" 
+        other: "%{count} minutos" 
       about_x_hours:
         one:  "alrededor de 1 hora" 
-        other: "alrededor de {{count}} horas" 
+        other: "alrededor de %{count} horas" 
       x_days:
         one:  "1 día" 
-        other: "{{count}} días" 
+        other: "%{count} días" 
       about_x_months:
         one:  "alrededor de 1 mes" 
-        other: "alrededor de {{count}} meses" 
+        other: "alrededor de %{count} meses" 
       x_months:
         one:  "1 mes" 
-        other: "{{count}} meses" 
+        other: "%{count} meses" 
       about_x_years:
         one:  "alrededor de 1 año" 
-        other: "alrededor de {{count}} años" 
+        other: "alrededor de %{count} años" 
       over_x_years:
         one:  "más de 1 año" 
-        other: "más de {{count}} años" 
+        other: "más de %{count} años" 
   
   activerecord:
     attributes:
@@ -134,8 +134,8 @@ es:
     errors:
       template:
         header:
-          one:   "No se pudo guardar {{model}} porque se encontró 1 error" 
-          other:  "No se pudo guardar {{model}} porque se encontraron {{count}} errores" 
+          one:   "No se pudo guardar %{model} porque se encontró 1 error" 
+          other:  "No se pudo guardar %{model} porque se encontraron %{count} errores" 
         # The variable :count is also available
         body: "Se encontraron problemas con los siguientes campos:" 
   
@@ -149,16 +149,16 @@ es:
         accepted: "debe ser aceptado"
         empty: "no puede estar vacío"
         blank: "no puede estar en blanco"
-        too_long: "es demasiado largo ({{count}} caracteres máximo)"
-        too_short: "tiene una longitud demasiado corta ({{count}} caracteres mínimo)"
-        wrong_length: "no tiene la longitud correcta ({{count}} caracteres exactos)"
+        too_long: "es demasiado largo (%{count} caracteres máximo)"
+        too_short: "tiene una longitud demasiado corta (%{count} caracteres mínimo)"
+        wrong_length: "no tiene la longitud correcta (%{count} caracteres exactos)"
         taken: "ya está en uso"
         not_a_number: "no es un número"
-        greater_than: "debe ser mayor que {{count}}"
-        greater_than_or_equal_to: "debe ser mayor que o igual a {{count}}"
-        equal_to: "debe ser igual a {{count}}"
-        less_than: "debe ser menor que {{count}}"
-        less_than_or_equal_to: "debe ser menor que o igual a {{count}}"
+        greater_than: "debe ser mayor que %{count}"
+        greater_than_or_equal_to: "debe ser mayor que o igual a %{count}"
+        equal_to: "debe ser igual a %{count}"
+        less_than: "debe ser menor que %{count}"
+        less_than_or_equal_to: "debe ser menor que o igual a %{count}"
         odd: "debe ser impar"
         even: "debe ser par"
   
@@ -227,7 +227,7 @@ es:
   My_friends: Mis amigos
   Last_recipes_voted: Últimas recetas puntuadas
   Best_voted_chefs: Chefs mejor puntuados
-  Footer_content: "'{{site_name}}' es un proyecto personal de"
+  Footer_content: "'%{site_name}' es un proyecto personal de"
 
   #Administration
   Administration: "Administración"
@@ -587,12 +587,12 @@ es:
   Recetas_avg: Media recetas
   Advices_avg: Media consejos
   Restaurants_avg: Media restaurantes
-  why_have_friends: Tener amigos en '{{site_name}}' permite que seas informado mediante email de los contenidos publicados por tus amigos, a la vez que permite que tus amigos sepan cuando has publicado un contenido. Puedes configuar la recepción y de dichos emails en tu ficha de usuario.
+  why_have_friends: Tener amigos en '%{site_name}' permite que seas informado mediante email de los contenidos publicados por tus amigos, a la vez que permite que tus amigos sepan cuando has publicado un contenido. Puedes configuar la recepción y de dichos emails en tu ficha de usuario.
   how_to_get_friends: Puedes invitar a amigos desde esta sección o apretando el enlace de 'hacerse amigo' debajo del nombre los usuarios.
   before_be_friends: Para poder ser amigo de otro usuario debes esperar a que el otro usuario acepte tu amistad.
-  term1: "{{site_name}} es un servicio gratuito, por lo tanto la administración de la web se reserva el derecho de admisión o eliminiación de contendios sin previo aviso. El objetivo de esta web es permitir que los aficionados a la cocina compartan sus conocimientos e inquietudes sobre el mundo de la cocina."
+  term1: "%{site_name} es un servicio gratuito, por lo tanto la administración de la web se reserva el derecho de admisión o eliminiación de contendios sin previo aviso. El objetivo de esta web es permitir que los aficionados a la cocina compartan sus conocimientos e inquietudes sobre el mundo de la cocina."
   term2: "Los contenidos escritos publicados deben guardar relación con el mundo de la cocina. Cualquier contenido que desde administración sea considerado no apropiado puede ser borrado sin previo aviso."
-  term3: "{{site_name}} no se hace responsable de los datos y contenidos facilitados por sus usuarios ni de su apropiación por parte de terceros."
+  term3: "%{site_name} no se hace responsable de los datos y contenidos facilitados por sus usuarios ni de su apropiación por parte de terceros."
   term4: "Se prohiben imágenes de mal gusto o que no sean recomendadas para menores de 18 años."
   term5: "Se prohibe la publicación de cualquier contenido con fin publicitario."
   term6: "Se prohibe la publicación de fotos de usuarios del foro sin su consentimiento."

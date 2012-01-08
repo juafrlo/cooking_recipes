@@ -16,11 +16,11 @@ class Receta < ActiveRecord::Base
 
   named_scope :best_voted, :order => "ratings.rating DESC", :include => 'ratings'
   named_scope :by_name, lambda {|name|
-    name.blank? ? {} : {:conditions => ["name like ?", "%#{name}%"]}}
+    name.blank? ? {} : {:conditions => ["name ilike ?", "%#{name}%"]}}
   named_scope :by_country, lambda {|country|
-    country.blank? ? {} : {:conditions => ["country like ?", "%#{country}%"]}}
+    country.blank? ? {} : {:conditions => ["country ilike ?", "%#{country}%"]}}
   named_scope :by_town, lambda {|town|
-    town.blank? ? {} : {:conditions => ["town like ?", "%#{town}%"]}}
+    town.blank? ? {} : {:conditions => ["town ilike ?", "%#{town}%"]}}
   named_scope :by_category_id, lambda {|category_id|
     category_id.blank? ? {} : {:conditions => ["category_id = ?", category_id]}}
   named_scope :by_duration, lambda {|duration|
@@ -29,7 +29,7 @@ class Receta < ActiveRecord::Base
     unless ingredients.blank?
       ingr = {}
       ingredients.each{|ingredient| ingr.merge!({"%#{ingredient[:name]}%" => "?"})}
-      comparator = "ingredients.name like "
+      comparator = "ingredients.name ilike "
       {:conditions => ["#{comparator} " + ingr.values.join(" OR #{comparator}"), ingr.keys].flatten,
        :joins => [:ingredients], :group => "receta_id"}
     else
@@ -109,15 +109,17 @@ class Receta < ActiveRecord::Base
     sql_statement = "SELECT *, COUNT(receta_id) AS total
      FROM ingredients INNER JOIN recetas ON receta_id = recetas.id "      
     if ingr.size >=1
-      sql_statement += "WHERE (ingredients.name like " + ingr.join(' OR ingredients.name like ') + ")"  
+      sql_statement += "WHERE (ingredients.name ilike " + ingr.join(' OR ingredients.name ilike ') + ")"  
     end
     unless duration.blank?
         sql_statement += ingr.size >= 1  ? " AND " : " WHERE "        
         sql_statement += " duration <= #{duration.to_i}"
     end
-    sql_statement += " GROUP BY receta_id"
-    
-
+    # Postgres compatible
+    sql_statement += " GROUP BY receta_id,ingredients.id,ingredients.name,ingredients.created_at,ingredients.updated_at,
+    recetas.id,recetas.name,recetas.description,recetas.category_id,recetas.user_id,recetas.created_at,
+    recetas.updated_at,recetas.photo_file_name,recetas.photo_content_type,recetas.photo_file_size,
+    recetas.photo_updated_at,recetas.country,recetas.town,recetas.duration,recetas.people_can_eat,recetas.observations"
 
 	  # Perform the query
 	  recetas = find_by_sql(sql_statement)  

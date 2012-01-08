@@ -51,7 +51,7 @@ class AdvicesController < ApplicationController
   def create
     @advice = Advice.new(params[:advice])    
     @advice.user_id = current_user.id
-    @advice.tag_list = params[:tag_list]
+    @advice.tag_list = params[:tag_list] if params[:tag_list].present?
 
     respond_to do |format|
       if @advice.save

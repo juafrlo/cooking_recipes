@@ -8,9 +8,9 @@ class Advice < ActiveRecord::Base
   after_create :send_notification_to_friends
   
   named_scope :by_name, lambda {|name|
-    name.blank? ? {} : {:conditions => ["name like ?", "%#{name}%"]}} 
+    name.blank? ? {} : {:conditions => ["name ilike ?", "%#{name}%"]}} 
   named_scope :by_description, lambda {|description|
-    description.blank? ? {} : {:conditions => ["description like ?", "%#{description}%"]}} 
+    description.blank? ? {} : {:conditions => ["description ilike ?", "%#{description}%"]}} 
   named_scope :best_voted, :order => "ratings.rating DESC", :include => 'ratings'
   
   
