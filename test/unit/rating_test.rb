@@ -1,11 +1,6 @@
 require 'test_helper'
 
 class RatingTest < ActiveSupport::TestCase
-  # Replace this with your real tests.
-  test "the truth" do
-    assert true
-  end
-  
   test "rate" do
     last_rating = Rating.rating(Receta.find(2), "Receta")
     Rating.rate(recetas(:arroz_a_la_cubana).id,4,"Receta",User.last)
