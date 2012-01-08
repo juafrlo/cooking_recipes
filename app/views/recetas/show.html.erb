@@ -32,7 +32,7 @@
 
    		<div class="receta_show_duration">
   			<%= t(:duration)%>:
-        <span itemprop="cookTime" content="#{@receta.duration}">
+        <span itemprop="cookTime" content="<%=@receta.duration%>">
    			<%= h @receta.duration %> <%= t(:minutes)%>
   		</div>				
 		
