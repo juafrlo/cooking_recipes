@@ -17,7 +17,7 @@ module RecetasHelper
       html += "<div id='bigger_image' style='display:none;'>"
 			html += link_to_close_redbox(image_tag('web/close.png'), :class => 'close_button')
       html += "<div class='redbox_photo'>"
-      html += image_tag(receta.photo.url(:small), :size => "300x300") 
+      html += image_tag(receta.photo.url(:small), :size => "300x300", :itemprop => "image") 
       html += "</div>"
       html += "</div>"
       html.gsub('&lt;','<').gsub('&gt;','>')

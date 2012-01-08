@@ -1,119 +1,121 @@
 <% title "#{@receta.name} - #{t(:Cooking_recipe)}" %>
+<div itemscope itemtype="http://schema.org/Recipe">
+  <h1 itemprop="name">
+  	<%=  h @receta.name %>
+  </h1>
 
-<h1>
-	<%=  h @receta.name %>
-</h1>
-
-<div id="ad_block_hor">
-  <%= render :partial => '/shared/ads/link_unit_top'%>
-</div>
-
-<div class="receta_show_intro">
-	<div class="receta_show_photo">
-    <%= receta_show_photo(@receta) %>
-	</div>
-
-	<div class="receta_show_info">
-		<div class="autor">
-		  <%= t(:Receta_by) %>:
-		  <%= link_to @receta.user.login, user_path(@receta.user) %>
-		  <%= invite_user_link(@receta.user, "my_friend_link", "user_link_#{@receta.user.id}", true) %>
-		  <%= image_tag('web/spinner.gif', :id => 'spiner_my_friend_link', :style=> 'display:none;') %>
-		</div>
-
-		<div>
-		  <%= t(:Category) %>:
-		  <%= h @receta.category.name %>
-		</div>
-		
-		<div class="receta_show_origin"> 																																																																																																																																																																																																																			     
-		  <%= h "#{t(:Receta_original_of)}: #{@receta.town} #{receta_country(@receta)}"%>
-		</div>
-
- 		<div class="receta_show_duration">
-			<%= t(:duration)%>:
- 			<%= h @receta.duration %> <%= t(:minutes)%>
-		</div>				
-		
- 		<div class="receta_show_people">
-  		<%= t(:Receta_to_people)%>:
-	  	<%= h @receta.people_can_eat %> <%= t(:people)%>
-	  </div>						
-		
-		<div id="rating_stars" style="height:50px;">		
-	  		<div class="puntuation">
-				<b><%= t(:puntuation)%>:</b>
-	 			<%= number_with_precision( Rating.rating(@receta, 'Receta'), :precision => 1) %>/5 
-				(<%= num_votes(Rating.number_of_votes('Receta', @receta))%>)
-			</div>
-
-			<div id="star-ratings-block">		
-				<div>
-			    <%= render :partial => "rating/rating",
-			 		:locals => { :obj => @receta, :type => 'Receta' } %> 
-				</div>
-			</div>
-			<%= render :partial => 'shared/social_buttons', :locals => {:obj => @receta }%>
-		</div>
-		<div id="rating_status" style="color:green;"></div>	
- 	</div>
-</div>
-
-<div class="clear"></div><br/>
-<div class="receta_show_body">
-  <div class="description_div">
-  	<span class="title_span"><%= t(:small_description)%>:</span>
-	  <div class="description_text"><%= h @receta.description %></div>
+  <div id="ad_block_hor">
+    <%= render :partial => '/shared/ads/link_unit_top'%>
   </div>
 
-  <div class="ingredients_div">
-	  <span class="title_span"><%= t(:Ingredients) %>: </span>
-	  <ul style="margin-top: 5px;">
-		  <% for ingredient in @ingredients %>
-			  <%if !ingredient.name.empty? %><li><%= h ingredient.name %> </li> <%end%>
+  <div class="receta_show_intro">
+  	<div class="receta_show_photo">
+      <%= receta_show_photo(@receta) %>
+  	</div>
+
+  	<div class="receta_show_info">
+  		<div class="autor">
+  		  <%= t(:Receta_by) %>:
+  		  <span itemprop="author"><%= link_to @receta.user.login, user_path(@receta.user) %></span>
+  		  <%= invite_user_link(@receta.user, "my_friend_link", "user_link_#{@receta.user.id}", true) %>
+  		  <%= image_tag('web/spinner.gif', :id => 'spiner_my_friend_link', :style=> 'display:none;') %>
+  		</div>
+
+  		<div>
+  		  <%= t(:Category) %>:
+  		  <%= h @receta.category.name %>
+  		</div>
+		
+  		<div class="receta_show_origin"> 																																																																																																																																																																																																																			     
+  		  <%= h "#{t(:Receta_original_of)}: #{@receta.town} #{receta_country(@receta)}"%>
+  		</div>
+
+   		<div class="receta_show_duration">
+  			<%= t(:duration)%>:
+        <span itemprop="cookTime" content="#{@receta.duration}">
+   			<%= h @receta.duration %> <%= t(:minutes)%>
+  		</div>				
+		
+   		<div class="receta_show_people">
+    		<%= t(:Receta_to_people)%>:
+  	  	<%= h @receta.people_can_eat %> <%= t(:people)%>
+  	  </div>						
+		
+  		<div id="rating_stars" style="height:50px;">		
+  	  		<div class="puntuation">
+  				<b><%= t(:puntuation)%>:</b>
+  	 			<%= number_with_precision( Rating.rating(@receta, 'Receta'), :precision => 1) %>/5 
+  				(<%= num_votes(Rating.number_of_votes('Receta', @receta))%>)
+  			</div>
+
+  			<div id="star-ratings-block">		
+  				<div>
+  			    <%= render :partial => "rating/rating",
+  			 		:locals => { :obj => @receta, :type => 'Receta' } %> 
+  				</div>
+  			</div>
+  			<%= render :partial => 'shared/social_buttons', :locals => {:obj => @receta }%>
+  		</div>
+  		<div id="rating_status" style="color:green;"></div>	
+   	</div>
+  </div>
+
+  <div class="clear"></div><br/>
+  <div class="receta_show_body">
+    <div class="description_div">
+    	<span class="title_span"><%= t(:small_description)%>:</span>
+  	  <div class="description_text" itemprop="description"><%= h @receta.description %></div>
+    </div>
+
+    <div class="ingredients_div">
+  	  <span class="title_span"><%= t(:Ingredients) %>: </span>
+  	  <ul style="margin-top: 5px;">
+  		  <% for ingredient in @ingredients %>
+  			  <%if !ingredient.name.empty? %><li itemprop="ingredients"><%= h ingredient.name %> </li> <%end%>
+    		<% end %>
+  	  </ul>
+    </div>
+
+    <div class="steps_div">
+  	  <span class="title_span"><%= t(:Steps) %>:</span>
+    	<ul style="margin-top:5px;" itemprop="recipeInstructions">
+      	<% for step in @steps %>
+      		<%if !step.explanation.empty? %><li><%= h step.explanation %> </li> <%end%>
+      	<% end %>
+      </ul>
+    </div>
+
+  	<% unless @receta.observations.blank? %>
+  	  <div class="description_div observations">
+  	  	<span class="title_span"><b><%= t(:observations)%>:</b></span>
+  		  <div class="description_text"><%= h @receta.observations %></div>
+  	  </div>
+  	<% end %>
+	
+	
+	
+	
+
+  	<div id="ad_block_bottom">
+      <div><%= render :partial => '/shared/ads/link_unit_bottom' %></div>
+      <div><%= render :partial => '/shared/ads/ad_bottom' %></div>
+  	</div>
+	
+	
+
+
+    <div class="receta_show_links">
+  	  <% if current_user && (@receta.user == current_user || current_user.admin?)%>
+        <%= link_to t(:Edit), edit_receta_path(@receta) %> |
+      <% end %>
+      <%= link_to t(:Back), recetas_path %>
+  		<% if current_user && current_user.admin? %>
+  			| <%= link_to t(:Destroy), @receta,
+  			 	:confirm => t(:are_you_sure), :method => :delete %>
   		<% end %>
-	  </ul>
+    </div>
   </div>
 
-  <div class="steps_div">
-	  <span class="title_span"><%= t(:Steps) %>:</span>
-  	<ul style="margin-top:5px;">
-    	<% for step in @steps %>
-    		<%if !step.explanation.empty? %><li><%= h step.explanation %> </li> <%end%>
-    	<% end %>
-    </ul>
-  </div>
 
-	<% unless @receta.observations.blank? %>
-	  <div class="description_div observations">
-	  	<span class="title_span"><b><%= t(:observations)%>:</b></span>
-		  <div class="description_text"><%= h @receta.observations %></div>
-	  </div>
-	<% end %>
-	
-	
-	
-	
-
-	<div id="ad_block_bottom">
-    <div><%= render :partial => '/shared/ads/link_unit_bottom' %></div>
-    <div><%= render :partial => '/shared/ads/ad_bottom' %></div>
-	</div>
-	
-	
-
-
-  <div class="receta_show_links">
-	  <% if current_user && (@receta.user == current_user || current_user.admin?)%>
-      <%= link_to t(:Edit), edit_receta_path(@receta) %> |
-    <% end %>
-    <%= link_to t(:Back), recetas_path %>
-		<% if current_user && current_user.admin? %>
-			| <%= link_to t(:Destroy), @receta,
-			 	:confirm => t(:are_you_sure), :method => :delete %>
-		<% end %>
-  </div>
+  <%= render :partial => 'comments/commenting_system', :locals => {:commentable => @receta}%>
 </div>
-
-
-<%= render :partial => 'comments/commenting_system', :locals => {:commentable => @receta}%>
