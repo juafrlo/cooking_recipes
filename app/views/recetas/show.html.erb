@@ -23,10 +23,10 @@
 
   		<div>
   		  <%= t(:Category) %>:
-  		  <%= h @receta.category.name %>
+  		  <%= link_to @receta.category.name, recetas_categoria_path(@receta.category) %>
   		</div>
 		
-  		<div class="receta_show_origin"> 																																																																																																																																																																																																																			     
+  		<div class="receta_show_origin"> 
   		  <%= h "#{t(:Receta_original_of)}: #{@receta.town} #{receta_country(@receta)}"%>
   		</div>
 
@@ -63,12 +63,12 @@
   <div class="clear"></div><br/>
   <div class="receta_show_body">
     <div class="description_div">
-    	<span class="title_span"><%= t(:small_description)%>:</span>
+    	<span class="title_span"><b><%= t(:small_description)%>:</b></span>
   	  <div class="description_text" itemprop="description"><%= h @receta.description %></div>
     </div>
 
     <div class="ingredients_div">
-  	  <span class="title_span"><%= t(:Ingredients) %>: </span>
+  	  <span class="title_span"><b><%= t(:Ingredients) %>:</b></span>
   	  <ul style="margin-top: 5px;">
   		  <% for ingredient in @ingredients %>
   			  <%if !ingredient.name.empty? %><li itemprop="ingredients"><%= h ingredient.name %> </li> <%end%>
@@ -77,7 +77,7 @@
     </div>
 
     <div class="steps_div">
-  	  <span class="title_span"><%= t(:Steps) %>:</span>
+  	  <span class="title_span"><b><%= t(:Steps) %>:</b></span>
     	<ul style="margin-top:5px;" itemprop="recipeInstructions">
       	<% for step in @steps %>
       		<%if !step.explanation.empty? %><li><%= h step.explanation %> </li> <%end%>
@@ -85,37 +85,40 @@
       </ul>
     </div>
 
+    <br/>
   	<% unless @receta.observations.blank? %>
   	  <div class="description_div observations">
   	  	<span class="title_span"><b><%= t(:observations)%>:</b></span>
-  		  <div class="description_text"><%= h @receta.observations %></div>
+  		  <div class="description_text"><p><%= h @receta.observations %></p></div>
   	  </div>
   	<% end %>
 	
-	
-	
-	
-
+	  <div id="related">
+      <span class="title_span"><b><%= t('related_recetas') %>:</b></span>
+      <ul>
+        <% @receta.category.recetas[0..4].shuffle.each do |receta| %>
+          <li><%= link_to rand(2) > 0 ? receta.name : "#{t('Receta')} #{receta.name.downcase}", receta_path(receta) %></li>
+        <% end %>
+        <li><%= link_to @receta.category.name, recetas_categoria_path(@receta.category) %></li>
+      </ul>
+    </div>
+  
   	<div id="ad_block_bottom">
       <div><%= render :partial => '/shared/ads/link_unit_bottom' %></div>
       <div><%= render :partial => '/shared/ads/ad_bottom' %></div>
   	</div>
 	
-	
-
-
     <div class="receta_show_links">
   	  <% if current_user && (@receta.user == current_user || current_user.admin?)%>
         <%= link_to t(:Edit), edit_receta_path(@receta) %> |
       <% end %>
-      <%= link_to t(:Back), recetas_path %>
+      <%= link_to t('view_more_recetas'), recetas_path %>
   		<% if current_user && current_user.admin? %>
   			| <%= link_to t(:Destroy), @receta,
   			 	:confirm => t(:are_you_sure), :method => :delete %>
   		<% end %>
     </div>
   </div>
-
-
+  
   <%= render :partial => 'comments/commenting_system', :locals => {:commentable => @receta}%>
 </div>

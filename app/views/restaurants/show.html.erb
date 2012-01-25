@@ -30,10 +30,11 @@
 
 		<div>
 		  <%= t(:Specialty) %>:
-		  <%= h @restaurant.rest_category.name %>
+		  <%= link_to @restaurant.rest_category.name, restaurantes_especialidad_path(@restaurant.rest_category) %>
+		  
 		</div>
 		
-		<div class="receta_show_origin"> 																																																																																																																																																																																																																			     
+		<div class="receta_show_origin">
 		  <%= "#{t(:Location)}: #{@restaurant.town} (#{@restaurant.country})"%> <br/>
       <%= h @restaurant.address %><br/>
 	    <% unless @restaurant.google_maps_code.blank? %>
@@ -79,8 +80,23 @@
 <div class="clear"></div><br/><br/>
 <div class="receta_show_body">
   <div class="description_div">
-  	<span class="title_span"><%= t(:small_rest_description)%>:</span>
-	  <div class="description_text"><%= h @restaurant.description %></div>
+  	<span class="title_span"><b><%= t(:small_rest_description)%>:</b></span>
+	  <div class="description_text"><p><%= h @restaurant.description %></p></div>
+  </div>
+
+  <div id="related">
+    <span class="title_span"><b><%= t('related_advices') %>:</b></span>
+    <ul>
+      <% Restaurant.all.shuffle[0..4].each do |restaurant| %>
+        <li>
+          <%= link_to rand(2) > 0 ? restaurant.name : "#{t('Restaurant')} #{restaurant.name.downcase}", restaurant_path(restaurant) %>
+        </li>
+      <% end %>
+      <li>
+        <%= link_to "#{t('restaurants_of')} #{@restaurant.rest_category.name.downcase}",
+          restaurantes_especialidad_path(@restaurant.rest_category) %>
+      </li>      
+    </ul>
   </div>
 
   <br/>
@@ -95,7 +111,7 @@
 	  <% if current_user && (@restaurant.user == current_user || current_user.admin?)%>
       <%= link_to t(:Edit), edit_restaurant_path(@restaurant) %> |
     <% end %>
-    <%= link_to t(:Back), restaurants_path %>
+    <%= link_to t(:view_more_restaurants), restaurants_path %>
 		<% if current_user && current_user.admin? %>
 			| <%= link_to t(:Destroy), @restaurant,
 			 	:confirm => t(:are_you_sure), :method => :delete %>

@@ -3,8 +3,8 @@ body {
   margin-left: auto;
   margin-right: auto;
   background: #cec155;
-  text-align: justify;
-  font: 13px Trebuchet MS, Helvetica, sans-serif;
+  text-align: left;
+  font: 14px Trebuchet MS, Helvetica, sans-serif;
   color: #444444;
 }
 
@@ -954,6 +954,7 @@ table tr.par {
 
 .description_text{
 	padding-left: 10px;
+	padding-top: 8px;
 }
 
 .ingredients_div{

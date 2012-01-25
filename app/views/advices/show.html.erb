@@ -39,6 +39,16 @@
 	<%= h @advice.description %> 
 </p>
 
+<div id="related">
+  <span class="title_span"><b><%= t('related_advices') %>:</b></span>
+  <ul>
+    <% Advice.all.shuffle[0..4].each do |advice| %>
+      <li><%= link_to rand(2) > 0 ? advice.name : "#{t('Advice')} #{advice.name.downcase}", advice_path(advice) %></li>
+    <% end %>
+  </ul>
+</div>
+
+
 
 <p>
  <b>Tags:</b><br/>
@@ -54,7 +64,7 @@
 <% if current_user && (@advice.user == current_user || current_user.admin?)%>
   <%= link_to t(:Edit), edit_advice_path(@advice) %> |
 <% end %>
-<%= link_to t(:Back), advices_path %>
+<%= link_to t(:view_more_advices), advices_path %>
 <% if current_user && current_user.admin? %>
 	| <%= link_to t(:Destroy), @advice,
 	 	:confirm => t(:are_you_sure), :method => :delete %>

@@ -256,7 +256,9 @@ es:
   advices_index_description: "Aquí encontrarás todos los consejos de cocina que necesitas: Los últimos consejos publicados, los mejores consejos puntuados por los usuarios, los mejores consejeros y una lista de los temas que más preocupan en la cocina. Comparte también tus consejos de cocina"
   advices_searcher: Buscador de consejos de cocina. Encuentra aquí el consejo de cocina que necesitas
   advice_results: Resultados de la búsquea de consejos de cocina
-  advice_results_by_tag: Consejos de cocina relacionados con  
+  advice_results_by_tag: Consejos de cocina relacionados con
+  related_advices: Otros consejos de cocina
+  view_more_advices: Ver más consejos de cocina
 
   #Categories
   category: categoría
@@ -474,6 +476,9 @@ es:
   receta_results: "Resultados de la búsqueda de recetas"
   receta_suggested_results: "Resultados sugeridos de la búsqueda de recetas"
   Cooking_recipe: Receta de cocina
+  related_recetas: Otras recetas relacionadas
+  recetas_from_category: Recetas de
+  view_more_recetas: Ver más recetas
   
   #Restaurants
   New_restaurant: Nuevo restaurante
@@ -519,6 +524,8 @@ es:
   best_restaurants_by_category_desc: "Los mejores restaurantes de la especialidad de"
   restaurants_searcher: "Buscador de restaurantes"
   restaurant_results: Resultados de la búsqueda de restaurantes
+  restaurants_of: Restaurantes
+  view_more_restaurants: Ver más restaurantes
     
   #Restaurant categories
   Listing_rest_categories: Categorías de restaurantes
