@@ -219,7 +219,7 @@ class User < ActiveRecord::Base
   end
 
   def self.top_advicers(limit = 5)
-    User.find(:all, :limit => limit, :order => "advices_avg DESC",
+    User.find(:all, :limit => limit, :order => "advices_avg ASC",
       :conditions => 'advices_avg > 0.0')
   end
 
