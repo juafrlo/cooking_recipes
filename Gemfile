@@ -8,9 +8,10 @@ gem 'paperclip'
 gem 'RedCloth'
 
 group :development do
-  gem 'ruby-debug'
+  gem 'ruby-debug19'
 end
 
 group :test do
   gem 'redgreen'
 end
+

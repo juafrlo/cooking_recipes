@@ -107,3 +107,5 @@ end
 
 # All that for this:
 Rails.boot!
+require 'yaml'
+YAML::ENGINE.yamler= 'syck'
